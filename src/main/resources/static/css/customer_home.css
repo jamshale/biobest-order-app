@@ -1,0 +1,81 @@
+
+#logout {
+    margin: 7px;
+    float: right;
+}
+
+.panel-body{
+    background: rgb(255, 231, 167);
+}
+
+#customer_option_active_order_button{
+    margin: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 80%;
+}
+
+#customer_option_changes_button{
+    margin: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 80%;
+    
+}
+
+#customer_option_button{
+    margin: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+#user_name{
+    margin: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Garamond";
+    font-size: 125%;
+}
+
+#customer_name{
+    margin: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Garamond";
+    font-size: 125%;
+}
+
+#bottom_option_button{
+   
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 7px;
+    font-size: 2.0vmin;
+}
+
+#product_list{
+    margin: 0px;
+}
+
+#ship_to_button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#invoice_to_button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#product_list_modal{
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+    border-color: rgba(0, 0, 0, 0.856);
+    border-width:1px;
+    border-style: solid;
+}
