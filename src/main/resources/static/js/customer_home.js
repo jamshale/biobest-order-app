@@ -9,15 +9,17 @@ $(document).ready(function ()   {
 
 //Populate Accordion List of Current Products --> Initial
 function populateProductList() {
-    var test_product = "Californicus-System-10K";
+    var test_product = "Atheta-System-500";
+    var test_desc = "Atheta coriaria in 1-L tube";
+    var test_product_size = "500";
     var test_num = "1";
-    var length = 4;
+    var length = 10;
     for(var i = 0; i < length; i++){
         var clone1 = $("#product_list_panel").children().first().clone()
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#collapse_' + i)
-            current_product.find("button")[0].append(test_product)
+            current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
             current_product.find("button")[2].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'collapse_' + i)
         if(i != length-1 ){
