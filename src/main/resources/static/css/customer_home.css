@@ -9,36 +9,48 @@
 }
 
 #customer_option_active_order_button{
-    margin: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-right: 45px;
+    margin-left: 15px;
     font-weight: bold;
     font-size: 80%;
+    max-width: 200px;
+    min-width: 200px;
+
 }
 
 #customer_option_changes_button{
-    margin: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-left: 45px;
+    margin-right: 45px;
     font-weight: bold;
     font-size: 80%;
-    
+    max-width: 200px;
+    min-width: 200px;
 }
-
-#customer_option_button{
-    margin: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+#customer_option_add_button{
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-right: 45px;
     font-weight: bold;
-    font-size: 125%;
+    font-size: 80%;
+    max-width: 200px;
+    min-width: 200px;
+}
+#customer_option_fav_button{
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+    font-weight: bold;
+    font-size: 80%;
+    max-width: 200px;
+    min-width: 200px;
 }
 
 #user_name{
     margin: 15px;
     font-weight: bold;
     text-align: center;
-    font-family: "Garamond";
     font-size: 125%;
+
 }
 
 #customer_name{
