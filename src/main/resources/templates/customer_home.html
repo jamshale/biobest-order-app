@@ -22,9 +22,40 @@
     <div class="container-fluid">
     <div class="row">
             <div class="col-md-4">
-                    <h4 id="user_name"></h4>
-                    <h4 id="customer_name"></h4>
+                    <h2 id="user_name"></h2>
+                    <h2 id="customer_name"></h2>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h5 style="font-weight: bold;">Ship-To Address:</h5>
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-block dropdown-toggle" type="button" id="ship_to_button" 
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="ship_to_import">
+                                <li><a href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <h5 style="font-weight: bold;">Invoice-To Address:</h5>
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-block dropdown-toggle" type="button" id="invoice_to_button" 
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="invoice_to_import">
+                                <li><a href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+
+
             <div class="row">
+                    
                 <div class="col-sm-5 text-center"><button type="button" class="btn btn-basic btn-sm btn-block btn-disabled" id="customer_option_active_order_button"></button></div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 text-center"><button type="button" class="btn btn-basic btn-sm btn-block btn-disabled" id="customer_option_changes_button"></button></div>

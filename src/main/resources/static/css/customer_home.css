@@ -15,6 +15,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     margin-left: 20px;
+    margin-top: 20px;
     font-weight: bold;
     font-size: 1.9vmin;
 
@@ -23,6 +24,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     margin-left: 20px;
+    margin-top: 20px;
     font-weight: bold;
     font-size: 1.9vmin;
 
@@ -40,13 +42,11 @@
     margin: 15px;
     font-weight: bold;
     text-align: center;
-    font-size: 125%;
 }
 #customer_name{
     margin: 15px;
     font-weight: bold;
     text-align: center;
-    font-size: 125%;
 }
 #bottom_option_button{
     margin-left: 20px;
@@ -57,14 +57,6 @@
 #product_list{
     margin: 0px;
 }
-#ship_to_button{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-#invoice_to_button{
-    margin-left: 10px;
-    margin-right: 10px;
-}
 #product_list_modal{
     table-layout: auto;
     border-collapse: collapse;
@@ -74,6 +66,14 @@
     border-style: solid;
 }
 .panel-group{
-    max-height: 600px;
+    max-height: 700px;
     overflow-y: scroll;
+}
+#invoice_to_button{
+    margin-left: 20px;
+    
+}
+#ship_to_button{
+    margin-left: 20px;
+    
 }

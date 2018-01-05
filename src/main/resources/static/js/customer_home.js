@@ -45,10 +45,10 @@ function populateCustomerPageInfo(){
     $("#customer_option_active_order_button").html(`Active Orders <br /> For Week <span class="badge">${test_active_orders}</span>`);
     $("#customer_option_changes_button").html(`Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span>`);
     //Ship-To
-    $("#ship_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>`)
+    $("#ship_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>`)
     $("#ship_to_import").html(`<li><a href="#">${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>`)
     //Invoice-To
-    $("#invoice_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>`)
+    $("#invoice_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>`)
     $("#invoice_to_import").html(`<li><a href="#">${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>`)
 }
 
