@@ -41,8 +41,8 @@ function populateCustomerPageInfo(){
     $("#product_list_header").html(`Order [${test_order_num}] For Week #${date.getWeek()}`)
     $("#product_list_header").append(`<h5 id="PO_num">PO# ${test_po} <h5>`)
     //If Only One Active Order
-    $("#customer_option_active_order_button").html(`Active Orders For Week <span class="badge">${test_active_orders}</span>`);
-    $("#customer_option_changes_button").html(`Changes Since Your Last Visit  <span class="badge">${test_changes}</span>`);
+    $("#customer_option_active_order_button").html(`Active Orders <br /> For Week <span class="badge">${test_active_orders}</span>`);
+    $("#customer_option_changes_button").html(`Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span>`);
     //Ship-To
     $("#ship_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>`)
     $("#ship_to_import").html(`<li><a href="#">${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>`)

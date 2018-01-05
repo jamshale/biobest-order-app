@@ -11,34 +11,27 @@
 #customer_option_active_order_button{
     padding: 10px;
     font-weight: bold;
-    font-size: 80%;
-    max-width: 200px;
-    min-width: 200px;
+    font-size: 2.0vmin;
+
 }
 
 #customer_option_changes_button{
     padding: 10px;
     font-weight: bold;
-    font-size: 80%;
-    max-width: 200px;
-    min-width: 200px;
+    font-size: 2.0vmin;
+
 }
 #customer_option_button{
-    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 10px;
     font-weight: bold;
     font-size: 2.0vmin;
-    max-width: 200px;
-    min-width: 200px;
+
 }
-#customer_option_button{
-    padding: 10px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 80%;
-    max-width: 200px;
-    min-width: 200px;
-}
+
 
 #user_name{
     margin: 15px;
