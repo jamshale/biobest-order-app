@@ -1,4 +1,9 @@
-
+#product_list_header {
+    border-color: rgba(0, 0, 0, 0.856);
+    border-width:1px;
+    border-style: solid;
+    font-weight: bold;
+}
 #logout {
     margin: 7px;
     float: right;
@@ -11,34 +16,28 @@
 #customer_option_active_order_button{
     padding: 10px;
     font-weight: bold;
-    font-size: 1.7vmin;
+    font-size: 1.9vmin;
 
 }
 
 #customer_option_changes_button{
     padding: 10px;
     font-weight: bold;
-    font-size: 1.7vmin;
+    font-size: 1.9vmin;
 
 }
 #customer_option_button{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     margin-top: 10px;
     font-weight: bold;
-    font-size: 1.7vmin;
-
+    font-size: 2vmin;
 }
-
 
 #user_name{
     margin: 15px;
     font-weight: bold;
     text-align: center;
     font-size: 125%;
-
 }
 
 #customer_name{
@@ -77,4 +76,8 @@
     border-color: rgba(0, 0, 0, 0.856);
     border-width:1px;
     border-style: solid;
+}
+
+#PO_num{
+    text-align: right;
 }
