@@ -9,36 +9,29 @@
 }
 
 #customer_option_active_order_button{
-    margin-right: 45px;
-    margin-left: 15px;
+
     font-weight: bold;
     font-size: 80%;
     max-width: 200px;
     min-width: 200px;
-
 }
 
 #customer_option_changes_button{
-    margin-left: 45px;
-    margin-right: 45px;
+
     font-weight: bold;
     font-size: 80%;
     max-width: 200px;
     min-width: 200px;
 }
 #customer_option_add_button{
-    margin-top: 30px;
-    margin-left: 15px;
-    margin-right: 45px;
+    margin-top: 10px;
     font-weight: bold;
     font-size: 80%;
     max-width: 200px;
     min-width: 200px;
 }
 #customer_option_fav_button{
-    margin-top: 30px;
-    margin-left: 45px;
-    margin-right: 45px;
+    margin-top: 10px;
     font-weight: bold;
     font-size: 80%;
     max-width: 200px;
