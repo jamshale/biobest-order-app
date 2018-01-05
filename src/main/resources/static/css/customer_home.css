@@ -73,3 +73,7 @@
     border-width:1px;
     border-style: solid;
 }
+.panel-group{
+    max-height: 600px;
+    overflow-y: scroll;
+}
