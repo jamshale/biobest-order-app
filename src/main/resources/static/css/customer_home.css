@@ -1,4 +1,14 @@
-#product_list_header {
+
+
+table th:first-child{
+    border-radius:10px 0 0 10px;
+  }
+  
+  table th:last-child{
+    border-radius:0 10px 10px 0;
+  }
+
+#header_info {
     border-color: rgba(0, 0, 0, 0.856);
     border-width:1px;
     border-style: solid;
@@ -35,7 +45,7 @@
     padding-bottom: 20px;
     margin-left: 20px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: bold;
     font-size: 2.0vmin;
 }

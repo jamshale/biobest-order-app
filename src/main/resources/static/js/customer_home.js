@@ -38,7 +38,7 @@ function populateCustomerPageInfo(){
     var test_ship_to = "1636 Island Hwy East"
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<th><h5>Order <span class="badge">${test_order_num}</span> For Week #${date.getWeek()}</h5></th><th><h5 id="PO_num">PO# ${test_po} <h5></th>`)
+    $("#product_list_header").html(`<h4>Order <span class="badge">${test_order_num}</span> For Week #${date.getWeek()}</h4>`)
     //If Only One Active Order
     $("#customer_option_active_order_button").html(`Active Orders <br /> For Week <span class="badge">${test_active_orders}</span>`);
     $("#customer_option_changes_button").html(`Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span>`);
