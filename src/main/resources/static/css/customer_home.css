@@ -77,3 +77,16 @@
     margin-left: 20px;
     
 }
+#inc_product{
+    padding: 10px;
+}
+#product_list_button{
+    min-width: 500px;
+}
+#product_option_button{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 2.0vmin;
+}
