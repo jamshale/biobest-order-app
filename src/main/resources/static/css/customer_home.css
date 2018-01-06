@@ -1,3 +1,11 @@
+.glyphicon glyphicon-ok{
+    display:block;
+    text-align:center;
+}
+.dropdown-menu {
+    width: 400px;
+}
+
 #header_info {
     border-color: rgba(0, 0, 0, 0.856);
     border-width:1px;
@@ -66,7 +74,7 @@
     border-style: solid;
 }
 .panel-group{
-    max-height: 640px;
+    max-height: 660px;
     overflow-y: scroll;
 }
 #invoice_to_button{

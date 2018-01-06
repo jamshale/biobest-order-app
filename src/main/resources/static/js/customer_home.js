@@ -74,11 +74,11 @@ function populateCustomerPageInfo(){
     $("#customer_option_active_order_button").html(`Active Orders <br /> For Week <span class="badge">${test_active_orders}</span>`);
     $("#customer_option_changes_button").html(`Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span>`);
     //Ship-To
-    $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#ship_to_import").html(`<li><a href="#">${test_ship_to} </h4><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>`)
+    $("#ship_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
     //Invoice-To
-    $("#invoice_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#invoice_to_import").html(`<li><a href="#">${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>`)
+    $("#invoice_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#invoice_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
     
 }
 
