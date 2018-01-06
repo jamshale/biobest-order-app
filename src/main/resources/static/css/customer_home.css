@@ -99,22 +99,15 @@
     overflow-y: auto;
 }
 
-/*Centers the modal*//*When the modal fills the screen it has an even 2.5% on top and bottom*/
 .modal-dialog {
-  margin: 2.5vh auto;
-}
-
-/*Sets the maximum height of the entire modal to 95% of the screen height*/
-.modal-content {
-  max-height: 95vh;
-  overflow: scroll;
-}
-
-/*Sets the maximum height of the modal body to 90% of the screen height*/
-.modal-body {
-  max-height: 90vh;
-}
-/*Sets the maximum height of the modal image to 69% of the screen height*/
-.modal-body img {
-  max-height: 90vh;
-}
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+  }
