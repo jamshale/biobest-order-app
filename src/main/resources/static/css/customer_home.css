@@ -99,4 +99,4 @@
     overflow-y: auto;
 }
 
-#add_product_modal .modal-dialog  {width:90%;}
+#add_product_modal .modal-dialog  {width:90%; height:90%}
