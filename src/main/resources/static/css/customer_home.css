@@ -66,7 +66,7 @@
     border-style: solid;
 }
 .panel-group{
-    max-height: 600px;
+    max-height: 640px;
     overflow-y: scroll;
 }
 #invoice_to_button{
@@ -78,7 +78,14 @@
 }
 #inc_product{
     margin-top: 10%;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#inc_product_add{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left:15px;
+    margin-right:15px;
 }
 #product_list_button{
     min-width: 450px;
@@ -101,7 +108,7 @@
 }
 #add_product_list{
     margin-left: 10px;
-    max-height: 1000px;
+    max-height: 900px;
     overflow-y: auto;
 }
 

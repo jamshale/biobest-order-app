@@ -1,6 +1,5 @@
 var date = new Date();
 
-
 $(document).ready(function ()   {
         populateProductList();
         populateCustomerPageInfo();
@@ -46,7 +45,7 @@ function populateAddProductList(){
         current_product = $("#add_product_list_item")
             current_product.append(`<tr"><td style="width: 45%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
                                         <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:10px;">Add</button></td>
-                                            <td><div class="btn-group btn-group-md" role="group" id="inc_product" style="margin-left:15px;margin-right:15px;">
+                                            <td><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
                                                 <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
                                                 <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
                                                 <button type="button"  class="btn btn-defualt">${test_num}</button>
