@@ -98,3 +98,5 @@
     max-height: 800px;
     overflow-y: auto;
 }
+
+#add_product_modal .modal-dialog  {width:90%;}
