@@ -1,21 +1,31 @@
 var date = new Date();
+//Global Test Variables
+var total_cost = "1080.89";
+var test_product = "Atheta-System-500";
+var test_desc = "Atheta coriaria in 1-L tube";
+var test_product_size = "500";
+var test_num = "1";
+var test_price = "99.90";
+var num_items = 10;
+var test_po_num = "10112";
+var test_order_num = "3"
+var test_active_orders = "1"
+var test_changes = "0"
+var test_customer_name = "Windset - Phase 3"
+var test_user_name = "Jamie Hale"
+var test_ship_to = "1636 Island Hwy East"
 
 $(document).ready(function ()   {
         populateProductList();
         populateCustomerPageInfo();
         populateCustomerAddProduct();
         populateAddProductList();
+        populateActiveOrderList();
 });
 
 //Populate Accordion List of Current Products --> Initial
 function populateProductList() {
-    var test_product = "Atheta-System-500";
-    var test_desc = "Atheta coriaria in 1-L tube";
-    var test_product_size = "500";
-    var test_num = "1";
-    var test_price = "99.90"
-    var length = 10;
-    for(var i = 0; i < length; i++){
+    for(var i = 0; i < num_items; i++){
         var clone1 = $("#product_list_panel").children().first().clone()
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
@@ -24,24 +34,18 @@ function populateProductList() {
             current_product.find("button")[3].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'collapse_' + i)
             current_product.find("#item_price").html(`$${test_price}`)
-        if(i != length-1 ){
+        if(i != num_items-1 ){
             clone2.prependTo($("#product_list_panel"))
             clone1.prependTo($("#product_list_panel"))
         }
        
     }
+    $("#total_cost").html(`Total = $${total_cost}`)
 }
 
 //Populate Add Product List
 function populateAddProductList(){
-    var test_product = "Atheta-System-500";
-    var test_desc = "Atheta coriaria in 1-L tube";
-    var test_product_size = "500";
-    var test_price = "99.90";
-    var test_num = "1";
-    var length = 10;
-    for(var i = 0; i < length; i++){
-        console.log("fire")
+    for(var i = 0; i < num_items; i++){
         current_product = $("#add_product_list_item")
             current_product.append(`<tr"><td style="width: 45%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
                                         <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:10px;">Add</button></td>
@@ -52,21 +56,24 @@ function populateAddProductList(){
                                                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
                                                 <td><button class="btn btn-info" style="padding:20px;">Favourite</button></td></tr>`)      
     }                                               
-
 }
-
-
-
+//Populate Active Order List
+function populateActiveOrderList(){
+    var test_order_num = 3;
+    for(var i = 0; i < test_order_num; i++){
+        current_product = $("#active_order_list_item")
+            current_product.append(`<tr><td style="width:15%;"><h3>${test_po_num}</h3></td>
+                <td style="width:15%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
+                <td style="width:35%;"><h4 style="font-weight:bold;">Ship-to:</h4><h4>${test_ship_to}</h4><h4 style="font-weight:bold;">Invoice-to:</h4><h4>${test_ship_to}</h4></td>
+                <td style="width:15%;"><button type="button" class="btn btn-success" style="padding-bottom:15px;margin-right:30px;"><h3>Activate</h3></button></td>
+                <td style="width:20%;"><h4 style="font-weight:bold;">Total:</h4><h4>$${total_cost}</h4></td>
+                
+                </tr>`)      
+    }                                               
+}
 //Populate Customer Page Info --> Initial
 function populateCustomerPageInfo(){
-    
-    var test_po = "123"
-    var test_order_num = "1"
-    var test_active_orders = "1"
-    var test_changes = "0"
-    var test_customer_name = "Windset - Phase 3"
-    var test_user_name = "Jamie Hale"
-    var test_ship_to = "1636 Island Hwy East"
+   
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
     $("#product_list_header").html(`<h2><span class="badge">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
@@ -100,7 +107,7 @@ Date.prototype.getWeek = function() {
 
 $('#exampleModal').on('show.bs.modal', function (event) {
 var button = $(event.relatedTarget) // Button that triggered the modal
-var recipient = button.data('whatever') // Extract info from data-* attributes
+//var recipient = button.data('whatever') // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 var modal = $(this)
