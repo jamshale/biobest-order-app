@@ -49,9 +49,9 @@
     text-align: center;
 }
 #bottom_option_button{
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 4px;
     font-size: 2.0vmin;
 }
 #product_list{
@@ -75,13 +75,12 @@
 }
 #ship_to_button{
     margin-left: 20px;
-    
 }
 #inc_product{
     padding: 10px;
 }
 #product_list_button{
-    min-width: 500px;
+    min-width: 450px;
 }
 #product_option_button{
     padding-top: 20px;
@@ -89,4 +88,8 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 2.0vmin;
+}
+#item_price{
+    padding-left: 50px;
+    padding-right: 50px;
 }

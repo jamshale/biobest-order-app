@@ -4,7 +4,8 @@ var date = new Date();
 $(document).ready(function ()   {
         populateProductList();
         populateCustomerPageInfo();
-        populateCustomerAddProduct()
+        populateCustomerAddProduct();
+        populateAddProductList();
 });
 
 //Populate Accordion List of Current Products --> Initial
@@ -13,6 +14,7 @@ function populateProductList() {
     var test_desc = "Atheta coriaria in 1-L tube";
     var test_product_size = "500";
     var test_num = "1";
+    var test_price = "99.90"
     var length = 10;
     for(var i = 0; i < length; i++){
         var clone1 = $("#product_list_panel").children().first().clone()
@@ -20,17 +22,45 @@ function populateProductList() {
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#collapse_' + i)
             current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
-            current_product.find("button")[2].append(test_num)
+            current_product.find("button")[3].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'collapse_' + i)
+            current_product.find("#item_price").html(`$${test_price}`)
         if(i != length-1 ){
             clone2.prependTo($("#product_list_panel"))
             clone1.prependTo($("#product_list_panel"))
         }
+       
     }
 }
 
+//Populate Add Product List
+function populateAddProductList(){
+    var test_product = "Atheta-System-500";
+    var test_desc = "Atheta coriaria in 1-L tube";
+    var test_product_size = "500";
+    var test_price = "99.90";
+    var test_num = "1";
+    var length = 10;
+    for(var i = 0; i < length; i++){
+        console.log("fire")
+        current_product = $("#add_product_list_item")
+            current_product.append(`<tr><td>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></td>
+                                        <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:80px;">Select</button></td>
+                                            <td><div class="btn-group btn-group-md" role="group" id="inc_product" style="margin-left:20px;">
+                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
+                                                <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
+                                                <button type="button"  class="btn btn-defualt">${test_num}</button>
+                                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
+                                                    <td><button class="btn btn-info btn-lg" style="padding:20px;margin-left:20px;">Info</button></td></tr>`)      
+    }
+
+}
+
+
+
 //Populate Customer Page Info --> Initial
 function populateCustomerPageInfo(){
+    
     var test_po = "123"
     var test_order_num = "1"
     var test_active_orders = "1"
@@ -50,6 +80,7 @@ function populateCustomerPageInfo(){
     //Invoice-To
     $("#invoice_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
     $("#invoice_to_import").html(`<li><a href="#">${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>`)
+    
 }
 
 
@@ -83,8 +114,5 @@ function populateCustomerAddProduct(){
     var test_product_number = "Hypoaspis-System-125K";
     var test_desc = "Hypoaspis miles in 5-L bucket";
     var test_unit_size = "125,000"; 
-    var test_price = "$64.00"; 
-    
-    
-    
+    var test_price = "$64.00";   
 }
