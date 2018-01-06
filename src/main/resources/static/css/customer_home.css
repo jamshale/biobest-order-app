@@ -99,4 +99,22 @@
     overflow-y: auto;
 }
 
-#add_product_modal .modal-dialog  {width:90%; height:90%}
+/*Centers the modal*//*When the modal fills the screen it has an even 2.5% on top and bottom*/
+.modal-dialog {
+  margin: 2.5vh auto;
+}
+
+/*Sets the maximum height of the entire modal to 95% of the screen height*/
+.modal-content {
+  max-height: 95vh;
+  overflow: scroll;
+}
+
+/*Sets the maximum height of the modal body to 90% of the screen height*/
+.modal-body {
+  max-height: 90vh;
+}
+/*Sets the maximum height of the modal image to 69% of the screen height*/
+.modal-body img {
+  max-height: 90vh;
+}
