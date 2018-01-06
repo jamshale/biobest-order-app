@@ -79,6 +79,7 @@ function populateCustomerPageInfo(){
     //Invoice-To
     $("#invoice_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
     $("#invoice_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
+    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)
     
 }
 
