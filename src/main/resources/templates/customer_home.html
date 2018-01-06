@@ -140,27 +140,24 @@
     </div>
 
     <!--AddProductModal-->
-            <div class="modal fade bs-example-modal-lg full-screen" tabindex="-1" role="dialog" id="add_product_modal">
-                <div class="modal-dialog modal-lg ">
+            <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="add_product_modal">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal_body">   
+                        <div class="modal-header">Product Name <br /> Description <br/> Unit Size</div>
+                        <div class="modal-body">   
                             <div class="row">
                                 <div class="col-md-12">
                                     <div id="add_product_list">
                                         <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        Product Name <br /> Description <br/> Unit Size
-                                                    </th>
-                                                </tr>
-                                            </thead>
                                             <tbody id="add_product_list_item"></tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
