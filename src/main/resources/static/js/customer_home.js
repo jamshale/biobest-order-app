@@ -44,15 +44,15 @@ function populateAddProductList(){
     for(var i = 0; i < length; i++){
         console.log("fire")
         current_product = $("#add_product_list_item")
-            current_product.append(`<tr><td>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></td>
-                                        <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:80px;">Select</button></td>
-                                            <td><div class="btn-group btn-group-md" role="group" id="inc_product" style="margin-left:20px;">
-                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
+            current_product.append(`<tr"><td style="width: 50%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
+                                        <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:10px;">Select</button></td>
+                                            <td><div class="btn-group btn-group-md" role="group" id="inc_product" style="margin-left:15px;">
+                                                <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
                                                 <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
                                                 <button type="button"  class="btn btn-defualt">${test_num}</button>
                                                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
-                                                    <td><button class="btn btn-info btn-lg" style="padding:20px;margin-left:20px;">Info</button></td></tr>`)      
-    }
+                                                <td><button class="btn btn-info" style="padding:20px;">Favourite</button></td></tr>`)      
+    }                                               
 
 }
 

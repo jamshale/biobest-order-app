@@ -93,3 +93,8 @@
     padding-left: 50px;
     padding-right: 50px;
 }
+#add_product_list{
+    margin-left: 10px;
+    max-height: 800px;
+    overflow-y: auto;
+}
