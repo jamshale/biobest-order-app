@@ -8,6 +8,13 @@ $(document).ready(function ()   {
         populateAddProductList();
 });
 
+$('#myModal').on('show.bs.modal', function () {
+    $('.modal .modal-body').css('overflow-y', 'auto'); 
+    $('.modal .modal-body').css('max-height', $(window).height() * 0.7);
+});
+
+
+
 //Populate Accordion List of Current Products --> Initial
 function populateProductList() {
     var test_product = "Atheta-System-500";

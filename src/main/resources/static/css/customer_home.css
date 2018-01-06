@@ -99,7 +99,7 @@
     overflow-y: auto;
 }
 
-/* Extra small devices (less than 768px) */
+/* Extra small devices (less than 768px) 
 @media (max-width: 767px) {
     .modal-fullscreen-xs-down {
       padding: 0 !important;
@@ -118,7 +118,7 @@
     } 
   }
   
-  /* Small devices (less than 992px) */
+  /* Small devices (less than 992px) 
   @media (max-width: 991px) {
     .modal-fullscreen-sm-down {
       padding: 0 !important;
@@ -136,3 +136,4 @@
       border-radius: 0;
     }
   }
+  */
