@@ -119,10 +119,10 @@
     overflow-y: auto;
 }
 
-#add_product_modal .modal-dialog  {width:80%;}
+.modal-dialog  {width:80%;}
 
 @media screen and (min-width: 768px) {
 	
-	#add_product_modal .modal-dialog  {width:900px;}
+	.modal-dialog  {width:900px;}
 
 }
