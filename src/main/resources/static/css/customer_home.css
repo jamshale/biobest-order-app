@@ -66,7 +66,7 @@
     border-style: solid;
 }
 .panel-group{
-    max-height: 700px;
+    max-height: 600px;
     overflow-y: scroll;
 }
 #invoice_to_button{
@@ -83,11 +83,14 @@
     min-width: 450px;
 }
 #product_option_button{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right:3%;
+    margin-left:3%;
     font-size: 2.0vmin;
+
 }
 #item_price{
     padding-left: 50px;
