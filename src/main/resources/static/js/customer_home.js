@@ -59,14 +59,14 @@ function populateAddProductList(){
                     <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
                     <button type="button"  class="btn btn-defualt">${test_num}</button>
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
-                <td><button class="btn btn-info" style="padding:20px;">Favourite</button></td></tr>`)      
+                    <button class="btn btn-info btn-lg" style="padding:20px;">Fav</button></tr>`)      
     }                                               
 }
 //Populate Active Order List
 function populateActiveOrderList(){
     for(var i = 0; i < test_order_num; i++){
         current_product = $("#active_order_list_item")
-            current_product.append(`<tr><td style="width:15%;"><h3>${test_po_num}</h3></td>
+            current_product.append(`<tr><td style="width:15%;"><h3 style="font-weight:bold;">${test_po_num}</h3></td>
                 <td style="width:15%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
                 <td style="width:35%;"><h4 style="font-weight:bold;">Ship-to:</h4><h4>${test_ship_to}</h4><h4 style="font-weight:bold;">Invoice-to:</h4><h4>${test_ship_to}</h4></td>
                 <td style="width:15%;"><button type="button" class="btn btn-success" style="padding-bottom:15px;margin-right:30px;"><h3>Activate</h3></button></td>
@@ -86,34 +86,31 @@ function populateChangesOrderList(){
 }
 //Populate Get Favourite Order List
 function populateGetFavouriteOrderList(){
-
     for(var i = 0; i < test_order_num; i++){
         var fav_order_name = "My Order " + i;
         current_product = $("#get_favourite_order_list_item")
             current_product.append(`<tr"><td style="width:20%;padding-left:30px;padding-bottom:20px;"><button class="btn btn-danger btn-sm">Remove</button></td>
             <td style="width:40%;padding-bottom:30px;"><h3 style="font-weight:bold;">${fav_order_name}</h3></td>
             <td style="width:30%;padding-bottom:30px;"><h3><span class="badge">${num_items}</span> Items</h3></td>
-            <td style="width:20%;padding-bottom:30px;"><button type="button" class="btn btn-success btn-sm" style="padding-bottom:15px;"><h3>Activate</h3></button></td>
+            <td style="width:20%;padding-bottom:30px;"><button type="button" class="btn btn-success btn-sm" style="padding-bottom:15px;margin-right:50px;"><h3>Activate</h3></button></td>
             </tr>`)       
     }                                               
 }
 //Populate Customer Page Info --> Initial
 function populateCustomerPageInfo(){
-   
-    $("#user_name").html(`${test_user_name}`)
-    $("#customer_name").html(`${test_customer_name}`)
+    $("#user_name").html(`<h3>${test_user_name}</h3>`)
+    $("#customer_name").html(`<h2>${test_customer_name}</h2>`)
     $("#product_list_header").html(`<h2><span class="badge">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
-    $("#customer_option_active_order_button").html(`Active Orders <br /> For Week <span class="badge">${test_active_orders}</span>`);
-    $("#customer_option_changes_button").html(`Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span>`);
+    $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
+    $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
     //Ship-To
-    $("#ship_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
+    $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h4></a></li>`)
     //Invoice-To
-    $("#invoice_to_button").html(`${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#invoice_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
     $("#invoice_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
-    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)
-    
+    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
 }
 
 
@@ -130,7 +127,7 @@ Date.prototype.getWeek = function() {
                           - 3 + (week1.getDay() + 6) % 7) / 7);
   }
 
-
+/*
 $('#exampleModal').on('show.bs.modal', function (event) {
 var button = $(event.relatedTarget) // Button that triggered the modal
 //var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -140,6 +137,7 @@ var modal = $(this)
 modal.find('.modal-title').text('New message to ' + recipient)
 modal.find('.modal-body input').val(recipient)
 })
+*/
 
 //Populate Customer Add Product Modal
 function populateCustomerAddProduct(){

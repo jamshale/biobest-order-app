@@ -5,7 +5,6 @@
 .dropdown-menu {
     width: 400px;
 }
-
 #header_info {
     border-color: rgba(0, 0, 0, 0.856);
     border-width:1px;
@@ -26,7 +25,7 @@
     margin-left: 20px;
     margin-top: 20px;
     font-weight: bold;
-    font-size: 1.9vmin;
+  
 
 }
 #customer_option_changes_button{
@@ -35,7 +34,7 @@
     margin-left: 20px;
     margin-top: 20px;
     font-weight: bold;
-    font-size: 1.9vmin;
+    font-size:170%;
 
 }
 #customer_option_button{
@@ -45,17 +44,14 @@
     margin-top: 10px;
     margin-bottom: 20px;
     font-weight: bold;
-    font-size: 2.0vmin;
+    font-size: 170%;
 }
 #user_name{
-    margin: 15px;
-    font-weight: bold;
-    text-align: center;
+    margin-left: 15px;  
 }
 #customer_name{
-    margin: 15px;
-    font-weight: bold;
-    text-align: center;
+    margin-left: 15px;
+    color: darkgreen;
 }
 #bottom_option_button{
     margin-left: 10px;
@@ -97,8 +93,7 @@
     margin-right:15px;
 }
 #product_list_button{
-    min-width: 450px;
-    margin-top: 4px;
+    min-width: 500px;
     margin-bottom: 10px;
 }
 #product_option_button{
@@ -116,22 +111,22 @@
 }
 #add_product_list{
     margin-left: 10px;
-    max-height: 1000px;
+    max-height: 800px;
     overflow-y: auto;
 }
 #active_order_list{
     margin-left: 10px;
-    max-height: 1000px;
+    max-height: 800px;
     overflow-y: auto;
 }
 #changes_order_list{
     margin-left: 10px;
-    max-height: 1000px;
+    max-height: 800px;
     overflow-y: auto;
 }
 #get_favourite_order_list{
     margin-left: 10px;
-    max-height: 1000px;
+    max-height: 800px;
     overflow-y: auto;
 }
 
