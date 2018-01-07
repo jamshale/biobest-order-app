@@ -41,7 +41,8 @@
     font-size: 170%;
 }
 #user_name{
-    margin-left: 15px;  
+    margin-left: 15px;
+    color: darkgreen;  
 }
 #customer_name{
     margin-left: 15px;

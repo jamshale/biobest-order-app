@@ -97,28 +97,6 @@ function favButtonClickIndicator() {
         });     
     });
 }
-
-
-/*
-var add_switch = false;
-function addClickIndicator(){
-    $("#add_button").on('click', function(){
-        if(add_switch==false){
-            $(this).css('border-style', 'solid')
-            $(this).css('border-width', '10px')
-            $(this).css('border-color', 'red')
-            add_switch = true;
-            
-        } else {
-            $(this).css('border-style', '0')
-            add_switch = false;
-        }
-        
-        console.log(add_switch)
-    });   
-}
-*/
-
 //Populate Active Order List
 function populateActiveOrderList(){
     for(var i = 0; i < test_order_num; i++){
@@ -184,6 +162,7 @@ Date.prototype.getWeek = function() {
                           - 3 + (week1.getDay() + 6) % 7) / 7);
   }
 
+//Modal Functionality Example
 /*
 $('#exampleModal').on('show.bs.modal', function (event) {
 var button = $(event.relatedTarget) // Button that triggered the modal
