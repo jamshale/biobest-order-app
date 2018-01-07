@@ -100,7 +100,7 @@ function populateGetFavouriteOrderList(){
 function populateCustomerPageInfo(){
     $("#user_name").html(`<h3>${test_user_name}</h3>`)
     $("#customer_name").html(`<h2>${test_customer_name}</h2>`)
-    $("#product_list_header").html(`<h2><span class="badge">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
+    $("#product_list_header").html(`<h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
     $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
     $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
