@@ -10,7 +10,7 @@ var test_desc = "Atheta coriaria in 1-L tube"
 var test_product_size = "500"
 var test_num = "1"
 var test_price = "99.90"
-var num_items = 10
+var num_items = 3;
 var test_po_num = "10112"
 var test_order_num = "3"
 var test_active_orders = "1"
@@ -27,6 +27,8 @@ $(document).ready(function ()   {
         populateActiveOrderList();
         populateChangesOrderList();
         populateGetFavouriteOrderList();
+        addButtonClickIndicator();
+        favButtonClickIndicator();
 });
 
 //Populate Accordion List of Current Products --> Initial
@@ -53,15 +55,70 @@ function populateAddProductList(){
     for(var i = 0; i < num_items; i++){
         current_product = $("#add_product_list_item")
             current_product.append(`<tr"><td style="width: 45%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
-                <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:10px;">Add</button></td>
+                <td><button type="button" class="btn btn-success btn-lg add_product" style="padding:20px;margin-left:10px;">Add</button></td>
                 <td><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
                     <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
                     <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
-                    <button type="button"  class="btn btn-defualt">${test_num}</button>
+                    <button type="button" class="btn btn-defualt">${test_num}</button>
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
-                    <button class="btn btn-info btn-lg" style="padding:20px;">Fav</button></tr>`)      
-    }                                               
+                    <button class="btn btn-info btn-lg fav_product" style="padding:20px;">Fav</button></tr>`) 
+    }                                              
 }
+//Add Product Modal Button Initialization
+function addButtonClickIndicator() {
+    $(".add_product").each(function(){
+        $(this).on('click', function(){
+            var border_setting = $(this).css('border-color')
+            if(border_setting== 'rgb(57, 132, 57)'){
+                $(this).css('border-width', '5px')
+                $(this).css('border-color', 'red')
+                
+            } else {
+                $(this).css('border-width', '1px')
+                $(this).css('border-color', 'rgb(57, 132, 57)')
+            }
+            
+        });     
+    });
+}
+//Add Product Modal Button Initialization
+function favButtonClickIndicator() {
+    $(".fav_product").each(function(){
+        $(this).on('click', function(){
+            var border_setting = $(this).css('border-color')
+            if(border_setting== 'rgb(38, 154, 188)'){
+                $(this).css('border-width', '5px')
+                $(this).css('border-color', 'red')
+            } else {
+                $(this).css('border-width', '1px')
+                $(this).css('border-color', 'rgb(38, 154, 188)')
+            }
+            
+        });     
+    });
+}
+
+
+/*
+var add_switch = false;
+function addClickIndicator(){
+    $("#add_button").on('click', function(){
+        if(add_switch==false){
+            $(this).css('border-style', 'solid')
+            $(this).css('border-width', '10px')
+            $(this).css('border-color', 'red')
+            add_switch = true;
+            
+        } else {
+            $(this).css('border-style', '0')
+            add_switch = false;
+        }
+        
+        console.log(add_switch)
+    });   
+}
+*/
+
 //Populate Active Order List
 function populateActiveOrderList(){
     for(var i = 0; i < test_order_num; i++){
