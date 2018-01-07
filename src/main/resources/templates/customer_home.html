@@ -142,7 +142,8 @@
             </div>
             <div class="col-md-1"></div>
         </div>  
-    </div>
+    </div>  
+</div>
     <!--Add Product Modal-->
     <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_product_modal">
         <div class="modal-dialog modal-lg">
@@ -181,7 +182,6 @@
             </div>
         </div>
     </div>
-</div>
     <!-- Active Order Modal -->
     <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="active_order_modal">
         <div class="modal-dialog modal-lg">
@@ -190,7 +190,7 @@
                     <div class="row">
                         <div class="col-sm-10">
                         <h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>
-                        </div>>
+                        </div>
                         <div class="col-sm-2">
                             <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
                         </div>
@@ -218,10 +218,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Changes To Order<br />Since Your Last Visit</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-body">   
                     <div class="row">
+                        <div class="col-md-12">
+                            <div id="changes_order_list">
+                                <table>
+                                    <tbody id="changes_order_list_item"></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">              
@@ -235,10 +248,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Favourite Orders</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-body">   
                     <div class="row">
+                        <div class="col-md-12">
+                            <div id="get_favourite_order_list">
+                                <table>
+                                    <tbody id="get_favourite_order_list_item"></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">              

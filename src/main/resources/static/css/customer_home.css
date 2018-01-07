@@ -18,6 +18,7 @@
 }
 .panel-body{
     background: rgb(255, 231, 167);
+    
 }
 #customer_option_active_order_button{
     padding-top: 20px;
@@ -115,16 +116,36 @@
 }
 #add_product_list{
     margin-left: 10px;
-    max-height: 1200px;
+    max-height: 1000px;
+    overflow-y: auto;
+}
+#active_order_list{
+    margin-left: 10px;
+    max-height: 1000px;
+    overflow-y: auto;
+}
+#changes_order_list{
+    margin-left: 10px;
+    max-height: 1000px;
+    overflow-y: auto;
+}
+#get_favourite_order_list{
+    margin-left: 10px;
+    max-height: 1000px;
     overflow-y: auto;
 }
 
 #add_product_modal .modal-dialog  {width:80%;}
 #active_order_modal .modal-dialog  {width:80%;}
+#changes_order_modal .modal-dialog  {width:80%;}
+#get_favourite_order_modal .modal-dialog  {width:80%;}
 
 @media screen and (min-width: 768px) {
 	
     #add_product_modal .modal-dialog  {width:900px;}
     #active_order_modal .modal-dialog  {width:900px;}
+    #changes_order_modal .modal-dialog  {width:900px;}
+    #get_favourite_order_modal .modal-dialog  {width:900px;}
+
 
 }

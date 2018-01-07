@@ -1,13 +1,17 @@
 var date = new Date();
+var options = {  
+    weekday: "long", year: "numeric", month: "short",  
+    day: "numeric", hour: "2-digit", minute: "2-digit"  
+};  
 //Global Test Variables
-var total_cost = "1080.89";
-var test_product = "Atheta-System-500";
-var test_desc = "Atheta coriaria in 1-L tube";
-var test_product_size = "500";
-var test_num = "1";
-var test_price = "99.90";
-var num_items = 10;
-var test_po_num = "10112";
+var total_cost = "1080.89"
+var test_product = "Atheta-System-500"
+var test_desc = "Atheta coriaria in 1-L tube"
+var test_product_size = "500"
+var test_num = "1"
+var test_price = "99.90"
+var num_items = 10
+var test_po_num = "10112"
 var test_order_num = "3"
 var test_active_orders = "1"
 var test_changes = "0"
@@ -21,6 +25,8 @@ $(document).ready(function ()   {
         populateCustomerAddProduct();
         populateAddProductList();
         populateActiveOrderList();
+        populateChangesOrderList();
+        populateGetFavouriteOrderList();
 });
 
 //Populate Accordion List of Current Products --> Initial
@@ -38,7 +44,6 @@ function populateProductList() {
             clone2.prependTo($("#product_list_panel"))
             clone1.prependTo($("#product_list_panel"))
         }
-       
     }
     $("#total_cost").html(`Total = $${total_cost}`)
 }
@@ -48,27 +53,48 @@ function populateAddProductList(){
     for(var i = 0; i < num_items; i++){
         current_product = $("#add_product_list_item")
             current_product.append(`<tr"><td style="width: 45%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
-                                        <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:10px;">Add</button></td>
-                                            <td><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
-                                                <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
-                                                <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
-                                                <button type="button"  class="btn btn-defualt">${test_num}</button>
-                                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
-                                                <td><button class="btn btn-info" style="padding:20px;">Favourite</button></td></tr>`)      
+                <td><button class="btn btn-success btn-lg" style="padding:20px;margin-left:10px;">Add</button></td>
+                <td><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
+                    <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
+                    <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
+                    <button type="button"  class="btn btn-defualt">${test_num}</button>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
+                <td><button class="btn btn-info" style="padding:20px;">Favourite</button></td></tr>`)      
     }                                               
 }
 //Populate Active Order List
 function populateActiveOrderList(){
-    var test_order_num = 3;
     for(var i = 0; i < test_order_num; i++){
         current_product = $("#active_order_list_item")
             current_product.append(`<tr><td style="width:15%;"><h3>${test_po_num}</h3></td>
                 <td style="width:15%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
                 <td style="width:35%;"><h4 style="font-weight:bold;">Ship-to:</h4><h4>${test_ship_to}</h4><h4 style="font-weight:bold;">Invoice-to:</h4><h4>${test_ship_to}</h4></td>
                 <td style="width:15%;"><button type="button" class="btn btn-success" style="padding-bottom:15px;margin-right:30px;"><h3>Activate</h3></button></td>
-                <td style="width:20%;"><h4 style="font-weight:bold;">Total:</h4><h4>$${total_cost}</h4></td>
-                
-                </tr>`)      
+                <td style="width:20%;"><h4 style="font-weight:bold;">Total:</h4><h4>$${total_cost}</h4></td></tr>`)      
+    }                                               
+}
+//Populate Changes Order List
+function populateChangesOrderList(){
+    for(var i = 0; i < test_order_num; i++){
+        current_product = $("#changes_order_list_item")
+            current_product.append(`<tr style="background:rgb(235, 128, 102);"><td style="padding-left:10px;width:25%;"><h3>${date.toLocaleTimeString("en-us", options)}</h3></td>
+            <td style="width:40%"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /></h3></td>
+            <td style="width:10%"><span class="glyphicon glyphicon-remove" style="font-size: 300%;"></span></td>
+            <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
+            </tr>`)       
+    }                                               
+}
+//Populate Get Favourite Order List
+function populateGetFavouriteOrderList(){
+
+    for(var i = 0; i < test_order_num; i++){
+        var fav_order_name = "My Order " + i;
+        current_product = $("#get_favourite_order_list_item")
+            current_product.append(`<tr"><td style="width:20%;padding-left:30px;padding-bottom:20px;"><button class="btn btn-danger btn-sm">Remove</button></td>
+            <td style="width:40%;padding-bottom:30px;"><h3 style="font-weight:bold;">${fav_order_name}</h3></td>
+            <td style="width:30%;padding-bottom:30px;"><h3><span class="badge">${num_items}</span> Items</h3></td>
+            <td style="width:20%;padding-bottom:30px;"><button type="button" class="btn btn-success btn-sm" style="padding-bottom:15px;"><h3>Activate</h3></button></td>
+            </tr>`)       
     }                                               
 }
 //Populate Customer Page Info --> Initial
