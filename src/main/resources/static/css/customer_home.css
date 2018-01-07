@@ -119,10 +119,12 @@
     overflow-y: auto;
 }
 
-.modal-dialog  {width:80%;}
+#add_product_modal .modal-dialog  {width:80%;}
+#active_order_modal .modal-dialog  {width:80%;}
 
 @media screen and (min-width: 768px) {
 	
-	.modal-dialog  {width:900px;}
+    #add_product_modal .modal-dialog  {width:900px;}
+    #active_order_modal .modal-dialog  {width:900px;}
 
 }
