@@ -31,7 +31,7 @@
     float: right;
 }
 .panel-body{
-    background: rgb(255, 231, 167);
+    background: rgba(181, 205, 233, 0.493);
     
 }
 #customer_option_active_order_button{
