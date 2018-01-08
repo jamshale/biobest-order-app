@@ -35,7 +35,7 @@
                 <div class="row">
                     <!-- Ship to Address -->
                     <div class="col-sm-5">
-                        <h4 style="font-weight: bold;">Ship-To Address:</h4>
+                        <h4 style="font-weight: bold;margin-left:30px;">Ship-To Address:</h4>
                         <div class="dropdown">
                             <button class="btn btn-default btn-block dropdown-toggle" type="button" id="ship_to_button" 
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -341,6 +341,37 @@
                 </div>
                 <div class="modal-body">   
                     <div class="row">
+                        <!-- Product List Accordion -->
+                        <div class="panel-group" id="accordion">
+                                <div class="panel panel-default" id="product_list_panel">
+                                    <div class="panel-heading">
+                                        <div class="panel-title pull-left">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="">
+                                                <button type="button" id="product_list_button" class="btn btn-basic btn-sm btn-block text-left" style="text-align:left; padding-left:6px"></button>
+                                            </a>
+                                        </div>
+                                        <div class="panel-title pull-right">
+                                            <div class="btn-group btn-group-lg" role="group" id="inc_product">
+                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled" style="font-size:125%; font-weight:bold"></button>
+                                                <button type="button" class="btn btn-default" style="font-size:125%; font-weight:bold">
+                                                    <span class="glyphicon glyphicon-triangle-top"></span>
+                                                </button>
+                                                <button type="button"  class="btn btn-defualt" style="font-size:125%; font-weight:bold"></button>
+                                                <button type="button" class="btn btn-default" style="font-size:125%; font-weight:bold">
+                                                    <span class="glyphicon glyphicon-triangle-bottom" ></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="">
+                                        <div class="panel-body">
+                                            <button type="button" id="product_option_button" class="btn btn-success col-sm-4">Info</button>
+                                            <button type="button" id="product_option_button" class="btn btn-danger col-sm-4">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="modal-footer">              

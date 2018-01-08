@@ -12,7 +12,7 @@
     text-align: center;
 }
 .submit_modal_button button{
-    min-width: 400px;
+    min-width: 80%;
 }
 
 #header_info {
@@ -80,11 +80,11 @@
     overflow-y: scroll;
 }
 #invoice_to_button{
-    margin-left: 20px;
+    margin-left: 10px;
     
 }
 #ship_to_button{
-    margin-left: 20px;
+    margin-left: 40px;
 }
 #inc_product{
     margin-top: 10%;
