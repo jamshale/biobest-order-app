@@ -1,7 +1,3 @@
-body {
-    zoom:67%;
-}
-
 .glyphicon glyphicon-ok{
     display:block;
     text-align:center;
@@ -142,11 +138,27 @@ body {
 #get_favourite_order_modal .modal-dialog  {width:80%;}
 #submit_order_modal .modal-dialog  {width:80%;}
 
-@media screen and (min-width: 768px) {
+@media screen 
+    and (min-width: 768px) {
     #add_product_modal .modal-dialog  {width:900px;}
     #active_order_modal .modal-dialog  {width:900px;}
     #changes_order_modal .modal-dialog  {width:900px;}
     #get_favourite_order_modal .modal-dialog  {width:900px;}
     #submit_order_modal .modal-dialog  {width:900px;}
-    body {zoom:100%;}
+}
+
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    body {zoom:67%;}      
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+    body {zoom:67%;} 
 }
