@@ -8,11 +8,13 @@
     width: 400px;
 }
 .submit_modal_button{
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 300px;
-    max-height: 300px;
+
+    text-align: center;
 }
+.submit_modal_button button{
+    min-width: 400px;
+}
+
 #header_info {
     border-color: rgba(0, 0, 0, 0.856);
     border-width:1px;
