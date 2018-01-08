@@ -36,8 +36,8 @@ $(document).ready(function ()   {
 function populateCustomerPageInfo(){
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h4 style="font-weight:bold;color:green;float:right;">${order_status}</h4>
-                                        <h3><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h3>`)
+    $("#product_list_header").html(`<h3 style="font-weight:bold;color:green;float:right;">${order_status}</h3>
+                                        <h3 style="font-weight:bold;"><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h3>`)
     //If Only One Active Order
     $("#customer_option_active_order_button").html(`<h4>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h4>`);
     $("#customer_option_changes_button").html(`<h4>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h4>`);
@@ -57,7 +57,7 @@ function populateProductList() {
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#main_collapse_' + i)
-            current_product.find("#product_list_button").html(`<h4>${test_product}<br />${test_desc}<br />${test_product_size}</h4>`)
+            current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
             current_product.find("button")[3].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
             current_product.find("#item_price").html(`$${test_price}`)

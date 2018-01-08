@@ -2,10 +2,6 @@
   margin: 7px;
   float: right;
 }
-#product_list_button{
-  max-width:400px;
-  min-width:400px;
-}
 .search_field {
   padding-top:10px;
   padding-bottom:10px;
@@ -19,7 +15,6 @@
   width: 400px;
 }
 .submit_modal_button{
-
   text-align: center;
 }
 .submit_modal_button button{
@@ -31,9 +26,19 @@
   border-style: solid;
   font-weight: bold;
 }
+/* ACCCORDION */
+.panel-group.main{
+  max-height: 700px;
+  overflow-y: scroll;
+}
 .panel-body{
   background: rgba(181, 205, 233, 0.493);
 }
+#product_list_button{
+  max-width:400px;
+  min-width:400px;
+}
+/* TOP ACTION BUTTONS */
 #customer_option_active_order_button{
   margin-left: 40px;
   margin-top: 20px;
@@ -47,17 +52,29 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+#inc_product{
+  margin-top: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.inc_button{
+  font-weight:bold;
+}
+/* BOTTOM ACTION BUTTONS */
+#bottom_option_button{
+  margin:5px;
+  padding: 0px;
+}
+/***********************/
 #user_name{
   padding-left: 15px;
-  color: darkgreen;  
+  color: darkgreen;
+  font-weight:bold;  
 }
 #customer_name{
   padding-left: 15px;
   color: darkgreen;
-}
-#bottom_option_button{
-  margin:5px;
-  padding: 0px;
+  font-weight:bold; 
 }
 #product_list{
   margin: 0px;
@@ -70,10 +87,6 @@
   border-width:1px;
   border-style: solid;
 }
-.panel-group.main{
-  max-height: 700px;
-  overflow-y: scroll;
-}
 .panel-group.history{
   max-height: 800px;
   overflow-y: scroll;
@@ -84,14 +97,6 @@
 #ship_to_button{
   margin-left: 40px;
 }
-#inc_product{
-  margin-top: 10%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.inc_button{
-  font-weight:bold;
-}
 #inc_product_add{
   padding-top: 10px;
   padding-bottom: 10px;
@@ -99,7 +104,6 @@
   margin-right:15px;
 }
 #product_option_button{
-
   margin-top: 40px;
   margin-bottom: 5px;
   margin-right:8%;
@@ -184,8 +188,4 @@ and (min-resolution: 192dpi) {
     max-height: 700px;
     overflow-y: scroll;
   }
-}
-@media screen 
-and (min-width: 1200px) 
-and (max-width: 1600px)  {
 }
