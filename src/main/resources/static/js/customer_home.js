@@ -32,6 +32,23 @@ $(document).ready(function ()   {
         favButtonClickIndicator();
 });
 
+//Populate Customer Page Info
+function populateCustomerPageInfo(){
+    $("#user_name").html(`${test_user_name}`)
+    $("#customer_name").html(`${test_customer_name}`)
+    $("#product_list_header").html(`<h3 style="font-weight:bold;color:green;float:right;">${order_status}</h3><h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
+    //If Only One Active Order
+    $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
+    $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
+    //Ship-To
+    $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h4></a></li>`)
+    //Invoice-To
+    $("#invoice_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#invoice_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
+    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
+}
+
 //Populate Accordion List of Current Products --> Initial
 function populateProductList() {
     for(var i = 0; i < num_items; i++){
@@ -132,23 +149,7 @@ function populateGetFavouriteOrderList(){
             </tr>`)       
     }                                               
 }
-//Populate Customer Page Info
-function populateCustomerPageInfo(){
-    $("#user_name").html(`${test_user_name}`)
-    $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
-    $("#order_status_label").html(`<h3 style="font-weight:bold;color:green;">${order_status}</h3>`)
-    //If Only One Active Order
-    $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
-    $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
-    //Ship-To
-    $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h4></a></li>`)
-    //Invoice-To
-    $("#invoice_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#invoice_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
-    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
-}
+
 
 
 // Returns the ISO week of the date.
