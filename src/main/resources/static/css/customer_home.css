@@ -64,9 +64,7 @@
     color: darkgreen;
 }
 #bottom_option_button{
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 4px;
+    margin:10px;
     
 }
 #product_list{
@@ -80,12 +78,12 @@
     border-width:1px;
     border-style: solid;
 }
-.panel-group main{
+.panel-group.main{
     max-height: 600px;
     overflow-y: scroll;
 }
-.panel-group history{
-    max-height: 900px;
+.panel-group.history{
+    max-height: 700px;
     overflow-y: scroll;
 }
 #invoice_to_button{
@@ -165,7 +163,7 @@
   and (min-device-width: 1200px) 
   and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 1) {
-    body {zoom:67%;}      
+    body {zoom:60%;}      
 }
 
 /* ----------- Retina Screens ----------- */
@@ -174,5 +172,5 @@
   and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (min-resolution: 192dpi) { 
-    body {zoom:67%;} 
+    body {zoom:60%;} 
 }
