@@ -1,10 +1,16 @@
-
+#logout {
+  margin: 7px;
+  float: right;
+}
+#product_list_button{
+  max-width:400px;
+  min-width:400px;
+}
 .search_field {
   padding-top:10px;
   padding-bottom:10px;
   margin-top:40px;
 }
-
 .glyphicon glyphicon-ok{
   display:block;
   text-align:center;
@@ -25,13 +31,8 @@
   border-style: solid;
   font-weight: bold;
 }
-#logout {
-  margin: 7px;
-  float: right;
-}
 .panel-body{
   background: rgba(181, 205, 233, 0.493);
-  
 }
 #customer_option_active_order_button{
   margin-left: 40px;
@@ -79,7 +80,6 @@
 }
 #invoice_to_button{
   margin-left: 10px;
-  
 }
 #ship_to_button{
   margin-left: 40px;
@@ -88,14 +88,9 @@
   margin-top: 10%;
   padding-top: 10px;
   padding-bottom: 10px;
- 
 }
 .inc_button{
   font-weight:bold;
-}
-#product_list_button{
-  max-width:300px;
-  min-width:300px;
 }
 #inc_product_add{
   padding-top: 10px;
@@ -103,7 +98,6 @@
   margin-left:15px;
   margin-right:15px;
 }
-
 #product_option_button{
 
   margin-top: 40px;
@@ -144,9 +138,11 @@
 #history_order_modal .modal-dialog  {width:80%;}
 #add_favourite_order_modal .modal-dialog  {width:80%;}
 #delete_order_modal .modal-dialog  {width:80%;}
-
+/* Mobile Screens */
 @media screen 
-  and (min-width: 768px) {
+  and (min-width: 768px)
+  and (max-width: 1199px)
+  and (-webkit-min-device-pixel-ratio: 1) {
   #add_product_modal .modal-dialog  {width:900px;}
   #active_order_modal .modal-dialog  {width:900px;}
   #changes_order_modal .modal-dialog  {width:900px;}
@@ -155,29 +151,41 @@
   #history_order_modal .modal-dialog  {width:900px;}
   #add_favourite_order_modal .modal-dialog  {width:900px;}
   #delete_order_modal .modal-dialog  {width:900px;}
-  
 }
-
-
 @media screen 
-and (min-device-width: 1200px) 
-and (max-device-width: 1600px) 
+  and (min-width: 768px)
+  and (max-width: 1199px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  #add_product_modal .modal-dialog  {width:900px;}
+  #active_order_modal .modal-dialog  {width:900px;}
+  #changes_order_modal .modal-dialog  {width:900px;}
+  #get_favourite_order_modal .modal-dialog  {width:900px;}
+  #submit_order_modal .modal-dialog  {width:900px;}
+  #history_order_modal .modal-dialog  {width:900px;}
+  #add_favourite_order_modal .modal-dialog  {width:900px;}
+  #delete_order_modal .modal-dialog  {width:900px;}
+}
+/*Laptop Screens*/
+@media screen 
+and (min-width: 1200px) 
+and (max-width: 1600px) 
 and (-webkit-min-device-pixel-ratio: 1) {
-  body {zoom:auto;}  
   .panel-group.main{
     max-height: 300px;
     overflow-y: scroll;
   }    
-}
-/* ----------- Retina Screens ----------- 
+} 
 @media screen 
-and (min-device-width: 1200px) 
-and (max-device-width: 1600px) 
+and (min-width: 1200px) 
+and (max-width: 1600px) 
 and (-webkit-min-device-pixel-ratio: 2)
 and (min-resolution: 192dpi) { 
-  body {zoom:auto;} 
   .panel-group.main{
     max-height: 700px;
     overflow-y: scroll;
   }
+}
+@media screen 
+and (min-width: 1200px) 
+and (max-width: 1600px)  {
 }

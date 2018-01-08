@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 </head>
-<body style="background: rgba(169, 228, 203, 0.349);">
+<body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -25,18 +25,18 @@
         <div class="col-md-4">
             <div class="row">
                 <div class="col-sm-5">
-                <h5 style="font-weight:bold;padding-left:15px;">User:</h5>
-                <h4 id="user_name"></h4>
+                <h4 style="font-weight:bold;padding-left:15px;">User:</h4>
+                <h3 id="user_name"></h3>
                 </div>
                 <div class="col-sm-7">
-                <h5 style="font-weight:bold;">Greenhouse:</h5>
-                <h4 id="customer_name"></h4><br />
+                <h4 style="font-weight:bold;">Greenhouse:</h4>
+                <h3 id="customer_name"></h3><br />
                 </div>
             </div>
             <div class="row"  >
                 <!-- Ship to Address -->
                 <div class="col-sm-5">
-                    <h6 style="font-weight: bold;padding-left:30px;">Ship-To Address:</h6>
+                    <h5 style="font-weight: bold;padding-left:30px;">Ship-To Address:</h5>
                     <div class="dropdown">
                         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="ship_to_button" 
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +50,7 @@
                 <div class="col-sm-1"></div>
                 <!-- Invoice to Address -->
                 <div class="col-sm-5">
-                    <h6 style="font-weight: bold;">Invoice-To Address:</h6>
+                    <h5 style="font-weight: bold;">Invoice-To Address:</h5>
                     <div class="dropdown">
                         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="invoice_to_button" 
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,7 +110,7 @@
                                             </a>
                                         </div>
                                         <div class="panel-title pull-right">
-                                            <div class="btn-group btn-group-sm" role="group" id="inc_product">
+                                            <div class="btn-group btn-group-md" role="group" id="inc_product">
                                                 <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button" style="font-weight:bold;"></button>
                                                 <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
                                                     <span class="glyphicon glyphicon-triangle-top"></span>
@@ -143,21 +143,21 @@
             <div class="row" style="text-align: center;">
                 <div class="col-sm-6">
                     <button class="btn btn-success btn-sm btn-block" id="bottom_option_button"
-                                data-toggle="modal" data-target="#submit_order_modal"><h5>Submit <br /> Order</h5></button>
+                                data-toggle="modal" data-target="#submit_order_modal"><h4>Submit <br /> Order</h4></button>
                 </div>
                 <div class="col-sm-6">
                     <button class="btn btn-danger btn-sm btn-block" id="bottom_option_button" 
-                        data-toggle="modal" data-target="#delete_order_modal"><h5>Delete <br /> Order</h5></button>
+                        data-toggle="modal" data-target="#delete_order_modal"><h4>Delete <br /> Order</h4></button>
                 </div>  
 
 
                 <div class="col-sm-6">
                     <button class="btn btn-warning btn-sm btn-block" id="bottom_option_button"
-                                data-toggle="modal" data-target="#history_order_modal"><h5>Order <br /> History</h5></button>
+                                data-toggle="modal" data-target="#history_order_modal"><h4>Order <br /> History</h4></button>
                 </div>
                 <div class="col-sm-6">
                     <button class="btn btn-info btn-sm btn-block" id="bottom_option_button" 
-                                data-toggle="modal" data-target="#add_favourite_order_modal"><h5>Add Order To<br />Favourites</h5></button>
+                                data-toggle="modal" data-target="#add_favourite_order_modal"><h4>Add Order To<br />Favourites</h4></button>
                 </div>
                             
             </div>

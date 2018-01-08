@@ -36,17 +36,17 @@ $(document).ready(function ()   {
 function populateCustomerPageInfo(){
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h5 style="font-weight:bold;color:green;float:right;">${order_status}</h5>
-                                        <h4><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h4>`)
+    $("#product_list_header").html(`<h4 style="font-weight:bold;color:green;float:right;">${order_status}</h4>
+                                        <h3><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h3>`)
     //If Only One Active Order
-    $("#customer_option_active_order_button").html(`<h5>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h5>`);
-    $("#customer_option_changes_button").html(`<h5>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h5>`);
+    $("#customer_option_active_order_button").html(`<h4>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h4>`);
+    $("#customer_option_changes_button").html(`<h4>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h4>`);
     //Ship-To
-    $("#ship_to_button").html(`<h6>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h6>`)
-    $("#ship_to_import").html(`<li><a href="#"><h6>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h6></a></li>`)
+    $("#ship_to_button").html(`<h5>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h5>`)
+    $("#ship_to_import").html(`<li><a href="#"><h5>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h5></a></li>`)
     //Invoice-To
-    $("#invoice_to_button").html(`<h6>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h6>`)
-    $("#invoice_to_import").html(`<li><a href="#"><h6>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h6></a></li>`)
+    $("#invoice_to_button").html(`<h5>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h5>`)
+    $("#invoice_to_import").html(`<li><a href="#"><h5>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h5></a></li>`)
     $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
 }
 
@@ -57,8 +57,7 @@ function populateProductList() {
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#main_collapse_' + i)
-            current_product.find("#product_list_button").html(`<h5>${test_product}
-                                                                        <br />${test_desc}<br />${test_product_size}</h5>`)
+            current_product.find("#product_list_button").html(`<h4>${test_product}<br />${test_desc}<br />${test_product_size}</h4>`)
             current_product.find("button")[3].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
             current_product.find("#item_price").html(`$${test_price}`)
