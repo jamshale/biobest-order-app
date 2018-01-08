@@ -75,7 +75,7 @@
     border-style: solid;
 }
 .panel-group.main{
-    max-height: 550px;
+    max-height: 600px;
     overflow-y: scroll;
 }
 .panel-group.history{
@@ -111,7 +111,7 @@
     margin-bottom: 5px;
     margin-right:8%;
     margin-left:8%;
-    
+    font-size: 150%;
 }
 #item_price{
     padding-left: 50px;
