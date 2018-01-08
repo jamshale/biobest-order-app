@@ -57,7 +57,7 @@ function populateProductList() {
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#main_collapse_' + i)
-            current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
+            current_product.find("#product_list_button").html(`<h3 id="list_button">${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
             current_product.find("button")[3].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
             current_product.find("#item_price").html(`$${test_price}`)

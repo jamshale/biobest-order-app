@@ -19,7 +19,6 @@
 .submit_modal_button button{
     min-width: 80%;
 }
-
 #header_info {
     border-color: rgba(0, 0, 0, 0.856);
     border-width:1px;
@@ -163,7 +162,7 @@
   and (min-device-width: 1200px) 
   and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 1) {
-    body {zoom:60%;}      
+    body {zoom:auto;}      
 }
 
 /* ----------- Retina Screens ----------- */
@@ -172,5 +171,20 @@
   and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (min-resolution: 192dpi) { 
-    body {zoom:60%;} 
+    body {zoom:auto;} 
+}
+@media screen 
+  and (min-device-width: 900px) 
+  and (max-device-width: 1199px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    body {zoom:auto;}      
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 900px) 
+  and (max-device-width: 1199px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+    body {zoom:auto;} 
 }
