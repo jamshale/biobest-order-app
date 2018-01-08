@@ -143,12 +143,10 @@ body {
 #submit_order_modal .modal-dialog  {width:80%;}
 
 @media screen and (min-width: 768px) {
-	
     #add_product_modal .modal-dialog  {width:900px;}
     #active_order_modal .modal-dialog  {width:900px;}
     #changes_order_modal .modal-dialog  {width:900px;}
     #get_favourite_order_modal .modal-dialog  {width:900px;}
     #submit_order_modal .modal-dialog  {width:900px;}
-
-
+    body {zoom:auto;}
 }
