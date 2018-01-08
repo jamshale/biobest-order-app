@@ -77,16 +77,15 @@ function populateHistoryList() {
         current_product = $("#history_list_panel")
             current_product.find("a").first().attr('href', '#history_collapse_' + i)
             current_product.find(".panel-collapse").first().attr('id', 'history_collapse_' + i)
-            current_product.find("#history_list_button").html(`<td style="width:33%;"><h3>${test_po_num}<br />Week #${date.getWeek()}</h3></td>
-                                                                    <td style="width:33%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
-                                                                    <td style="width:34%;"><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
+            current_product.find("#history_list_button").html(`<td style="width:25%;"><h4 style="font-weight:bold;">PO:</h4><h3>${test_po_num}</h3>
+                                        <td style="width:25%;"><h4 style="font-weight:bold;">Week:</h4><h3>${date.getWeek()}</h3></td>
+                                        <td style="width:25%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
+                                        <td style="width:25%;"><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
             for(var j = 0; j < 5; j++){
                 $("#history_product_list").append(`<tr><td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
-                                                        <td style="width:25%;"><h3 style="font-weight:bold;">Units: ${test_units}</h3></td>
-                                                        <td style="width:25%;"><h3 style="font-weight:bold;">Total Charge: $${test_price}</h3></td>
-                        
-                
-                </tr>`)
+                        <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td></tr>`)
             }
         if(i != num_items-1 ){
             clone2.prependTo($("#history_list_panel"))

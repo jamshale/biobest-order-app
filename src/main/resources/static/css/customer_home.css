@@ -143,6 +143,8 @@
 #changes_order_modal .modal-dialog  {width:80%;}
 #get_favourite_order_modal .modal-dialog  {width:80%;}
 #submit_order_modal .modal-dialog  {width:80%;}
+#submit_order_modal .modal-dialog  {width:80%;}
+#history_order_modal .modal-dialog  {width:80%;}
 
 @media screen 
     and (min-width: 768px) {
@@ -151,6 +153,7 @@
     #changes_order_modal .modal-dialog  {width:900px;}
     #get_favourite_order_modal .modal-dialog  {width:900px;}
     #submit_order_modal .modal-dialog  {width:900px;}
+    #history_order_modal .modal-dialog  {width:900px;}
 }
 
 @media screen 
