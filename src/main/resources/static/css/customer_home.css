@@ -79,11 +79,11 @@
     border-style: solid;
 }
 .panel-group.main{
-    max-height: 700px;
+    max-height: 500px;
     overflow-y: scroll;
 }
 .panel-group.history{
-    max-height: 700px;
+    max-height: 800px;
     overflow-y: scroll;
 }
 #invoice_to_button{
