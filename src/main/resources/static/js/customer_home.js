@@ -24,7 +24,6 @@ $(document).ready(function ()   {
         populateProductList();
         populateHistoryList()
         populateCustomerPageInfo();
-        populateCustomerAddProduct();
         populateAddProductList();
         populateActiveOrderList();
         populateChangesOrderList();
@@ -37,7 +36,8 @@ $(document).ready(function ()   {
 function populateCustomerPageInfo(){
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h3 style="font-weight:bold;color:green;float:right;">${order_status}</h3><h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
+    $("#product_list_header").html(`<h3 style="font-weight:bold;color:green;float:right;">${order_status}</h3>
+                                        <h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
     $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
     $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
@@ -56,10 +56,10 @@ function populateProductList() {
         var clone1 = $("#product_list_panel").children().first().clone()
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
-            current_product.find("a").first().attr('href', '#collapse_' + i)
+            current_product.find("a").first().attr('href', '#main_collapse_' + i)
             current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
             current_product.find("button")[3].append(test_num)
-            current_product.find(".panel-collapse").first().attr('id', 'collapse_' + i)
+            current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
             current_product.find("#item_price").html(`$${test_price}`)
         if(i != num_items-1 ){
             clone2.prependTo($("#product_list_panel"))
@@ -70,15 +70,29 @@ function populateProductList() {
 }
 //Populate History Accordion
 function populateHistoryList() {
+    var test_units = "10";
     for(var i = 0; i < num_items; i++){
         var clone1 = $("#history_list_panel").children().first().clone()
         var clone2 = $("#history_list_panel").children().first().next().clone()
+        current_product = $("#history_list_panel")
+            current_product.find("a").first().attr('href', '#history_collapse_' + i)
+            current_product.find(".panel-collapse").first().attr('id', 'history_collapse_' + i)
+            current_product.find("#history_list_button").html(`<td style="width:33%;"><h3>${test_po_num}<br />Week #${date.getWeek()}</h3></td>
+                                                                    <td style="width:33%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
+                                                                    <td style="width:34%;"><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
+            for(var j = 0; j < 5; j++){
+                $("#history_product_list").append(`<tr><td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
+                                                        <td style="width:25%;"><h3 style="font-weight:bold;">Units: ${test_units}</h3></td>
+                                                        <td style="width:25%;"><h3 style="font-weight:bold;">Total Charge: $${test_price}</h3></td>
+                        
+                
+                </tr>`)
+            }
         if(i != num_items-1 ){
             clone2.prependTo($("#history_list_panel"))
             clone1.prependTo($("#history_list_panel"))
         }
     }
-    $("#total_cost").html(`Total = $${total_cost}`)
 }
 //Populate Add Product List
 function populateAddProductList(){
@@ -189,12 +203,3 @@ modal.find('.modal-title').text('New message to ' + recipient)
 modal.find('.modal-body input').val(recipient)
 })
 */
-
-//Populate Customer Add Product Modal
-function populateCustomerAddProduct(){
-    var test_code = "12345";
-    var test_product_number = "Hypoaspis-System-125K";
-    var test_desc = "Hypoaspis miles in 5-L bucket";
-    var test_unit_size = "125,000"; 
-    var test_price = "$64.00";   
-}
