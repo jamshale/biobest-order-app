@@ -79,7 +79,7 @@
     border-style: solid;
 }
 .panel-group.main{
-    max-height: 600px;
+    max-height: 700px;
     overflow-y: scroll;
 }
 .panel-group.history{
