@@ -18,6 +18,7 @@ var test_changes = "0"
 var test_customer_name = "Windset - Phase 3"
 var test_user_name = "Jamie Hale"
 var test_ship_to = "1636 Island Hwy East"
+var order_status = "Submitted"
 
 $(document).ready(function ()   {
         populateProductList();
@@ -131,11 +132,12 @@ function populateGetFavouriteOrderList(){
             </tr>`)       
     }                                               
 }
-//Populate Customer Page Info --> Initial
+//Populate Customer Page Info
 function populateCustomerPageInfo(){
-    $("#user_name").html(`<h3>${test_user_name}</h3>`)
-    $("#customer_name").html(`<h2>${test_customer_name}</h2>`)
+    $("#user_name").html(`${test_user_name}`)
+    $("#customer_name").html(`${test_customer_name}`)
     $("#product_list_header").html(`<h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
+    $("#order_status_label").html(`<h3 style="font-weight:bold;color:green;">${order_status}</h3>`)
     //If Only One Active Order
     $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
     $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);

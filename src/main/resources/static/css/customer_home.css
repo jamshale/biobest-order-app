@@ -1,9 +1,17 @@
+
+
 .glyphicon glyphicon-ok{
     display:block;
     text-align:center;
 }
 .dropdown-menu {
     width: 400px;
+}
+.submit_modal_button{
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 300px;
+    max-height: 300px;
 }
 #header_info {
     border-color: rgba(0, 0, 0, 0.856);

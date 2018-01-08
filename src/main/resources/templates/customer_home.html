@@ -3,6 +3,7 @@
 <head>
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/customer_home.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,13 +26,13 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-sm-6">
-                    <h4 style="font-weight:bold;">User:</h4>
+                    <h4 style="font-weight:bold;margin-left:15px;">User:</h4>
                     <h2 id="user_name"></h2>
                     </div>
-                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
                     <h4 style="font-weight:bold;">Greenhouse:</h4>
                     <h2 id="customer_name"></h2><br />
-                    
+                    </div>
                 </div>
                 <div class="row">
                     <!-- Ship to Address -->
@@ -62,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-            <!--Top Button -->    
+            <!--Top Buttons Top -->    
             <div class="row">  
                 <div class="col-sm-5 text-center">
                     <button type="button" class="btn btn-basic btn-sm btn-block btn-disabled" id="customer_option_active_order_button" 
@@ -73,7 +74,8 @@
                     <button type="button" class="btn btn-basic btn-sm btn-block btn-disabled" id="customer_option_changes_button" 
                                 data-toggle="modal" data-target="#changes_order_modal"></button>
                 </div>
-            </div>    
+            </div>  
+            <!--Top Buttons Bottom -->    
             <div class="row">  
                 <div class="col-sm-5 text-center">
                     <button type="button" class="btn btn-success btn-block btn-sm" id="customer_option_button" data-toggle="modal" data-target="#add_product_modal">Add<br />Product</button>
@@ -84,15 +86,20 @@
                                 data-toggle="modal" data-target="#get_favourite_order_modal">Get Favourite<br /> Order</button>
                 </div>
             </div> 
-            </div>            
+            </div>
+        <!-- Product List -->            
         <div class="col-md-7">
             <div class="container-fluid">
                 <table id="product_list" class="table table-condensed">
                     <thead>
-                        <tr><th id="product_list_header"></th></tr>
+                        <tr>
+                            <th id="product_list_header"></th>
+                            <th id="order_status_label"></th>
+                        </tr>
                     </thead>
                     <tbody>
                         <td>
+                            <!-- Product List Accordion -->
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default" id="product_list_panel">
                                     <div class="panel-heading">
@@ -126,7 +133,9 @@
                         </td> 
                     </tbody>
                     <tfoot>
-                        <tr><td style="text-align:right;text-decoration:underline;"><h3 id="total_cost"></h3></td></tr>
+                        <tr>
+                            <td ><h3 id="total_cost" style="text-align:right;text-decoration:underline;font-weight:bold;"></h3></td>
+                        </tr>
                     </tfoot>  
                 </table>
             </div>
@@ -294,28 +303,25 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
+
                     <div class="row">
+               
+                                    <div class="col-sm-10">
+                                        <h3 style="font-weight:bold;">Submit Order</h3>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                                    </div>
                     </div>
                 </div>
                 <div class="modal-body">   
                     <div class="row">
-                    </div>
-                </div>
-                <div class="modal-footer">              
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- History Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="history_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                    </div>
-                </div>
-                <div class="modal-body">   
-                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-lg btn-success submit_modal_button"><h3 style="font-weight:bold;font-size:180%;">Submit And Keep <br />Currrent Order Active</h3></button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-lg btn-info submit_modal_button"><h3 style="font-weight:bold;font-size:180%;">Submit And <br /> Start A New Order</h3></button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">              
