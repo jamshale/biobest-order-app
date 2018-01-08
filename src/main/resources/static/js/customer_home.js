@@ -22,6 +22,7 @@ var order_status = "Submitted"
 
 $(document).ready(function ()   {
         populateProductList();
+        populateHistoryList()
         populateCustomerPageInfo();
         populateCustomerAddProduct();
         populateAddProductList();
@@ -67,7 +68,18 @@ function populateProductList() {
     }
     $("#total_cost").html(`Total = $${total_cost}`)
 }
-
+//Populate History Accordion
+function populateHistoryList() {
+    for(var i = 0; i < num_items; i++){
+        var clone1 = $("#history_list_panel").children().first().clone()
+        var clone2 = $("#history_list_panel").children().first().next().clone()
+        if(i != num_items-1 ){
+            clone2.prependTo($("#history_list_panel"))
+            clone1.prependTo($("#history_list_panel"))
+        }
+    }
+    $("#total_cost").html(`Total = $${total_cost}`)
+}
 //Populate Add Product List
 function populateAddProductList(){
     for(var i = 0; i < num_items; i++){
