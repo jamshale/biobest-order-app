@@ -28,7 +28,7 @@
   }
   /* ACCCORDION */
   .panel-group.main{
-    max-height: 650px;
+    max-height: 620px;
     overflow-y: scroll;
   }
   .panel-body{
