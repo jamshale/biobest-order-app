@@ -137,7 +137,6 @@ function favButtonClickIndicator() {
                 $(this).css('border-width', '1px')
                 $(this).css('border-color', 'rgb(38, 154, 188)')
             }
-            
         });     
     });
 }

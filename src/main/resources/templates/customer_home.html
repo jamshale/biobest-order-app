@@ -11,11 +11,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 </head>
-<body style="background: rgba(169, 228, 203, 0.349);">
+<body style="background-color: rgba(223, 252, 252, 0.733)">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><h3>Biobest Order App</h3></a>
+                <a class="navbar-brand" href="#">Biobest Order App</a>
             </div>
             <a id="logout" class="btn btn-primary" href="#" role="button">Log Out</a>
         </div>
@@ -26,17 +26,17 @@
             <div class="row">
                 <div class="col-sm-5">
                 <h4 style="font-weight:bold;padding-left:15px;">User:</h4>
-                <h2 id="user_name"></h2>
+                <h3 id="user_name"></h3>
                 </div>
                 <div class="col-sm-7">
                 <h4 style="font-weight:bold;">Greenhouse:</h4>
-                <h2 id="customer_name"></h2><br />
+                <h3 id="customer_name"></h3><br />
                 </div>
             </div>
             <div class="row"  >
                 <!-- Ship to Address -->
                 <div class="col-sm-5">
-                    <h4 style="font-weight: bold;padding-left:30px;">Ship-To Address:</h4>
+                    <h5 style="font-weight: bold; text-align:center;padding-left:20%;">Ship-To Address:</h5>
                     <div class="dropdown">
                         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="ship_to_button" 
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +50,7 @@
                 <div class="col-sm-1"></div>
                 <!-- Invoice to Address -->
                 <div class="col-sm-5">
-                    <h4 style="font-weight: bold;">Invoice-To Address:</h4>
+                    <h5 style="font-weight: bold; text-align:center;">Invoice-To Address:</h5>
                     <div class="dropdown">
                         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="invoice_to_button" 
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,6 +62,8 @@
                     </div>
                 </div>
             </div>
+
+
             <!--Top Buttons Top -->    
             <div class="row">  
                 <div class="col-sm-5 text-center">
@@ -77,15 +79,16 @@
             <!--Top Buttons Bottom -->    
             <div class="row">  
                 <div class="col-sm-5 text-center">
-                    <button type="button" class="btn btn-success btn-block btn-sm" id="customer_option_button" data-toggle="modal" data-target="#add_product_modal">Add<br />Product</button>
+                    <button type="button" class="btn btn-success btn-block btn-sm" id="customer_option_button" 
+                                            data-toggle="modal" data-target="#add_product_modal"><h4 style="font-weight:bold;">Add<br />Product</h4></button>
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 text-center">
                     <button type="button" class="btn btn-primary btn-block btn-sm" id="customer_option_button" style="margin-left:10px;" 
-                                data-toggle="modal" data-target="#get_favourite_order_modal">Get Favourite<br /> Order</button>
+                                data-toggle="modal" data-target="#get_favourite_order_modal"><h4 style="font-weight:bold;">Get Favourite<br /> Order</h4></button>
                 </div>
             </div> 
-            </div>
+        </div>
         <!-- Product List -->            
         <div class="col-md-7" style="padding-bottom:20px;padding-right:30px;">
             <div class="container-fluid">
@@ -103,17 +106,17 @@
                                     <div class="panel-heading">
                                         <div class="panel-title pull-left">
                                             <a data-toggle="collapse" data-parent="#main_accordion" href="">
-                                                <button type="button" id="product_list_button" class="btn btn-basic btn-sm btn-block text-left" style="text-align:left; padding-left:6px"></button>
+                                                <button type="button" id="product_list_button" class="btn btn-basic btn-sm btn-block text-left" style="text-align:left; padding-left:6px;"></button>
                                             </a>
                                         </div>
                                         <div class="panel-title pull-right">
                                             <div class="btn-group btn-group-lg" role="group" id="inc_product">
-                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled" style="font-size:125%; font-weight:bold"></button>
-                                                <button type="button" class="btn btn-default" style="font-size:125%; font-weight:bold">
+                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button" style="font-weight:bold;"></button>
+                                                <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
                                                     <span class="glyphicon glyphicon-triangle-top"></span>
                                                 </button>
-                                                <button type="button"  class="btn btn-defualt" style="font-size:125%; font-weight:bold"></button>
-                                                <button type="button" class="btn btn-default" style="font-size:125%; font-weight:bold">
+                                                <button type="button"  class="btn btn-defualt inc_button" style="font-weight:bold;"></button>
+                                                <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
                                                     <span class="glyphicon glyphicon-triangle-bottom" ></span>
                                                 </button>
                                             </div>
@@ -122,8 +125,8 @@
                                     </div>
                                     <div class="panel-collapse collapse" id="">
                                         <div class="panel-body">
-                                            <button type="button" id="product_option_button" class="btn btn-success col-sm-4">Info</button>
-                                            <button type="button" id="product_option_button" class="btn btn-danger col-sm-4">Remove</button>
+                                            <button type="button" id="product_option_button" class="btn btn-success col-sm-4"><h4>Info</h4></button>
+                                            <button type="button" id="product_option_button" class="btn btn-danger col-sm-4"><h4>Remove</h4></button>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +135,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td ><h3 id="total_cost" style="text-align:right;text-decoration:underline;font-weight:bold;"></h3></td>
+                            <td ><h4 id="total_cost" style="text-align:right;text-decoration:underline;font-weight:bold;"></h4></td>
                         </tr>
                     </tfoot>  
                 </table>
@@ -140,25 +143,24 @@
             <div class="row" style="text-align: center;">
                 <div class="col-sm-6">
                     <button class="btn btn-success btn-sm btn-block" id="bottom_option_button"
-                                data-toggle="modal" data-target="#submit_order_modal"><h4>Submit <br /> Order</h4></button>
+                                data-toggle="modal" data-target="#submit_order_modal"><h4 style="font-weight:bold;">Submit <br /> Order</h4></button>
                 </div>
                 <div class="col-sm-6">
                     <button class="btn btn-danger btn-sm btn-block" id="bottom_option_button" 
-                        data-toggle="modal" data-target="#delete_order_modal"><h4>Delete <br /> Order</h4></button>
+                        data-toggle="modal" data-target="#delete_order_modal"><h4 style="font-weight:bold;">Delete <br /> Order</h4></button>
                 </div>  
 
 
                 <div class="col-sm-6">
                     <button class="btn btn-warning btn-sm btn-block" id="bottom_option_button"
-                                data-toggle="modal" data-target="#history_order_modal"><h4>Order <br /> History</h4></button>
+                                data-toggle="modal" data-target="#history_order_modal"><h4 style="font-weight:bold;">Order <br /> History</h4></button>
                 </div>
                 <div class="col-sm-6">
                     <button class="btn btn-info btn-sm btn-block" id="bottom_option_button" 
-                                data-toggle="modal" data-target="#add_favourite_order_modal"><h4>Add Order To<br />Favourites</h4></button>
+                                data-toggle="modal" data-target="#add_favourite_order_modal"><h4 style="font-weight:bold;">Add Order To<br />Favourites</h4></button>
                 </div>
                             
             </div>
-            <div class="col-md-1"></div>
         </div>  
     </div>  
 </div>
