@@ -145,7 +145,6 @@
 /* Mobile Screens */
 @media screen 
   and (min-width: 768px)
-  and (max-width: 1199px)
   and (-webkit-min-device-pixel-ratio: 1) {
   #add_product_modal .modal-dialog  {width:900px;}
   #active_order_modal .modal-dialog  {width:900px;}
@@ -158,7 +157,6 @@
 }
 @media screen 
   and (min-width: 768px)
-  and (max-width: 1199px)
   and (-webkit-min-device-pixel-ratio: 2) {
   #add_product_modal .modal-dialog  {width:900px;}
   #active_order_modal .modal-dialog  {width:900px;}
@@ -169,23 +167,22 @@
   #add_favourite_order_modal .modal-dialog  {width:900px;}
   #delete_order_modal .modal-dialog  {width:900px;}
 }
-/*Laptop Screens*/
-@media screen 
-and (min-width: 1200px) 
-and (max-width: 1600px) 
-and (-webkit-min-device-pixel-ratio: 1) {
-  .panel-group.main{
-    max-height: 300px;
-    overflow-y: scroll;
-  }    
-} 
-@media screen 
-and (min-width: 1200px) 
-and (max-width: 1600px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (min-resolution: 192dpi) { 
-  .panel-group.main{
-    max-height: 700px;
-    overflow-y: scroll;
-  }
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }
