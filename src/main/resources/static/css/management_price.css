@@ -1,0 +1,21 @@
+#price_list_table{
+  max-height: 550px;
+  overflow-y: auto;
+  border-width: 1px;
+  border-style: solid;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.table, tr{
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+  
+}
+.table, tr th{
+  width:12%;
+}
+#price_list{
+  border-style: solid;
+}
+

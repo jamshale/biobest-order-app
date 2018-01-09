@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Biobest App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="css/management_price.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+<body style="background-color: rgba(223, 252, 252, 0.733)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        
+                    <h2 style="font-weight:bold;color:green;margin-top:50px;">Product List:</h2>
+                    </div>
+                    <div class="col-md-8" style="text-align:right;margin-top:20px;">
+                    <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:40px;;width:500px;margin-top:20px;"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="price_list_table">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%;padding-left:10px;">Product Name<br />Description</th>
+                                    <th>Item Code</th>
+                                    <th>Unit Size</th>
+                                    <th>Price A</th>
+                                    <th>Price B</th>
+                                    <th>Price C</th>
+                                    <th>Price D</th>
+                                </tr>
+                            </thead>
+                            <tbody id="price_list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<script src="js/management_price.js"></script>
+</body>
+</html>

@@ -16,7 +16,12 @@ public class ManagementController {
     }
 
     @RequestMapping("/management_home")
-    public String customer_home(Model model) {
+    public String management_home(Model model) {
         return "management_home";
     }
+    @RequestMapping("/management_price")
+    public String management_price(Model model) {
+        return "management_price";
+    }
+    
 }
