@@ -28,7 +28,7 @@
 }
 /* ACCCORDION */
 .panel-group.main{
-  max-height: 600px;
+  max-height: 650px;
   overflow-y: scroll;
 }
 .panel-body{
@@ -133,6 +133,25 @@
   max-height: 800px;
   overflow-y: auto;
 }
+/*Modal Settings */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
 #add_product_modal .modal-dialog  {width:80%;}
 #active_order_modal .modal-dialog  {width:80%;}
 #changes_order_modal .modal-dialog  {width:80%;}
@@ -155,34 +174,47 @@
   #add_favourite_order_modal .modal-dialog  {width:900px;}
   #delete_order_modal .modal-dialog  {width:900px;}
 }
+
 @media screen 
-  and (min-width: 768px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-  #add_product_modal .modal-dialog  {width:900px;}
-  #active_order_modal .modal-dialog  {width:900px;}
-  #changes_order_modal .modal-dialog  {width:900px;}
-  #get_favourite_order_modal .modal-dialog  {width:900px;}
-  #submit_order_modal .modal-dialog  {width:900px;}
-  #history_order_modal .modal-dialog  {width:900px;}
-  #add_favourite_order_modal .modal-dialog  {width:900px;}
-  #delete_order_modal .modal-dialog  {width:900px;}
+    and (min-width: 768px) {
+    #add_product_modal .modal-dialog  {width:900px;}
+    #active_order_modal .modal-dialog  {width:900px;}
+    #changes_order_modal .modal-dialog  {width:900px;}
+    #get_favourite_order_modal .modal-dialog  {width:900px;}
+    #submit_order_modal .modal-dialog  {width:900px;}
+    #history_order_modal .modal-dialog  {width:900px;}
+    #add_favourite_order_modal .modal-dialog  {width:900px;}
+    #delete_order_modal .modal-dialog  {width:900px;}
 }
 
-.modal {
-  text-align: center;
-  padding: 0!important;
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    body {zoom:auto;}      
 }
 
-.modal:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+    body {zoom:auto;} 
+}
+@media screen 
+  and (min-device-width: 900px) 
+  and (max-device-width: 1199px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    body {zoom:auto;}      
 }
 
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 900px) 
+  and (max-device-width: 1199px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+    body {zoom:auto;} 
 }
+

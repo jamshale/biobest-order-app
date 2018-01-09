@@ -83,7 +83,7 @@ function populateHistoryList() {
                                         <td style="width:25%;"><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
             for(var j = 0; j < 5; j++){
                 $("#history_product_list").append(`<tr><td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
-                        <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
+                        <td style="width:20%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
                         <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
                         <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td></tr>`)
             }
