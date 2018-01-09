@@ -36,8 +36,7 @@ $(document).ready(function ()   {
 function populateCustomerPageInfo(){
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h3 style="font-weight:bold;color:green;float:right;">${order_status}</h3>
-                                        <h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
+    $("#product_list_header").html(`<h3>${order_status}</h3><h2><span class="badge badge-defualt">${test_order_num}</span> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
     $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week <span class="badge" >${test_active_orders}</span></h3>`);
     $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
@@ -57,8 +56,7 @@ function populateProductList() {
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#main_collapse_' + i)
-            current_product.find("#product_list_button").html(`<h4>${test_product}
-                                                                        <br />${test_desc}<br />${test_product_size}</h4>`)
+            current_product.find("#product_list_button").html(`<h4>${test_product}<br />${test_desc}<br />${test_product_size}</h4>`)
             current_product.find("button")[3].append(test_num)
             current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
             current_product.find("#item_price").html(`$${test_price}`)
@@ -78,15 +76,17 @@ function populateHistoryList() {
         current_product = $("#history_list_panel")
             current_product.find("a").first().attr('href', '#history_collapse_' + i)
             current_product.find(".panel-collapse").first().attr('id', 'history_collapse_' + i)
-            current_product.find("#history_list_button").html(`<td style="width:25%;"><h4 style="font-weight:bold;">PO:</h4><h3>${test_po_num}</h3>
-                                        <td style="width:25%;"><h4 style="font-weight:bold;">Week:</h4><h3>${date.getWeek()}</h3></td>
-                                        <td style="width:25%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
-                                        <td style="width:25%;"><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
+            current_product.find("#history_list_button").html(` <td><h4>PO:</h4><h3>${test_po_num}</h3>
+                                                                <td><h4>Week:</h4><h3>${date.getWeek()}</h3></td>
+                                                                <td><h3><span class="badge">${num_items}</span> Items</h3></td>
+                                                                <td><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
             for(var j = 0; j < 5; j++){
-                $("#history_product_list").append(`<tr><td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
+                $("#history_product_list").append(`<tr>
+                        <td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
                         <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
                         <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
-                        <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td></tr>`)
+                        <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
+                        </tr>`)
             }
         if(i != num_items-1 ){
             clone2.prependTo($("#history_list_panel"))
@@ -98,14 +98,16 @@ function populateHistoryList() {
 function populateAddProductList(){
     for(var i = 0; i < num_items; i++){
         current_product = $("#add_product_list_item")
-            current_product.append(`<tr"><td style="width: 45%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
-                <td><button type="button" class="btn btn-success btn-lg add_product" style="padding:20px;margin-left:10px;">Add</button></td>
-                <td><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
+            current_product.append(`<tr">
+                    <td style="width: 45%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
+                    <td><button type="button" class="btn btn-success btn-lg add_product" style="padding:20px;margin-left:10px;">Add</button></td>
+                    <td><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
                     <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled">$${test_price}</button>
                     <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-triangle-top"></span></button>
                     <button type="button" class="btn btn-defualt">${test_num}</button>
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button></div>
-                    <button class="btn btn-info btn-lg fav_product" style="padding:20px;">Fav</button></tr>`) 
+                    <button class="btn btn-info btn-lg fav_product" style="padding:20px;">Fav</button>
+                    </tr>`) 
     }                                              
 }
 //Add Product Modal Button Initialization
@@ -147,22 +149,24 @@ function favButtonClickIndicator() {
 function populateActiveOrderList(){
     for(var i = 0; i < test_order_num; i++){
         current_product = $("#active_order_list_item")
-            current_product.append(`<tr><td style="width:15%;"><h3 style="font-weight:bold;">${test_po_num}</h3></td>
-                <td style="width:15%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
-                <td style="width:35%;"><h4 style="font-weight:bold;">Ship-to:</h4><h4>${test_ship_to}</h4><h4 style="font-weight:bold;">Invoice-to:</h4><h4>${test_ship_to}</h4></td>
-                <td style="width:15%;"><button type="button" class="btn btn-success" style="padding-bottom:15px;margin-right:30px;"><h3>Activate</h3></button></td>
-                <td style="width:20%;"><h4 style="font-weight:bold;">Total:</h4><h4>$${total_cost}</h4></td></tr>`)      
+            current_product.append(`<tr>
+                    <td style="width:15%;"><h3 style="font-weight:bold;">${test_po_num}</h3></td>
+                    <td style="width:15%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
+                    <td style="width:35%;"><h4 style="font-weight:bold;">Ship-to:</h4><h4>${test_ship_to}</h4><h4 style="font-weight:bold;">Invoice-to:</h4><h4>${test_ship_to}</h4></td>
+                    <td style="width:15%;"><button type="button" class="btn btn-success" style="padding-bottom:15px;margin-right:30px;"><h3>Activate</h3></button></td>
+                    <td style="width:20%;"><h4 style="font-weight:bold;">Total:</h4><h4>$${total_cost}</h4></td></tr>`)      
     }                                               
 }
 //Populate Changes Order List
 function populateChangesOrderList(){
     for(var i = 0; i < test_order_num; i++){
         current_product = $("#changes_order_list_item")
-            current_product.append(`<tr style="background:rgb(235, 128, 102);"><td style="padding-left:10px;width:25%;"><h3>${date.toLocaleTimeString("en-us", options)}</h3></td>
-            <td style="width:40%"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /></h3></td>
-            <td style="width:10%"><span class="glyphicon glyphicon-remove" style="font-size: 300%;"></span></td>
-            <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
-            </tr>`)       
+            current_product.append(`<tr style="background:rgb(235, 128, 102);">
+                    <td style="padding-left:10px;width:25%;"><h3>${date.toLocaleTimeString("en-us", options)}</h3></td>
+                    <td style="width:40%"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /></h3></td>
+                    <td style="width:10%"><span class="glyphicon glyphicon-remove" style="font-size: 300%;"></span></td>
+                    <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
+                    </tr>`)       
     }                                               
 }
 //Populate Get Favourite Order List
@@ -170,7 +174,8 @@ function populateGetFavouriteOrderList(){
     for(var i = 0; i < test_order_num; i++){
         var fav_order_name = "My Order " + i;
         current_product = $("#get_favourite_order_list_item")
-            current_product.append(`<tr"><td style="width:20%;padding-left:30px;padding-bottom:20px;"><button class="btn btn-danger btn-sm">Remove</button></td>
+            current_product.append(`<tr">
+            <td style="width:20%;padding-left:30px;padding-bottom:20px;"><button class="btn btn-danger btn-sm">Remove</button></td>
             <td style="width:40%;padding-bottom:30px;"><h3 style="font-weight:bold;">${fav_order_name}</h3></td>
             <td style="width:30%;padding-bottom:30px;"><h3><span class="badge">${num_items}</span> Items</h3></td>
             <td style="width:20%;padding-bottom:30px;"><button type="button" class="btn btn-success btn-sm" style="padding-bottom:15px;margin-right:50px;"><h3>Activate</h3></button></td>

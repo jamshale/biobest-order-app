@@ -8,8 +8,7 @@
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
 </head>
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <nav class="navbar navbar-default">
@@ -62,8 +61,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!--Top Buttons Top -->    
             <div class="row">  
                 <div class="col-sm-5 text-center">
@@ -140,6 +137,7 @@
                     </tfoot>  
                 </table>
             </div>
+            <!-- Bottom Buttons -->
             <div class="row" style="text-align: center;">
                 <div class="col-sm-6">
                     <button class="btn btn-success btn-sm btn-block" id="bottom_option_button"
@@ -164,286 +162,286 @@
         </div>  
     </div>  
 </div>
-    <!--Add Product Modal-->
-    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_product_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h3 style="font-weight:bold;" id="add_header"></h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <form class="form-inline">
+<!--Add Product Modal-->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_product_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3 style="font-weight:bold;" id="add_header"></h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <form class="form-inline">
+                            
+                            <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:20%;width:70%;margin-top:20px;"/>
+                
+                            <button class="btn btn-default" style="font-size:18pt;height:20%;width:20%;margin-top:20px;">Go!</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="add_product_list">
+                            <table>
+                                <tbody id="add_product_list_item">
                                 
-                                <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:20%;width:70%;margin-top:20px;"/>
-                    
-                                <button class="btn btn-default" style="font-size:18pt;height:20%;width:20%;margin-top:20px;">Go!</button>
-                            </form>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="add_product_list">
-                                <table>
-                                    <tbody id="add_product_list_item">
-                                    
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            </div>
+            <div class="modal-footer">   
+                <div class="row" >
+                    <div class="btn-group" role="group" style="margin-right: 20%;">
+                        <button class="btn btn-sm btn-warning float:left;" style="padding:10px;min-width:200px;"><h3>All</h3></button>
+                        <button class="btn btn-sm btn-info" style="padding:10px;min-width:200px;"><h3>Previous</h3></button>
+                        <button class="btn btn-sm btn-primary" style="padding:10px;min-width:200px;"><h3>Favourites</h3></button>
                     </div>
-                </div>
-                <div class="modal-footer">   
-                    <div class="row" >
-                        <div class="btn-group" role="group" style="margin-right: 20%;">
-                            <button class="btn btn-sm btn-warning float:left;" style="padding:10px;min-width:200px;"><h3>All</h3></button>
-                            <button class="btn btn-sm btn-info" style="padding:10px;min-width:200px;"><h3>Previous</h3></button>
-                            <button class="btn btn-sm btn-primary" style="padding:10px;min-width:200px;"><h3>Favourites</h3></button>
-                        </div>
-                    </div>           
-                </div>
+                </div>           
             </div>
         </div>
     </div>
-    <!-- Active Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="active_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                        <h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+</div>
+<!-- Active Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="active_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                    <h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="active_order_list">
+                            <table>
+                                <tbody id="active_order_list_item"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="active_order_list">
-                                <table>
-                                    <tbody id="active_order_list_item"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">              
-                </div>
+            </div>
+            <div class="modal-footer">              
             </div>
         </div>
     </div>
-    <!-- Changes Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="changes_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Changes To Order<br />Since Your Last Visit</h3>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+</div>
+<!-- Changes Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="changes_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 style="font-weight:bold;">Changes To Order<br />Since Your Last Visit</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="changes_order_list">
+                            <table>
+                                <tbody id="changes_order_list_item"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="changes_order_list">
-                                <table>
-                                    <tbody id="changes_order_list_item"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">              
-                </div>
+            </div>
+            <div class="modal-footer">              
             </div>
         </div>
     </div>
-    <!-- Get Favourite Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="get_favourite_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Favourite Orders</h3>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+</div>
+<!-- Get Favourite Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="get_favourite_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 style="font-weight:bold;">Favourite Orders</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="get_favourite_order_list">
+                            <table>
+                                <tbody id="get_favourite_order_list_item"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="get_favourite_order_list">
-                                <table>
-                                    <tbody id="get_favourite_order_list_item"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">              
-                </div>
+            </div>
+            <div class="modal-footer">              
             </div>
         </div>
     </div>
-    <!-- Submit Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="submit_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Submit Order</h3>
+</div>
+<!-- Submit Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="submit_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 style="font-weight:bold;">Submit Order</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="submit_modal_button">
+                        <button class="btn btn-lg btn-success "><h3 style="font-weight:bold">Submit And Keep <br />Currrent Order Active</h3></button>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="submit_modal_button">
+                        <button class="btn btn-lg btn-info"><h3 style="font-weight:bold;">Submit And <br /> Start A New Order</h3></button>
                         </div>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="submit_modal_button">
-                            <button class="btn btn-lg btn-success "><h3 style="font-weight:bold">Submit And Keep <br />Currrent Order Active</h3></button>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="submit_modal_button">
-                            <button class="btn btn-lg btn-info"><h3 style="font-weight:bold;">Submit And <br /> Start A New Order</h3></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">              
-                </div>
+            </div>
+            <div class="modal-footer">              
             </div>
         </div>
     </div>
-    <!-- History Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="history_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h3 style="font-weight:bold;">Order History</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <form class="form-inline">
-                                <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:20%;width:70%;margin-top:20px;"/>
-                                <button class="btn btn-default" style="font-size:18pt;height:20%;width:20%;margin-top:20px;">Go!</button>
-                            </form>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
-                        </div>
+</div>
+<!-- History Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="history_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3 style="font-weight:bold;">Order History</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <form class="form-inline">
+                            <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:20%;width:70%;margin-top:20px;"/>
+                            <button class="btn btn-default" style="font-size:18pt;height:20%;width:20%;margin-top:20px;">Go!</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <!-- History List Accordion -->
-                        <div class="panel-group history" id="history_accordion">
-                                <div class="panel panel-default" id="history_list_panel">
-                                    <div class="panel-heading">
-                                        <a data-toggle="collapse" data-parent="#history_accordion" href="">
-                                            <button type="button" id="history_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
-                                        </a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="panel-collapse collapse" id="">
-                                        <div class="panel-body" id="history_product_list">
-                                        </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <!-- History List Accordion -->
+                    <div class="panel-group history" id="history_accordion">
+                            <div class="panel panel-default" id="history_list_panel">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" data-parent="#history_accordion" href="">
+                                        <button type="button" id="history_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-collapse collapse" id="">
+                                    <div class="panel-body" id="history_product_list">
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                        </div>
                 </div>
-                <div class="modal-footer">              
-                </div>
+            </div>
+            <div class="modal-footer">              
             </div>
         </div>
     </div>
-    <!-- Add Favourite Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="add_favourite_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Favourite Order</h3><h4>Please Give Your Order A Name</h4>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
-                        </div>
+</div>
+<!-- Add Favourite Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="add_favourite_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 style="font-weight:bold;">Favourite Order</h3><h4>Please Give Your Order A Name</h4>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Name" style="font-size:18pt;height:20%;width:100%;"/>
-                        </div>
-                        <div class="col-sm-3"></div>
-                    </div>
-                </div>
-                <div class="modal-footer"> 
+            </div>
+            <div class="modal-body">   
+                <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
-                            <button class="btn btn-sm btn-block btn-success"><h2>Submit</h2></button> 
+                        <input type="text" class="form-control" placeholder="Name" style="font-size:18pt;height:20%;width:100%;"/>
                     </div>
-                    <div class="col-sm-3"></div>   
+                    <div class="col-sm-3"></div>
                 </div>
+            </div>
+            <div class="modal-footer"> 
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                        <button class="btn btn-sm btn-block btn-success"><h2>Submit</h2></button> 
+                </div>
+                <div class="col-sm-3"></div>   
             </div>
         </div>
     </div>
-    <!-- Delete Order Modal -->
-    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="delete_order_modal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Are You Sure?</h3><h4>The Order Will Be Lost Forever</h4>
+</div>
+<!-- Delete Order Modal -->
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" id="delete_order_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 style="font-weight:bold;">Are You Sure?</h3><h4>The Order Will Be Lost Forever</h4>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="submit_modal_button">
+                        <button class="btn btn-lg btn-danger"><h3 style="font-weight:bold">Delete</h3></button>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="submit_modal_button">
+                        <button class="btn btn-lg btn-basic"><h3 style="font-weight:bold;">Cancel</h3></button>
                         </div>
                     </div>
                 </div>
-                <div class="modal-body">   
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="submit_modal_button">
-                            <button class="btn btn-lg btn-danger"><h3 style="font-weight:bold">Delete</h3></button>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="submit_modal_button">
-                            <button class="btn btn-lg btn-basic"><h3 style="font-weight:bold;">Cancel</h3></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">              
-                </div>
+            </div>
+            <div class="modal-footer">              
             </div>
         </div>
     </div>
+</div>
 
 <script src="js/customer_home.js"></script>
 </body>
