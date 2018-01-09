@@ -116,10 +116,11 @@ function addButtonClickIndicator() {
             if(border_setting== 'rgb(57, 132, 57)'){
                 $(this).css('border-width', '5px')
                 $(this).css('border-color', 'red')
-                
+                $(this).css('padding', '15px')
             } else {
                 $(this).css('border-width', '1px')
                 $(this).css('border-color', 'rgb(57, 132, 57)')
+                $(this).css('padding', '20px')
             }
             
         });     
@@ -133,9 +134,11 @@ function favButtonClickIndicator() {
             if(border_setting== 'rgb(38, 154, 188)'){
                 $(this).css('border-width', '5px')
                 $(this).css('border-color', 'red')
+                $(this).css('padding', '15px')
             } else {
                 $(this).css('border-width', '1px')
                 $(this).css('border-color', 'rgb(38, 154, 188)')
+                $(this).css('padding', '20px')
             }
         });     
     });
