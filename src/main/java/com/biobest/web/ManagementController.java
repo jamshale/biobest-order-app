@@ -23,5 +23,9 @@ public class ManagementController {
     public String management_price(Model model) {
         return "management_price";
     }
+    @RequestMapping("/management_customers")
+    public String management_customers(Model model) {
+        return "management_customers";
+    }
     
 }

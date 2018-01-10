@@ -1,0 +1,69 @@
+.management_customer_button {
+    min-width: 200px;
+    margin-top:30px;
+    padding: 40px;
+  }
+  
+  #customer_list_table{
+      max-height: 600px;
+      overflow-y: auto;
+      border-width: 1px;
+      border-style: solid;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .table, tr{
+      border-width: 2px;
+      border-style: solid;
+      background-color: white;
+      
+    }
+    .table, tr th{
+      width:12%;
+    }
+    #customer_list{
+      border-style: solid;
+    }
+  
+    thead tr{
+      background-color: rgb(235, 235, 235);
+    }
+  
+  
+  .customer_info, tr {
+        font-weight: bold;
+    }
+  
+  .table, tbody tr td h5{
+    font-weight: bold;
+  }
+  
+  h4.header_label{
+    font-weight:bold;
+    color:green;
+    margin-top:30px;
+    margin-left: 20px;
+  }
+  #user_list_table{
+    min-height: 350px;
+    max-height: 350px;
+    min-width: 600px;
+    max-width: 600px;
+    overflow-y: auto;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  #special_price_table{
+    min-height: 350px;
+    max-height: 350px;
+    min-width: 600px;
+    max-width: 600px;
+    overflow-y: auto;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
