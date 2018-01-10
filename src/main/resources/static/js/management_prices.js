@@ -16,8 +16,9 @@ function populatePriceList(){
 
     for(var i = 0; i < test_num_product; i++){
         var list_item = $("#price_list")
-            .append(`<tr><td>${test_product_name}<br />${test_desc}</td>
+            .append(`<tr>
                     <td>${test_item_code}</td>
+                    <td>${test_product_name}<br />${test_desc}</td>
                     <td>${test_unit_size}</td>
                     <td><button class="btn btn-sm btn-basic">$${test_price}</button></td>
                     <td><button class="btn btn-sm btn-basic">$${test_price +1}</button></td>

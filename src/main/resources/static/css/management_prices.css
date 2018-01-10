@@ -1,5 +1,5 @@
 #price_list_table{
-  max-height: 550px;
+  max-height: 800px;
   overflow-y: auto;
   border-width: 1px;
   border-style: solid;
@@ -18,4 +18,3 @@
 #price_list{
   border-style: solid;
 }
-

@@ -1,0 +1,28 @@
+h4.header_label{
+    font-weight:bold;
+    color:green;
+    margin-top:30px;
+    margin-left: 20px;
+}
+
+#user_list_table{
+    max-height: 600px;
+    overflow-y: auto;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.table, tr{
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+  }
+
+  .table button{
+    margin-top: 10px;
+  }
+  .table button{
+    margin-top: 10px;
+  }
