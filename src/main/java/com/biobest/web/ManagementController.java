@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-//import com.biobest.dtos.UserDTO;
-//import com.biobest.services.UserService;
+import com.biobest.dtos.UserDTO;
+import com.biobest.services.UserService;
 
 @Controller
 public class ManagementController {
 
     private final Logger logger = LoggerFactory.getLogger(ManagementController.class);
-	//private UserService userService;
+	private UserService userService;
 
     public ManagementController() {
         logger.debug("Management controller initialized");
@@ -41,7 +41,7 @@ public class ManagementController {
     public String management_users(Model model) {
         return "management_users";
     }
-    /*
+    
     @RequestMapping(value = "/management_home", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("user") @Valid UserDTO userDto, BindingResult result){
         if(result.hasErrors()){
@@ -56,7 +56,7 @@ public class ManagementController {
         return new ModelAndView("management_home", "user", new UserDTO());
     }
 
-    */
+    
 
     
 }
