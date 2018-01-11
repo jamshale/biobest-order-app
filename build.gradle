@@ -35,7 +35,7 @@ dependencies {
     // end::jetty[]
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.session:spring-session-data-mongo")
-    //compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-security")
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]

@@ -13,36 +13,31 @@
 </head>
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container">
-        <div class="row">
-            
-             <!--
-            <form>
-               
-                
-                <div class="form-group">
-                    <label for="user_first_name">User First Name</label>
-                    <input type="text" class="form-control" placeholder="first name" id="user_first_name" th:field="*{firstName}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
-                </div>
-                <div class="form-group">
-                    <label for="user_last_name">User Last Name</label>
-                    <input type="text" class="form-control" placeholder="last name" id="user_last_name" th:field="*{lastName}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
-                </div>
-                <div class="form-group">
-                    <label for="user_phone">User Phone</label>
-                    <input type="text" class="form-control" placeholder="phone #" id="user_phone" th:field="*{phone}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
-                </div>
-                <div class="form-group">
-                    <label for="user_email">User Email</label>
-                    <input type="text" class="form-control" placeholder="email" id="user_email" th:field="*{email}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
-                </div>
-                <div class="form-group">
-                    <label for="user_active_status">User Active Status</label>
-                    <input type="text" class="form-control" placeholder="Active Status" id="user_active_status" th:field="*{activeStatus}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
-                </div>
-            </form>
-            <button type="submit" class="btn btn-success" id="create_user_button" style="font-weight:bold;"><h4 style="font-weight:bold;">Add User To Database</h4></button> 
-                
-        -->
+        <div class="row">               
+            <table cellpadding="2" cellspacing="2">
+                <tr>
+                    <!--
+                        <form action="/managment_home" th:object="${user}" method="POST" enctype="utf8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name" th:text="*{firstName}"></input>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="lastName" placeholder="Model" th:text="*{lastName}"></input>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="phone" placeholder="phone" th:text="*{phone}"></input>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email" placeholder="email" th:text="*{email}"></input>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success btn-block" id="create_submit_button">
+                                <h4>Create Vehicle</h4>
+                            </button>
+                        </form>
+                    -->
+                </tr>
+            </table>
         </div>
     </div>
 <script src="js/management_home.js"></script>

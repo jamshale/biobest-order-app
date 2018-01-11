@@ -1,10 +1,10 @@
 package com.biobest.web;
 
-import org.slf4j.LoggerFactory;
-
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +19,8 @@ import com.biobest.services.UserService;
 public class ManagementController {
 
     private final Logger logger = LoggerFactory.getLogger(ManagementController.class);
+
+    @Autowired
 	private UserService userService;
 
     public ManagementController() {
@@ -50,13 +52,8 @@ public class ManagementController {
         try{
             userService.createUser(userDto);
         } catch (Exception e){
-
         }
-        
         return new ModelAndView("management_home", "user", new UserDTO());
     }
-
-    
-
     
 }
