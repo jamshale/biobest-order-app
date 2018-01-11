@@ -14,13 +14,13 @@
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container">
         <div class="row">
-            <form action="/management_home"  th:object="${user}" method="POST" enctype="utf8">
-               <!--
-                <div class="form-group">
-                    <label for="user_first_name">User First Name</label>
-                    <input type="text" class="form-control" placeholder="first name" id="firstName" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;" th:field="*{firstName}" ></input>
-                </div>
+            <form th:action="@{/management_home}"  th:object="${user}" method="post">
+                <!--
+                    <input type="text" class="form-control" placeholder="first name" id="firstName" 
+                            style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;" th:field="*{firstName}" />
+           
 
+                
                 
                 <div class="form-group">
                     <label for="user_last_name">User Last Name</label>
@@ -38,8 +38,9 @@
                     <label for="user_active_status">User Active Status</label>
                     <input type="text" class="form-control" placeholder="Active Status" id="user_active_status" th:field="*{activeStatus}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
                 </div>
+                
                 <button type="submit" class="btn btn-success" id="create_user_button" style="font-weight:bold;"><h4 style="font-weight:bold;">Add User To Database</h4></button> 
-            -->
+                -->
             </form>
         </div>
     </div>

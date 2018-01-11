@@ -1,3 +1,4 @@
+/*
 package com.biobest.repositories;
 
 import com.biobest.entities.User;
@@ -8,3 +9,4 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     
 }
+*/
