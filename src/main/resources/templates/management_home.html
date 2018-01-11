@@ -14,30 +14,22 @@
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container">
         <div class="row">               
-            <table cellpadding="2" cellspacing="2">
-                <tr>
-                    <!--
-                        <form action="/managment_home" th:object="${user}" method="POST" enctype="utf8">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="firstName" placeholder="First Name" th:text="*{firstName}"></input>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="lastName" placeholder="Model" th:text="*{lastName}"></input>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="phone" placeholder="phone" th:text="*{phone}"></input>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email" placeholder="email" th:text="*{email}"></input>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-success btn-block" id="create_submit_button">
-                                <h4>Create Vehicle</h4>
-                            </button>
-                        </form>
-                    -->
-                </tr>
-            </table>
+                <form action="management_users" th:object="${user}" method="POST" enctype="utf8">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="create_first_name" placeholder="First Name" th:field="*{firstName}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="create_last_name" placeholder="Last Name" th:field="*{lastName}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="create_phone" placeholder="Phone" th:field="*{phone}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="create_email" placeholder="Email" th:field="*{lastName}" />
+                        </div>
+                        <button type="submit">Create User</button>
+            
+                    </form> 
         </div>
     </div>
 <script src="js/management_home.js"></script>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.biobest.dtos.UserDTO;
+//import com.biobest.entities.User;
 import com.biobest.services.UserService;
 
 @Controller
@@ -27,10 +28,12 @@ public class ManagementController {
         logger.debug("Management controller initialized");
     }
 
+    /*
     @RequestMapping("/management_home")
     public String management_home(Model model) {
         return "management_home";
     }
+    */
     @RequestMapping("/management_prices")
     public String management_prices(Model model) {
         return "management_prices";
@@ -43,7 +46,26 @@ public class ManagementController {
     public String management_users(Model model) {
         return "management_users";
     }
+
+    /*
+    @RequestMapping(value = "/management_test")
+    public String testPage(ModelMap map){
+        //User testUser = new User("Jamie", "Hale", "2509279006", "jamiehalebc@gmail.com");
+        map.addAttribute("test_1", "test1");
+        map.addAttribute("test_2", "test2");
+        return "management_test";
+    }
+
+   */
+
+   @RequestMapping(value="/management_home", method = RequestMethod.GET)
+   public String management_home(Model model) {
+       UserDTO userDto = new UserDTO();
+       model.addAttribute("user", userDto);
+       return "management_home";
+       }
     
+ 
     @RequestMapping(value = "/management_home", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("user") @Valid UserDTO userDto, BindingResult result){
         if(result.hasErrors()){
@@ -55,5 +77,5 @@ public class ManagementController {
         }
         return new ModelAndView("management_home", "user", new UserDTO());
     }
-    
+
 }

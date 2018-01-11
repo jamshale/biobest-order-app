@@ -22,10 +22,6 @@ public class UserDTO {
 	@NotEmpty
     private String phone;
 
-	@NotNull
-	@NotEmpty
-    private String activeStatus;
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -57,12 +53,4 @@ public class UserDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getActiveStatus() {
-		return activeStatus;
-	}
-
-	public void setActiveStatus(String activeStatus) {
-		this.activeStatus = activeStatus;
-	}
-
 }
