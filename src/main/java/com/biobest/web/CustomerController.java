@@ -14,7 +14,7 @@ public class CustomerController {
     public CustomerController() {
         logger.debug("Employee controller initialized");
     }
-
+ 
     @RequestMapping("/")
     public String customer_home(Model model) {
         return "customer_home";
