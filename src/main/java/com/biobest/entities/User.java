@@ -2,35 +2,64 @@ package com.biobest.entities;
 
 import org.springframework.data.annotation.Id;
 
-
 public class User {
 
     @Id
-    public String _id;
+    private String _id;
 
-    public String first_name;
-    public String last_name;
-    public String phone_number;
-    public String email;
-    public String password;
-    public Boolean active_status;
-    public Integer num_price_lists;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private String phone;
+    private String password;
+    private String activeStatus;
 
-    public User() {}
-
-    public User(String first_name, String last_name, String phone_number, String email, String password) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone_number = phone_number;
+    public User(String firstName, String lastName, String phone, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
         this.email = email;
-        this.password = password;
+        this.activeStatus = "Active";
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "User[id=%s, firstName='%s', lastName='%s']",
-                _id, first_name, last_name);
+	public String getFirstName() {
+		return firstName;
+    }
+    
+	public String getLastName() {
+		return lastName;
+    }
+    
+	public String getEmail() {
+		return email;
+    }
+    
+	public String getPhone() {
+		return phone;
+    }
+    
+	public void setPhone(String phone) {
+		this.phone = phone;
+    }
+    
+	public String getPassword() {
+		return password;
+    }
+    
+	public void setPassword(String password) {
+		this.password = password;
     }
 
-}
+	public String getActiveStatus() {
+		return activeStatus;
+	}
+
+	public void setActiveStatus(String activeStatus) {
+		this.activeStatus = activeStatus;
+	}
+    
+   
+
+
+
+} 

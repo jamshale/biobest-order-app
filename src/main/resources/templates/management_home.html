@@ -3,7 +3,7 @@
 <head>
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="css/management_customers.css" rel="stylesheet"/>
+    <link href="css/management_home.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -12,11 +12,33 @@
     
 </head>
 <body style="background-color: rgba(223, 252, 252, 0.733)">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            
+            <form action="/management_home"  th:object="${user}" method="POST" enctype="utf8">
+                <div class="form-group">
+                    <label for="user_first_name">User First Name</label>
+                    <input type="text" class="form-control" placeholder="first name" id="user_first_name" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;" th:field="*{firstName}" ></input>
+                </div>
+                <div class="form-group">
+                    <label for="user_last_name">User Last Name</label>
+                    <input type="text" class="form-control" placeholder="last name" id="user_last_name" th:field="*{lastName}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
+                </div>
+                <div class="form-group">
+                    <label for="user_phone">User Phone</label>
+                    <input type="text" class="form-control" placeholder="phone #" id="user_phone" th:field="*{phone}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
+                </div>
+                <div class="form-group">
+                    <label for="user_email">User Email</label>
+                    <input type="text" class="form-control" placeholder="email" id="user_email" th:field="*{email}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
+                </div>
+                <div class="form-group">
+                    <label for="user_active_status">User Active Status</label>
+                    <input type="text" class="form-control" placeholder="Active Status" id="user_active_status" th:field="*{activeStatus}" style="font-size:14pt;height:30px;width:200px;margin-bottom:10px;"/>
+                </div>
+                <button type="submit" class="btn btn-success" id="create_user_button" style="font-weight:bold;"><h4 style="font-weight:bold;">Add User To Database</h4></button> 
+            </form>
         </div>
     </div>
-<script src="js/management_customers.js"></script>
+<script src="js/management_home.js"></script>
 </body>
 </html>
