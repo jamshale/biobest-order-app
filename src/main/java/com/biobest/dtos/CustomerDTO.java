@@ -1,54 +1,76 @@
-package com.biobest.entities;
+package com.biobest.dtos;
 
-import org.springframework.data.annotation.Id;
-import java.util.HashSet;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
 
-public abstract class Customer{
-   
-	@Id
-	private String _id;
+import org.hibernate.validator.constraints.NotEmpty;
 
-	private String invCompany;
-	private String invContact;
-	private String invAddress; 
-	private String invCityState; 
-	private String invZip; 
-	private String invPhone; 
-	private String invFax; 
-	private String invEmail;
-	private String shipCompany;
-	private String shipContact;
-	private String shipAddress; 
-	private String shipCityState; 
-	private String shipZip; 
-	private String shipPhone; 
-	private String shipFax; 
-	private String shipEmail;
-	private Set<String> users;
+public class CustomerDTO{
 
-	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
-						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipPhone, String shipFax, String shipEmail){
-		this.invCompany = invCompany; 
-		this.invContact = invContact; 
-		this.invAddress = invAddress;   
-		this.invCityState = invCityState;   
-		this.invZip = invZip;   
-		this.invPhone = invPhone;   
-		this.invFax = invFax;   
-		this.invEmail = invEmail; 
-		this.shipCompany = shipCompany; 
-		this.shipContact = shipContact; 
-		this.shipAddress = shipAddress;   
-		this.shipCityState = shipCityState;   
-		this.shipZip = shipZip;   
-		this.shipPhone = shipPhone;   
-		this.shipFax = shipFax;   
-		this.shipEmail = shipEmail; 
-		this.users = new HashSet<>();
-	}
+    @NotNull
+    @NotEmpty
+    private String invCompany;
 
-	public String getInvCompany() {
+    @NotNull
+    @NotEmpty
+    private String invContact;
+
+    @NotNull
+    @NotEmpty
+    private String invAddress; 
+
+    @NotNull
+    @NotEmpty
+    private String invCityState;
+
+    @NotNull
+    @NotEmpty 
+    private String invZip; 
+
+    @NotNull
+    @NotEmpty
+    private String invPhone; 
+
+    @NotNull
+    @NotEmpty
+    private String invFax; 
+
+    @NotNull
+    @NotEmpty
+    private String invEmail;
+
+    @NotNull
+    @NotEmpty
+    private String shipCompany;
+
+    @NotNull
+    @NotEmpty
+    private String shipContact;
+
+    @NotNull
+    @NotEmpty
+    private String shipAddress; 
+
+    @NotNull
+    @NotEmpty
+    private String shipCityState; 
+
+    @NotNull
+    @NotEmpty
+    private String shipZip; 
+
+    @NotNull
+    @NotEmpty
+    private String shipPhone; 
+
+    @NotNull
+    @NotEmpty
+    private String shipFax; 
+
+    @NotNull
+    @NotEmpty
+    private String shipEmail;
+    
+public String getInvCompany() {
 		return invCompany;
 	}
 
@@ -172,24 +194,9 @@ public abstract class Customer{
 		return shipEmail;
 	}
 
-	public void setShipEmail(String shipEmail) {
-		this.shipEmail = shipEmail;
-	}
-
-	/**
-	 * @return the users
-	 */
-	public Set<String> getUsers() {
-		return users;
-	}
-
-	/**
-	 * @param users the users to set
-	 */
-	public void setUsers(Set<String> users) {
-		this.users = users;
-	}
 
 }
 
-	
+    
+
+

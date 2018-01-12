@@ -13,22 +13,43 @@
 </head>
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container">
-        <div class="row">               
-                <form action="management_home" th:object="${user}" method="POST" enctype="utf8">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="create_first_name" placeholder="First Name" th:field="*{firstName}" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="create_last_name" placeholder="Last Name" th:field="*{lastName}" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="create_phone" placeholder="Phone" th:field="*{phone}" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="create_email" placeholder="Email" th:field="*{email}" />
-                        </div>
-                        <button type="submit">Create User</button>
-                    </form> 
+        <div class="row">   
+            <div class="col-md-6">
+                <h4>Add User/ Zero Checks</h4>
+                <input type="text" id="test_first_name" placeholder="first name" /> 
+                <input type="text" id="test_last_name" placeholder="last name" />
+                <input type="text" id="test_phone" placeholder="phone" /> 
+                <input type="text" id="test_email" placeholder="email" />
+                <input id="submit_button" type="button" value="Go" />
+            </div>  
+            <div class="col-md-3">
+                <h4>Add Customer/ Zero Checks</h4>
+                <h4>Inv-TO</h4>
+                <input type="text" id="inv_company" placeholder="company"/> 
+                <input type="text" id="inv_contact" placeholder="contact"/>
+                <input type="text" id="inv_address" placeholder="address"/>
+                <input type="text" id="inv_city_state" placeholder="City/State"/>
+                <input type="text" id="inv_zip" placeholder="Zip/Postal"/>   
+                <input type="text" id="inv_phone" placeholder="Phone"/> 
+                <input type="text" id="inv_fax" placeholder="Fax"/> 
+                <input type="text" id="inv_email" placeholder="Email"/>
+                
+            </div>
+            <div class="col-md-3">
+                <h4>Add Customer/ Zero Checks</h4>
+                <h4>Ship-to</h4>
+                <input type="text" id="ship_company" placeholder="company"/> 
+                <input type="text" id="ship_contact" placeholder="contact"/>
+                <input type="text" id="ship_address" placeholder="address"/>
+                <input type="text" id="ship_city_state" placeholder="City/State"/>
+                <input type="text" id="ship_zip" placeholder="Zip/Postal"/>   
+                <input type="text" id="ship_phone" placeholder="Phone"/> 
+                <input type="text" id="ship_fax" placeholder="Fax"/> 
+                <input type="text" id="ship_email" placeholder="Email"/>
+                <input id="submit_customer_button" type="button" value="Go" />
+            </div>
+            
+            
         </div>
     </div>
 <script src="js/management_home.js"></script>

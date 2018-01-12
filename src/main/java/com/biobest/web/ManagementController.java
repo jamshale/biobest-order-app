@@ -1,19 +1,13 @@
 package com.biobest.web;
 
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import com.biobest.dtos.UserDTO;
-//import com.biobest.entities.User;
+import com.biobest.services.CustomerService;
 import com.biobest.services.UserService;
 
 @Controller
@@ -22,19 +16,20 @@ public class ManagementController {
     private final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
     @Autowired
-	private UserService userService;
+    private UserService userService;
+
+    @Autowired
+	private CustomerService customerService;
 
     public ManagementController() {
         logger.debug("Management controller initialized");
     }
 
-    /*
     @RequestMapping("/management_home")
     public String management_home(Model model) {
         return "management_home";
     }
-    */
-
+    
     @RequestMapping("/management_prices")
     public String management_prices(Model model) {
         return "management_prices";
@@ -48,24 +43,17 @@ public class ManagementController {
         return "management_users";
     }
 
-    @RequestMapping(value="/management_home", method = RequestMethod.GET)
-    public String management_home(Model model) {
-        UserDTO userDto = new UserDTO();
-        model.addAttribute("user", userDto);
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+    public String createUser(String firstName,String lastName,String phone,String email){
+        userService.createUser(firstName, lastName, phone, email);
         return "management_home";
     }
- 
-    @RequestMapping(value = "/management_home", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("user") @Valid UserDTO userDto, BindingResult result){
-        if(result.hasErrors()){
-            return new ModelAndView("management_home", "user", userDto);
-        }
-        try{
-            userService.createUser(userDto);
-        } catch (Exception e){
-            System.out.println("HERES THE ERROR");
-        }
-        return new ModelAndView("management_home", "user", new UserDTO());
-    }
 
+    @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
+    public String createCustomer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
+                                    String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipPhone, String shipFax, String shipEmail){
+        customerService.createCustomer( invCompany,  invContact,  invAddress,  invCityState, invZip,  invPhone,  invFax,  invEmail,  shipCompany,  shipContact,
+                                                shipAddress,  shipCityState,  shipZip,  shipPhone,  shipFax,shipEmail);
+        return "management_home";
+    }
 }

@@ -14,11 +14,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
     @Transactional
     public User createUser(UserDTO userDto) {
         User newUser = new User(userDto.getFirstName(), userDto.getLastName(), userDto.getPhone(), userDto.getEmail());
         return userRepository.save(newUser);
     }
-        
 
+    @Override
+    @Transactional
+    public User createUser(String firstname, String lastName, String phone, String email) {
+        User newUser = new User(firstname, lastName, phone, email);
+        return userRepository.insert(newUser);
+    }
 }
