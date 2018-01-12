@@ -51,15 +51,12 @@
 }
 /* TOP ACTION BUTTONS */
 #customer_option_active_order_button{
-  margin-left: 40px;
   margin-top: 20px;
 }
 #customer_option_changes_button{
-  margin-left: 10px;
   margin-top: 20px;
 }
 #customer_option_button{
-  margin-left: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -73,17 +70,15 @@
 }
 /* BOTTOM ACTION BUTTONS */
 #bottom_option_button{
-  margin:5px;
-  padding: 0px;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 /***********************/
 #user_name{
-  padding-left: 15px;
   color: darkgreen;
   font-weight:bold;  
 }
 #customer_name{
-  padding-left: 15px;
   color: darkgreen;
   font-weight:bold; 
 }
@@ -101,12 +96,6 @@
 .panel-group.history{
   max-height: 800px;
   overflow-y: scroll;
-}
-#invoice_to_button{
-  margin-left: 10px;
-}
-#ship_to_button{
-  margin-left: 40px;
 }
 #inc_product_add{
   padding-top: 10px;

@@ -20,7 +20,15 @@ public class UserDTO {
 
 	@NotNull
 	@NotEmpty
-    private String phone;
+	private String phone;
+	
+	@NotNull
+	@NotEmpty
+	private String activeStatus;
+
+	@NotNull
+	@NotEmpty
+	private String password;
 
 	public String getFirstName() {
 		return firstName;

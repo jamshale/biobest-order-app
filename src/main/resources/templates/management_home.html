@@ -14,7 +14,7 @@
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container">
         <div class="row">               
-                <form action="management_users" th:object="${user}" method="POST" enctype="utf8">
+                <form action="management_home" th:object="${user}" method="POST" enctype="utf8">
                         <div class="form-group">
                             <input type="text" class="form-control" id="create_first_name" placeholder="First Name" th:field="*{firstName}" />
                         </div>
@@ -25,10 +25,9 @@
                             <input type="text" class="form-control" id="create_phone" placeholder="Phone" th:field="*{phone}" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="create_email" placeholder="Email" th:field="*{lastName}" />
+                            <input type="text" class="form-control" id="create_email" placeholder="Email" th:field="*{email}" />
                         </div>
                         <button type="submit">Create User</button>
-            
                     </form> 
         </div>
     </div>
