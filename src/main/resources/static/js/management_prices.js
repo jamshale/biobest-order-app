@@ -1,29 +1,29 @@
-var test_product_name = "Atheta-System-3K";
-var test_desc = "Atheta coriaria in 5-L bucket";
-var test_unit_size = "3000";
-var test_item_code = "900079";
-var test_price = 99;
-var test_num_product = 200;
 
-
-
+var productList = [];
 
 $(document).ready(function ()   {
-    populatePriceList();
+    $.ajax({
+        url: "/products",
+        success: populatePriceList
+    })
 });
 
-function populatePriceList(){
 
-    for(var i = 0; i < test_num_product; i++){
-        var list_item = $("#price_list")
-            .append(`<tr>
-                    <td>${test_item_code}</td>
-                    <td>${test_product_name}<br />${test_desc}</td>
-                    <td>${test_unit_size}</td>
-                    <td><button class="btn btn-sm btn-basic">$${test_price}</button></td>
-                    <td><button class="btn btn-sm btn-basic">$${test_price +1}</button></td>
-                    <td><button class="btn btn-sm btn-basic">$${test_price +2}</button></td>
-                    <td><button class="btn btn-sm btn-basic">$${test_price +3}</button></td></tr>`)
-    }
+function populatePriceList(products){
+    productList = products;
+    var list = $("#price_list");
+    products.forEach( function (p) {
+        addProductToList(list, p)
+    });
+}
 
+function addProductToList(list, product) {
+    list.append(`<tr>
+                    <td>${product.itemCode}</td>
+                    <td>${product.productName}<br />${product.description}</td>
+                    <td>${product.unitSize}</td>
+                    <td><button class="btn btn-sm btn-basic">$${product.aPrice}</button></td>
+                    <td><button class="btn btn-sm btn-basic">$${product.bPrice}</button></td>
+                    <td><button class="btn btn-sm btn-basic">$${product.cPrice}</button></td>
+                    <td><button class="btn btn-sm btn-basic">$${product.dPrice}</button></td></tr>`);
 }

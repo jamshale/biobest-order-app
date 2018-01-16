@@ -7,9 +7,9 @@ public class User {
     @Id
     private String _id;
 
-    private final String firstName;
-    private final String lastName;
-    private final String email;
+    private String firstName;
+    private String lastName;
+    private String email;
     private String phone;
     private String password;
     private String activeStatus;
@@ -58,9 +58,4 @@ public class User {
 	public void setActiveStatus(String activeStatus) {
 		this.activeStatus = activeStatus;
 	}
-    
-   
-
-
-
 } 

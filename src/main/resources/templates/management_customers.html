@@ -22,6 +22,7 @@
                         <table class="table table-hover">
                             <thead><tr><th style="width:30%;padding-left:10px;">Customer's Using Order App</th></tr>
                             </thead>
+                            
                             <tbody id="customer_list">   
                             </tbody>
                         </table>
@@ -38,16 +39,16 @@
                     <div class="col-sm-8">
                     <h4 class="header_label">Customer Information:</h4>
                     <div class="col-sm-6">  
-                        <table class="table">
+                        <table class="table ">
                             <thead><tr><th>Invoice-To:</th></tr>
                             </thead>
-                            <tbody id="invoice_to_info"></tbody>
+                            <tbody id="invoice_to_info" class="border-class"></tbody>
                         </table>   
                     </div>
                     <div class="col-sm-6">
                         <table class="table">
                             <thead><tr><th>Ship-To:</th></tr></thead>
-                            <tbody id="ship_to_info"></tbody>
+                            <tbody id="ship_to_info" class="border-class"></tbody>
                         </table>
                     </div>
                     <div class="row" style="text-align: center;">
@@ -76,27 +77,56 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <button type="button" class="btn btn-success" style="margin-top:15px;margin-left:60%;"><h4 style="font-weight:bold;">Add User To Customer</h4></button>
+                            <button type="button" class="btn btn-success" style="margin-top:15px;margin-left:60%;" 
+                                        data-toggle="modal" data-target="#user_to_customer_modal" id="add_user_button"></button>
                         </div>
                         <div class="row">
-                                <h4 class="header_label">Special Pricing:</h4>
-                                <div id="special_price_table">
-                                    <table class="table table-hover">
-                                        <thead >
-                                            <tr>
-                                                <th style="width:25%;padding-left:10px;">Product Name</th>
-                                                <th>Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="special_price_list">
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <h4 class="header_label">Special Pricing:</h4>
+                            <div id="special_price_table">
+                                <table class="table table-hover">
+                                    <thead >
+                                        <tr>
+                                            <th style="width:25%;padding-left:10px;">Product Name</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="special_price_list">
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
                     </div>
             </div>
             
         </div>
+        </div>
+    </div>
+    <!-- Add User to Customer Modal -->
+    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="user_to_customer_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Users Registered In System</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                    <div class="row">
+                        <div class="col-sm-12">
+                           
+                        </div>
+            
+                  
+                    </div>
+                </div>
+                <div class="modal-footer">              
+                </div>
+            </div>
         </div>
     </div>
 <script src="js/management_customers.js"></script>

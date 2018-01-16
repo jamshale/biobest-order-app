@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Customer{
+public class Customer{
    
 	@Id
 	private String _id;

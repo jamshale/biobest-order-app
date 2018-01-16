@@ -22,10 +22,11 @@ var order_status = "Submitted"
 
 $(document).ready(function ()   {
         populateProductList();
-        populateHistoryList()
+        populateHistoryList();
+        populateActiveList();
+        populateFavouriteList();
         populateCustomerPageInfo();
         populateAddProductList();
-        populateActiveOrderList();
         populateChangesOrderList();
         populateGetFavouriteOrderList();
         addButtonClickIndicator();
@@ -67,6 +68,60 @@ function populateProductList() {
     }
     $("#total_cost").html(`Total = $${total_cost}`)
 }
+//Populate active Accordion
+function populateActiveList() {
+    var test_units = "3";
+    for(var i = 0; i < num_items; i++){
+        var clone1 = $("#active_list_panel").children().first().clone()
+        var clone2 = $("#active_list_panel").children().first().next().clone()
+        current_product = $("#active_list_panel")
+            current_product.find("a").first().attr('href', '#active_collapse_' + i)
+            current_product.find(".panel-collapse").first().attr('id', 'active_collapse_' + i)
+            current_product.find("#active_list_button").html(`<tr>
+                        <td style="width:200px;"><h4 style="font-weight:bold">PO Number:</h4><h3>${test_po_num}</h3><td>
+                        <td style="width:300px;"><h4 style="font-weight:bold">Shipping To:</h4><h3>${test_ship_to}</h3></td>
+                        <td style="float:right"><h3><span class="badge">${num_items}</span> Items</h3></td></tr>`);
+            for(var j = 0; j < 10; j++){
+                $("#active_product_list").append(`<tr>
+                        <td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
+                        </tr>`)
+            }
+        if(i != num_items-1 ){
+            clone2.prependTo($("#active_list_panel"))
+            clone1.prependTo($("#active_list_panel"))
+        }
+    }
+}
+//Populate favourite Accordion
+function populateFavouriteList() {
+    var test_units = "3";
+    for(var i = 0; i < num_items; i++){
+        var clone1 = $("#favourite_list_panel").children().first().clone()
+        var clone2 = $("#favourite_list_panel").children().first().next().clone()
+        current_product = $("#favourite_list_panel")
+            current_product.find("a").first().attr('href', '#favourite_collapse_' + i)
+            current_product.find(".panel-collapse").first().attr('id', 'favourite_collapse_' + i)
+            current_product.find("#favourite_list_button").html(`<tr>
+                        
+                        <td style="width:400px;"><h4 style="font-weight:bold">Order Name:</h4><h3>Name Of Order</h3></td>
+                        <td style="width:200px;"><h3><span class="badge">${num_items}</span> Items</h3></td></tr>`);
+            for(var j = 0; j < 10; j++){
+                $("#favourite_product_list").append(`<tr>
+                        <td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
+                        <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
+                        </tr>`)
+            }
+        if(i != num_items-1 ){
+            clone2.prependTo($("#favourite_list_panel"))
+            clone1.prependTo($("#favourite_list_panel"))
+        }
+    }
+}
 //Populate History Accordion
 function populateHistoryList() {
     var test_units = "10";
@@ -94,6 +149,7 @@ function populateHistoryList() {
         }
     }
 }
+
 //Populate Add Product List
 function populateAddProductList(){
     for(var i = 0; i < num_items; i++){
@@ -145,18 +201,7 @@ function favButtonClickIndicator() {
         });     
     });
 }
-//Populate Active Order List
-function populateActiveOrderList(){
-    for(var i = 0; i < test_order_num; i++){
-        current_product = $("#active_order_list_item")
-            current_product.append(`<tr>
-                    <td style="width:15%;"><h3 style="font-weight:bold;">${test_po_num}</h3></td>
-                    <td style="width:15%;"><h3><span class="badge">${num_items}</span> Items</h3></td>
-                    <td style="width:35%;"><h4 style="font-weight:bold;">Ship-to:</h4><h4>${test_ship_to}</h4><h4 style="font-weight:bold;">Invoice-to:</h4><h4>${test_ship_to}</h4></td>
-                    <td style="width:15%;"><button type="button" class="btn btn-success" style="padding-bottom:15px;margin-right:30px;"><h3>Activate</h3></button></td>
-                    <td style="width:20%;"><h4 style="font-weight:bold;">Total:</h4><h4>$${total_cost}</h4></td></tr>`)      
-    }                                               
-}
+
 //Populate Changes Order List
 function populateChangesOrderList(){
     for(var i = 0; i < test_order_num; i++){

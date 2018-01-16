@@ -154,8 +154,7 @@
                 <div class="col-sm-6">
                     <button class="btn btn-info btn-sm btn-block" id="bottom_option_button" 
                                 data-toggle="modal" data-target="#add_favourite_order_modal"><h3 style="font-weight:bold;">Add Order To<br />Favourites</h3></button>
-                </div>
-                            
+                </div>           
             </div>
         </div>  
     </div>  
@@ -223,13 +222,32 @@
             </div>
             <div class="modal-body">   
                 <div class="row">
+                    
                     <div class="col-md-12">
-                        <div id="active_order_list">
-                            <table>
-                                <tbody id="active_order_list_item"></tbody>
-                            </table>
+                        <!-- active List Accordion -->
+                        <div class="panel-group active" id="active_accordion">
+                            <div class="panel panel-default" id="active_list_panel">
+                                <div class="panel-heading">
+                                    <div class="panel-title pull-left">
+                                        <a data-toggle="collapse" data-parent="#active_accordion" href="">
+                                            <button type="button" id="active_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                        </a>
+                                    </div>
+                                    <div class="panel-title pull-right">
+                                        <button type="button" class="btn btn-md btn-success" style="padding-left:10px;padding-right:10px;padding-bottom:20px;margin-top:5%;">
+                                                <h2 style="font-weight:bold;">Activate</h2></button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-collapse collapse" id="">
+                                    <div class="panel-body" id="active_product_list">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
                     </div>
+               
                 </div>
             </div>
             <div class="modal-footer">              
@@ -284,10 +302,27 @@
             <div class="modal-body">   
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="get_favourite_order_list">
-                            <table>
-                                <tbody id="get_favourite_order_list_item"></tbody>
-                            </table>
+                         <!-- favourite List Accordion -->
+                         <div class="panel-group favourite" id="favourite_accordion">
+                            <div class="panel panel-default" id="favourite_list_panel">
+                                <div class="panel-heading">
+                                    
+                                    <div class="panel-title pull-left">
+                                        <a data-toggle="collapse" data-parent="#favourite_accordion" href="">
+                                            <button type="button" id="favourite_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                        </a>
+                                    </div>
+                                    <div class="panel-title pull-right">
+                                        <button type="button" class="btn btn-md btn-success" style="padding-left:10px;padding-right:10px;padding-bottom:20px;margin-top:5%;">
+                                                <h2 style="font-weight:bold;">Activate</h2></button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-collapse collapse" id="">
+                                    <div class="panel-body" id="favourite_product_list">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,19 +389,19 @@
                 <div class="row">
                     <!-- History List Accordion -->
                     <div class="panel-group history" id="history_accordion">
-                            <div class="panel panel-default" id="history_list_panel">
-                                <div class="panel-heading">
-                                    <a data-toggle="collapse" data-parent="#history_accordion" href="">
-                                        <button type="button" id="history_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-collapse collapse" id="">
-                                    <div class="panel-body" id="history_product_list">
-                                    </div>
+                        <div class="panel panel-default" id="history_list_panel">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#history_accordion" href="">
+                                    <button type="button" id="history_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-collapse collapse" id="">
+                                <div class="panel-body" id="history_product_list">
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">              

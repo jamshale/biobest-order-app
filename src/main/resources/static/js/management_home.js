@@ -1,3 +1,4 @@
+/*
 $("#submit_button").on('click', function(){
     var fname = $("#test_first_name").val();
     var lname = $("#test_last_name").val();
@@ -9,7 +10,34 @@ $("#submit_button").on('click', function(){
         phone: phone,
         email: email,
     })
-    console.log(fname, lname, phone, email)
+})
+
+$("#submit_order_button").on('click', function(){
+    var po_num = $("#po_num").val();
+    $.post('/createOrder', {
+        poNum: po_num
+    })
+})
+
+$("#submit_product_button").on('click', function(){
+    var item_code = $("#item_code").val();
+    var product_name = $("#product_name").val();
+    var description = $("#description").val();
+    var unit_size = $("#unit_size").val();
+    var a_price = parseFloat($("#a_price").val());
+    var b_price = parseFloat($("#b_price").val());
+    var c_price = parseFloat($("#c_price").val());
+    var d_price = parseFloat($("#d_price").val());
+    $.post('/createProduct', {
+        itemCode: item_code,
+        productName: product_name,
+        description: description,
+        unitSize: unit_size,
+        aPrice: a_price,
+        bPrice: b_price,
+        cPrice: c_price,
+        dPrice: d_price
+    })
 })
 
 $("#submit_customer_button").on('click', function(){
@@ -48,3 +76,4 @@ $("#submit_customer_button").on('click', function(){
         shipEmail: ship_email
     })
 })
+*/

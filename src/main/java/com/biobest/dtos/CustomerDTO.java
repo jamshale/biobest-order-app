@@ -1,73 +1,37 @@
 package com.biobest.dtos;
 
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class CustomerDTO{
 
-    @NotNull
-    @NotEmpty
     private String invCompany;
 
-    @NotNull
-    @NotEmpty
     private String invContact;
 
-    @NotNull
-    @NotEmpty
     private String invAddress; 
 
-    @NotNull
-    @NotEmpty
     private String invCityState;
-
-    @NotNull
-    @NotEmpty 
+ 
     private String invZip; 
 
-    @NotNull
-    @NotEmpty
     private String invPhone; 
 
-    @NotNull
-    @NotEmpty
     private String invFax; 
 
-    @NotNull
-    @NotEmpty
     private String invEmail;
 
-    @NotNull
-    @NotEmpty
     private String shipCompany;
 
-    @NotNull
-    @NotEmpty
     private String shipContact;
 
-    @NotNull
-    @NotEmpty
     private String shipAddress; 
 
-    @NotNull
-    @NotEmpty
     private String shipCityState; 
 
-    @NotNull
-    @NotEmpty
     private String shipZip; 
 
-    @NotNull
-    @NotEmpty
     private String shipPhone; 
 
-    @NotNull
-    @NotEmpty
     private String shipFax; 
 
-    @NotNull
-    @NotEmpty
     private String shipEmail;
     
 public String getInvCompany() {

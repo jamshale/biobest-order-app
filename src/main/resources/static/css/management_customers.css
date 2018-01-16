@@ -1,17 +1,29 @@
+table {
+  background-color: white;
+}
+
+#customer_list_table tbody, #customer_list_table thead { display: block; }
+
+#customer_list_table tbody {
+    height: 600px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+#customer_list_table{
+  width: 100%;
+  margin-left: 20px; 
+}
+
+#customer_list_table tbody td, #customer_list_table thead th {
+  width: 20%;  /* Optional */
+}
+
 .management_customer_button {
     min-width: 200px;
     margin-top:30px;
     padding: 40px;
 }
   
-#customer_list_table{
-    max-height: 600px;
-    overflow-y: auto;
-    border-width: 1px;
-    border-style: solid;
-    margin-left: 20px;
-    margin-right: 20px;
-}
 .table, tr{
   border-width: 2px;
   border-style: solid;
@@ -20,6 +32,7 @@
 .table, tr th{
   width:12%;
 }
+
 #customer_list{
   border-style: solid;
 }
@@ -34,6 +47,12 @@ thead tr{
   font-weight: bold;
 }
 
+.border-class{
+  border-width: 1px;
+  border-style: solid;
+  border-color: red;
+}
+
 h4.header_label{
   font-weight:bold;
   color:green;
@@ -41,7 +60,6 @@ h4.header_label{
   margin-left: 20px;
 }
 #user_list_table{
-  min-height: 350px;
   max-height: 350px;
   min-width: 600px;
   max-width: 600px;
@@ -53,7 +71,6 @@ h4.header_label{
 }
 
 #special_price_table{
-  min-height: 350px;
   max-height: 350px;
   min-width: 600px;
   max-width: 600px;
