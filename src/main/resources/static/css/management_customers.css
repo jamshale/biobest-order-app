@@ -10,12 +10,12 @@ table {
     overflow-x: hidden;  /* Hide the horizontal scroll */
 }
 #customer_list_table{
-  width: 100%;
+  width: 90%;
   margin-left: 20px; 
 }
 
 #customer_list_table tbody td, #customer_list_table thead th {
-  width: 20%;  /* Optional */
+  width: 14%;  /* Optional */
 }
 
 .management_customer_button {
@@ -27,6 +27,11 @@ table {
 .table, tr{
   border-width: 2px;
   border-style: solid;
+  background-color: white;
+}
+.table.all-user-table, tr{
+  border-width: 0px;
+  border-style: none;
   background-color: white;
 }
 .table, tr th{
@@ -71,6 +76,7 @@ h4.header_label{
 }
 
 #special_price_table{
+  
   max-height: 350px;
   min-width: 600px;
   max-width: 600px;
@@ -79,4 +85,9 @@ h4.header_label{
   border-style: solid;
   margin-left: 20px;
   margin-right: 20px;
+}
+#all_user_div{
+  
+  max-height: 800px;
+  overflow-y: auto;
 }

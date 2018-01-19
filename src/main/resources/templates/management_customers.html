@@ -17,7 +17,7 @@
             <div class="col-md-3">
                 <div class="row">
                 <h4 class="header_label" >Customer List:</h4>
-                <input type="text" class="form-control" placeholder="Search" style="font-size:14pt;height:30px;width:200px;margin-left:50px;margin-bottom:10px;"/>
+                <input type="text" class="form-control" placeholder="Search" style="font-size:14pt;height:30px;width:300px;margin-left:15%;margin-bottom:10px;"/>
                     <div id="customer_list_table">
                         <table class="table table-hover">
                             <thead><tr><th style="width:30%;padding-left:10px;">Customer's Using Order App</th></tr>
@@ -39,16 +39,38 @@
                     <div class="col-sm-8">
                     <h4 class="header_label">Customer Information:</h4>
                     <div class="col-sm-6">  
-                        <table class="table ">
+                        <table class="table info">
                             <thead><tr><th>Invoice-To:</th></tr>
                             </thead>
-                            <tbody id="invoice_to_info" class="border-class"></tbody>
+                            <tbody id="invoice_to_info" class="border-class">
+                                <tr><td>
+                                    <h5>Company:</h5><h6 id="invoice_info_0">----------</h6>
+                                    <h5>Contact:</h5><h6 id="invoice_info_1">----------</h6>
+                                    <h5>Street #:</h5><h6 id="invoice_info_2">----------</h6>
+                                    <h5>City, State:</h5><h6 id="invoice_info_3">----------</h6>
+                                    <h5>Zip:</h5><h6 id="invoice_info_4">----------</h6>
+                                    <h5>Phone:</h5><h6 id="invoice_info_5">----------</h6>
+                                    <h5>Fax:</h5><h6 id="invoice_info_6">----------</h6>
+                                    <h5>Email:</h5><h6 id="invoice_info_7">----------</h6>
+                                </td></tr>
+                            </tbody>
                         </table>   
                     </div>
                     <div class="col-sm-6">
                         <table class="table">
                             <thead><tr><th>Ship-To:</th></tr></thead>
-                            <tbody id="ship_to_info" class="border-class"></tbody>
+                            <tbody id="ship_to_info" class="border-class">
+                                <tr><td>
+                                    <h5>Company:</h5><h6 id="ship_info_0">----------</h6>
+                                    <h5>Contact:</h5><h6 id="ship_info_1">----------</h6>
+                                    <h5>Street #:</h5><h6 id="ship_info_2">----------</h6>
+                                    <h5>City, State:</h5><h6 id="ship_info_3">----------</h6>
+                                    <h5>Zip:</h5><h6 id="ship_info_4">----------</h6>
+                                    <h5>Phone:</h5><h6 id="ship_info_5">----------</h6>
+                                    <h5>Fax:</h5><h6 id="ship_info_6">----------</h6>
+                                    <h5>Email:</h5><h6 id="ship_info_7">----------</h6>
+                                </td></tr>
+                            </tbody>
                         </table>
                     </div>
                     <div class="row" style="text-align: center;">
@@ -64,7 +86,7 @@
                     <div class="col-sm-4">
                         <div class="row">
                             <h4 class="header_label">Users:</h4>
-                            <div id="user_list_table">
+                            <div id="user_list_table" >
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -78,23 +100,15 @@
                                 </table>
                             </div>
                             <button type="button" class="btn btn-success" style="margin-top:15px;margin-left:60%;" 
-                                        data-toggle="modal" data-target="#user_to_customer_modal" id="add_user_button"></button>
+                                        data-toggle="modal" data-target="#user_to_customer_modal" id="add_user_button">
+
+                                        <h4 style="font-weight:bold;" >Add User For -----------</h4></button>
+
+                            <button type="button" class="btn btn-danger" style="margin-top:15px;margin-left:60%;" 
+                                        data-toggle="modal" data-target="#remove_user_modal" id="remove_user_button">
+                                        <h4 style="font-weight:bold;">Remove User For -----------</h4></button>
                         </div>
-                        <div class="row">
-                            <h4 class="header_label">Special Pricing:</h4>
-                            <div id="special_price_table">
-                                <table class="table table-hover">
-                                    <thead >
-                                        <tr>
-                                            <th style="width:25%;padding-left:10px;">Product Name</th>
-                                            <th>Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="special_price_list">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+
                     </div>
             </div>
             
@@ -118,13 +132,49 @@
                 <div class="modal-body">   
                     <div class="row">
                         <div class="col-sm-12">
-                           
+                            <div id="all_user_div">
+                                <table class="all-user-table">
+                                    <tbody id="all_user_list">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-            
-                  
                     </div>
                 </div>
-                <div class="modal-footer">              
+                <div class="modal-footer"> 
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add User to Customer Modal -->
+    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="remove_user_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Users Linked To Customer</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="all_user_div">
+                                <table class="all-user-table">
+                                    <tbody id="remove_user_list">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                       
                 </div>
             </div>
         </div>

@@ -14,19 +14,13 @@
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-3">
                 <div class="row">
                 <h4 class="header_label" >User List:</h4>
-                <input type="text" class="form-control" placeholder="Search" style="font-size:16pt;height:40px;width:400px;margin-left:30%;margin-bottom:10px;"/>
+                <input type="text" class="form-control" placeholder="Search" style="font-size:16pt;height:40px;width:200px;margin-left:15%;margin-bottom:10px;"/>
                     <div id="user_list_table">
                         <table class="table table-hover">
-                            <thead><tr><th style="width:20%;padding-left:10px;">First Name<br />Last Name</th>
-                                        <th>Phone#</th>
-                                        <th>Email</th>
-                                        <th>Password</th>
-                                        <th>Active/Deactivated</th>
-                                        <th># Of Price Lists</th>
-                                        <th>Delete</th></tr>
+                            <thead><tr><th style="width:20%;padding-left:10px;"><h3 style="font-weight:bold;">First Name<br />Last Name</h3></th></tr>       
                             </thead>
                             <tbody id="user_list">   
                             </tbody>
@@ -37,6 +31,64 @@
                 <!-- Bootom Buttons -->
                 </div>
             </div>
+            <h4>User Information:</h4>
+            <div class="col-md-5">
+                <table class="table info">
+                    <thead><tr><th>Invoice-To:</th></tr>
+                    </thead>
+                    <tbody id="user_info" class="border-class">
+                        <tr><td>
+                            <h5>First Name:</h5><h6 id="user_info_0">----------</h6>
+                            <h5>Last Name:</h5><h6 id="user_info_1">----------</h6>
+                            <h5>Email:</h5><h6 id="user_info_2">----------</h6>
+                            <h5>Phone:</h5><h6 id="user_info_3">----------</h6>
+                            <h5>Password:</h5><h6 id="user_info_4">----------</h6>
+                            <h5>Status:</h5><h6 id="user_info_5">----------</h6>
+                        </td></tr>
+                    </tbody>
+                </table>   
+
+            </div>
+
+
+            <div class="col-md-4">
+                <h2>Create User:</h2>
+                <form action="/management_users" th:object="${user}" method="POST" enctype="utf8">
+                    <lable></lable>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="First Name" th:field="*{firstName}"></input>
+                        <div th:each="error : ${#fields.errors('firstName')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="Last Name" th:field="*{lastName}"></input>
+                        <div th:each="error : ${#fields.errors('lastName')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="Email" th:field="*{email}"></input>
+                        <div th:each="error : ${#fields.errors('email')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="Phone" th:field="*{phone}"></input>
+                        <div th:each="error : ${#fields.errors('phone')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="Password" th:field="*{password}"></input>
+                        <div th:each="error : ${#fields.errors('password')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="Active Status" th:field="*{activeStatus}"></input>
+                        <div th:each="error : ${#fields.errors('activeStatus')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <div class="form-group">
+                        <input typr="text" class="form-control" placeholder="Type" th:field="*{type}"></input>
+                        <div th:each="error : ${#fields.errors('type')}" class="alert alert-danger" th:text="${error}"></div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block" id="create_submit_button">
+                        <h4>Create User</h4>
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 <script src="js/management_users.js"></script>

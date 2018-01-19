@@ -25,7 +25,7 @@ public class Customer{
 	private String shipPhone; 
 	private String shipFax; 
 	private String shipEmail;
-	private Set<String> users;
+	private Set<User> users;
 
 	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
 						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipPhone, String shipFax, String shipEmail){
@@ -176,18 +176,12 @@ public class Customer{
 		this.shipEmail = shipEmail;
 	}
 
-	/**
-	 * @return the users
-	 */
-	public Set<String> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	/**
-	 * @param users the users to set
-	 */
-	public void setUsers(Set<String> users) {
-		this.users = users;
+	public void addUser(User user) {
+		this.users.add(user);
 	}
 
 }

@@ -1,10 +1,10 @@
 
 #history_list_button h4{font-weight:bold;}
 #history_list_button td{width:25%;}
-#product_list_header h2{
+#product_list_header h2:last-child{
   font-weight:bold;
   color:black;}
-#product_list_header h3{
+#product_list_header h2:first-child{
   font-weight:bold;
   color:green;
   float:right;
@@ -39,7 +39,7 @@
 }
 /* ACCCORDION */
 .panel-group.main{
-  max-height: 620px;
+  max-height: 700px;
   overflow-y: scroll;
 }
 .panel-body{
@@ -115,7 +115,7 @@
 }
 #add_product_list{
   margin-left: 10px;
-  max-height: 800px;
+  max-height: 1000px;
   overflow-y: auto;
 }
 #active_order_list{
@@ -130,7 +130,12 @@
 }
 #get_favourite_order_list{
   margin-left: 10px;
-  max-height: 800px;
+  max-height: 1000px;
+  overflow-y: auto;
+}
+#active_order_list{
+  margin-left: 10px;
+  max-height: 1000px;
   overflow-y: auto;
 }
 /*Modal Settings */

@@ -1,17 +1,77 @@
-var test_cust = "Windset ph#";
-var test_num_cust = 100;
-
 var customerList = [];
+var userList = [];
+var linkUserCustomerList = [];
+var clicked_customer = "";
 
 $(document).ready(function ()   {
-
     $.ajax({
         url: "/customers",
         success: populateCustomerList
     })
-    populateSpecialPricing();
-   
+    $.ajax({
+        url: "/users",
+        success: initUserList
+    })
 });
+
+//Add User to list to Add Listener
+$("#all_user_list").on('click', function(u){
+    var clicked_user = $(u.target).parent().parent().children().first().text();
+    var names = clicked_user.split(' ');
+    var first_name = names[0];
+    var last_name = names[2];
+    var inv_company = clicked_customer[0].invCompany
+    $.post('/linkUserCustomer',{
+        invCompany: inv_company,
+        firstName: first_name,
+        lastName: last_name
+    }, function(resp) {
+        $("#user_list").prepend(`<tr><td><h3>${first_name}<br />${last_name}</h3></td>
+            <td style="padding-top:10px;"><h3>{To Do}</h3></td>
+            <td><button type="button" class="btn btn-lg btn-info" style="margin-top:10px;"><h4>Active</h4></button></td></tr>`);
+    });
+    $("#user_to_customer_modal").modal('toggle');
+})
+
+
+//Populate User List
+function populateUserList(){
+    $("#user_list").html("");
+    clicked_customer[0].users.forEach(function(u){
+        $("#user_list").prepend(`<tr><td><h3>${u.firstName}<br />${u.lastName}</h3></td>
+                                    <td style="padding-top:10px;"><h3>{To Do}</h3></td>
+                                    <td><button type="button" class="btn btn-lg btn-info" style="margin-top:10px;"><h4>${u.activeStatus}</h4></button></td></tr>`)
+    })
+    
+}
+//Populate list of users to link to customer
+$("#add_user_button").on('click', function(u){
+    userList.forEach(function(user){
+        
+        $("#all_user_list").append(`<tr>
+            <td style="width:50%;padding-left:60px;"><h3>${user.firstName} <br /> ${user.lastName}</h3></td>
+            <td style="width:50%"><h3>${user.activeStatus}</h3></td>
+            <td style="padding-right:100px;"><button type="button" class="btn btn-lg btn-success">Add</button></td>
+        </tr>`);
+        
+    })
+})
+
+//Populate list of users to link to customer
+$("#remove_user_button").on('click', function(u){
+    clicked_customer[0].users.forEach(function(user){
+        $("#remove_user_list").append(`<tr>
+                <td style="width:50%;padding-left:60px;"><h3>${user.firstName} <br /> ${user.lastName}</h3></td>
+                <td style="width:50%"><h3>${user.activeStatus}</h3></td>
+                <td style="padding-right:100px;"><button type="button" class="btn btn-lg btn-danger">Remove</button></td>
+            </tr>`);
+    })
+})
+
+//Initiate User List
+function initUserList(users){
+    userList = users;
+}
 
 //Populate List Of Customers Using Order App
 function populateCustomerList(customers){
@@ -30,12 +90,14 @@ function addCustomerToList(list_item, customer){
 //Info Click Event Listener
 $("#customer_list").on('click', function(c){
     var inv_company = $(c.target).text();
-    var clicked_customer = customerList.filter(function(cust){return inv_company === cust.invCompany;});
+    clicked_customer = customerList.filter(function(cust){return inv_company === cust.invCompany;});
     addInfoToFields(clicked_customer);
-    console.log(clicked_customer);
 })
+
 //Info Field Populator
 function addInfoToFields(customer){
+    $("#add_user_button").html(`<h4 style="font-weight:bold;">Add User For (${clicked_customer[0].invCompany})</h4>`)
+    $("#remove_user_button").html(`<h4 style="font-weight:bold;">Remove User For (${clicked_customer[0].invCompany})</h4>`)
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
     inv_info.append(`<tr><td>
@@ -56,11 +118,10 @@ function addInfoToFields(customer){
             <h5>Phone:</h5><h6>${customer[0].shipPhone}</h6>
             <h5>Fax:</h5><h6>${customer[0].shipFax}</h6>
             <h5>Email:</h5><h6>${customer[0].shipEmail}</h6></td></tr>`)
-    populateUserList(customer);
+    populateUserList();
     info_highlight();
     
 }
-
 
 //Update highlighter
 function info_highlight(){
@@ -70,36 +131,3 @@ function info_highlight(){
     $('#invoice_to_info, #ship_to_info').addClass('border-class')
 }
 
-
-
-
-//Populate User List
-function populateUserList(customer){
-    var user_button = $("#add_user_button")
-        .html(`<h4 style="font-weight:bold;" id="add_user_button">Add User For (${customer[0].invCompany})</h4>`)
-    
-    for(var i = 0; i < test_num_cust; i++){
-        var list_item = $("#user_list")
-            .append(`<tr>
-                <td><h6>Jamie</h6><h6>Hale</h6></td>
-                <td><h6>Biobest</h6><h6>Consultant</h6></td>
-                <td><button type="button" class="btn btn-info btn-block" id="status_button" style="margin-top:10px;">Active</button></td></tr>`)
-    }
-    
-
-}
-
-
-//Populate Special Pricing
-function populateSpecialPricing(){
-    
-    var test_product = "Fallacis-System-2K"
-    var test_price = "9.90"
-    for(var i = 0; i < test_num_cust; i++){
-        var current_product = $("#special_price_list")
-            .append(`<tr>
-            <td><h7>${test_product}</h7></td>)
-            <td><h7>$${test_price}</h7></td></tr>`)
-    }
-    
-}

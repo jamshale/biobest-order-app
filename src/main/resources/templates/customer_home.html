@@ -24,13 +24,13 @@
         <div class="col-md-4">
             <div class="row">
                 <div class="col-sm-5" style="text-align:center;margin-left:40px;">
-                <h4 style="font-weight:bold;text-decoration:underline;">User:</h4>
-                <h3 id="user_name"></h3>
+                <h3 style="font-weight:bold;text-decoration:underline;">User:</h3>
+                <h2 id="user_name"></h2>
                 </div>
              
                 <div class="col-sm-5" style="text-align:center;margin-left:40px;">
-                <h4 style="font-weight:bold; text-decoration:underline;">Greenhouse:</h4>
-                <h3 id="customer_name"></h3><br />
+                <h3 style="font-weight:bold; text-decoration:underline;">Greenhouse:</h3>
+                <h2 id="customer_name"></h2><br />
                 </div>
             </div>
             <div class="row" >
@@ -108,11 +108,11 @@
                                             <div class="btn-group btn-group-lg" role="group" id="inc_product">
                                                 <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button" style="font-weight:bold;"></button>
                                                 <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
-                                                    <span class="glyphicon glyphicon-triangle-top"></span>
+                                                    <span class="glyphicon glyphicon-triangle-top" style="font-size:51px;"></span>
                                                 </button>
-                                                <button type="button"  class="btn btn-defualt inc_button" style="font-weight:bold;"></button>
+                                                <button type="button"  class="btn btn-defualt" id="unit_amount" style="font-weight:bold;"></button>
                                                 <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
-                                                    <span class="glyphicon glyphicon-triangle-bottom" ></span>
+                                                    <span class="glyphicon glyphicon-triangle-bottom" style="font-size:51px;"></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -224,6 +224,7 @@
                 <div class="row">
                     
                     <div class="col-md-12">
+                        <div id="active_order_list">
                         <!-- active List Accordion -->
                         <div class="panel-group active" id="active_accordion">
                             <div class="panel panel-default" id="active_list_panel">
@@ -245,7 +246,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        </div>
                     </div>
                
                 </div>
@@ -302,24 +303,26 @@
             <div class="modal-body">   
                 <div class="row">
                     <div class="col-md-12">
-                         <!-- favourite List Accordion -->
-                         <div class="panel-group favourite" id="favourite_accordion">
-                            <div class="panel panel-default" id="favourite_list_panel">
-                                <div class="panel-heading">
-                                    
-                                    <div class="panel-title pull-left">
-                                        <a data-toggle="collapse" data-parent="#favourite_accordion" href="">
-                                            <button type="button" id="favourite_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
-                                        </a>
+                        <div id="get_favourite_order_list">
+                            <!-- favourite List Accordion -->
+                            <div class="panel-group favourite" id="favourite_accordion">
+                                <div class="panel panel-default" id="favourite_list_panel">
+                                    <div class="panel-heading">
+                                        
+                                        <div class="panel-title pull-left">
+                                            <a data-toggle="collapse" data-parent="#favourite_accordion" href="">
+                                                <button type="button" id="favourite_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                            </a>
+                                        </div>
+                                        <div class="panel-title pull-right">
+                                            <button type="button" class="btn btn-md btn-success" style="padding-left:10px;padding-right:10px;padding-bottom:20px;margin-top:5%;">
+                                                    <h2 style="font-weight:bold;">Activate</h2></button>
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div class="panel-title pull-right">
-                                        <button type="button" class="btn btn-md btn-success" style="padding-left:10px;padding-right:10px;padding-bottom:20px;margin-top:5%;">
-                                                <h2 style="font-weight:bold;">Activate</h2></button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-collapse collapse" id="">
-                                    <div class="panel-body" id="favourite_product_list">
+                                    <div class="panel-collapse collapse" id="">
+                                        <div class="panel-body" id="favourite_product_list">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

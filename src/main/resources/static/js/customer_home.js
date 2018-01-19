@@ -37,9 +37,9 @@ $(document).ready(function ()   {
 function populateCustomerPageInfo(){
     $("#user_name").html(`${test_user_name}`)
     $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h3>${order_status}</h3><h2><button type="button" class="btn btn-sm btn-basic" style="font-weight:bold;font-size:70%;">${test_active_orders}</button> Order For Week #${date.getWeek()}</h2>`)
+    $("#product_list_header").html(`<h2>${order_status}</h2><h2><button type="button" class="btn btn-sm btn-basic" style="font-weight:bold;font-size:70%;">${test_active_orders}</button> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
-    $("#customer_option_active_order_button").html(`<h3><span class="badge" >3</span>Active Orders <br /> For Week #${test_active_orders}</h3>`);
+    $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week #${test_active_orders} <span class="badge" >3</span></h3>`);
     $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
     //Ship-To
     $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
@@ -57,21 +57,21 @@ function populateProductList() {
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#main_collapse_' + i)
-            current_product.find("#product_list_button").html(`<h4>${test_product}<br />${test_desc}<br />${test_product_size}</h4>`)
-            current_product.find("button")[3].append(test_num)
+            current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
+            current_product.find("#unit_amount").html(`<h3 style="font-weight:bold;">${test_num}</h3>`)
             current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
-            current_product.find("#item_price").html(`$${test_price}`)
+            current_product.find("#item_price").html(`<h3 style="font-weight:bold;">$${test_price}</h3>`)
         if(i != num_items-1 ){
             clone2.prependTo($("#product_list_panel"))
             clone1.prependTo($("#product_list_panel"))
         }
     }
-    $("#total_cost").html(`Total = $${total_cost}`)
+    $("#total_cost").html(`<h2 style="font-weight:bold;">Total = $${total_cost}</h2>`)
 }
 //Populate active Accordion
 function populateActiveList() {
     var test_units = "3";
-    for(var i = 0; i < num_items; i++){
+    for(var i = 0; i < 5; i++){
         var clone1 = $("#active_list_panel").children().first().clone()
         var clone2 = $("#active_list_panel").children().first().next().clone()
         current_product = $("#active_list_panel")
@@ -89,7 +89,7 @@ function populateActiveList() {
                         <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
                         </tr>`)
             }
-        if(i != num_items-1 ){
+        if(i != 5-1 ){
             clone2.prependTo($("#active_list_panel"))
             clone1.prependTo($("#active_list_panel"))
         }
@@ -98,7 +98,7 @@ function populateActiveList() {
 //Populate favourite Accordion
 function populateFavouriteList() {
     var test_units = "3";
-    for(var i = 0; i < num_items; i++){
+    for(var i = 0; i < 5; i++){
         var clone1 = $("#favourite_list_panel").children().first().clone()
         var clone2 = $("#favourite_list_panel").children().first().next().clone()
         current_product = $("#favourite_list_panel")
@@ -116,7 +116,7 @@ function populateFavouriteList() {
                         <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
                         </tr>`)
             }
-        if(i != num_items-1 ){
+        if(i != 5-1 ){
             clone2.prependTo($("#favourite_list_panel"))
             clone1.prependTo($("#favourite_list_panel"))
         }
@@ -212,7 +212,14 @@ function populateChangesOrderList(){
                     <td style="width:10%"><span class="glyphicon glyphicon-remove" style="font-size: 300%;"></span></td>
                     <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
                     </tr>`)       
-    }                                               
+    }
+    current_product.append(`<tr style="background: rgba(45, 189, 45, 0.493);">
+                    <td style="padding-left:10px;width:25%;"><h3>${date.toLocaleTimeString("en-us", options)}</h3></td>
+                    <td style="width:40%"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /></h3></td>
+                    <td style="width:10%"><span class="glyphicon glyphicon-ok" style="font-size: 300%;"></span></td>
+                    <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
+                    </tr>`)
+
 }
 
 

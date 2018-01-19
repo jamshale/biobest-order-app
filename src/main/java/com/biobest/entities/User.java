@@ -1,5 +1,7 @@
 package com.biobest.entities;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.data.annotation.Id;
 
 public class User {
@@ -13,14 +15,17 @@ public class User {
     private String phone;
     private String password;
     private String activeStatus;
+    private String type;
+    private Set<Customer> customers;
 
-    public User(String firstName, String lastName, String phone, String email) {
+    public User(String firstName, String lastName,  String email, String phone, String password, String activeStatus, String type) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
-        this.email = email;
-        this.password = "password";
+		this.email = email;
+		this.password = password;
         this.activeStatus = "Active";
+        this.customers = new HashSet<>();
     }
 
 	public String getFirstName() {
@@ -57,5 +62,22 @@ public class User {
 
 	public void setActiveStatus(String activeStatus) {
 		this.activeStatus = activeStatus;
+    }
+
+	public Set<Customer> getCustomers() {
+		return customers;
+    }
+    
+	public void addCustomer(Customer customer) {
+		this.customers.add(customer);
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+    
 } 

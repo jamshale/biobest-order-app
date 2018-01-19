@@ -1,17 +1,30 @@
 package com.biobest.dtos;
 
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserDTO {
 	
-    private String firstName;
-
-    private String lastName;
-
-    private String email;
-
+	@NotNull
+	@NotEmpty
+	private String firstName;
+	@NotNull
+	@NotEmpty
+	private String lastName;
+	@NotNull
+	@NotEmpty
+	private String email;
+	@NotNull
+	@NotEmpty
 	private String phone;
-	
+	@NotNull
+	@NotEmpty
+	private String type;
+	@NotNull
+	@NotEmpty
 	private String activeStatus;
-
+	@NotNull
+	@NotEmpty
 	private String password;
 
 	public String getFirstName() {
@@ -60,5 +73,13 @@ public class UserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -8,8 +8,11 @@ import org.springframework.data.mongodb.repository.Query;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-    @Query("{ 'firstName': ?0 }")
+    
+    @Query("{}")
     List<User> findUsers(Set<String> id);
     
+    @Query("{ 'firstName': ?0, 'lastName': ?1}")
+    User findByFirstLast(String firstName, String lastName);
     
 }
