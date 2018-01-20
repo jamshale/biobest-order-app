@@ -1,7 +1,6 @@
 package com.biobest.services;
 
 import com.biobest.dtos.UserDTO;
-import com.biobest.entities.Customer;
 import com.biobest.entities.User;
 import com.biobest.exceptions.UserNameExistsException;
 import java.util.List;
@@ -17,9 +16,6 @@ public interface UserService {
 
 	@Transactional
 	public User createUser(UserDTO userDto) throws UserNameExistsException;
-  
-	@Transactional
-	public void addCustomer(User user, Customer customer);
 
 	@Transactional
     public User updateUser(User user);

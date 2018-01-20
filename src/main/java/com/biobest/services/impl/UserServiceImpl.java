@@ -1,7 +1,6 @@
 package com.biobest.services.impl;
 
 import com.biobest.dtos.UserDTO;
-import com.biobest.entities.Customer;
 import com.biobest.entities.User;
 import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.repositories.UserRepository;
@@ -37,15 +36,10 @@ public class UserServiceImpl implements UserService {
 	public User getUserByFirstLast( String firstName, String lastName) {
 		return userRepository.findByFirstLast(firstName, lastName);
     }
-    
-    @Transactional
-	public void addCustomer(User user, Customer customer) {
-		customer.addUser(user);
-    }
 
     @Transactional
     public User updateUser(User user){
-        return userRepository.insert(user);
+        return userRepository.save(user);
     }
     
 

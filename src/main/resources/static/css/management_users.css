@@ -1,28 +1,38 @@
-h4.header_label{
-    font-weight:bold;
-    color:green;
-    margin-top:30px;
-    margin-left: 20px;
+h3.header-label{
+  font-weight:bold;
+  color:green;
+  margin-top:30px;
+  margin-left: 20px;
 }
-
-#user_list_table{
-    max-height: 600px;
-    overflow-y: auto;
-    border-width: 1px;
-    border-style: solid;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
 .table, tr{
-    border-width: 2px;
-    border-style: solid;
-    background-color: white;
-  }
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+}
+.table button{
+  margin-top: 10px;
+}
+.table button{
+  margin-top: 10px;
+}
+#user_info h4{
+  font-weight:bold;
+}
 
-  .table button{
-    margin-top: 10px;
-  }
-  .table button{
-    margin-top: 10px;
-  }
+#user_list_table tbody, #user_list_table thead { display: block; }
+
+#user_list_table tbody td{ 
+  width: 14%; 
+}
+#user_list_table thead th {
+    width: 14%; 
+    
+}
+#user_list_table tbody {
+  max-height: 600px;      
+  overflow-y: auto;    
+  overflow-x: hidden; 
+}
+thead th {
+    background-color: rgb(248, 247, 246);
+}

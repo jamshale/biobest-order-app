@@ -85,8 +85,16 @@ public class ManagementController {
         Customer customer = this.customerService.getCustomer(invCompany);
         User user = this.userService.getUserByFirstLast(firstName, lastName);
         customer.addUser(user);
-        user.addCustomer(customer);
         this.customerService.updateCustomer(customer);
+        return "success";
+    }
+
+    @RequestMapping("/linkCustomerUser")
+    @ResponseBody
+    public String linkCustomerUser(@RequestParam("invCompany") String invCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+        Customer customer = this.customerService.getCustomer(invCompany);
+        User user = this.userService.getUserByFirstLast(firstName, lastName);
+        user.addCustomer(customer);
         this.userService.updateUser(user);
         return "success";
     }

@@ -2,17 +2,28 @@ table {
   background-color: white;
 }
 
-#customer_list_table tbody, #customer_list_table thead { display: block; }
+tbody, thead { display: block; }
 
 #customer_list_table tbody {
-    height: 600px;       /* Just for the demo          */
-    overflow-y: auto;    /* Trigger vertical scroll    */
-    overflow-x: hidden;  /* Hide the horizontal scroll */
+    height: 600px;      
+    overflow-y: auto;    
+    overflow-x: hidden;  
 }
+#user_list_table tbody {
+  height: 400px;      
+  overflow-y: auto;    
+  overflow-x: hidden; 
+}
+
 #customer_list_table{
   width: 90%;
   margin-left: 20px; 
 }
+#user_list_table{
+ width: 150%;
+ margin-left: 50px;
+}
+
 
 #customer_list_table tbody td, #customer_list_table thead th {
   width: 14%;  /* Optional */
@@ -48,31 +59,21 @@ thead tr{
       font-weight: bold;
 }
 
-.table, tbody tr td h5{
+.table, tbody tr td h4{
   font-weight: bold;
 }
 
 .border-class{
-  border-width: 1px;
+  border-width: 5px;
   border-style: solid;
   border-color: red;
 }
 
-h4.header_label{
+h3.header_label{
   font-weight:bold;
   color:green;
   margin-top:30px;
   margin-left: 20px;
-}
-#user_list_table{
-  max-height: 350px;
-  min-width: 600px;
-  max-width: 600px;
-  overflow-y: auto;
-  border-width: 1px;
-  border-style: solid;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 #special_price_table{
@@ -90,4 +91,10 @@ h4.header_label{
   
   max-height: 800px;
   overflow-y: auto;
+}
+#invoice_to_info, tr{
+  margin:5px;
+}
+#ship_to_info, tr{
+  margin:5px;
 }

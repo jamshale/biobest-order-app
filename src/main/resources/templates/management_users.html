@@ -14,45 +14,55 @@
 <body style="background-color: rgba(223, 252, 252, 0.733)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <div class="row">
-                <h4 class="header_label" >User List:</h4>
-                <input type="text" class="form-control" placeholder="Search" style="font-size:16pt;height:40px;width:200px;margin-left:15%;margin-bottom:10px;"/>
+            <div class="col-md-3" style="margin-left:40px;">
+                
+                <h3 class="header-label" >User List:</h3>
+                    <input type="text" class="form-control" placeholder="Search" style="font-size:16pt;height:40px;width:200px;margin-left:15%;margin-bottom:10px;"/>
                     <div id="user_list_table">
                         <table class="table table-hover">
-                            <thead><tr><th style="width:20%;padding-left:10px;"><h3 style="font-weight:bold;">First Name<br />Last Name</h3></th></tr>       
+                            <thead><tr><th style="width:20%;padding-left:10px;"><h4 style="font-weight:bold;">First Name<br />Last Name</h4></th></tr>       
                             </thead>
                             <tbody id="user_list">   
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="row" style="text-align:center;">
+              
+              
                 <!-- Bootom Buttons -->
-                </div>
+                
             </div>
-            <h4>User Information:</h4>
-            <div class="col-md-5">
-                <table class="table info">
-                    <thead><tr><th>Invoice-To:</th></tr>
-                    </thead>
-                    <tbody id="user_info" class="border-class">
-                        <tr><td>
-                            <h5>First Name:</h5><h6 id="user_info_0">----------</h6>
-                            <h5>Last Name:</h5><h6 id="user_info_1">----------</h6>
-                            <h5>Email:</h5><h6 id="user_info_2">----------</h6>
-                            <h5>Phone:</h5><h6 id="user_info_3">----------</h6>
-                            <h5>Password:</h5><h6 id="user_info_4">----------</h6>
-                            <h5>Status:</h5><h6 id="user_info_5">----------</h6>
-                        </td></tr>
-                    </tbody>
-                </table>   
-
+            
+         
+            <div class="col-md-3" style="margin-left:40px;">
+                <div class="row">
+                    <h3 class="header-label">User Information:</h3>
+                    <table class="table info">
+                        <tbody id="user_info" class="border-class">
+                            <tr><td>
+                                <h4 id="user_info_0">First Name:</h4><h5 id="user_info_0">----------</h5>
+                                <h4 id="user_info_1">Last Name:</h4><h5 id="user_info_1">----------</h5>
+                                <h4 id="user_info_2">Email:</h4><h5 id="user_info_2">----------</h5>
+                                <h4 id="user_info_3">Phone:</h4><h5 id="user_info_3">----------</h5>
+                                <h4 id="user_info_4">Password:</h4><h5 id="user_info_4">----------</h5>
+                                <h4 id="user_info_">Status:</h4><h5 id="user_info_5">----------</h5>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div> 
+                <div class="row">
+                    <h3 class="header-label">Linked Customers:</h3>
+                    <table style="width:100%">
+                        <thead><tr>
+                            <th><h4 style="font-weight:bold;">Customer Name</h4></th></tr>
+                        </thead>
+                        <tbody id="customer_list">
+                           
+                        </tbody>
+                    </table>
+                </div>   
             </div>
-
-
-            <div class="col-md-4">
-                <h2>Create User:</h2>
+            <div class="col-md-3" style="margin-left:40px;">
+                    <h3 class="header-label">Create User:</h3>
                 <form action="/management_users" th:object="${user}" method="POST" enctype="utf8">
                     <lable></lable>
                     <div class="form-group">
@@ -88,7 +98,7 @@
                     </button>
                 </form>
             </div>
-            <div class="col-md-3"></div>
+            
         </div>
     </div>
 <script src="js/management_users.js"></script>

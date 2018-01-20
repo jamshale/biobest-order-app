@@ -1,10 +1,6 @@
-var test_first_name =  "Jamie"
-var test_last_name = "Hale"
-var test_phone = "(250) 927-9006"
-var test_email = "jamiehalebc@gmail.com"
-var test_password = "pass1234"
-
 var userList = [];
+var customerList = [];
+var clicked_user = "";
 
 $(document).ready(function ()   {
 
@@ -12,15 +8,21 @@ $(document).ready(function ()   {
         url: "/users",
         success: populateUserList
     })
-    //populateUserList();
+    $.ajax({
+        url: "/customers",
+        success: initiateCustomerList
+    })
 });
 
-
+//Initiate Customer List
+function initiateCustomerList(customers){
+    customerList = customers;
+}
 //Populate User List
 function populateUserList(users){
     userList = users;
     users.forEach(function(u){
-        $("#user_list").append(`<tr><td><h3>${u.firstName} <br />${u.lastName}</h3></td></tr>`)
+        $("#user_list").append(`<tr><td><h4>${u.firstName} <br />${u.lastName}</h4></td></tr>`)
     })
 }
 
@@ -40,13 +42,21 @@ $("#user_list").on('click', function(u){
 function addInfoToFields(user){
     var inv_info = $("#user_info").html('');
     inv_info.append(`<tr><td>
-            <h5>First Name:</h5><h6>${user[0].firstName}</h6>
-            <h5>Last Name:</h5><h6>${user[0].lastName}</h6>
-            <h5>Email:</h5><h6>${user[0].email}</h6>
-            <h5>Phone:</h5><h6>${user[0].phone}</h6>
-            <h5>Password:</h5><h6>${user[0].password}</h6>
-            <h5>Active Status:</h5><h6>${user[0].activeStatus}</h6>
-            <h5>Type:</h5><h6>${user[0].type}</h6></td></tr>`)
-    //populateUserList();
+            <h4>First Name:</h4><h5>${user[0].firstName}</h5>
+            <h4>Last Name:</h4><h5>${user[0].lastName}</h5>
+            <h4>Email:</h4><h5>${user[0].email}</h5>
+            <h4>Phone:</h4><h5>${user[0].phone}</h5>
+            <h4>Password:</h4><h5>${user[0].password}</h5>
+            <h4>Active Status:</h4><h5>${user[0].activeStatus}</h5>
+            <h4>Type:</h4><h5>${user[0].type}</h5></td></tr>`)
+    populateCustomerList();
     //info_highlight();
+}
+
+//Populate Selected User Customer List
+function populateCustomerList(){
+    $("#customer_list").html("");
+    clicked_user[0].customers.forEach(function(c){
+        $("#customer_list").append(`<tr><td><h4>${c.invCompany}</h4></td></tr>`)
+    })
 }
