@@ -15,11 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biobest.dtos.UserDTO;
 import com.biobest.entities.Customer;
-import com.biobest.entities.Product;
 import com.biobest.entities.User;
 import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.services.CustomerService;
-import com.biobest.services.ProductService;
 import com.biobest.services.UserService;
 import java.util.List;
 
@@ -42,9 +40,6 @@ public class ManagementController {
     */
     @Autowired
     private CustomerService customerService;
-    
-    @Autowired
-    private ProductService productService;
 
     @RequestMapping(value="/customers", method=RequestMethod.GET, produces="application/json")
     @ResponseBody
@@ -56,12 +51,6 @@ public class ManagementController {
     @ResponseBody
     public List<User> getUsers(Model model){
         return this.userService.getUsers();
-    }
-
-    @RequestMapping(value="/products", method=RequestMethod.GET, produces="application/json")
-    @ResponseBody
-    public List<Product> getProducts(Model model){
-        return this.productService.getProducts();
     }
 
     @RequestMapping("/management_home")

@@ -42,13 +42,12 @@ $("#user_list").on('click', function(u){
 function addInfoToFields(user){
     var inv_info = $("#user_info").html('');
     inv_info.append(`<tr><td>
-            <h4>First Name:</h4><h5>${user[0].firstName}</h5>
-            <h4>Last Name:</h4><h5>${user[0].lastName}</h5>
-            <h4>Email:</h4><h5>${user[0].email}</h5>
-            <h4>Phone:</h4><h5>${user[0].phone}</h5>
-            <h4>Password:</h4><h5>${user[0].password}</h5>
-            <h4>Active Status:</h4><h5>${user[0].activeStatus}</h5>
-            <h4>Type:</h4><h5>${user[0].type}</h5></td></tr>`)
+    <h4>First Name:&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].firstName}</span></h4>
+    <h4>Last Name:&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].lastName}</span></h4>
+    <h4>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].email}</span></h4>
+    <h4>Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].phone}</span></h4>
+    <h4>Password:&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].password}</span></h4>
+    <h4>Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].activeStatus}</span></h4></td></tr>`)
     populateCustomerList();
     //info_highlight();
 }

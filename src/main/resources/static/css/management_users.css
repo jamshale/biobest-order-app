@@ -36,3 +36,7 @@ h3.header-label{
 thead th {
     background-color: rgb(248, 247, 246);
 }
+
+.not-bold{
+  font-weight:normal;
+}

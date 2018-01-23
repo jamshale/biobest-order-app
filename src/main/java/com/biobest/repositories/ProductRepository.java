@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface ProductRepository extends MongoRepository<Product, String>{
 
-    @Query("{ 'itemCode': ?0 }")
+    @Query("{}")
     List<Product> findProducts(Set<String> ids);
     
 }
