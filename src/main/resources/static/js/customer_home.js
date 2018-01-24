@@ -68,31 +68,19 @@ function populateAddProductList(){
     productList.forEach(function(p){
         current_product = $("#add_product_list_item")
         current_product.append(`<tr">
-                    <td style="width:50%;"><h3>${p.productName} <br /> ${p.description} <br /> ${p.unitSize}<br /><br /></h3></td>
-                    <td style="width:5%;"><button class="btn btn-info btn-lg fav_product" style="padding:20px;margin-top:25%;"><h3>Fav</h3></button></td>
-                    <td style="width:40%;"><div class="btn-group btn-group-md" role="group" id="inc_product_add" style="margin-top:10%;">
-                    <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled"><h4 style="font-weight:bold;">$${p.aPrice}</h4></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-top" style="font-size:35px;"></span></button>
-                    <button type="button" class="btn btn-defualt"><h4 style="font-weight:bold;">${test_num}</h4></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" style="font-size:35px;"></span></button></div>
-                    <td style="width:5%;"><button type="button" class="btn btn-success btn-lg add_product" style="padding:20px;margin-top:25%;"><h3>Add</h3></button></td>
+                    <td ><h3>${p.productName}</h3><h4>${p.description}</h4><h3>${p.unitSize}</h3></td>
+                    <td ><button class="btn btn-info btn-lg fav_product" style=""><h3>Fav</h3></button></td>
+                    <td><button type="button" id="add_item_price" class="btn btn-defualt"><h3>$${p.aPrice}</h3></button></td>
+                    <td>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-top"></span></button>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                    <input type="text" placeholder="${test_num}"></input>
+                    </td>
+                    <td><button type="button" class="btn btn-success btn-lg add_product"><h3>Add</h3></button></td>
                     </tr>`) 
-    })
-    /*
-    for(var i = 0; i < num_items; i++){
-        
-            current_product.append(`<tr">
-                    <td style="width: 35%;"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /><br /></h3></td>
-                    <td style="width: 10%;"><button class="btn btn-info btn-lg fav_product" style="padding:20px;"><h3>Fav</h3></button></td>
-                    <td style="width: 45%;"><div class="btn-group btn-group-lg" role="group" id="inc_product_add">
-                    <button type="button" id="add_item_price" class="btn btn-defualt btn-disabled"><h3 style="font-weight:bold;">$${test_price}</h3></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-top" style="font-size:52px;"></span></button>
-                    <button type="button" class="btn btn-defualt"><h3 style="font-weight:bold;">${test_num}</h3></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" style="font-size:52px;"></span></button></div>
-                    <td style="width: 10%;"><button type="button" class="btn btn-success btn-lg add_product" style="padding:20px;"><h3>Add</h3></button></td>
-                    </tr>`) 
-    } 
-    */                                             
+    })  
+    addButtonClickIndicator()
+    favButtonClickIndicator()                                          
 }
 
 //Populate Accordion List of Current Products --> Initial

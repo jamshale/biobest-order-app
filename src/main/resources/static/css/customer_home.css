@@ -1,3 +1,51 @@
+/* ADD PRODUCT */
+#add_product_list_item td:first-child{
+  width:400px;
+}
+#add_product_list_item td:first-child h3:first-child{
+  font-weight:bold;
+}
+#add_product_list_item td:first-child h3:last-child{
+  font-weight:bold;
+}
+#add_product_list_item td:nth-child(2){
+  width:25px;
+}
+#add_product_list_item td:nth-child(2) button{
+  padding:20px;
+  margin-top:25%;
+}
+#add_product_list_item td:nth-child(3) button{
+  width:90px;
+  margin-top:40px;
+}
+#add_product_list_item td:nth-child(3) button h3{
+  font-weight: bold;
+}
+#add_product_list_item td:nth-child(4){
+  width:200px;
+}
+#add_product_list_item td:nth-child(4) button{
+  margin-top:15px;
+}
+#add_product_list_item td:nth-child(4) button span{
+  font-size:50px;
+}
+#add_product_list_item td:nth-child(4) input{
+  font-size:24pt;
+  width:100px;
+  text-align:center;
+  margin-top:10px;
+  margin-left:30px;
+}
+#add_product_list_item td:last-child{
+  width:25px;
+}
+#add_product_list_item td:last-child button{
+  padding:20px;
+  margin-top:25%;
+}
+/* ADD PRODUCT */
 
 #history_list_button h4{font-weight:bold;}
 #history_list_button td{width:25%;}
