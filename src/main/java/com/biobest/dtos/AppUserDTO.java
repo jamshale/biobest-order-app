@@ -3,7 +3,7 @@ package com.biobest.dtos;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class UserDTO {
+public class AppUserDTO {
 	
 	@NotNull
 	@NotEmpty

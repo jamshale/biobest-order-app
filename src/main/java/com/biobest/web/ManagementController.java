@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.biobest.dtos.UserDTO;
+import com.biobest.dtos.AppUserDTO;
 import com.biobest.entities.Customer;
-import com.biobest.entities.User;
+import com.biobest.entities.AppUser;
 import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.services.CustomerService;
-import com.biobest.services.UserService;
+import com.biobest.services.AppUserService;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -33,7 +33,7 @@ public class ManagementController {
     }
 
     @Autowired
-    private UserService userService;
+    private AppUserService userService;
     /*
     @Autowired
     private OrderService orderService;
@@ -49,8 +49,8 @@ public class ManagementController {
 
     @RequestMapping(value="/users", method=RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public List<User> getUsers(Model model){
-        return this.userService.getUsers();
+    public List<AppUser> getUsers(Model model){
+        return this.userService.getAppUsers();
     }
 
     @RequestMapping("/management_home")
@@ -72,8 +72,8 @@ public class ManagementController {
     @ResponseBody
     public String linkUserCustomer(@RequestParam("invCompany") String invCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
         Customer customer = this.customerService.getCustomer(invCompany);
-        User user = this.userService.getUserByFirstLast(firstName, lastName);
-        customer.addUser(user);
+        AppUser appUser = this.userService.getAppUserByFirstLast(firstName, lastName);
+        customer.addUser(appUser);
         this.customerService.updateCustomer(customer);
         return "success";
     }
@@ -82,9 +82,9 @@ public class ManagementController {
     @ResponseBody
     public String linkCustomerUser(@RequestParam("invCompany") String invCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
         Customer customer = this.customerService.getCustomer(invCompany);
-        User user = this.userService.getUserByFirstLast(firstName, lastName);
+        AppUser user = this.userService.getAppUserByFirstLast(firstName, lastName);
         user.addCustomer(customer);
-        this.userService.updateUser(user);
+        this.userService.updateAppUser(user);
         return "success";
     }
 
@@ -98,18 +98,18 @@ public class ManagementController {
 
     @RequestMapping(value="/management_users", method = RequestMethod.GET)
     public String management_users(Model model) {
-        UserDTO userDto = new UserDTO();
+        AppUserDTO userDto = new AppUserDTO();
         model.addAttribute("user", userDto);
         return "management_users";
     }
 
     @RequestMapping(value = "/management_users", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("user") @Valid UserDTO userDto, BindingResult result){
+    public ModelAndView createUser(@ModelAttribute("user") @Valid AppUserDTO userDto, BindingResult result){
         if(result.hasErrors()){
             return new ModelAndView("management_users", "user", userDto);
         }
         try{
-            userService.createUser(userDto);
+            userService.createAppUser(userDto);
         } catch (UserNameExistsException e){
             result.rejectValue("firstName", "user", "User name already exists!");
             result.rejectValue("lastName", "user", "User name already exists!");
@@ -118,7 +118,7 @@ public class ManagementController {
             return new ModelAndView("management_users", "user", userDto);
         }
         //
-        return new ModelAndView("management_users", "user", new UserDTO());
+        return new ModelAndView("management_users", "user", new AppUserDTO());
     }
 
     

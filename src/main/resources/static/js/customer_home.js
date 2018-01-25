@@ -68,14 +68,9 @@ function populateAddProductList(){
     productList.forEach(function(p){
         current_product = $("#add_product_list_item")
         current_product.append(`<tr">
-                    <td ><h3>${p.productName}</h3><h4>${p.description}</h4><h3>${p.unitSize}</h3></td>
-                    <td ><button class="btn btn-info btn-lg fav_product" style=""><h3>Fav</h3></button></td>
-                    <td><button type="button" id="add_item_price" class="btn btn-defualt"><h3>$${p.aPrice}</h3></button></td>
-                    <td>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-top"></span></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom"></span></button>
-                    <input type="text" placeholder="${test_num}"></input>
-                    </td>
+                    <td><h3>${p.productName}</h3><h4>${p.description}</h4><h3>${p.unitSize}</h3></td>
+                    <td><button type="button" id="add_item_price" class="btn btn-defualt"><h2>$${p.aPrice}</h2></button></td>
+                    <td><button class="btn btn-info btn-lg fav_product" style=""><h3>Fav</h3></button></td>
                     <td><button type="button" class="btn btn-success btn-lg add_product"><h3>Add</h3></button></td>
                     </tr>`) 
     })  
@@ -191,11 +186,11 @@ function addButtonClickIndicator() {
             if(border_setting== 'rgb(57, 132, 57)'){
                 $(this).css('border-width', '5px')
                 $(this).css('border-color', 'red')
-                $(this).css('padding', '15px')
+                $(this).css('padding', '10px')
             } else {
                 $(this).css('border-width', '1px')
                 $(this).css('border-color', 'rgb(57, 132, 57)')
-                $(this).css('padding', '20px')
+                $(this).css('padding', '15px')
             }
             
         });     
@@ -209,11 +204,11 @@ function favButtonClickIndicator() {
             if(border_setting== 'rgb(38, 154, 188)'){
                 $(this).css('border-width', '5px')
                 $(this).css('border-color', 'red')
-                $(this).css('padding', '15px')
+                $(this).css('padding', '10px')
             } else {
                 $(this).css('border-width', '1px')
                 $(this).css('border-color', 'rgb(38, 154, 188)')
-                $(this).css('padding', '20px')
+                $(this).css('padding', '15px')
             }
         });     
     });

@@ -25,7 +25,7 @@ public class Customer{
 	private String shipPhone; 
 	private String shipFax; 
 	private String shipEmail;
-	private Set<User> users;
+	private Set<AppUser> appUsers;
 
 	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
 						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipPhone, String shipFax, String shipEmail){
@@ -45,7 +45,7 @@ public class Customer{
 		this.shipPhone = shipPhone;   
 		this.shipFax = shipFax;   
 		this.shipEmail = shipEmail; 
-		this.users = new HashSet<>();
+		this.appUsers = new HashSet<>();
 	}
 
 	public String getInvCompany() {
@@ -176,12 +176,12 @@ public class Customer{
 		this.shipEmail = shipEmail;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<AppUser> getUsers() {
+		return appUsers;
 	}
 
-	public void addUser(User user) {
-		this.users.add(user);
+	public void addUser(AppUser user) {
+		this.appUsers.add(user);
 	}
 
 }
