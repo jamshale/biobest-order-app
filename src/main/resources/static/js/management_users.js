@@ -5,7 +5,7 @@ var clicked_user = "";
 $(document).ready(function ()   {
 
     $.ajax({
-        url: "/users",
+        url: "/appUsers",
         success: populateUserList
     })
     $.ajax({
@@ -22,7 +22,7 @@ function initiateCustomerList(customers){
 function populateUserList(users){
     userList = users;
     users.forEach(function(u){
-        $("#user_list").append(`<tr><td><h4>${u.firstName} <br />${u.lastName}</h4></td></tr>`)
+        $("#user_list").append(`<tr><td><h3>${u.firstName} <br />${u.lastName}</h3></td></tr>`)
     })
 }
 
@@ -40,14 +40,11 @@ $("#user_list").on('click', function(u){
 
 //Info Field Populator
 function addInfoToFields(user){
-    var inv_info = $("#user_info").html('');
-    inv_info.append(`<tr><td>
-    <h4>First Name:&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].firstName}</span></h4>
-    <h4>Last Name:&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].lastName}</span></h4>
-    <h4>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].email}</span></h4>
-    <h4>Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].phone}</span></h4>
-    <h4>Password:&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].password}</span></h4>
-    <h4>Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="not-bold">${user[0].activeStatus}</span></h4></td></tr>`)
+    $("#user_info_0").html(`<td style="width:200px;"><h3>First Name:</h3></td><td><h3 style="font-weight:normal;">${user[0].firstName}</h3></td>`)
+    $("#user_info_1").html(`<td style="width:200px;"><h3>Last Name:</h3></td><td><h3 style="font-weight:normal;">${user[0].lastName}</h3></td>`)
+    $("#user_info_2").html(`<td style="width:200px;"><h3>Email:</h3></td><td><h3 style="font-weight:normal;">${user[0].email}</h3></td>`)
+    $("#user_info_3").html(`<td style="width:200px;"><h3>Password:</h3></td><td><h3 style="font-weight:normal;">${user[0].password}</h3></td>`)
+    $("#user_info_4").html(`<td style="width:200px;"><h3>Active Status:</h3></td><td><h3 style="font-weight:normal;">${user[0].activeStatus}</h3></td>`)
     populateCustomerList();
     //info_highlight();
 }
@@ -56,6 +53,6 @@ function addInfoToFields(user){
 function populateCustomerList(){
     $("#customer_list").html("");
     clicked_user[0].customers.forEach(function(c){
-        $("#customer_list").append(`<tr><td><h4>${c.invCompany}</h4></td></tr>`)
+        $("#customer_list").append(`<tr><td><h3>${c.invCompany}</h3></td></tr>`)
     })
 }

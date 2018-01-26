@@ -17,7 +17,10 @@ public interface AppUserService {
 	public AppUser getAppUserByFirstLast(String firstName, String lastName);
 
 	@Transactional
-	public AppUser createAppUser(AppUserDTO appUserDto) throws UserNameExistsException;
+	public AppUser createGeneralAppUser(AppUserDTO appUserDto) throws UserNameExistsException, EmailExistsException;
+
+	@Transactional
+	public AppUser createConsultantAppUser(AppUserDTO appUserDto) throws UserNameExistsException, EmailExistsException;
 
 	@Transactional
 	public AppUser updateAppUser(AppUser appUser);

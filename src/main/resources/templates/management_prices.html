@@ -4,7 +4,6 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="css/management_prices.css" rel="stylesheet"/>
-    <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -12,42 +11,58 @@
     
 </head>
 <body style="background-color: rgba(223, 252, 252, 0.733)">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-4">
-                        
-                    <h2 style="font-weight:bold;color:green;margin-top:50px;">Product List:</h2>
+        <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand"><h4 style="font-weight:bold;">Biobest Order App</h4></a>
                     </div>
-                    <div class="col-md-8" style="text-align:right;margin-top:20px;">
-                    <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:40px;;width:500px;margin-top:20px;"/>
-                    </div>
+                    <ul class="nav navbar-nav">
+                        <li >
+                            <a href="management_customers.html"><h4>Customers</h4></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li >
+                            <a href="management_users.html"><h4>Users</h4></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="management_prices.html"><h4>Prices</h4></a>
+                        </li>
+                    </ul>
+                    <a id="logout" class="btn btn-primary" href="/logout" role="button"><h4>Log out</h4></a>
                 </div>
-                <div class="row">
+            </nav>
+   
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 style="font-weight:bold;color:green;">Product List:</h2>
+                    <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:40px;width:500px;margin-bottom:20px;margin-left:25%;"/>
+                    <table class="table" style="margin-bottom:0px;margin-left:17px;width:98%;">
+                            <tbody>
+                                <tr style="background-color:rgb(224, 224, 224);">
+                                    <td style="width:50%;padding-left:10px;"><h4>Item Code</h4><h3>Product Name</h3><h4>Description</h4></td>
+                                    <td style="width:10%;"><h3>Unit Size</h3></td>
+                                    <td style="width:10%;"><h3>Price A</h3></td>
+                                    <td style="width:10%;"><h3>Price B</h3></td>
+                                    <td style="width:10%;"><h3>Price C</h3></td>
+                                    <td style="width:10%;"><h3>Price D</h3></td>
+                                </tr>
+                            </tbody>
+                    </table>
                     <div id="price_list_table">
                         <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th style="padding-left:10px;">Item Code</th>
-                                    <th style="width:30%;">Product Name<br />Description</th>
-                                    <th>Unit Size</th>
-                                    <th>Price A</th>
-                                    <th>Price B</th>
-                                    <th>Price C</th>
-                                    <th>Price D</th>
-                                </tr>
-                            </thead>
-                            <tbody id="price_list">
-                                
+                            <tbody id="price_list">  
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
         </div>
-    </div>
+
+  
 <script src="js/management_prices.js"></script>
 </body>
 </html>

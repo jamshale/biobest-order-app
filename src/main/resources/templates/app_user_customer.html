@@ -3,8 +3,7 @@
 <head>
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="css/customer_home.css" rel="stylesheet"/>
-    <link href="css/common.css" rel="stylesheet"/>
+    <link href="css/app_user_customer.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -14,9 +13,9 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Biobest Order App</a>
+                <a class="navbar-brand" href="#"><h3>Biobest Order App</h3></a>
             </div>
-            <a id="logout" class="btn btn-primary" href="#" role="button">Log Out</a>
+            <a id="logout" class="btn btn-primary" href="/logout" role="button"><h3>Log Out</h3></a>
         </div>
     </nav>
     <div class="container-fluid">
@@ -36,7 +35,7 @@
             <div class="row" >
             <!-- Ship to Address -->
             <div class="col-sm-5" style="text-align:center;margin-left:40px;">
-                <h4 style="font-weight: bold; ">Ship-To Address:</h4>
+                <h3 style="font-weight: bold; ">Ship-To Address:</h3>
                 <div class="dropdown">
                     <button class="btn btn-default btn-block dropdown-toggle" type="button" id="ship_to_button" 
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,7 +48,7 @@
             </div>
             <!-- Invoice to Address -->
             <div class="col-sm-5" style="text-align:center;margin-left:40px;">
-                <h4 style="font-weight: bold; text-align:center;">Invoice-To Address:</h4>
+                <h3 style="font-weight: bold; text-align:center;">Invoice-To Address:</h3>
                 <div class="dropdown">
                     <button class="btn btn-default btn-block dropdown-toggle" type="button" id="invoice_to_button" 
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,13 +100,13 @@
                                     <div class="panel-heading">
                                         <div class="panel-title pull-left">
                                             <a data-toggle="collapse" data-parent="#main_accordion" href="">
-                                                <button type="button" id="product_list_button" class="btn btn-basic btn-sm btn-block text-left" style="text-align:left; padding-left:6px;"></button>
+                                                <button type="button" id="product_list_button" class="btn btn-basic btn-sm btn-block text-left"></button>
                                             </a>
                                         </div>
                                         <div class="panel-title pull-right">
                                             <div class="btn-group btn-group-lg" role="group" id="inc_product">
-                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button" style="font-weight:bold;"></button>
-                                                <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
+                                                <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button"></button>
+                                                <button type="button" class="btn btn-default inc_button">
                                                     <span class="glyphicon glyphicon-triangle-top" style="font-size:51px;"></span>
                                                 </button>
                                                 <button type="button"  class="btn btn-defualt" id="unit_amount" style="font-weight:bold;"></button>
@@ -120,8 +119,8 @@
                                     </div>
                                     <div class="panel-collapse collapse" id="">
                                         <div class="panel-body">
-                                            <button type="button" id="product_option_button" class="btn btn-success col-sm-4"><h4>Info</h4></button>
-                                            <button type="button" id="product_option_button" class="btn btn-danger col-sm-4"><h4>Remove</h4></button>
+                                            <button type="button" id="product_option_button" class="btn btn-success col-sm-4"><h3>Info</h3></button>
+                                            <button type="button" id="product_option_button" class="btn btn-danger col-sm-4"><h3>Remove</h3></button>
                                         </div>
                                     </div>
                                 </div>
@@ -193,11 +192,8 @@
             </div>
             <div class="modal-footer">   
                 <div class="row" >
-                    <div class="btn-group" role="group" style="margin-right: 20%;">
-                        <button class="btn btn-sm btn-warning float:left;" style="padding:10px;min-width:200px;"><h3>All</h3></button>
-                        <button class="btn btn-sm btn-info" style="padding:10px;min-width:200px;"><h3>Previous</h3></button>
-                        <button class="btn btn-sm btn-primary" style="padding:10px;min-width:200px;"><h3>Favourites</h3></button>
-                    </div>
+                    <button class="btn btn-sm btn-warning" style="padding:10px;min-width:200px;"><h3>All</h3></button>
+                    <button class="btn btn-sm btn-primary" style="padding:10px;min-width:200px;margin-right:25%;"><h3>Favourites</h3></button>
                 </div>           
             </div>
         </div>
@@ -213,7 +209,7 @@
                     <h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
                     </div>
                 </div>
             </div>
@@ -263,7 +259,7 @@
                         <h3 style="font-weight:bold;">Changes To Order<br />Since Your Last Visit</h3>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
                     </div>
                 </div>
             </div>
@@ -476,6 +472,6 @@
     </div>
 </div>
 
-<script src="js/customer_home.js"></script>
+<script src="js/app_user_customer.js"></script>
 </body>
 </html>

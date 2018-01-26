@@ -9,7 +9,7 @@ $(document).ready(function ()   {
         success: populateCustomerList
     })
     $.ajax({
-        url: "/users",
+        url: "/appUsers",
         success: initUserList
     })
 });
@@ -38,16 +38,19 @@ $("#all_user_list").on('click', function(u){
     $("#user_to_customer_modal").modal('toggle');
 })
 
+//Initiate User List
+function initUserList(appUsers){
+    userList = appUsers;
+}
 
 //Populate User List
 function populateUserList(){
     $("#user_list").html("");
-    clicked_customer[0].users.forEach(function(u){
+    clicked_customer[0].appUsers.forEach(function(u){
         $("#user_list").prepend(`<tr><td style="width:50%;"><h3>${u.firstName}<br />${u.lastName}</h3></td>
                                     <td style="padding-top:10px;width:30%;"><h3>${u.type}</h3></td>
                                     <td style="width:30%;"><button type="button" class="btn btn-lg btn-info" style="margin-top:10px;"><h4>${u.activeStatus}</h4></button></td></tr>`)
-    })
-    
+    })   
 }
 //Populate list of users to link to customer
 $("#add_user_button").on('click', function(u){
@@ -72,10 +75,6 @@ $("#remove_user_button").on('click', function(u){
     })
 })
 */
-//Initiate User List
-function initUserList(users){
-    userList = users;
-}
 
 //Populate List Of Customers Using Order App
 function populateCustomerList(customers){
@@ -124,13 +123,11 @@ function addInfoToFields(customer){
             <h4>Email:</h4><h5>${customer[0].shipEmail}</h5></td></tr>`)
     populateUserList();
     info_highlight();
-    
 }
-
 //Update highlighter
 function info_highlight(){
     setTimeout(function (){
-        $("#invoice_to_info, #ship_to_info").removeClass('border-class')
+        $(".info").removeClass('border-class')
     }, 200);
-    $("#invoice_to_info, #ship_to_info").addClass('border-class')
+    $(".info").addClass('border-class')
 }

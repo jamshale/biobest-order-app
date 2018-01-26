@@ -15,8 +15,8 @@ public abstract class AppUser {
     private String email;
     private String phone;
     private String password;
-    private String activeStatus;
-    private String type;
+	private String activeStatus;
+	private String type;
 	private Set<Customer> customers;
 	private List<String> roles;
 
@@ -24,7 +24,13 @@ public abstract class AppUser {
         this.firstName = firstName;
         this.lastName = lastName;
 		this.email = email;
-        this.activeStatus = "Active";
+        this.customers = new HashSet<>();
+	}
+	protected AppUser(String firstName, String lastName,  String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+		this.email = email;
+		this.password = password;
         this.customers = new HashSet<>();
     }
 
@@ -72,26 +78,24 @@ public abstract class AppUser {
 		this.customers.add(customer);
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * @return the roles
-	 */
 	public List<String> getRoles() {
 		return roles;
 	}
 
-	/**
-	 * @param roles the roles to set
-	 */
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
     
 } 

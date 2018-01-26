@@ -19,7 +19,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         boolean isManager = authentication.getAuthorities().stream().anyMatch(auth -> "ROLE_ADMIN".equals(auth.getAuthority()));
-        String targetUrl = isManager ? "/customer_home" : "/";
+        String targetUrl = isManager ? "/management_customers" : "/";
         if (response.isCommitted()){
             return;
         }

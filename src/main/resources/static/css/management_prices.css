@@ -1,19 +1,31 @@
+#logout {
+  margin: 7px;
+  float: right;
+}
+
+
 #price_list_table{
-  max-height: 800px;
+  max-height: 1000px;
   overflow-y: auto;
   border-width: 1px;
   border-style: solid;
   margin-left: 20px;
   margin-right: 20px;
 }
-.table, tr{
+
+.table tr{
   border-width: 2px;
   border-style: solid;
   background-color: white;
   
 }
-.table, tr th{
-  width:12%;
+
+.table td button{
+  margin-top:25px;
+  width: 80px;
+}
+.table h3{
+  font-weight:bold;
 }
 #price_list{
   border-style: solid;

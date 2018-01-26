@@ -1,8 +1,16 @@
+#logout {
+  margin: 7px;
+  float: right;
+}
+select:invalid { 
+    color: gray; 
+  }
+
 h3.header-label{
   font-weight:bold;
   color:green;
   margin-top:30px;
-  margin-left: 20px;
+  
 }
 .table, tr{
   border-width: 2px;
@@ -15,24 +23,16 @@ h3.header-label{
 .table button{
   margin-top: 10px;
 }
-#user_info h4{
+#user_info h3{
   font-weight:bold;
 }
 
-#user_list_table tbody, #user_list_table thead { display: block; }
-
-#user_list_table tbody td{ 
-  width: 14%; 
-}
-#user_list_table thead th {
-    width: 14%; 
-    
-}
-#user_list_table tbody {
-  max-height: 600px;      
+#user_list_table{
+  height: 400px;      
   overflow-y: auto;    
   overflow-x: hidden; 
 }
+
 thead th {
     background-color: rgb(248, 247, 246);
 }

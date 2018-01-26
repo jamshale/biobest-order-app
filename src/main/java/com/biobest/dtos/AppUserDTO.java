@@ -16,9 +16,6 @@ public class AppUserDTO {
 	private String email;
 	@NotNull
 	@NotEmpty
-	private String phone;
-	@NotNull
-	@NotEmpty
 	private String type;
 	@NotNull
 	@NotEmpty
@@ -49,14 +46,6 @@ public class AppUserDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	public String getActiveStatus() {

@@ -16,10 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biobest.dtos.AppUserDTO;
 import com.biobest.entities.Customer;
 import com.biobest.entities.AppUser;
+import com.biobest.exceptions.EmailExistsException;
 import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.services.CustomerService;
 import com.biobest.services.AppUserService;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -34,24 +34,9 @@ public class ManagementController {
 
     @Autowired
     private AppUserService userService;
-    /*
-    @Autowired
-    private OrderService orderService;
-    */
+
     @Autowired
     private CustomerService customerService;
-
-    @RequestMapping(value="/customers", method=RequestMethod.GET, produces="application/json")
-    @ResponseBody
-    public List<Customer> getCustomers(Model model){
-        return this.customerService.getCustomers();
-    }
-
-    @RequestMapping(value="/users", method=RequestMethod.GET, produces="application/json")
-    @ResponseBody
-    public List<AppUser> getUsers(Model model){
-        return this.userService.getAppUsers();
-    }
 
     @RequestMapping("/management_home")
     public String management_home(Model model) {
@@ -66,6 +51,10 @@ public class ManagementController {
     @RequestMapping("/management_customers")
     public String management_customers(Model model) {
         return "management_customers";
+    }
+    @RequestMapping("/app_user_customer")
+    public String app_user_custommer(Model model) {
+        return "app_user_customer";
     }
 
     @RequestMapping("/linkUserCustomer")
@@ -82,46 +71,49 @@ public class ManagementController {
     @ResponseBody
     public String linkCustomerUser(@RequestParam("invCompany") String invCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
         Customer customer = this.customerService.getCustomer(invCompany);
-        AppUser user = this.userService.getAppUserByFirstLast(firstName, lastName);
-        user.addCustomer(customer);
-        this.userService.updateAppUser(user);
+        AppUser appUser = this.userService.getAppUserByFirstLast(firstName, lastName);
+        appUser.addCustomer(customer);
+        this.userService.updateAppUser(appUser);
         return "success";
-    }
-
-    @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
-    @ResponseBody
-    public Customer createCustomer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
-    String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipPhone, String shipFax, String shipEmail){
-        return customerService.createCustomer( invCompany,  invContact,  invAddress,  invCityState,  invZip,  invPhone,  invFax,  invEmail,
-                shipCompany,  shipContact,  shipAddress,  shipCityState,  shipZip,  shipPhone,  shipFax,  shipEmail);
     }
 
     @RequestMapping(value="/management_users", method = RequestMethod.GET)
     public String management_users(Model model) {
         AppUserDTO userDto = new AppUserDTO();
-        model.addAttribute("user", userDto);
+        model.addAttribute("appUser", userDto);
         return "management_users";
     }
 
-    @RequestMapping(value = "/management_users", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("user") @Valid AppUserDTO userDto, BindingResult result){
+    @RequestMapping(value = "/create_user", method = RequestMethod.POST)
+    public ModelAndView createGeneralUser(@ModelAttribute("appUser") @Valid AppUserDTO appUserDto, BindingResult result){
         if(result.hasErrors()){
-            return new ModelAndView("management_users", "user", userDto);
+            return new ModelAndView("management_users", "appUser", appUserDto);
         }
-        try{
-            userService.createAppUser(userDto);
-        } catch (UserNameExistsException e){
-            result.rejectValue("firstName", "user", "User name already exists!");
-            result.rejectValue("lastName", "user", "User name already exists!");
+        if(appUserDto.getType()=="General"){
+            try{
+                userService.createGeneralAppUser(appUserDto);
+            } catch (UserNameExistsException e){
+                result.rejectValue("firstName", "appUser", "User name already exists!");
+                result.rejectValue("lastName", "appUser", "User name already exists!");
+            } catch (EmailExistsException e2){
+                result.rejectValue("email", "appUser", "User name already exists!");
+            }
+            if(result.hasErrors()){
+                return new ModelAndView("management_users", "appUser", appUserDto);
+            }
+        } else if (appUserDto.getType()=="Consultant"){
+            try{
+                userService.createConsultantAppUser(appUserDto);
+            } catch (UserNameExistsException e){
+                result.rejectValue("firstName", "appUser", "User name already exists!");
+                result.rejectValue("lastName", "appUser", "User name already exists!");
+            } catch (EmailExistsException e2){
+                result.rejectValue("email", "appUser", "User name already exists!");
+            }
+            if(result.hasErrors()){
+                return new ModelAndView("management_users", "appUser", appUserDto);
+            }
         }
-        if(result.hasErrors()){
-            return new ModelAndView("management_users", "user", userDto);
-        }
-        //
-        return new ModelAndView("management_users", "user", new AppUserDTO());
-    }
-
-    
-    
- 
+        return new ModelAndView("management_users", "appUser", new AppUserDTO());
+    } 
 }

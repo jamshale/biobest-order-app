@@ -3,6 +3,10 @@ var options = {
     weekday: "long", year: "numeric", month: "short",  
     day: "numeric", hour: "2-digit", minute: "2-digit"  
 };  
+var test = {  
+    weekday: "long", 
+    hour: "2-digit", minute: "2-digit"  
+};  
 //Global Test Variables
 var total_cost = "1080.89"
 var test_product = "Atheta-System-500"
@@ -37,8 +41,8 @@ $(document).ready(function ()   {
         
         populateChangesOrderList();
         populateGetFavouriteOrderList();
-        addButtonClickIndicator();
-        favButtonClickIndicator();
+        //addButtonClickIndicator();
+        //favButtonClickIndicator();
 });
 
 function initiateLists(products){
@@ -85,10 +89,10 @@ function populateProductList() {
         var clone2 = $("#product_list_panel").children().first().next().clone()
         current_product = $("#product_list_panel")
             current_product.find("a").first().attr('href', '#main_collapse_' + i)
-            current_product.find("#product_list_button").html(`<h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3>`)
-            current_product.find("#unit_amount").html(`<h3 style="font-weight:bold;">${test_num}</h3>`)
+            current_product.find("#product_list_button").html(`<h3>${test_product}</h3><h4>${test_desc}</h4><h5>${test_product_size}</h3>`)
+            current_product.find("#unit_amount").html(`<h3>${test_num}</h3>`)
             current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
-            current_product.find("#item_price").html(`<h3 style="font-weight:bold;">$${test_price}</h3>`)
+            current_product.find("#item_price").html(`<h3>$${test_price}</h3>`)
         if(i != num_items-1 ){
             clone2.prependTo($("#product_list_panel"))
             clone1.prependTo($("#product_list_panel"))
@@ -177,7 +181,6 @@ function populateHistoryList() {
         }
     }
 }
-
 //Add Product Modal Button Initialization
 function addButtonClickIndicator() {
     $(".add_product").each(function(){
@@ -213,25 +216,17 @@ function favButtonClickIndicator() {
         });     
     });
 }
-
 //Populate Changes Order List
 function populateChangesOrderList(){
     for(var i = 0; i < test_order_num; i++){
         current_product = $("#changes_order_list_item")
             current_product.append(`<tr style="background:rgb(235, 128, 102);">
-                    <td style="padding-left:10px;width:25%;"><h3>${date.toLocaleTimeString("en-us", options)}</h3></td>
-                    <td style="width:40%"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /></h3></td>
-                    <td style="width:10%"><span class="glyphicon glyphicon-remove" style="font-size: 300%;"></span></td>
-                    <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
+                    <td><h4>${date.toLocaleTimeString("en-us", test)}</h4></td>
+                    <td><h3>${test_product}</h3><h4>${test_desc}</h4><h5>${test_product_size}</h5></td>
+                    <td><span class="glyphicon glyphicon-remove"></span></td>
+                    <td><h4>User:</h4><h3>${test_user_name}</h3></td>
                     </tr>`)       
     }
-    current_product.append(`<tr style="background: rgba(45, 189, 45, 0.493);">
-                    <td style="padding-left:10px;width:25%;"><h3>${date.toLocaleTimeString("en-us", options)}</h3></td>
-                    <td style="width:40%"><h3>${test_product} <br /> ${test_desc} <br /> ${test_product_size}<br /></h3></td>
-                    <td style="width:10%"><span class="glyphicon glyphicon-ok" style="font-size: 300%;"></span></td>
-                    <td style="width:25%;margin-left:15px;"><h3 style="font-weight:bold;">User:</h3><h3>${test_user_name}</h3></td>
-                    </tr>`)
-
 }
 
 

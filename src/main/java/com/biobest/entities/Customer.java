@@ -176,12 +176,12 @@ public class Customer{
 		this.shipEmail = shipEmail;
 	}
 
-	public Set<AppUser> getUsers() {
+	public Set<AppUser> getAppUsers() {
 		return appUsers;
 	}
 
-	public void addUser(AppUser user) {
-		this.appUsers.add(user);
+	public void addUser(AppUser appUser) {
+		this.appUsers.add(appUser);
 	}
 
 }
