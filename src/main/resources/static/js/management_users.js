@@ -22,7 +22,7 @@ function initiateCustomerList(customers){
 function populateUserList(users){
     userList = users;
     users.forEach(function(u){
-        $("#user_list").append(`<tr><td><h3>${u.firstName} <br />${u.lastName}</h3></td></tr>`)
+        $("#user_list").append(`<tr><td><h3 style="margin:5px;">${u.firstName} <br />${u.lastName}</h3></td></tr>`)
     })
 }
 
@@ -36,6 +36,7 @@ $("#user_list").on('click', function(u){
             return (first_name === user.firstName && last_name === user.lastName);
     });
     addInfoToFields(clicked_user);
+    info_highlight();
 })
 
 //Info Field Populator
@@ -46,13 +47,21 @@ function addInfoToFields(user){
     $("#user_info_3").html(`<td style="width:200px;"><h3>Password:</h3></td><td><h3 style="font-weight:normal;">${user[0].password}</h3></td>`)
     $("#user_info_4").html(`<td style="width:200px;"><h3>Active Status:</h3></td><td><h3 style="font-weight:normal;">${user[0].activeStatus}</h3></td>`)
     populateCustomerList();
-    //info_highlight();
+   
 }
 
 //Populate Selected User Customer List
 function populateCustomerList(){
     $("#customer_list").html("");
     clicked_user[0].customers.forEach(function(c){
-        $("#customer_list").append(`<tr><td><h3>${c.invCompany}</h3></td></tr>`)
+        $("#customer_list").append(`<tr><td><h3 style="margin-left:10px;">${c.invCompany}</h3></td></tr>`)
     })
+}
+
+//Update highlighter
+function info_highlight(){
+    setTimeout(function (){
+        $(".info").removeClass('border-class')
+    }, 200);
+    $(".info").addClass('border-class')
 }

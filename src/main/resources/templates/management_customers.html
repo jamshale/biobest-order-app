@@ -37,103 +37,101 @@
             </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <div class="row">
+            <div class="col-sm-4" style="margin-left:10px;">
                 <h3 class="header_label" >Customer List:</h3>
-                <input type="text" class="form-control" placeholder="Search" style="font-size:14pt;height:30px;width:300px;margin-left:15%;margin-bottom:10px;"/>
-                    <div id="customer_list_table">
+                <input type="text" class="form-control" placeholder="Search" style="font-size:16pt;font-weight:bold;height:40px;width:100%;margin-bottom:10px;"/>
+                <table class="table" style="margin-bottom:0px;">
+                    <tbody>
+                        <tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium">
+                        <td><h3 style="font-weight:bold;margin:5px;">Customers Using App</h3></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="customer_list_table">
+                    <table class="table table-hover">
+                        <tbody id="customer_list">   
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="row" style="text-align:center;">
+                    <button type="button" class="btn btn-success" style="font-weight:bold;padding-right:60px;padding-left:60px;margin-top:15px;" data-toggle="modal" data-target="#customer_to_app_modal">
+                                <h4 style="font-weight:bold;">Add Customer<br /> To Order App</h4></button>
+                </div>
+                    <h3 class="header_label">Users:</h3>
+                    <table class="table" style="margin:0px;">
+                        <tbody>
+                            <tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium">
+                            <td><h3 style="font-weight:bold;margin:5px;">Linked Users</h3></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="user_list_table" >
                         <table class="table table-hover">
-                            <thead><tr><th style="width:30%;padding-left:10px;">Customer's Using Order App</th></tr>
-                            </thead>
-                            <tbody id="customer_list">   
+                            <tbody id="user_list">
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="row" style="text-align:center;">
-                <button type="button" class="btn btn-success" 
-                            style="font-weight:bold;padding-right:60px;padding-left:60px;margin-top:15px;">
-                                <h4 style="font-weight:bold;">Add Customer<br /> To Order App</h4></button>
+                    <div style="text-align:center;">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#user_to_customer_modal" id="add_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
+                        <h4 style="font-weight:bold;" >Add User For -----------</h4>
+                    </button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#remove_user_modal" id="remove_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
+                        <h4 style="font-weight:bold;">Remove User For -----------</h4>
+                    </button>  
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="col-sm-8">
-                        <div class="row" style="text-align: center;">
-                            <button type="button" class="btn btn-lg btn-primary management_customer_button">Current Order</button>
-                        </div>
-                        <div class="row" style="text-align: center;">
-                            <button type="button" class="btn btn-lg btn-warning management_customer_button">Order history</button>
-                        </div> 
-                        <div class="row" style="text-align: center;">
-                            <button type="button" class="btn btn-lg btn-danger management_customer_button">Deactivate</button>
-                        </div>
+            <div class="col-sm-7">
+                
+                <div class="row">
                     <h3 class="header_label">Customer Information:</h3>
                     <div class="col-sm-6">  
                         <table class="table info">
-                            <thead><tr><th>Invoice-To:</th></tr>
+                            <thead><tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium"><th><h4 style="font-weight:bold;">Invoice-To:</h4></th></tr>
                             </thead>
                             <tbody id="invoice_to_info">
                                 <tr><td>
-                                    <h4>Company:</h4><h5 id="invoice_info_0">----------</h5>
-                                    <h4>Contact:</h4><h5 id="invoice_info_1">----------</h5>
-                                    <h4>Street #:</h4><h5 id="invoice_info_2">----------</h5>
-                                    <h4>City, State:</h4><h5 id="invoice_info_3">----------</h5>
-                                    <h4>Zip:</h4><h5 id="invoice_info_4">----------</h5>
-                                    <h4>Phone:</h4><h5 id="invoice_info_5">----------</h5>
-                                    <h4>Fax:</h4><h5 id="invoice_info_6">----------</h5>
-                                    <h4>Email:</h4><h5 id="invoice_info_7">----------</h5>
+                                    <h3>Company:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>Contact:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>Street #:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>City, State:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>Zip:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>Phone:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>Fax:</h3><h4 style="text-align: center;color:green;">----------</h4>
+                                    <h3>Email:</h3><h4 style="text-align: center;color:green;">----------</h4>
                                 </td></tr>
                             </tbody>
                         </table>   
                     </div>
-                        <div class="col-sm-6">
-                            <table class="table info">
-                                <thead><tr><th>Ship-To:</th></tr></thead>
-                                <tbody id="ship_to_info">
-                                    <tr><td>
-                                        <h4>Company:</h4><h5 id="ship_info_0">----------</h5>
-                                        <h4>Contact:</h4><h5 id="ship_info_1">----------</h5>
-                                        <h4>Street #:</h4><h5 id="ship_info_2">----------</h5>
-                                        <h4>City, State:</h4><h5 id="ship_info_3">----------</h5>
-                                        <h4>Zip:</h4><h5 id="ship_info_4">----------</h5>
-                                        <h4>Phone:</h4><h5 id="ship_info_5">----------</h5>
-                                        <h4>Fax:</h4><h5 id="ship_info_6">----------</h5>
-                                        <h4>Email:</h4><h5 id="ship_info_7">----------</h5>
-                                    </td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                
-                    <div class="col-sm-4">
-                        <div class="row">
-                            <h3 class="header_label">Users:</h3>
-                            <div id="user_list_table" >
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th style="width:20%;padding-left:10px;">Users</th>
-                                            <th>Type</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="user_list">
-                                    </tbody>
-                                </table>
-                            </div>
-                            <button type="button" class="btn btn-success btn-block" style="margin-top:15px;margin-left:40%;" 
-                                        data-toggle="modal" data-target="#user_to_customer_modal" id="add_user_button">
-                                        <h4 style="font-weight:bold;" >Add User For -----------</h4></button>
-                            <button type="button" class="btn btn-danger btn-block" style="margin-top:15px;margin-left:40%;" 
-                                        data-toggle="modal" data-target="#remove_user_modal" id="remove_user_button">
-                                        <h4 style="font-weight:bold;">Remove User For -----------</h4></button>
-                        </div>
-                    </div>
+					<div class="col-sm-6">
+						<table class="table info">
+							<thead><tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium"><th><h4 style="font-weight:bold;">Ship-To:</h4></th></tr></thead>
+							<tbody id="ship_to_info">
+								<tr><td>
+									<h3>Company:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>Contact:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>Street #:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>City, State:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>Zip:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>Phone:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>Fax:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+									<h3>Email:</h3><h4 style="text-align: center;color:green;" >----------</h4>
+								</td></tr>
+							</tbody>
+						</table>
+					</div>
+                </div>
+                <div style="text-align: center; margin-left:20px;">
+                    <button type="button" class="btn btn-lg btn-primary management_customer_button"><h4>Current Order</h4></button>
+                    <button type="button" class="btn btn-lg btn-warning management_customer_button"><h4>Order History</h4></button>
+                    <button type="button" class="btn btn-lg btn-danger management_customer_button"><h4>Deactivate</h4></button>
                 </div>
             </div>
-        </div>
+ 
+
+        </div> 
     </div>
+
     <!-- Add User to Customer Modal -->
     <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="user_to_customer_modal">
         <div class="modal-dialog modal-lg">
@@ -166,6 +164,52 @@
             </div>
         </div>
     </div>
+    <!-- Add Customer To Application -->
+    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="customer_to_app_modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h3 style="font-weight:bold;">Fill In Customer Information</h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">   
+                        <div class="row">
+                            <div class="col-sm-12" style="margin:80px;">
+                                    <h3 style="font-weight:bold;">Invoice-to</h3>
+                                    <input type="text" id="inv_company" placeholder="company" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="inv_contact" placeholder="contact" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="inv_address" placeholder="address" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="inv_city_state" placeholder="City/State" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="inv_zip" placeholder="Zip/Postal" style="font-size:16pt;font-weight:bold"/>   
+                                    <input type="text" id="inv_phone" placeholder="Phone" style="font-size:16pt;font-weight:bold"/> 
+                                    <input type="text" id="inv_fax" placeholder="Fax" style="font-size:16pt;font-weight:bold"/> 
+                                    <input type="text" id="inv_email" placeholder="Email" style="font-size:16pt;font-weight:bold"/>
+                                   
+                                    <h3 style="font-weight:bold;">Ship-to</h3>
+                                    <input type="text" id="ship_company" placeholder="company" style="font-size:16pt;font-weight:bold"/> 
+                                    <input type="text" id="ship_contact" placeholder="contact" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="ship_address" placeholder="address" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="ship_city_state" placeholder="City/State" style="font-size:16pt;font-weight:bold"/>
+                                    <input type="text" id="ship_zip" placeholder="Zip/Postal" style="font-size:16pt;font-weight:bold"/>   
+                                    <input type="text" id="ship_phone" placeholder="Phone" style="font-size:16pt;font-weight:bold"/> 
+                                    <input type="text" id="ship_fax" placeholder="Fax" style="font-size:16pt;font-weight:bold"/> 
+                                    <input type="text" id="ship_email" placeholder="Email" style="font-size:16pt;font-weight:bold"/>
+                                    <input id="submit_customer_button" type="button" value="Go"  style="font-size:16pt;font-weight:bold"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer"> 
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- Add User to Customer Modal -->
     <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="remove_user_modal">
         <div class="modal-dialog modal-lg">

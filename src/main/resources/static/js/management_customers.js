@@ -47,8 +47,8 @@ function initUserList(appUsers){
 function populateUserList(){
     $("#user_list").html("");
     clicked_customer[0].appUsers.forEach(function(u){
-        $("#user_list").prepend(`<tr><td style="width:50%;"><h3>${u.firstName}<br />${u.lastName}</h3></td>
-                                    <td style="padding-top:10px;width:30%;"><h3>${u.type}</h3></td>
+        $("#user_list").prepend(`<tr style="margin:5px;"><td style="width:50%;"><h4>${u.firstName}<br />${u.lastName}</h4></td>
+                                    <td style="padding-top:10px;width:30%;"><h4>${u.type}</h4></td>
                                     <td style="width:30%;"><button type="button" class="btn btn-lg btn-info" style="margin-top:10px;"><h4>${u.activeStatus}</h4></button></td></tr>`)
     })   
 }
@@ -104,23 +104,23 @@ function addInfoToFields(customer){
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
     inv_info.append(`<tr><td>
-            <h4>Company:</h4><h5>${customer[0].invCompany}</h5>
-            <h4>Contact:</h4><h5>${customer[0].invContact}</h5>
-            <h4>Street #:</h4><h5>${customer[0].invAddress}</h5>
-            <h4>City, State:</h4><h5>${customer[0].invCityState}</h5>
-            <h4>Zip:</h4><h5>${customer[0].invZip}</h5>
-            <h4>Phone:</h4><h5>${customer[0].invPhone}</h5>
-            <h4>Fax:</h4><h5>${customer[0].invFax}</h5>
-            <h4>Email:</h4><h5>${customer[0].invEmail}</h5></td></tr>`)
+            <h3>Company:</h3><h4 style="color:green; text-align:center;">${customer[0].invCompany}</h4>
+            <h3>Contact:</h3><h4 style="color:green; text-align:center;">${customer[0].invContact}</h4>
+            <h3>Street #:</h3><h4 style="color:green; text-align:center;">${customer[0].invAddress}</h4>
+            <h3>City, State:</h3><h4 style="color:green; text-align:center;">${customer[0].invCityState}</h4>
+            <h3>Zip:</h3><h4 style="color:green; text-align:center;">${customer[0].invZip}</h4>
+            <h3>Phone:</h3><h4 style="color:green; text-align:center;">${customer[0].invPhone}</h4>
+            <h3>Fax:</h3><h4 style="color:green; text-align:center;">${customer[0].invFax}</h4>
+            <h3>Email:</h3><h4 style="color:green; text-align:center;">${customer[0].invEmail}</h4></td></tr>`)
     ship_info.append(`<tr><td>
-            <h4>Company:</h4><h5>${customer[0].shipCompany}</h5>
-            <h4>Contact:</h4><h5>${customer[0].shipContact}</h5>
-            <h4>Street #:</h4><h5>${customer[0].shipAddress}</h5>
-            <h4>City, State:</h4><h5>${customer[0].shipCityState}</h5>
-            <h4>Zip:</h4><h5>${customer[0].shipZip}</h5>
-            <h4>Phone:</h4><h5>${customer[0].shipPhone}</h5>
-            <h4>Fax:</h4><h5>${customer[0].shipFax}</h5>
-            <h4>Email:</h4><h5>${customer[0].shipEmail}</h5></td></tr>`)
+            <h3>Company:</h3><h4 style="color:green; text-align:center;">${customer[0].shipCompany}</h4>
+            <h3>Contact:</h3><h4 style="color:green; text-align:center;">${customer[0].shipContact}</h4>
+            <h3>Street #:</h3><h4 style="color:green; text-align:center;">${customer[0].shipAddress}</h4>
+            <h3>City, State:</h3><h4 style="color:green; text-align:center;">${customer[0].shipCityState}</h4>
+            <h3>Zip:</h3><h4 style="color:green; text-align:center;">${customer[0].shipZip}</h4>
+            <h3>Phone:</h3><h4 style="color:green; text-align:center;">${customer[0].shipPhone}</h4>
+            <h3>Fax:</h3><h4 style="color:green; text-align:center;">${customer[0].shipFax}</h4>
+            <h3>Email:</h3><h4 style="color:green; text-align:center;">${customer[0].shipEmail}</h4></td></tr>`)
     populateUserList();
     info_highlight();
 }

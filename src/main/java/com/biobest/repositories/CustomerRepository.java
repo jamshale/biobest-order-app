@@ -8,10 +8,10 @@ import org.springframework.data.mongodb.repository.Query;
 
 public interface CustomerRepository extends MongoRepository<Customer, String>{
 
-    @Query(" {'invCompany': ?0}")
+    @Query("{}")
     List<Customer> findCustomers(Set<String> ids);
 
-    @Query("{ 'invCompany': ?0 }")
-    Customer findByInvCompany(String id);
+    @Query("{ 'shipCompany': ?0 }")
+    Customer findByShipCompany(String id);
 
 }

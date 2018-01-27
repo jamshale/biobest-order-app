@@ -40,3 +40,10 @@ thead th {
 .not-bold{
   font-weight:normal;
 }
+
+.border-class{
+  border-width: 5px;
+  border-style: solid;
+  border-color: red;
+  padding:5px;
+}

@@ -6,8 +6,6 @@ table {
   background-color: white;
 }
 
-tbody, thead { display: block; }
-
 #customer_list_table tbody {
     height: 550px;      
     overflow-y: auto;    
@@ -19,24 +17,15 @@ tbody, thead { display: block; }
   overflow-x: hidden; 
 }
 
-#customer_list_table{
-  width: 100%;
-  margin-left: 20px; 
-}
-#user_list_table{
- width: 150%;
- margin-left: 50px;
-}
-
-
-#customer_list_table tbody td, #customer_list_table thead th {
-  width: 14%;  /* Optional */
-}
-
 .management_customer_button {
-    width: 300px;
-    margin-top:10px;
-    padding: 10px;
+    width: 150px;
+    margin-top:5px;
+    margin-right:5px;
+    margin-left:5px;
+}
+.management_customer_button h4 {
+  font-weight:bold;
+  
 }
   
 .table, tr{
@@ -49,13 +38,8 @@ tbody, thead { display: block; }
   border-style: none;
   background-color: white;
 }
-.table, tr th{
-  width:12%;
-}
 
-#customer_list{
-  border-style: solid;
-}
+
 thead tr{
   background-color: rgb(235, 235, 235);
 }
@@ -117,4 +101,51 @@ h3.header_label{
   margin-right: 15px;
   margin-top:0px;
   margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+/*Modal Settings */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+#user_to_customer_modal .modal-dialog  {width:80%;}
+#customer_to_app .modal-dialog  {width:80%;}
+
+/* Mobile Screens */
+@media screen 
+  and (min-width: 768px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+  #user_to_customer_modal .modal-dialog  {width:900px;}
+  #customer_to_app_modal .modal-dialog  {width:900px;}
+
+}
+
+@media screen 
+    and (min-width: 768px) {
+    #user_to_customer_modal .modal-dialog  {width:900px;}
+    #customer_to_app_modal .modal-dialog  {width:900px;}
+
 }
