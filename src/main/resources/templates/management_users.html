@@ -99,26 +99,26 @@
             </div>
             <div class="col-sm-7" >
                     <h3 class="header-label">Create User:</h3>
-                <form action="/createUser" th:object="${appUser}" method="POST" enctype="utf8">
+                <form action="/management_users" th:object="${appUser}" method="POST" enctype="utf8">
                     <lable></lable>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="First Name" th:field="*{firstName}" style="font-size:16pt;height:40px;"></input>
+                        <input typr="text" class="form-control" placeholder="First Name" th:field="*{firstName}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('firstName')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" style="font-size:16pt;height:40px;"></input>
+                        <input typr="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('lastName')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="Email" th:field="*{email}" style="font-size:16pt;height:40px;"></input>
+                        <input typr="text" class="form-control" placeholder="Email" th:field="*{email}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('email')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="Password" th:field="*{password}" style="font-size:16pt;height:40px;"></input>
+                        <input typr="text" class="form-control" placeholder="Password" th:field="*{password}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('password')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <select class="form-control required" th:field="*{type}" style="font-size:16pt;height:40px;">
+                        <select class="form-control required" th:field="*{type}" style="font-size:20pt;height:50px;">
                             <option value="" class="disabled selected hidden">Type</option>
                             <option value="General">General</option>
                             <option value="Consultant">Consultant</option>
@@ -126,7 +126,7 @@
                         <div th:each="error : ${#fields.errors('type')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <select class="form-control required" th:field="*{activeStatus}" style="font-size:16pt;height:40px;">
+                        <select class="form-control required" th:field="*{activeStatus}" style="font-size:20pt;height:50px;">
                             <option value="" class="disabled selected hidden">Status</option>
                             <option value="Active">Active</option>
                             <option value="Not-Active">Not-Active</option>

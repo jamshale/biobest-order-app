@@ -44,16 +44,17 @@ public class CustomerDTO{
     private String shipCityState; 
 	@NotEmpty
 	@NotNull
-    private String shipZip; 
+	private String shipZip; 
+	@NotEmpty
+	@NotNull
+    private String shipEmail;
 	@NotEmpty
 	@NotNull
     private String shipPhone; 
 	@NotEmpty
 	@NotNull
     private String shipFax; 
-	@NotEmpty
-	@NotNull
-    private String shipEmail;
+
     
 public String getInvCompany() {
 		return invCompany;
@@ -177,6 +178,10 @@ public String getInvCompany() {
 
 	public String getShipEmail() {
 		return shipEmail;
+	}
+
+	public void setShipEmail(String shipEmail){
+		this.shipEmail = shipEmail;
 	}
 
 

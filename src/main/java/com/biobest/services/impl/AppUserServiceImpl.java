@@ -37,31 +37,31 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     @Transactional
-    public AppUser createGeneralAppUser(AppUserDTO userDto) throws UserNameExistsException, EmailExistsException {
-        AppUser check = appUserRepository.findByFirstLast(userDto.getFirstName(),userDto.getLastName());
+    public AppUser createGeneralAppUser(AppUserDTO appUserDto) throws UserNameExistsException, EmailExistsException {
+        AppUser check = appUserRepository.findByFirstLast(appUserDto.getFirstName(),appUserDto.getLastName());
         if(check != null){
             throw new UserNameExistsException("A user with that name already exists!");
         }
-        check = appUserRepository.findByEmail(userDto.getEmail());
+        check = appUserRepository.findByEmail(appUserDto.getEmail());
         if(check != null){
             throw new EmailExistsException("A user with that email already exists!");
         }
-        General newGeneral = new General(userDto.getFirstName(), userDto.getLastName(), userDto.getEmail(), userDto.getPassword());
+        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus());
         return appUserRepository.insert(newGeneral);
     }
 
     @Override
     @Transactional
-    public AppUser createConsultantAppUser(AppUserDTO userDto) throws UserNameExistsException, EmailExistsException {
-        AppUser check = appUserRepository.findByFirstLast(userDto.getFirstName(),userDto.getLastName());
+    public AppUser createConsultantAppUser(AppUserDTO appUserDto) throws UserNameExistsException, EmailExistsException {
+        AppUser check = appUserRepository.findByFirstLast(appUserDto.getFirstName(),appUserDto.getLastName());
         if(check != null){
             throw new UserNameExistsException("A user with that name already exists!");
         }
-        check = appUserRepository.findByEmail(userDto.getEmail());
+        check = appUserRepository.findByEmail(appUserDto.getEmail());
         if(check != null){
             throw new EmailExistsException("A user with that email already exists!");
         }
-        Consultant newConsultant = new Consultant(userDto.getFirstName(), userDto.getLastName(), userDto.getEmail(), userDto.getPassword());
+        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus() );
         return appUserRepository.insert(newConsultant);
     }
 

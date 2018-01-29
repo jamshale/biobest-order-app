@@ -99,8 +99,8 @@ $("#customer_list").on('click', function(c){
 
 //Info Field Populator
 function addInfoToFields(customer){
-    $("#add_user_button").html(`<h4 style="font-weight:bold;">Add User For (${clicked_customer[0].invCompany})</h4>`)
-    $("#remove_user_button").html(`<h4 style="font-weight:bold;">Remove User For (${clicked_customer[0].invCompany})</h4>`)
+    $("#add_user_button").html(`<h4 style="font-weight:bold;">Add User For:<br /><strong>${clicked_customer[0].invCompany}</strong></h4>`)
+    $("#remove_user_button").html(`<h4 style="font-weight:bold;">Remove User For:<br /><strong>${clicked_customer[0].invCompany}</strong></h4>`)
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
     inv_info.append(`<tr><td>

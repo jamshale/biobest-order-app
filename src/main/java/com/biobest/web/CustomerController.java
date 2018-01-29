@@ -38,23 +38,23 @@ public class CustomerController {
         return this.customerService.getCustomers();
     }
 
-    @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
-    @ResponseBody
+    @RequestMapping(value = "/management_customers", method = RequestMethod.POST)
     public ModelAndView createCustomer(@ModelAttribute("customer") @Valid CustomerDTO customerDto, BindingResult result ){
         if(result.hasErrors()){
             return new ModelAndView("management_customers", "customer", customerDto);
         }
         try{
             customerService.createCustomer(customerDto);
-
         } catch (ShipCompanyExistsException e){
             result.rejectValue("shipCompany", "customer", "Shipping Company Already Exists...");
         }
+        if(result.hasErrors()){
+            return new ModelAndView("management_customer", "customer", customerDto);
+        }
         return new ModelAndView("management_customers", "customer", new CustomerDTO());
-       
     }
 
-    @RequestMapping("/management_customers")
+    @RequestMapping(value="/management_customers", method = RequestMethod.GET)
     public String management_customers(Model model) {
         CustomerDTO customerDto = new CustomerDTO();
         model.addAttribute("customer", customerDto);

@@ -28,7 +28,7 @@ public class Customer{
 	private Set<AppUser> appUsers;
 
 	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
-						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipPhone, String shipFax, String shipEmail){
+						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipEmail, String shipPhone, String shipFax){
 		this.invCompany = invCompany; 
 		this.invContact = invContact; 
 		this.invAddress = invAddress;   
@@ -42,9 +42,9 @@ public class Customer{
 		this.shipAddress = shipAddress;   
 		this.shipCityState = shipCityState;   
 		this.shipZip = shipZip;   
+		this.shipEmail = shipEmail; 
 		this.shipPhone = shipPhone;   
 		this.shipFax = shipFax;   
-		this.shipEmail = shipEmail; 
 		this.appUsers = new HashSet<>();
 	}
 

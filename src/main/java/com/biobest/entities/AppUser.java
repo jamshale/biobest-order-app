@@ -26,11 +26,13 @@ public abstract class AppUser {
 		this.email = email;
         this.customers = new HashSet<>();
 	}
-	protected AppUser(String firstName, String lastName,  String email, String password) {
+	protected AppUser(String firstName, String lastName,  String email, String password, String type,  String activeStatus){
         this.firstName = firstName;
         this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.type = type;
+		this.activeStatus = activeStatus;
         this.customers = new HashSet<>();
     }
 

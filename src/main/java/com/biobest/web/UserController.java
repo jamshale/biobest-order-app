@@ -31,18 +31,25 @@ public class UserController {
         logger.debug("Employee controller initialized");
     }
 
+    @RequestMapping(value="/management_users", method = RequestMethod.GET)
+    public String management_users(Model model) {
+        AppUserDTO userDto = new AppUserDTO();
+        model.addAttribute("appUser", userDto);
+        return "management_users";
+    }
+
     @RequestMapping(value="/appUsers", method=RequestMethod.GET, produces="application/json")
     @ResponseBody
     public List<AppUser> getAppUsers(Model model){
         return this.appUserService.getAppUsers();
     }
 
-    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ModelAndView createGeneralUser(@ModelAttribute("appUser") @Valid AppUserDTO appUserDto, BindingResult result){
+    @RequestMapping(value = "/management_users", method = RequestMethod.POST)
+    public ModelAndView createUser(@ModelAttribute("appUser") @Valid AppUserDTO appUserDto, BindingResult result){
         if(result.hasErrors()){
             return new ModelAndView("management_users", "appUser", appUserDto);
         }
-        if(appUserDto.getType()=="General"){
+        if(appUserDto.getType().equals("General")){
             try{
                 appUserService.createGeneralAppUser(appUserDto);
             } catch (UserNameExistsException e){
@@ -54,7 +61,8 @@ public class UserController {
             if(result.hasErrors()){
                 return new ModelAndView("management_users", "appUser", appUserDto);
             }
-        } else if (appUserDto.getType()=="Consultant"){
+        }
+        if (appUserDto.getType().equals("Consultant")){
             try{
                 appUserService.createConsultantAppUser(appUserDto);
             } catch (UserNameExistsException e){
@@ -69,6 +77,4 @@ public class UserController {
         }
         return new ModelAndView("management_users", "appUser", new AppUserDTO());
     } 
-
-
 }

@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.biobest.dtos.AppUserDTO;
 import com.biobest.entities.Customer;
 import com.biobest.entities.AppUser;
 import com.biobest.services.CustomerService;
@@ -45,12 +43,7 @@ public class ManagementController {
     public String app_user_custommer(Model model) {
         return "app_user_customer";
     }
-    @RequestMapping(value="/management_users", method = RequestMethod.GET)
-    public String management_users(Model model) {
-        AppUserDTO userDto = new AppUserDTO();
-        model.addAttribute("appUser", userDto);
-        return "management_users";
-    }
+
 
     @RequestMapping("/linkUserCustomer")
     @ResponseBody

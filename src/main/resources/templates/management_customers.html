@@ -4,7 +4,6 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="css/management_customers.css" rel="stylesheet"/>
-    <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -74,10 +73,10 @@
                     </div>
                     <div style="text-align:center;">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#user_to_customer_modal" id="add_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
-                        <h4 style="font-weight:bold;" >Add User For -----------</h4>
+                        <h4 style="font-weight:bold;" >Add User For: <br /><strong>-----------</strong></h4>
                     </button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#remove_user_modal" id="remove_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
-                        <h4 style="font-weight:bold;">Remove User For -----------</h4>
+                        <h4 style="font-weight:bold;">Remove User For: <br /> <strong>-----------</strong></h4>
                     </button>  
                 </div>
             </div>
@@ -180,28 +179,80 @@
                     </div>
                     <div class="modal-body">   
                         <div class="row">
-                            <div class="col-sm-12" style="margin:80px;">
-                                    <h3 style="font-weight:bold;">Invoice-to</h3>
-                                    <input type="text" id="inv_company" placeholder="company" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="inv_contact" placeholder="contact" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="inv_address" placeholder="address" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="inv_city_state" placeholder="City/State" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="inv_zip" placeholder="Zip/Postal" style="font-size:16pt;font-weight:bold"/>   
-                                    <input type="text" id="inv_phone" placeholder="Phone" style="font-size:16pt;font-weight:bold"/> 
-                                    <input type="text" id="inv_fax" placeholder="Fax" style="font-size:16pt;font-weight:bold"/> 
-                                    <input type="text" id="inv_email" placeholder="Email" style="font-size:16pt;font-weight:bold"/>
-                                   
-                                    <h3 style="font-weight:bold;">Ship-to</h3>
-                                    <input type="text" id="ship_company" placeholder="company" style="font-size:16pt;font-weight:bold"/> 
-                                    <input type="text" id="ship_contact" placeholder="contact" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="ship_address" placeholder="address" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="ship_city_state" placeholder="City/State" style="font-size:16pt;font-weight:bold"/>
-                                    <input type="text" id="ship_zip" placeholder="Zip/Postal" style="font-size:16pt;font-weight:bold"/>   
-                                    <input type="text" id="ship_phone" placeholder="Phone" style="font-size:16pt;font-weight:bold"/> 
-                                    <input type="text" id="ship_fax" placeholder="Fax" style="font-size:16pt;font-weight:bold"/> 
-                                    <input type="text" id="ship_email" placeholder="Email" style="font-size:16pt;font-weight:bold"/>
-                                    <input id="submit_customer_button" type="button" value="Go"  style="font-size:16pt;font-weight:bold"/>
-                            </div>
+                            
+                                <form action="/management_customers" th:object="${customer}" method="POST" enctype="utf8">
+                                    <label style="margin-left:100px;"><h3 style="font-weight:bold;">Invoice Information:</h3></label>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Company" th:field="*{invCompany}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invCompany')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Contact" th:field="*{invContact}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invContact')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Address" th:field="*{invAddress}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invAddress')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice City State" th:field="*{invCityState}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invCityState')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Zip" th:field="*{invZip}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invZip')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Email" th:field="*{invEmail}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Phone" th:field="*{invPhone}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invPhone')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Invoice Fax" th:field="*{invFax}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('invFax')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <label style="margin-left:100px;"><h3 style="font-weight:bold;">Shipping Information:</h3></label>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Company" th:field="*{shipCompany}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipCompany')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Contact" th:field="*{shipContact}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipContact')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Address" th:field="*{shipAddress}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipAddress')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping City State" th:field="*{shipCityState}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipCityState')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Zip" th:field="*{shipZip}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipZip')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Email" th:field="*{shipEmail}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Phone" th:field="*{shipPhone}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipPhone')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input typr="text" class="form-control" placeholder="Shipping Fax" th:field="*{shipFax}" style="font-size:16pt;height:40px;width:300px;margin-left:300px;"></input>
+                                        <div th:each="error : ${#fields.errors('shipFax')}" class="alert alert-danger" th:text="${error}"></div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success" style="margin-left:200px;width:500px;">
+                                        <h3>Create Customer</h3>
+                                    </button>
+                                </form>
+                       
                         </div>
                     </div>
                     <div class="modal-footer"> 
