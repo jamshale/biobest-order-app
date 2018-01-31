@@ -36,6 +36,15 @@ public abstract class AppUser {
         this.customers = new HashSet<>();
     }
 
+	public void addCustomer(Customer customer) {
+		this.customers.add(customer);
+	}
+
+	public void removeCustomer(Customer customer) {
+		this.customers.remove(customer);
+	}
+
+	//Getters and Setters
 	public String getFirstName() {
 		return firstName;
     }
@@ -76,10 +85,6 @@ public abstract class AppUser {
 		return customers;
     }
     
-	public void addCustomer(Customer customer) {
-		this.customers.add(customer);
-	}
-
 	public List<String> getRoles() {
 		return roles;
 	}
@@ -87,15 +92,11 @@ public abstract class AppUser {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-	/**
-	 * @return the type
-	 */
+
 	public String getType() {
 		return type;
 	}
-	/**
-	 * @param type the type to set
-	 */
+
 	public void setType(String type) {
 		this.type = type;
 	}

@@ -2,8 +2,10 @@ package com.biobest.web;
 
 import org.slf4j.LoggerFactory;
 import com.biobest.dtos.CustomerDTO;
+import com.biobest.entities.AppUser;
 import com.biobest.entities.Customer;
 import com.biobest.exceptions.ShipCompanyExistsException;
+import com.biobest.services.AppUserService;
 import com.biobest.services.CustomerService;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +30,9 @@ public class CustomerController {
     
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private AppUserService appUserService;
 
     public CustomerController() {
         logger.debug("Employee controller initialized");
@@ -61,4 +67,45 @@ public class CustomerController {
         return "management_customers";
     }
 
+    @RequestMapping("/customerLinkUC")
+    @ResponseBody
+    public String customerLinkUC(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+        Customer customer = this.customerService.getCustomer(shipCompany);
+        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
+        customer.addAppUser(appUser);
+        this.customerService.updateCustomer(customer);
+        return "success";
+    }
+
+    @RequestMapping("/customerLinkCU")
+    @ResponseBody
+    public String customerLinkCU(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+        Customer customer = this.customerService.getCustomer(shipCompany);
+        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
+        appUser.addCustomer(customer);
+        this.appUserService.updateAppUser(appUser);
+        return "success";
+    }
+
+    @RequestMapping("/customerRemoveUC")
+    @ResponseBody
+    public String customerRemoveUC(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+        Customer customer = this.customerService.getCustomer(shipCompany);
+        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
+        customer.removeAppUser(appUser);
+        this.customerService.updateCustomer(customer);
+        return "success";
+    }
+
+    @RequestMapping("/customerRemoveCU")
+    @ResponseBody
+    public String customerRemoveCU(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+        Customer customer = this.customerService.getCustomer(shipCompany);
+        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
+        appUser.removeCustomer(customer);
+        this.appUserService.updateAppUser(appUser);
+        return "success";
+    }
+
+    
 }

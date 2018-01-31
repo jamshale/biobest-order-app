@@ -27,16 +27,16 @@ public class Customer{
 	private String shipEmail;
 	private Set<AppUser> appUsers;
 
-	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip, String invPhone, String invFax, String invEmail,
+	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip,String invEmail, String invPhone, String invFax,
 						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipEmail, String shipPhone, String shipFax){
 		this.invCompany = invCompany; 
 		this.invContact = invContact; 
 		this.invAddress = invAddress;   
 		this.invCityState = invCityState;   
 		this.invZip = invZip;   
+		this.invEmail = invEmail; 
 		this.invPhone = invPhone;   
 		this.invFax = invFax;   
-		this.invEmail = invEmail; 
 		this.shipCompany = shipCompany; 
 		this.shipContact = shipContact; 
 		this.shipAddress = shipAddress;   
@@ -46,6 +46,19 @@ public class Customer{
 		this.shipPhone = shipPhone;   
 		this.shipFax = shipFax;   
 		this.appUsers = new HashSet<>();
+	}
+
+	public void addAppUser(AppUser appUser) {
+		this.appUsers.add(appUser);
+	}
+
+	public void removeAppUser(AppUser appUser){
+		this.appUsers.remove(appUser);
+	}
+
+	//Getters And Setters
+	public Set<AppUser> getAppUsers() {
+		return appUsers;
 	}
 
 	public String getInvCompany() {
@@ -175,15 +188,6 @@ public class Customer{
 	public void setShipEmail(String shipEmail) {
 		this.shipEmail = shipEmail;
 	}
-
-	public Set<AppUser> getAppUsers() {
-		return appUsers;
-	}
-
-	public void addUser(AppUser appUser) {
-		this.appUsers.add(appUser);
-	}
-
 }
 
 	

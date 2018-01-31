@@ -45,6 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         Manager testManager = new Manager("Jamie", "Hale", "jamiehalebc@gmail.com");
         testManager.setPassword("24Champ24");
+        testManager.setActiveStatus("Active");
+        testManager.setType("Manager");
         testManager.setRoles(Arrays.asList("ROLE_ADMIN"));
         try {
             this.userService.registerManager(testManager);

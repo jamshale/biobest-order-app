@@ -22,7 +22,7 @@ function initiateCustomerList(customers){
 function populateUserList(users){
     userList = users;
     users.forEach(function(u){
-        $("#user_list").append(`<tr><td><h3 style="margin:5px;">${u.firstName} <br />${u.lastName}</h3></td></tr>`)
+        $("#user_list").append(`<tr><td><h2 style="margin:5px;">${u.firstName} <br />${u.lastName}</h2></td></tr>`)
     })
 }
 
@@ -41,11 +41,12 @@ $("#user_list").on('click', function(u){
 
 //Info Field Populator
 function addInfoToFields(user){
-    $("#user_info_0").html(`<td style="width:200px;"><h3>First Name:</h3></td><td><h3 style="font-weight:normal;">${user[0].firstName}</h3></td>`)
-    $("#user_info_1").html(`<td style="width:200px;"><h3>Last Name:</h3></td><td><h3 style="font-weight:normal;">${user[0].lastName}</h3></td>`)
-    $("#user_info_2").html(`<td style="width:200px;"><h3>Email:</h3></td><td><h3 style="font-weight:normal;">${user[0].email}</h3></td>`)
-    $("#user_info_3").html(`<td style="width:200px;"><h3>Password:</h3></td><td><h3 style="font-weight:normal;">${user[0].password}</h3></td>`)
-    $("#user_info_4").html(`<td style="width:200px;"><h3>Active Status:</h3></td><td><h3 style="font-weight:normal;">${user[0].activeStatus}</h3></td>`)
+    $("#user_info_0").html(`<td style="width:200px;"><h3>First Name:</h3></td><td><h3 style="font-weight:normal;color:green;">${user[0].firstName}</h3></td>`)
+    $("#user_info_1").html(`<td style="width:200px;"><h3>Last Name:</h3></td><td><h3 style="font-weight:normal;color:green;"">${user[0].lastName}</h3></td>`)
+    $("#user_info_2").html(`<td style="width:200px;"><h3>Email:</h3></td><td><h3 style="font-weight:normal;color:green;"">${user[0].email}</h3></td>`)
+    $("#user_info_3").html(`<td style="width:200px;"><h3>Password:</h3></td><td><h3 style="font-weight:normal;color:green;"">${user[0].password}</h3></td>`)
+    $("#user_info_4").html(`<td style="width:200px;"><h3>Password:</h3></td><td><h3 style="font-weight:normal;color:green;"">${user[0].type}</h3></td>`)
+    $("#user_info_5").html(`<td style="width:200px;"><h3>Active Status:</h3></td><td><h3 style="font-weight:normal;color:green;"">${user[0].activeStatus}</h3></td>`)
     populateCustomerList();
    
 }
@@ -54,7 +55,7 @@ function addInfoToFields(user){
 function populateCustomerList(){
     $("#customer_list").html("");
     clicked_user[0].customers.forEach(function(c){
-        $("#customer_list").append(`<tr><td><h3 style="margin-left:10px;">${c.invCompany}</h3></td></tr>`)
+        $("#customer_list").append(`<tr><td><h2 style="margin-left:10px;">${c.shipCompany}</h2></td></tr>`)
     })
 }
 

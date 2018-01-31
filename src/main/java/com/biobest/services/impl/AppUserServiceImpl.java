@@ -47,7 +47,7 @@ public class AppUserServiceImpl implements AppUserService {
             throw new EmailExistsException("A user with that email already exists!");
         }
         General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus());
-        return appUserRepository.insert(newGeneral);
+        return appUserRepository.save(newGeneral);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AppUserServiceImpl implements AppUserService {
             throw new EmailExistsException("A user with that email already exists!");
         }
         Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus() );
-        return appUserRepository.insert(newConsultant);
+        return appUserRepository.save(newConsultant);
     }
 
 	@Override

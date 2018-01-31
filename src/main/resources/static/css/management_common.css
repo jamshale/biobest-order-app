@@ -1,0 +1,61 @@
+#logout {
+    margin: 7px;
+    float: right;
+}
+h3.header-label {
+    font-weight:bold;
+    color:green;
+    margin-top:30px;
+    font-size: 250%;
+}
+
+.border-class{
+    border-width: 5px;
+    border-style: solid;
+    border-color: red;
+    padding:5px;
+}
+
+#invoice_to_info tr, #ship_to_info tr, #user_list tr, #customer_list tr, #user_info{
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+}
+
+/*Modal Settings */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+#user_to_customer_modal .modal-dialog  {width:80%;}
+#customer_to_app .modal-dialog  {width:80%;}
+
+/* Mobile Screens */
+@media screen 
+  and (min-width: 768px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+  #user_to_customer_modal .modal-dialog  {width:900px;}
+  #customer_to_app_modal .modal-dialog  {width:900px;}
+
+}
+
+@media screen 
+    and (min-width: 768px) {
+    #user_to_customer_modal .modal-dialog  {width:900px;}
+    #customer_to_app_modal .modal-dialog  {width:900px;}
+
+}

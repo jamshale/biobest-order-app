@@ -11,16 +11,16 @@
 <body>
     <div class="jumbotron">
         <div class="container">
-            <h1 class="row" style="text-align: center">Biobest Order App</h1>
-            <form th:action="@{/login}" method="POST" style="width: 30%; margin: auto;">
+            <h1 class="row" style="text-align: center;">Biobest Order App</h1>
+            <form th:action="@{/login}" method="POST" style="width: 50%; margin: auto;">
                 <fieldset>
                     <div th:if="${param.error}" class="alert alert-danger">Invalid email and password!</div>
                     <div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
                     <div th:if="${customer}" class="alert alert-success">Your account has been created!</div>
-                    <input id="username" name="username" type="email" class="form-control" placeholder="Email"/>
-                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" style="margin-top: 1%"/>
+                    <input id="username" name="username" type="email" class="form-control" placeholder="Email" style="font-size:20pt;height:60px;"/>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" style="margin-top: 1%;font-size:20pt;height:60px;"/>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary btn-lg" style="width: 80%; margin: 5% 10%">Log in</button>
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 80%; margin: 5% 10%"><h3>Log in</h3></button>
                     </div>   
                 </fieldset>
             </form>

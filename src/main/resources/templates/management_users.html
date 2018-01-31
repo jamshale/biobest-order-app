@@ -4,6 +4,7 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="css/management_users.css" rel="stylesheet"/>
+    <link href="css/management_common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -16,24 +17,24 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand"><h4 style="font-weight:bold;">Biobest Order App</h4></a>
+                <a class="navbar-brand"><h3 style="font-weight:bold;">Biobest Order App</h3></a>
             </div>
             <ul class="nav navbar-nav">
                 <li >
-                    <a href="management_customers.html"><h4>Customers</h4></a>
+                    <a href="management_customers.html"><h3>Customers</h3></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="management_users.html"><h4>Users</h4></a>
+                    <a href="management_users.html"><h3>Users</h3></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav">
                 <li >
-                    <a href="management_prices.html"><h4>Prices</h4></a>
+                    <a href="management_prices.html"><h3>Prices</h3></a>
                 </li>
             </ul>
-            <a id="logout" class="btn btn-primary" href="/logout" role="button"><h4>Log out</h4></a>
+            <a id="logout" class="btn btn-primary" href="/logout" role="button"><h3>Log out</h3></a>
         </div>
     </nav>
     <div class="container-fluid">
@@ -41,7 +42,7 @@
             <div class="col-sm-5">
                 
                 <h3 class="header-label" style="margin-bottom: 10px;">User List:</h3>
-                    <input type="text" class="form-control" placeholder="Search" style="font-size:16pt;font-weight:bold;height:40px;width:100%;margin-bottom:10px;"/>
+                    <input type="text" class="form-control" placeholder="Search" style="font-size:20pt;font-weight:bold;height:50px;width:100%;margin-bottom:10px;"/>
                     <table class="table table-striped" style="margin-bottom:0px;">
                         <tbody> 
                             <tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium">
@@ -55,21 +56,18 @@
                             <tbody id="user_list">   
                             </tbody>
                         </table>
-                    </div>
-              
-              
-                <!-- Bootom Buttons -->
-                
+                    </div>     
             </div>
                 <div class="col-sm-7" >
                     <h3 class="header-label">User Information:</h3>
                     <table class="table info">
                         <tbody id="user_info">
-                            <tr id="user_info_0" style="border-style:none;"><td style="width:200px;"><h3 >First Name:</h3></td><td><h3 style="font-weight:normal">-----------</h3></td></tr>
-                            <tr id="user_info_1" style="border-style:none;"><td style="width:200px;"><h3 >Last Name:</h3></td><td><h3 style="font-weight:normal">-----------</h3></td></tr>
-                            <tr id="user_info_2" style="border-style:none;"><td style="width:200px;"><h3 >Email:</h3></td><td><h3 style="font-weight:normal">-----------</h3></td></tr>
-                            <tr id="user_info_3" style="border-style:none;"><td style="width:200px;"><h3 >Password:</h3></td><td><h3 style="font-weight:normal">-----------</h3></td></tr>
-                            <tr id="user_info_4" style="border-style:none;"><td style="width:200px;"><h3 >Status:</h3></td><td><h3 style="font-weight:normal">-----------</h3></td></tr>   
+                            <tr id="user_info_0" ><td style="width:200px;"><h3 >First Name:</h3></td><td><h3 style="font-weight:normal;color:green;">-----------</h3></td></tr>
+                            <tr id="user_info_1" ><td style="width:200px;"><h3 >Last Name:</h3></td><td><h3 style="font-weight:normal;color:green;">-----------</h3></td></tr>
+                            <tr id="user_info_2" ><td style="width:200px;"><h3 >Email:</h3></td><td><h3 style="font-weight:normal;color:green;">-----------</h3></td></tr>
+                            <tr id="user_info_3" ><td style="width:200px;"><h3 >Password:</h3></td><td><h3 style="font-weight:normal;color:green;">-----------</h3></td></tr>
+                            <tr id="user_info_4" ><td style="width:200px;"><h3 >Type:</h3></td><td><h3 style="font-weight:normal;color:green;">-----------</h3></td></tr>
+                            <tr id="user_info_5" ><td style="width:200px;"><h3 >Status:</h3></td><td><h3 style="font-weight:normal;color:green;">-----------</h3></td></tr>   
                         </tbody>
                     </table>
                     <div style="text-align:center">
@@ -95,7 +93,17 @@
                         
                     </tbody>
                 </table>
+                <!-- Bootom Buttons -->
+                <div style="text-align:center;">
+                    <button type="button" disabled="true" class="btn btn-success" id="add_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
+                        <h3 style="font-weight:bold;" >Add Customer For: <br /><strong>-----------</strong></h3>
+                    </button>
+                    <button type="button" disabled="true" class="btn btn-danger" id="remove_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
+                        <h3 style="font-weight:bold;">Remove Customer For: <br /> <strong>-----------</strong></h3>
+                    </button>  
+                </div>   
          
+
             </div>
             <div class="col-sm-7" >
                     <h3 class="header-label">Create User:</h3>
