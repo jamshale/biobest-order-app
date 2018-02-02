@@ -2,7 +2,10 @@ package com.biobest.entities;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+//import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 import org.springframework.data.annotation.Id;
 
 public abstract class AppUser {
@@ -13,18 +16,21 @@ public abstract class AppUser {
     private String firstName;
     private String lastName;
     private String email;
-    private String phone;
     private String password;
 	private String activeStatus;
 	private String type;
-	private Set<Customer> customers;
+	private Set<String> customers;
 	private List<String> roles;
+	private String appUserId;
+
+
 
     protected AppUser(String firstName, String lastName,  String email) {
         this.firstName = firstName;
         this.lastName = lastName;
 		this.email = email;
-        this.customers = new HashSet<>();
+		this.customers = new HashSet<>();
+		this.appUserId = UUID.randomUUID().toString();
 	}
 	protected AppUser(String firstName, String lastName,  String email, String password, String type,  String activeStatus){
         this.firstName = firstName;
@@ -33,17 +39,20 @@ public abstract class AppUser {
 		this.password = password;
 		this.type = type;
 		this.activeStatus = activeStatus;
-        this.customers = new HashSet<>();
-    }
+		this.customers = new HashSet<>();
+		this.appUserId = UUID.randomUUID().toString();
+	}
+	/*
 
 	public void addCustomer(Customer customer) {
 		this.customers.add(customer);
 	}
 
 	public void removeCustomer(Customer customer) {
+		System.out.println("appUsercontains = " + this.customers.contains(customer));
 		this.customers.remove(customer);
 	}
-
+	*/
 	//Getters and Setters
 	public String getFirstName() {
 		return firstName;
@@ -56,15 +65,7 @@ public abstract class AppUser {
 	public String getEmail() {
 		return email;
     }
-    
-	public String getPhone() {
-		return phone;
-    }
-    
-	public void setPhone(String phone) {
-		this.phone = phone;
-    }
-    
+
 	public String getPassword() {
 		return password;
     }
@@ -81,7 +82,7 @@ public abstract class AppUser {
 		this.activeStatus = activeStatus;
     }
 
-	public Set<Customer> getCustomers() {
+	public Set<String> getCustomers() {
 		return customers;
     }
     
@@ -100,5 +101,42 @@ public abstract class AppUser {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	@Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof AppUser)) {
+            return false;
+        }
+        AppUser appUser = (AppUser) o;
+        return  Objects.equals(firstName, appUser.firstName) &&
+				Objects.equals(lastName, appUser.lastName) &&
+				Objects.equals(email, appUser.email) &&
+				Objects.equals(password, appUser.password) &&
+				Objects.equals(activeStatus, appUser.activeStatus) &&
+				Objects.equals(type, appUser.type) &&
+				Objects.equals(customers, appUser.customers) &&
+				Objects.equals(roles, appUser.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, email, password, activeStatus, type, customers, roles);
+    }
+	/**
+	 * @return the appUserId
+	 */
+	public String getAppUserId() {
+		return appUserId;
+	}
+	/**
+	 * @param appUserId the appUserId to set
+	 */
+	public void setAppUserId(String appUserId) {
+		this.appUserId = appUserId;
+	}
+
+
     
 } 

@@ -11,7 +11,7 @@ public interface CustomerRepository extends MongoRepository<Customer, String>{
     @Query("{}")
     List<Customer> findCustomers(Set<String> ids);
 
-    @Query("{ 'shipCompany': ?0 }")
-    Customer findByShipCompany(String id);
+    @Query("{ 'customerId': ?0 }")
+    Customer findByCustomerId(String id);
 
 }

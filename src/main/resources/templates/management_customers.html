@@ -15,24 +15,26 @@
         <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand"><h3 style="font-weight:bold;">Biobest Order App</h3></a>
+                        <a class="navbar-left" href="#">
+                            
+                          </a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="management_customers.html"><h3>Customers</h3></a>
+                            <a href="management_customers.html"><h3 style="font-size:200%;">Customers</h3></a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="management_users.html"><h3>Users</h3></a>
+                            <a href="management_users.html"><h3 style="font-size:200%;">Users</h3></a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
                         <li >
-                            <a href="management_prices.html"><h3>Prices</h3></a>
+                            <a href="management_prices.html"><h3 style="font-size:200%;">Prices</h3></a>
                         </li>
                     </ul>
-                    <a id="logout" class="btn btn-primary" href="/logout" role="button"><h3>Log out</h3></a>
+                    <a id="logout" class="btn btn-primary" href="/logout" role="button"><h3 style="font-size:250%;">Log out</h3></a>
                 </div>
             </nav>
     <div class="container-fluid">
@@ -213,74 +215,74 @@
                     <div class="modal-body">   
                         <div class="row">
                             
-                                <form action="/management_customers" th:object="${customer}" method="POST" enctype="utf8">
+                                <form action="/management_customers" th:object="${customerDto}" method="POST" enctype="utf8">
                                     <div class="col-sm-6">
                                     <label><h3 style="font-weight:bold;">Invoice Information:</h3></label>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Company" th:field="*{invCompany}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Company" th:field="*{invCompany}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invCompany')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Contact" th:field="*{invContact}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Contact" th:field="*{invContact}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invContact')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Address" th:field="*{invAddress}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Address" th:field="*{invAddress}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invAddress')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice City State" th:field="*{invCityState}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice City State" th:field="*{invCityState}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invCityState')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Zip" th:field="*{invZip}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Zip" th:field="*{invZip}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invZip')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Email" th:field="*{invEmail}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Email" th:field="*{invEmail}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Phone" th:field="*{invPhone}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Phone" th:field="*{invPhone}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invPhone')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Invoice Fax" th:field="*{invFax}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Invoice Fax" th:field="*{invFax}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('invFax')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     </div>
                                     <div class="col-sm-6">
                                     <label><h3 style="font-weight:bold;">Shipping Information:</h3></label>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Company" th:field="*{shipCompany}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Company" th:field="*{shipCompany}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipCompany')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Contact" th:field="*{shipContact}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Contact" th:field="*{shipContact}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipContact')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Address" th:field="*{shipAddress}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Address" th:field="*{shipAddress}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipAddress')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping City State" th:field="*{shipCityState}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping City State" th:field="*{shipCityState}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipCityState')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Zip" th:field="*{shipZip}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Zip" th:field="*{shipZip}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipZip')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Email" th:field="*{shipEmail}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Email" th:field="*{shipEmail}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Phone" th:field="*{shipPhone}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Phone" th:field="*{shipPhone}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipPhone')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input typr="text" class="form-control" placeholder="Shipping Fax" th:field="*{shipFax}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
+                                        <input typr="text" autocomplete="off" class="form-control" placeholder="Shipping Fax" th:field="*{shipFax}" style="font-size:16pt;height:40px;width:300px;margin-left:50px;"></input>
                                         <div th:each="error : ${#fields.errors('shipFax')}" class="alert alert-danger" th:text="${error}"></div>
                                     </div>
                                     </div>

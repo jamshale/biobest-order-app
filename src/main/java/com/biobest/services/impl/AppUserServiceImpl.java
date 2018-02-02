@@ -2,6 +2,7 @@ package com.biobest.services.impl;
 
 import com.biobest.dtos.AppUserDTO;
 import com.biobest.entities.AppUser;
+import com.biobest.entities.Customer;
 import com.biobest.entities.impl.Consultant;
 import com.biobest.entities.impl.General;
 import com.biobest.entities.impl.Manager;
@@ -10,6 +11,7 @@ import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.repositories.AppUserRepository;
 import com.biobest.services.AppUserService;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,10 +72,29 @@ public class AppUserServiceImpl implements AppUserService {
 		return appUserRepository.findByFirstLast(firstName, lastName);
     }
 
+    @Override
+	public AppUser getAppUserById(String id) {
+		return appUserRepository.findByAppUserId(id);
+	}
+ 
     @Transactional
     public AppUser updateAppUser(AppUser user){
         return appUserRepository.save(user);
     }
-    
 
+	@Transactional
+	public AppUser addCustomer(AppUser appUser, Customer customer) {
+		Set<String> customerSet = appUser.getCustomers();
+        customerSet.add(customer.getCustomerId());
+		return appUserRepository.save(appUser);
+    }
+
+	@Transactional
+	public AppUser removeCustomer(AppUser appUser, Customer customer) {
+        Set<String> customerSet = appUser.getCustomers();
+        customerSet.remove(customer.getCustomerId());
+        return appUserRepository.save(appUser);
+	}
+
+    
 }

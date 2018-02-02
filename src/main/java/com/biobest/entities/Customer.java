@@ -1,14 +1,19 @@
 package com.biobest.entities;
 
 import org.springframework.data.annotation.Id;
+
 import java.util.HashSet;
+import java.util.Objects;
+//import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 public class Customer{
    
 	@Id
 	private String _id;
 
+	private String customerId;
 	private String invCompany;
 	private String invContact;
 	private String invAddress; 
@@ -25,7 +30,7 @@ public class Customer{
 	private String shipPhone; 
 	private String shipFax; 
 	private String shipEmail;
-	private Set<AppUser> appUsers;
+	private Set<String> appUsers;
 
 	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip,String invEmail, String invPhone, String invFax,
 						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipEmail, String shipPhone, String shipFax){
@@ -46,18 +51,12 @@ public class Customer{
 		this.shipPhone = shipPhone;   
 		this.shipFax = shipFax;   
 		this.appUsers = new HashSet<>();
+		this.customerId = UUID.randomUUID().toString();
 	}
 
-	public void addAppUser(AppUser appUser) {
-		this.appUsers.add(appUser);
-	}
-
-	public void removeAppUser(AppUser appUser){
-		this.appUsers.remove(appUser);
-	}
 
 	//Getters And Setters
-	public Set<AppUser> getAppUsers() {
+	public Set<String> getAppUsers() {
 		return appUsers;
 	}
 
@@ -188,6 +187,61 @@ public class Customer{
 	public void setShipEmail(String shipEmail) {
 		this.shipEmail = shipEmail;
 	}
+	
+	
+	@Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof Customer)) {
+            return false;
+        }
+        Customer customer = (Customer) o;
+		return  Objects.equals(invCompany, customer.invCompany) &&
+				Objects.equals(invContact, customer.invContact) &&
+				Objects.equals(invAddress, customer.invAddress) &&
+				Objects.equals(invCityState, customer.invCityState) &&
+				Objects.equals(invZip, customer.invZip) &&
+				Objects.equals(invEmail, customer.invEmail) &&
+				Objects.equals(invPhone, customer.invPhone) &&
+				Objects.equals(invFax, customer.invFax) &&
+				Objects.equals(invCompany, customer.invCompany) &&
+				Objects.equals(invContact, customer.invContact) &&
+				Objects.equals(invAddress, customer.invAddress) &&
+				Objects.equals(invCityState, customer.invCityState) &&
+				Objects.equals(invZip, customer.invZip) &&
+				Objects.equals(invEmail, customer.invEmail) &&
+				Objects.equals(invPhone, customer.invPhone) &&
+				Objects.equals(invPhone, customer.invPhone) &&
+				Objects.equals(invFax, customer.invFax);	
+	}
+	
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(invCompany, invContact, invAddress, invCityState, invZip,invEmail, invPhone, invFax,
+								shipCompany, shipContact, shipAddress, shipCityState, shipZip, shipEmail, shipPhone, shipFax);
+    }
+
+
+	/**
+	 * @return the customerId
+	 */
+	public String getCustomerId() {
+		return customerId;
+	}
+
+
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+
+
+	
 }
 
 	

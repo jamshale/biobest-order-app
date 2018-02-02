@@ -17,5 +17,9 @@ public interface AppUserRepository extends MongoRepository<AppUser, String> {
     @Query("{ 'email': ?0 }")
     AppUser findByEmail(String email);
 
+    @Query("{ 'appUserId': ?0 }")
+    AppUser findByAppUserId(String id);
+
+
     
 }

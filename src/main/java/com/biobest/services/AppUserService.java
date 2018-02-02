@@ -2,6 +2,7 @@ package com.biobest.services;
 
 import com.biobest.dtos.AppUserDTO;
 import com.biobest.entities.AppUser;
+import com.biobest.entities.Customer;
 import com.biobest.entities.impl.Manager;
 import com.biobest.exceptions.EmailExistsException;
 import com.biobest.exceptions.UserNameExistsException;
@@ -16,6 +17,8 @@ public interface AppUserService {
 
 	public AppUser getAppUserByFirstLast(String firstName, String lastName);
 
+	public AppUser getAppUserById(String id);
+
 	@Transactional
 	public AppUser createGeneralAppUser(AppUserDTO appUserDto) throws UserNameExistsException, EmailExistsException;
 
@@ -27,4 +30,10 @@ public interface AppUserService {
 	
 	@Transactional
 	public AppUser registerManager(Manager manager) throws EmailExistsException;
+
+	@Transactional
+	public AppUser addCustomer(AppUser appUser, Customer customer);
+
+	@Transactional
+	public AppUser removeCustomer(AppUser appUser, Customer customer);
 }

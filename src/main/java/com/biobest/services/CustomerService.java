@@ -1,6 +1,7 @@
 package com.biobest.services;
 
 import com.biobest.dtos.CustomerDTO;
+import com.biobest.entities.AppUser;
 import com.biobest.entities.Customer;
 import com.biobest.exceptions.ShipCompanyExistsException;
 import java.util.List;
@@ -19,5 +20,12 @@ public interface CustomerService {
 
     @Transactional
     public Customer updateCustomer(Customer customer);
+
+    @Transactional
+    public Customer addAppUser(Customer customer, AppUser appUser);
+    
+    @Transactional
+    public Customer removeAppUser(Customer customer, AppUser appUser);
+    
 
 }

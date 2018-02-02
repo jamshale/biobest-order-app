@@ -7,6 +7,7 @@ import com.biobest.entities.Customer;
 import com.biobest.exceptions.ShipCompanyExistsException;
 import com.biobest.services.AppUserService;
 import com.biobest.services.CustomerService;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -34,8 +35,18 @@ public class CustomerController {
     @Autowired
     private AppUserService appUserService;
 
+
+
+
     public CustomerController() {
         logger.debug("Employee controller initialized");
+    }
+
+    @RequestMapping(value="/management_customers", method = RequestMethod.GET)
+    public String management_customers(Model model) {
+        CustomerDTO customerDto = new CustomerDTO();
+        model.addAttribute("customerDto", customerDto);
+        return "management_customers";
     }
 
     @RequestMapping(value="/customers", method=RequestMethod.GET, produces="application/json")
@@ -45,9 +56,9 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/management_customers", method = RequestMethod.POST)
-    public ModelAndView createCustomer(@ModelAttribute("customer") @Valid CustomerDTO customerDto, BindingResult result ){
+    public ModelAndView createCustomer(@ModelAttribute("customerDto") @Valid CustomerDTO customerDto, BindingResult result ){
         if(result.hasErrors()){
-            return new ModelAndView("management_customers", "customer", customerDto);
+            return new ModelAndView("management_customers", "customerDto", customerDto);
         }
         try{
             customerService.createCustomer(customerDto);
@@ -55,57 +66,32 @@ public class CustomerController {
             result.rejectValue("shipCompany", "customer", "Shipping Company Already Exists...");
         }
         if(result.hasErrors()){
-            return new ModelAndView("management_customer", "customer", customerDto);
+            return new ModelAndView("management_customers", "customerDto", customerDto);
         }
-        return new ModelAndView("management_customers", "customer", new CustomerDTO());
+        return new ModelAndView("management_customers", "customerDto", new CustomerDTO());
     }
 
-    @RequestMapping(value="/management_customers", method = RequestMethod.GET)
-    public String management_customers(Model model) {
-        CustomerDTO customerDto = new CustomerDTO();
-        model.addAttribute("customer", customerDto);
-        return "management_customers";
-    }
+
 
     @RequestMapping("/customerLinkUC")
     @ResponseBody
-    public String customerLinkUC(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
-        Customer customer = this.customerService.getCustomer(shipCompany);
-        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
-        customer.addAppUser(appUser);
-        this.customerService.updateCustomer(customer);
+    public String customerLinkUC(@RequestParam("customerId") String customerId, @RequestParam("appUserId") String appUserId ){
+        System.out.println("(0) " + customerId );
+        System.out.println("(1) " + appUserId);
+        Customer customer = this.customerService.getCustomer(customerId);
+        AppUser appUser = this.appUserService.getAppUserById(appUserId);
+        appUserService.addCustomer(appUser, customer);  
+        customerService.addAppUser(customer, appUser);
         return "success";
     }
-
-    @RequestMapping("/customerLinkCU")
-    @ResponseBody
-    public String customerLinkCU(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
-        Customer customer = this.customerService.getCustomer(shipCompany);
-        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
-        appUser.addCustomer(customer);
-        this.appUserService.updateAppUser(appUser);
-        return "success";
-    }
-
     @RequestMapping("/customerRemoveUC")
     @ResponseBody
-    public String customerRemoveUC(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
-        Customer customer = this.customerService.getCustomer(shipCompany);
-        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
-        customer.removeAppUser(appUser);
-        this.customerService.updateCustomer(customer);
+    public String customerRemoveUC(@RequestParam("customerId") String customerId, @RequestParam("appUserId") String appUserId ){
+        Customer customer = this.customerService.getCustomer(customerId);
+        AppUser appUser = this.appUserService.getAppUserById(appUserId);
+        appUserService.removeCustomer(appUser, customer);
+        customerService.removeAppUser(customer, appUser);
         return "success";
     }
 
-    @RequestMapping("/customerRemoveCU")
-    @ResponseBody
-    public String customerRemoveCU(@RequestParam("shipCompany") String shipCompany, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
-        Customer customer = this.customerService.getCustomer(shipCompany);
-        AppUser appUser = this.appUserService.getAppUserByFirstLast(firstName, lastName);
-        appUser.removeCustomer(customer);
-        this.appUserService.updateAppUser(appUser);
-        return "success";
-    }
-
-    
 }

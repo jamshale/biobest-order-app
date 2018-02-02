@@ -71,9 +71,9 @@
                         </tbody>
                     </table>
                     <div style="text-align:center">
-                        <button type="button" class="btn btn-md btn-warning" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Change Password</h3></button>
-                        <button type="button" class="btn btn-md btn-info" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Change Status</h3></button>
-                        <button type="button" class="btn btn-md btn-danger" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Delete User</h3></button>
+                        <button disabled="true" type="button" class="btn btn-md btn-warning" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Change Password</h3></button>
+                        <button disabled="true" type="button" class="btn btn-md btn-info" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Change Status</h3></button>
+                        <button disabled="true" type="button" class="btn btn-md btn-danger" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Delete User</h3></button>
                     </div>
                 </div>
             </div>
@@ -93,12 +93,12 @@
                         
                     </tbody>
                 </table>
-                <!-- Bootom Buttons -->
+                <!-- Bottom Buttons -->
                 <div style="text-align:center;">
-                    <button type="button" disabled="true" class="btn btn-success" id="add_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
+                    <button type="button" disabled="true" class="btn btn-success" id="add_customer_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
                         <h3 style="font-weight:bold;" >Add Customer For: <br /><strong>-----------</strong></h3>
                     </button>
-                    <button type="button" disabled="true" class="btn btn-danger" id="remove_user_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
+                    <button type="button" disabled="true" class="btn btn-danger" id="remove_customer_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
                         <h3 style="font-weight:bold;">Remove Customer For: <br /> <strong>-----------</strong></h3>
                     </button>  
                 </div>   
@@ -110,19 +110,19 @@
                 <form action="/management_users" th:object="${appUser}" method="POST" enctype="utf8">
                     <lable></lable>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="First Name" th:field="*{firstName}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="First Name" th:field="*{firstName}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('firstName')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="Last Name" th:field="*{lastName}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('lastName')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="Email" th:field="*{email}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{email}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('email')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" class="form-control" placeholder="Password" th:field="*{password}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="Password" th:field="*{password}" style="font-size:20pt;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('password')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
@@ -146,7 +146,70 @@
                     </button>
                 </form>
             </div>
-        
+    </div>
+    <!-- Add User to Customer Modal -->
+    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="remove_customer_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Users Linked To Customer</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="remove_customer_div">
+                                <table class="remove-customer-table">
+                                    <tbody id="remove_customer_list">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add User to Customer Modal -->
+    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_customer_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Users Registered In System</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="add_customer_div">
+                                <table class="add-customer-table">
+                                    <tbody id="add_customer_list">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                       
+                </div>
+            </div>
+        </div>
     </div>
 <script src="js/management_users.js"></script>
 </body>
