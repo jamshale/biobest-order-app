@@ -1,3 +1,9 @@
+
+#user_info_0 td:last-child h3, #user_info_1 td:last-child h3, #user_info_2 td:last-child h3, #user_info_3 td:last-child h3, #user_info_4 td:last-child h3, #user_info_5 td:last-child h3{
+  font-weight:normal;
+  color:rgb(122, 90, 0);
+}
+
 .table button{
   margin-top: 10px;
 }

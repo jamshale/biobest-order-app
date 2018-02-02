@@ -1,10 +1,56 @@
+.navbar-nav li a h3{
+    font-size:250%;
+}
+#logout h3{
+    font-size:300%;
+}
+.navbar-left {
+    background: url(biobest_logo.jpg);
+    background-repeat: no-repeat;
+    font-size: 200%;
+    width:220px;
+    height:100px;
+    background-size: 100% 100%;
+}
+.btn-custom-0 {
+    background-color: hsl(49, 66%, 47%) !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f3ebc7", endColorstr="#c6a928");
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#f3ebc7), to(#c6a928));
+    background-image: -moz-linear-gradient(top, #f3ebc7, #c6a928);
+    background-image: -ms-linear-gradient(top, #f3ebc7, #c6a928);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3ebc7), color-stop(100%, #c6a928));
+    background-image: -webkit-linear-gradient(top, #f3ebc7, #c6a928);
+    background-image: -o-linear-gradient(top, #f3ebc7, #c6a928);
+    background-image: linear-gradient(#f3ebc7, #c6a928);
+    border-color: #c6a928 #c6a928 hsl(49, 66%, 37%);
+    color: #333 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.66);
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-custom-1 {
+    background-color: hsl(48, 100%, 40%) !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd014", endColorstr="#cca300");
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#ffd014), to(#cca300));
+    background-image: -moz-linear-gradient(top, #ffd014, #cca300);
+    background-image: -ms-linear-gradient(top, #ffd014, #cca300);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd014), color-stop(100%, #cca300));
+    background-image: -webkit-linear-gradient(top, #ffd014, #cca300);
+    background-image: -o-linear-gradient(top, #ffd014, #cca300);
+    background-image: linear-gradient(#ffd014, #cca300);
+    border-color: #cca300 #cca300 hsl(48, 100%, 36.5%);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.23);
+    -webkit-font-smoothing: antialiased;
+  }
 #logout {
     margin: 7px;
     float: right;
 }
 h3.header-label {
     font-weight:bold;
-    color:green;
+    color:rgb(122, 90, 0);
     margin-top:30px;
     font-size: 250%;
 }
@@ -15,7 +61,14 @@ h3.header-label {
     border-color: red;
     padding:5px;
 }
-
+#invoice_to_info tr td h4{
+    text-align: center;
+    color:rgb(122, 90, 0);
+}
+#ship_to_info tr td h4{
+    text-align: center;
+    color:rgb(122, 90, 0);
+}
 #invoice_to_info tr, #ship_to_info tr, #user_list tr, #customer_list tr, #user_info{
     border-width: 2px;
     border-style: solid;

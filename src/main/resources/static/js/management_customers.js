@@ -136,24 +136,24 @@ function addInfoToFields(customer){
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
     inv_info.append(`<tr><td>
-            <h3>Company:</h3><h4 style="color:green; text-align:center;">${customer[0].invCompany}</h4>
-            <h3>Contact:</h3><h4 style="color:green; text-align:center;">${customer[0].invContact}</h4>
-            <h3>Street #:</h3><h4 style="color:green; text-align:center;">${customer[0].invAddress}</h4>
-            <h3>City, State:</h3><h4 style="color:green; text-align:center;">${customer[0].invCityState}</h4>
-            <h3>Zip:</h3><h4 style="color:green; text-align:center;">${customer[0].invZip}</h4>
-            <h3>Email:</h3><h4 style="color:green; text-align:center;">${customer[0].invEmail}</h4>
-            <h3>Phone:</h3><h4 style="color:green; text-align:center;">${customer[0].invPhone}</h4>
-            <h3>Fax:</h3><h4 style="color:green; text-align:center;">${customer[0].invFax}</h4>
+            <h3>Company:</h3><h4>${customer[0].invCompany}</h4>
+            <h3>Contact:</h3><h4>${customer[0].invContact}</h4>
+            <h3>Street #:</h3><h4>${customer[0].invAddress}</h4>
+            <h3>City, State:</h3><h4>${customer[0].invCityState}</h4>
+            <h3>Zip:</h3><h4>${customer[0].invZip}</h4>
+            <h3>Email:</h3><h4>${customer[0].invEmail}</h4>
+            <h3>Phone:</h3><h4>${customer[0].invPhone}</h4>
+            <h3>Fax:</h3><h4>${customer[0].invFax}</h4>
             </td></tr>`)
     ship_info.append(`<tr><td>
-            <h3>Company:</h3><h4 style="color:green; text-align:center;">${customer[0].shipCompany}</h4>
-            <h3>Contact:</h3><h4 style="color:green; text-align:center;">${customer[0].shipContact}</h4>
-            <h3>Street #:</h3><h4 style="color:green; text-align:center;">${customer[0].shipAddress}</h4>
-            <h3>City, State:</h3><h4 style="color:green; text-align:center;">${customer[0].shipCityState}</h4>
-            <h3>Zip:</h3><h4 style="color:green; text-align:center;">${customer[0].shipZip}</h4>
-            <h3>Email:</h3><h4 style="color:green; text-align:center;">${customer[0].shipEmail}</h4>
-            <h3>Phone:</h3><h4 style="color:green; text-align:center;">${customer[0].shipPhone}</h4>
-            <h3>Fax:</h3><h4 style="color:green; text-align:center;">${customer[0].shipFax}</h4>
+            <h3>Company:</h3><h4>${customer[0].shipCompany}</h4>
+            <h3>Contact:</h3><h4>${customer[0].shipContact}</h4>
+            <h3>Street #:</h3><h4>${customer[0].shipAddress}</h4>
+            <h3>City, State:</h3><h4>${customer[0].shipCityState}</h4>
+            <h3>Zip:</h3><h4>${customer[0].shipZip}</h4>
+            <h3>Email:</h3><h4>${customer[0].shipEmail}</h4>
+            <h3>Phone:</h3><h4>${customer[0].shipPhone}</h4>
+            <h3>Fax:</h3><h4>${customer[0].shipFax}</h4>
             </td></tr>`)
     populateUserList();
     info_highlight();
