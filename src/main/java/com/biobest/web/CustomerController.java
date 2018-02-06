@@ -76,8 +76,6 @@ public class CustomerController {
     @RequestMapping("/customerLinkUC")
     @ResponseBody
     public String customerLinkUC(@RequestParam("customerId") String customerId, @RequestParam("appUserId") String appUserId ){
-        System.out.println("(0) " + customerId );
-        System.out.println("(1) " + appUserId);
         Customer customer = this.customerService.getCustomer(customerId);
         AppUser appUser = this.appUserService.getAppUserById(appUserId);
         appUserService.addCustomer(appUser, customer);  

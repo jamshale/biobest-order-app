@@ -94,21 +94,25 @@ h3.header-label {
   text-align: left;
   vertical-align: middle;
 }
-#user_to_customer_modal .modal-dialog  {width:80%;}
-#customer_to_app .modal-dialog  {width:80%;}
+#add_user_modal .modal-dialog  {width:80%;}
+#remove_user_modal .modal-dialog  {width:80%;}
 
 /* Mobile Screens */
 @media screen 
   and (min-width: 768px)
   and (-webkit-min-device-pixel-ratio: 1) {
-  #user_to_customer_modal .modal-dialog  {width:900px;}
-  #customer_to_app_modal .modal-dialog  {width:900px;}
+  #add_user_modal .modal-dialog  {width:700px;}
+  #remove_user_modal .modal-dialog  {width:700px;}
 
 }
 
 @media screen 
     and (min-width: 768px) {
-    #user_to_customer_modal .modal-dialog  {width:900px;}
-    #customer_to_app_modal .modal-dialog  {width:900px;}
+    #add_user_modal .modal-dialog  {width:700px;}
+    #remove_user_modal .modal-dialog  {width:700px;}
 
 }
+
+.active-background{
+    background-color: rgb(255, 217, 0);
+  }

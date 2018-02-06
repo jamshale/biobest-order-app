@@ -15,6 +15,8 @@ public interface CustomerService {
 
     public Customer getCustomer(String customer);
 
+    public Customer getCustomerByShipCompany(String customer);
+
     @Transactional
     public Customer createCustomer(CustomerDTO customerDto) throws ShipCompanyExistsException;
 

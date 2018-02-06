@@ -26,9 +26,9 @@ public class ManagementController {
         return "management_prices";
     }
 
-    @RequestMapping("/app_user_customer")
+    @RequestMapping("/user_current_order")
     public String app_user_custommer(Model model) {
-        return "app_user_customer";
+        return "user_current_order";
     }
 
 }

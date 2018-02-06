@@ -12,14 +12,14 @@
 }
 .management_customer_button {
     margin-top:5px;
-    margin-right:5px;
-    margin-left:5px;
-    width:300px;
+  
+    width:32%;
 }
 .management_customer_button h3 {
+  font-size: 23px;
   font-weight:bold;
-  
 }
+
 .table.all-user-table, tr{
   border-width: 0px;
   border-style: none;
@@ -44,15 +44,24 @@ thead tr{
   max-height: 800px;
   overflow-y: auto;
 }
-#invoice_to_info, tr{
-  margin:5px;
-}
-#ship_to_info, tr{
-  margin:5px;
-}
+
 .info{
-  margin-left:20px;
-  margin-right: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+#ship_to_info tr td h3, #invoice_to_info tr td h3{
+  margin:0px;
+  text-decoration: underline;
+}
+
+#ship_to_info tr td h4, #invoice_to_info tr td h4{
+  margin:5px;
+  font-size: 22px;
+}
+
+form .form-group{
+  margin: 3px;
+}
+
+

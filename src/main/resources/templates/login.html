@@ -14,9 +14,9 @@
             <h1 class="row" style="text-align: center;">Biobest Order App</h1>
             <form th:action="@{/login}" method="POST" style="width: 50%; margin: auto;">
                 <fieldset>
-                    <div th:if="${param.error}" class="alert alert-danger">Invalid email and password!</div>
-                    <div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
-                    <div th:if="${customer}" class="alert alert-success">Your account has been created!</div>
+                    <div th:if="${param.error}" class="alert alert-danger" style="font-size:20pt;height:60px;">Invalid email and password!</div>
+                    <div th:if="${param.logout}" class="alert alert-success" style="font-size:20pt;height:60px;">You have been logged out.</div>
+                    <div th:if="${customer}" class="alert alert-success" style="font-size:20pt;height:60px;">Your account has been created!</div>
                     <input id="username" name="username" type="email" class="form-control" placeholder="Email" style="font-size:20pt;height:60px;"/>
                     <input id="password" name="password" type="password" class="form-control" placeholder="Password" style="margin-top: 1%;font-size:20pt;height:60px;"/>
                     <div class="form-actions">

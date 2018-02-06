@@ -31,20 +31,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-            .antMatchers("/").permitAll()
             .anyRequest().authenticated()
             .and()
-            .formLogin()
-            .successHandler(this.successHandler).loginPage("/login").permitAll()
+            .formLogin().successHandler(this.successHandler).loginPage("/login").permitAll()
             .and()
-            .logout()
-            .permitAll();
+            .logout().permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         Manager testManager = new Manager("Jamie", "Hale", "jamiehalebc@gmail.com");
-        testManager.setPassword("24Champ24");
+        testManager.setPassword("123456");
         testManager.setActiveStatus("Active");
         testManager.setType("Manager");
         testManager.setRoles(Arrays.asList("ROLE_ADMIN"));

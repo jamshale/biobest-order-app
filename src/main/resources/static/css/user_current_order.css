@@ -1,3 +1,7 @@
+#ship_to_button h4, #invoice_to_button h4, #ship_to_import h4, #invoice_to_import h4{
+  font-size: 25px;
+}
+
 /* Changes Modal */
 #changes_order_list_item td:first-child{
   padding-left:10px;
@@ -102,8 +106,9 @@
   color:black;}
 #product_list_header h2:first-child{
   font-weight:bold;
-  color:green;
+  color:darkgreen;
   float:right;
+  font-size: 40px;
 }
 #logout {
   margin: 7px;
@@ -139,21 +144,16 @@
   overflow-y: scroll;
 }
 .panel-body{
-  background: rgba(181, 205, 233, 0.493);
+  background: rgba(233, 219, 181, 0.493);
 }
 #product_list_button{
   width:400px;
 }
 /* TOP ACTION BUTTONS */
-#customer_option_active_order_button{
-  margin-top: 20px;
-}
-#customer_option_changes_button{
-  margin-top: 20px;
-}
+
 #customer_option_button{
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin:10px 0px;
+  padding:0px;
 }
 #inc_product{
   margin-top: 10px;
@@ -170,11 +170,11 @@
 }
 /***********************/
 #user_name{
-  color: darkgreen;
+ color:rgb(122, 90, 0);
   font-weight:bold;  
 }
 #customer_name{
-  color: darkgreen;
+ color:rgb(122, 90, 0);
   font-weight:bold; 
 }
 #product_list{
@@ -217,27 +217,27 @@
 }
 #add_product_list{
   margin-left: 10px;
-  height: 1000px;
+  max-height: 1000px;
   overflow-y: auto;
 }
 #active_order_list{
   margin-left: 10px;
-  height: 800px;
+  max-height: 800px;
   overflow-y: auto;
 }
 #changes_order_list{
   margin-left: 10px;
-  height: 800px;
+  max-height: 800px;
   overflow-y: auto;
 }
 #get_favourite_order_list{
   margin-left: 10px;
-  height: 1000px;
+  max-height: 1000px;
   overflow-y: auto;
 }
 #active_order_list{
   margin-left: 10px;
-  height: 1000px;
+  max-height: 1000px;
   overflow-y: auto;
 }
 /*Modal Settings */

@@ -56,8 +56,8 @@ function populateCustomerPageInfo(){
     $("#customer_name").html(`${test_customer_name}`)
     $("#product_list_header").html(`<h2>${order_status}</h2><h2><button type="button" class="btn btn-sm btn-basic" style="font-weight:bold;font-size:70%;">${test_active_orders}</button> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
-    $("#customer_option_active_order_button").html(`<h3>Active Orders <br /> For Week #${test_active_orders} <span class="badge" >3</span></h3>`);
-    $("#customer_option_changes_button").html(`<h3>Changes Since <br /> Your Last Visit  <span class="badge">${test_changes}</span></h3>`);
+    $("#customer_option_active_order_button").html(`Active Orders <span class="badge" style="font-size:30px;" >3</span>`);
+    $("#customer_option_changes_button").html(`Changes <span class="badge" style="font-size:30px;"> ${test_changes}</span>`);
     //Ship-To
     $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
     $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h4></a></li>`)

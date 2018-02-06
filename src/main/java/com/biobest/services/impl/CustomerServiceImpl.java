@@ -22,6 +22,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer getCustomer(String customer){
 		return this.customerRepository.findByCustomerId(customer);
 	}
+
+	public Customer getCustomerByShipCompany(String customer){
+		return this.customerRepository.findByCustomerShipCompany(customer);
+	}
 	
 	public List<Customer> getCustomers(){
 		return customerRepository.findAll();
@@ -30,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	@Transactional
 	public Customer createCustomer(CustomerDTO customerDto) throws ShipCompanyExistsException{
-		Customer check = customerRepository.findByCustomerId(customerDto.getShipCompany());
+		Customer check = customerRepository.findByCustomerShipCompany(customerDto.getShipCompany());
 		if(check != null){
 			throw new ShipCompanyExistsException("the shipping company already exists...");
 		}

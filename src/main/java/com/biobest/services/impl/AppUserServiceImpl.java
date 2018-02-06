@@ -10,6 +10,7 @@ import com.biobest.exceptions.EmailExistsException;
 import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.repositories.AppUserRepository;
 import com.biobest.services.AppUserService;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,7 @@ public class AppUserServiceImpl implements AppUserService {
             throw new EmailExistsException("A user with that email already exists!");
         }
         General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus());
+        newGeneral.setRoles(Arrays.asList("ROLE_USER"));
         return appUserRepository.save(newGeneral);
     }
 
@@ -64,6 +66,7 @@ public class AppUserServiceImpl implements AppUserService {
             throw new EmailExistsException("A user with that email already exists!");
         }
         Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus() );
+        newConsultant.setRoles(Arrays.asList("ROLE_USER"));
         return appUserRepository.save(newConsultant);
     }
 

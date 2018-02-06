@@ -57,7 +57,6 @@ $("#submit_customer_button").on('click', function(){
     var ship_phone = $("#ship_phone").val();
     var ship_fax = $("#ship_fax").val();
     var ship_email = $("#ship_email").val();
-    console.log(inv_company);
     $.post('/createCustomer', {
         invCompany: inv_company,
         invContact: inv_contact,

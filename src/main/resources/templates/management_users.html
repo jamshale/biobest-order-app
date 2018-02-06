@@ -3,7 +3,7 @@
 <head>
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="css/management_common.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
     <link href="css/management_users.css" rel="stylesheet"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -72,7 +72,7 @@
                             <tr id="user_info_5"><td><h3 >Status:</h3></td><td><h3>-----------</h3></td></tr>   
                         </tbody>
                     </table>
-                    <div style="text-align:center">
+                    <div style="text-align:center;margin-bottom:20px;">
                         <button disabled="true" type="button" class="btn btn-md btn-warning" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Change Password</h3></button>
                         <button disabled="true" type="button" class="btn btn-md btn-info" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Change Status</h3></button>
                         <button disabled="true" type="button" class="btn btn-md btn-danger" style="width:300px;margin:5px;"><h3 style="font-weight:bold;">Delete User</h3></button>
@@ -90,41 +90,42 @@
                     </table>
      
                 
-                <table style="width:100%">
+                <table style="width:100%;">
                     <tbody id="customer_list">
                         
                     </tbody>
                 </table>
                 <!-- Bottom Buttons -->
-                <div style="text-align:center;">
-                    <button type="button" disabled="true" class="btn btn-success" id="add_customer_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
-                        <h3 style="font-weight:bold;" >Add Customer For: <br /><strong>-----------</strong></h3>
+                <div style="text-align:center;margin-top:20px;">
+                    <button type="button" disabled="true" class="btn btn-success" id="add_customer_button" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
+                        Add Customer For: <br />-----------
                     </button>
-                    <button type="button" disabled="true" class="btn btn-danger" id="remove_customer_button" style="width:300px;margin:5px;padding-top:10px;padding-bottom:10px;">
-                        <h3 style="font-weight:bold;">Remove Customer For: <br /> <strong>-----------</strong></h3>
+                    <button type="button" disabled="true" class="btn btn-danger" id="remove_customer_button" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
+                        Remove Customer For: <br /> -----------
                     </button>  
                 </div>   
          
 
             </div>
-            <div class="col-sm-7" >
-                    <h3 class="header-label">Create User:</h3>
+            <div class="col-sm-7" style="background-color:rgb(255, 237, 211);padding-bottom:30px;">
+                    
                 <form action="/management_users" th:object="${appUser}" method="POST" enctype="utf8">
-                    <lable></lable>
+
+                    <lable><h3 class="header-label">Create User:</h3></lable>
                     <div class="form-group">
-                        <input typr="text" autocomplete="off" class="form-control" placeholder="First Name" th:field="*{firstName}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="First Name" th:field="*{firstName}" style="font-size:30px;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('firstName')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" autocomplete="off" class="form-control" placeholder="Last Name" th:field="*{lastName}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="Last Name" th:field="*{lastName}" style="font-size:30px;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('lastName')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{email}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{email}" style="font-size:30px;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('email')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
-                        <input typr="text" autocomplete="off" class="form-control" placeholder="Password" th:field="*{password}" style="font-size:20pt;height:50px;"></input>
+                        <input typr="text" autocomplete="off" class="form-control" placeholder="Password" th:field="*{password}" style="font-size:30px;height:50px;"></input>
                         <div th:each="error : ${#fields.errors('password')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <div class="form-group">
@@ -144,7 +145,7 @@
                         <div th:each="error : ${#fields.errors('activeStatus')}" class="alert alert-danger" th:text="${error}"></div>
                     </div>
                     <button type="submit" class="btn btn-success btn-block" id="create_submit_button">
-                        <h3>Create User</h3>
+                        <h3 style="font-weight:bold;font-size:30px;">Create User</h3>
                     </button>
                 </form>
             </div>
@@ -167,7 +168,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div id="remove_customer_div">
-                                <table class="remove-customer-table">
+                                <table class="table table-striped remove-customer-table" style="border-style:solid;border-width:thin;">
                                     <tbody id="remove_customer_list">
                                     </tbody>
                                 </table>
@@ -199,7 +200,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div id="add_customer_div">
-                                <table class="add-customer-table">
+                                <table class="table table-striped add-customer-table" style="border-style:solid;border-width:thin;">
                                     <tbody id="add_customer_list">
                                     </tbody>
                                 </table>
