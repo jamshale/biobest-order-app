@@ -12,6 +12,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="row" style="text-align: center;">Biobest Order App</h1>
+
             <form th:action="@{/login}" method="POST" style="width: 50%; margin: auto;">
                 <fieldset>
                     <div th:if="${param.error}" class="alert alert-danger" style="font-size:20pt;height:60px;">Invalid email and password!</div>

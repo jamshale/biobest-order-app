@@ -42,17 +42,7 @@ public abstract class AppUser {
 		this.customers = new HashSet<>();
 		this.appUserId = UUID.randomUUID().toString();
 	}
-	/*
 
-	public void addCustomer(Customer customer) {
-		this.customers.add(customer);
-	}
-
-	public void removeCustomer(Customer customer) {
-		System.out.println("appUsercontains = " + this.customers.contains(customer));
-		this.customers.remove(customer);
-	}
-	*/
 	//Getters and Setters
 	public String getFirstName() {
 		return firstName;

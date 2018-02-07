@@ -73,7 +73,7 @@ $("#remove_user_list").on('click', function(u){
     }
 })
 //Populate list of users to possibly link to customer
-$("#add_user_button").on('click', function(){
+function addUser(){
     $("#add_user_modal").modal('toggle');
     $("#add_user_list").html('')
     userList.forEach(function(user){
@@ -87,9 +87,9 @@ $("#add_user_button").on('click', function(){
             </tr>`);
         }
     })   
-})
+}
 //Populate list of users to link to customer
-$("#remove_user_button").on('click', function(u){
+function removeUser(){
     $("#remove_user_modal").modal('toggle');
     $("#remove_user_list").html('')
     userList.forEach(function(user){
@@ -103,7 +103,7 @@ $("#remove_user_button").on('click', function(u){
             </tr>`);
         }
     })
-})
+}
 //Initiate User List
 function initUserList(appUsers){
     userList = appUsers;
@@ -117,9 +117,9 @@ function populateUserList(){
             matched_user = userList.filter(function(user){
                 return user.appUserId === u;
             });
-            $("#user_list").prepend(`<tr><td style="width:500px;"><h3 style="font-weight:bold;">${matched_user[0].firstName}<br />${matched_user[0].lastName}</h3></td>
-                                        <td style="width:100px;padding-top:25px;"><h4>${matched_user[0].type}</h4></td>
-                                        <td style="width:100px;padding-top:25px;"><h4>${matched_user[0].activeStatus}</h4></td></tr>`)                     
+            $("#user_list").prepend(`<tr><td style><h3>${matched_user[0].firstName}<br />${matched_user[0].lastName}</h3></td>
+                                        <td><h4>${matched_user[0].type}</h4></td>
+                                        <td><h4>${matched_user[0].activeStatus}</h4></td></tr>`)                     
         })  
     }
 }
@@ -193,10 +193,10 @@ function addInfoToFields(customer){
             <h3>Fax:</h3><h4>${customer[0].shipFax}</h4>
             </td></tr>`)
     populateUserList();
-    info_highlight();
+    infoHighlight();
 }
 //Update highlighter
-function info_highlight(){
+function infoHighlight(){
     setTimeout(function (){
         $(".info").removeClass('border-class')
     }, 200);

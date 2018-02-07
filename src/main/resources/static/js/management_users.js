@@ -106,7 +106,7 @@ function addInfoToFields(user){
     $("#user_info_4").html(`<td><h3>Password:</h3></td><td><h3>${user[0].type}</h3></td>`)
     $("#user_info_5").html(`<td><h3>Active Status:</h3></td><td><h3>${user[0].activeStatus}</h3></td>`)
     populateCustomerList();
-    info_highlight();
+    infoHighlight();
 }
 //Populate Selected User Customer List
 function populateCustomerList(){
@@ -122,14 +122,14 @@ function populateCustomerList(){
     }
 }
 //Update highlighter
-function info_highlight(){
+function infoHighlight(){
     setTimeout(function (){
         $(".info").removeClass('border-class')
     }, 200);
     $(".info").addClass('border-class')
 }
 //Populate list of customers to possibly link to customer
-$("#add_customer_button").on('click', function(){
+function addCustomer(){
     $("#add_customer_modal").modal('toggle');
     $("#add_customer_list").html('')
     customerList.forEach(function(customer){
@@ -141,9 +141,9 @@ $("#add_customer_button").on('click', function(){
             </tr>`);
         }
     })   
-})
+}
 //Populate list of customers to possibly remove from customer
-$("#remove_customer_button").on('click', function(){
+function removeCustomer(){
     $("#remove_customer_modal").modal('toggle');
     $("#remove_customer_list").html('')
     customerList.forEach(function(customer){
@@ -155,7 +155,7 @@ $("#remove_customer_button").on('click', function(){
             </tr>`);
         }
     })   
-})
+}
 //Check For Customer Linked To user
 function checkCustomerExists(customer){
     if(clicked_user[0].customers[0]==null){

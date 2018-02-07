@@ -1,3 +1,75 @@
+#create_customer_section button{
+  width:90%;
+  margin: 20px;
+  font-weight:bold;
+  font-size:30px;
+  height:80px;
+}
+#create_customer_section .form-group input{
+  font-size:16pt;
+  height:40px;
+  width:95%;
+  font-weight:bold;
+}
+#create_customer_section .form-group div{
+  font-size:16pt;
+  height:60px;
+  width:95%;
+  font-weight:bold;
+}
+#create_customer_section .header-label{
+  padding:30px 10px;
+}
+#create_customer_section form{
+  background-color:rgb(255, 237, 211);
+}
+
+#user_section table:nth-child(2) tr:first-child {
+  background-color:rgb(224, 224, 224);border-style:solid;border-width:medium;
+}
+
+#user_section table:first-child td:first-child {
+  width:500px;
+}
+#user_section table td:nth-child(2), #user_section table td:nth-child(3) {
+  width:100px;
+}
+#user_section table tr:first-child h3{
+  font-weight:bold;margin:5px;
+}
+#user_section button{
+  width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;
+}
+#customer_section input.form-control{
+  font-size:20pt;
+  font-weight:bold;
+  height:50px;width:100%;
+  margin-bottom:10px;
+  text-align:center;
+}
+#customer_section table, #user_section table{
+  margin-bottom:0px;
+}
+#customer_section tr, #user_list_table tr{
+  background-color:rgb(224, 224, 224);
+  border-style:solid;
+  border-width:medium;
+}
+#user_list_table tr{
+
+  background-color:rgb(179, 25, 25);
+}
+#customer_section td h3, #user_list_table td h3{
+  font-weight:bold;
+  margin:5px;
+}
+.info tr{
+  background-color:rgb(224, 224, 224);border-style:solid;border-width:medium
+}
+.info h4{
+  font-weight:bold;
+}
+
 #customer_list_table tbody {
     height: 550px;      
     overflow-y: auto;    
@@ -25,16 +97,11 @@
   border-style: none;
   background-color: white;
 }
-thead tr{
-  background-color: rgb(235, 235, 235);
-}
+
 .customer_info, tr {
       font-weight: bold;
 }
 
-.table, tbody tr td h4{
-  font-weight: bold;
-}
 
 #add_user_div{
   max-height: 800px;
@@ -63,5 +130,4 @@ thead tr{
 form .form-group{
   margin: 3px;
 }
-
 

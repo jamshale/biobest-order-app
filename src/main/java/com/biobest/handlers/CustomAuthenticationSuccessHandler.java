@@ -1,6 +1,7 @@
 package com.biobest.handlers;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +19,21 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        String targetUrl;
+        
+        String targetUrl = "";
         boolean isManager = authentication.getAuthorities().stream().anyMatch(auth -> "ROLE_ADMIN".equals(auth.getAuthority()));
-        targetUrl = isManager ? "/management_customers" : "/";
+        boolean isAppUser = authentication.getAuthorities().stream().anyMatch(auth -> "ROLE_USER".equals(auth.getAuthority()));
+        if(isManager == true){
+            targetUrl = "management_customers";
+        }
+        if(isAppUser == true){
+            targetUrl = "user_current_order";
+        }
+        System.out.println(targetUrl);
         if (response.isCommitted()){
             return;
         }
+        
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 

@@ -20,14 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class UserController {
+public class AppUserController {
 
-    private final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final Logger logger = LoggerFactory.getLogger(AppUserController.class);
     
     @Autowired
     private AppUserService appUserService;
 
-    public UserController() {
+    public AppUserController() {
         logger.debug("Employee controller initialized");
     }
 

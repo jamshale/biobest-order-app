@@ -14,56 +14,47 @@
 <body style="background-color: rgba(255, 242, 202, 0.288);">
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-left" href="#">
-                       
-                      </a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="management_customers.html"><h3>Customers</h3></a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li >
-                        <a href="management_users.html"><h3>Users</h3></a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li >
-                        <a href="management_prices.html"><h3>Prices</h3></a>
-                    </li>
-                </ul>
-                <a id="logout" class="btn btn-custom-0" href="/logout" role="button"><h3>Log out</h3></a>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-left"></a>
             </div>
-        </nav>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="management_customers.html"><h3>Customers</h3></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li >
+                    <a href="management_users.html"><h3>Users</h3></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li >
+                    <a href="management_prices.html"><h3>Prices</h3></a>
+                </li>
+            </ul>
+            <a id="logout" class="btn btn-custom-0" href="/logout" role="button"><h3>Log out</h3></a>
+        </div>
+    </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-5">
-                <h3 class="header-label" >Customer List:</h3>
-                <input type="text" class="form-control" placeholder="Search" style="font-size:20pt;font-weight:bold;height:50px;width:100%;margin-bottom:10px;"/>
-                <table class="table" style="margin-bottom:0px;">
-                    <tbody>
-                        <tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium">
-                        <td><h3 style="font-weight:bold;margin:5px;">Customer Name</h3></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="col-sm-5" id="customer_section">
+                <h3 class="header-label">Customer List:</h3>
+                <input type="text" class="form-control" placeholder="Search"/>
+                <!-- table header -->
+                <table class="table"><tbody><tr><td><h3>Customer Name</h3></td></tr></tbody></table>
                 <div id="customer_list_table">
-                    <table class="table table-hover">
-                        <tbody id="customer_list">   
-                        </tbody>
-                    </table>
+                    <!-- customer table -->
+                    <table class="table table-hover"><tbody id="customer_list"></tbody></table>
                 </div>    
             </div>
       
-            <div class="col-sm-7" >
+            <div class="col-sm-7" id="information_section">
                 <div class="row">
                     <h3 class="header-label">Customer Information:</h3>
                     <div class="col-sm-6" style="width:49%;">  
                         <table class="table info">
-                            <thead><tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium"><th><h4 style="font-weight:bold;">Invoice-To:</h4></th></tr>
+                            <thead><tr><th><h4>Invoice-To:</h4></th></tr>
                             </thead>
                             <tbody id="invoice_to_info">
                                 <tr><td>
@@ -81,7 +72,7 @@
                     </div>
 					<div class="col-sm-6" style="width:49%;">
 						<table class="table info">
-							<thead><tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium"><th><h4 style="font-weight:bold;">Ship-To:</h4></th></tr></thead>
+							<thead><tr><th><h4 style="font-weight:bold;">Ship-To:</h4></th></tr></thead>
 							<tbody id="ship_to_info">
 								<tr><td>
 									<h3 >Company:</h3><h4>----------</h4>
@@ -103,19 +94,15 @@
                     <button type="button" disabled="true" class="btn btn-lg btn-danger management_customer_button"><h3>Deactivate</h3></button>
                 </div>
             </div>
-
         </div>    
-
-
-       
-        <div class="col-sm-5">
+        <div class="col-sm-5" id="user_section">
         <h3 class="header-label">Users:</h3>
-                    <table class="table" style="margin:0px;">
+                    <table class="table">
                         <tbody>
-                            <tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium">
-                            <td style="width:500px;"><h3 style="font-weight:bold;margin:5px;">User Name</h3></td>
-                            <td style="width:100px;"><h3 style="font-weight:bold;margin:5px;">Type</h3></td>
-                            <td style="width:100px;"><h3 style="font-weight:bold;margin:5px;">Status</h3></td>
+                            <tr>
+                            <td><h3>User Name</h3></td>
+                            <td><h3>Type</h3></td>
+                            <td><h3>Status</h3></td>
                             </tr>
                         </tbody>
                     </table>
@@ -126,93 +113,93 @@
                         </table>
                     </div>
                 <div style="text-align:center;">
-                    <button type="button" disabled="true" class="btn btn-success" id="add_user_button" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
+                    <button type="button" disabled="true" class="btn btn-success" id="add_user_button" onclick="addUser()">
                         Add User For: <br />-----------
                     </button>
-                    <button type="button" disabled="true" class="btn btn-danger" id="remove_user_button" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
+                    <button type="button" disabled="true" class="btn btn-danger" id="remove_user_button" onclick="removeUser()">
                         Remove User For: <br /> -----------
                     </button>  
                 </div>
 
             </div>
-        <div class="col-sm-7" >
+        <div class="col-sm-7" id="create_customer_section" >
             
             
-            <form action="/management_customers" th:object="${customerDto}" method="POST" enctype="utf8" style="background-color:rgb(255, 237, 211);">
-                <lable><h3 class="header-label" style="padding:10px 10px;">Create Customer:</h3></lable>
+            <form action="/management_customers" th:object="${customerDto}" method="POST" enctype="utf8">
+                <lable><h3 class="header-label">Create Customer:</h3></lable>
                 <div class="col-sm-6">
                 <label><h3 style="font-weight:bold;">Invoice Info:</h3></label>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Company" th:field="*{invCompany}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invCompany')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Company" th:field="*{invCompany}"></input>
+                    <div th:each="error : ${#fields.errors('invCompany')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Contact" th:field="*{invContact}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invContact')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Contact" th:field="*{invContact}"></input>
+                    <div th:each="error : ${#fields.errors('invContact')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Address" th:field="*{invAddress}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invAddress')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Address" th:field="*{invAddress}"></input>
+                    <div th:each="error : ${#fields.errors('invAddress')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="City/State" th:field="*{invCityState}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invCityState')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="City/State" th:field="*{invCityState}"></input>
+                    <div th:each="error : ${#fields.errors('invCityState')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Zip" th:field="*{invZip}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invZip')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Zip" th:field="*{invZip}"></input>
+                    <div th:each="error : ${#fields.errors('invZip')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{invEmail}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{invEmail}"></input>
+                    <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Phone" th:field="*{invPhone}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invPhone')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Phone" th:field="*{invPhone}"></input>
+                    <div th:each="error : ${#fields.errors('invPhone')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Fax" th:field="*{invFax}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('invFax')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Fax" th:field="*{invFax}"></input>
+                    <div th:each="error : ${#fields.errors('invFax')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 </div>
                 <div class="col-sm-6">
                 <label><h3 style="font-weight:bold;">Shipping Info:</h3></label>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Company" th:field="*{shipCompany}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipCompany')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Company" th:field="*{shipCompany}"></input>
+                    <div th:each="error : ${#fields.errors('shipCompany')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Contact" th:field="*{shipContact}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipContact')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Contact" th:field="*{shipContact}"></input>
+                    <div th:each="error : ${#fields.errors('shipContact')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Address" th:field="*{shipAddress}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipAddress')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Address" th:field="*{shipAddress}"></input>
+                    <div th:each="error : ${#fields.errors('shipAddress')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="City/State" th:field="*{shipCityState}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipCityState')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="City/State" th:field="*{shipCityState}"></input>
+                    <div th:each="error : ${#fields.errors('shipCityState')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Zip" th:field="*{shipZip}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipZip')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Zip" th:field="*{shipZip}"></input>
+                    <div th:each="error : ${#fields.errors('shipZip')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group" >
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{shipEmail}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Email" th:field="*{shipEmail}"></input>
+                    <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Phone" th:field="*{shipPhone}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipPhone')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Phone" th:field="*{shipPhone}"></input>
+                    <div th:each="error : ${#fields.errors('shipPhone')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 <div class="form-group">
-                    <input typr="text" autocomplete="off" class="form-control" placeholder="Fax" th:field="*{shipFax}" style="font-size:16pt;height:40px;width:95%;font-weight:bold;"></input>
-                    <div th:each="error : ${#fields.errors('shipFax')}" class="alert alert-danger" th:text="${error}"  style="font-size:16pt;height:60px;width:95%;font-weight:bold;"></div>
+                    <input typr="text" autocomplete="off" class="form-control" placeholder="Fax" th:field="*{shipFax}"></input>
+                    <div th:each="error : ${#fields.errors('shipFax')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 </div>
                 <div style="text-align: center;">
-                <button type="submit" class="btn btn-success" style="width:90%;margin: 20px">
-                        <h3 style="font-weight:bold;font-size:30px;">Create Customer</h3>
+                <button type="submit" class="btn btn-success">
+                       Create Customer
                 </button>
             </div>
                 

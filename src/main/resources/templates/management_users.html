@@ -17,35 +17,26 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-left" href="#">
-                   
-                  </a>
+                <a class="navbar-left"></a>
             </div>
             <ul class="nav navbar-nav">
-                <li >
-                    <a href="management_customers.html"><h3>Customers</h3></a>
-                </li>
+                <li ><a href="management_customers.html"><h3>Customers</h3></a></li>
             </ul>
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="management_users.html"><h3>Users</h3></a>
-                </li>
+                <li class="active"><a href="management_users.html"><h3>Users</h3></a></li>
             </ul>
             <ul class="nav navbar-nav">
-                <li >
-                    <a href="management_prices.html"><h3>Prices</h3></a>
-                </li>
+                <li ><a href="management_prices.html"><h3>Prices</h3></a></li>
             </ul>
             <a id="logout" class="btn btn-custom-0" href="/logout" role="button"><h3>Log out</h3></a>
         </div>
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-5">
-                
-                <h3 class="header-label" style="margin-bottom: 10px;">User List:</h3>
-                    <input type="text" class="form-control" placeholder="Search" style="font-size:20pt;font-weight:bold;height:50px;width:100%;margin-bottom:10px;"/>
-                    <table class="table table-striped" style="margin-bottom:0px;">
+            <div class="col-sm-5" id="user_section">
+                <h3 class="header-label">User List:</h3>
+                    <input type="text" class="form-control" placeholder="Search"/>
+                    <table class="table" style="margin-bottom:0px;">
                         <tbody> 
                             <tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium">
                                 <td><h3 style="font-weight:bold;margin:5px;">Users In System</h3></td>
@@ -97,10 +88,10 @@
                 </table>
                 <!-- Bottom Buttons -->
                 <div style="text-align:center;margin-top:20px;">
-                    <button type="button" disabled="true" class="btn btn-success" id="add_customer_button" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
+                    <button type="button" disabled="true" class="btn btn-success" id="add_customer_button" onclick="addCustomer()" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
                         Add Customer For: <br />-----------
                     </button>
-                    <button type="button" disabled="true" class="btn btn-danger" id="remove_customer_button" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
+                    <button type="button" disabled="true" class="btn btn-danger" id="remove_customer_button" onclick="removeCustomer()" style="width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;">
                         Remove Customer For: <br /> -----------
                     </button>  
                 </div>   
