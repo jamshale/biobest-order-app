@@ -19,6 +19,8 @@ public interface AppUserService {
 
 	public AppUser getAppUserById(String id);
 
+	public AppUser getAppUserByEmail(String email);
+
 	@Transactional
 	public AppUser createGeneralAppUser(AppUserDTO appUserDto) throws UserNameExistsException, EmailExistsException;
 

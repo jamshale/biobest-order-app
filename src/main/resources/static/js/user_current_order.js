@@ -25,19 +25,51 @@ var test_ship_to = "1636 Island Hwy East"
 var order_status = "Submitted"
 
 var productList = [];
+var customerList = [];
+var userList = [];
+var orderList = [];
+var currentCustomer;
+var currentUser;
+var loadComplete = []
 
 $(document).ready(function ()   {
 
     $.ajax({
         url: "/products",
-        success: initiateLists
+        success: initiateProductList,
+        complete: function(){
+            loadComplete.push("products");
+            if(loadComplete.length == 3){
+                functionalityFlowCommand()
+            }
+        }
     })
+    $.ajax({
+        url: "/appUsers",
+        success: initiateUserList,
+        complete: function(){
+            loadComplete.push("users");
+            if(loadComplete.length == 3){
+                functionalityFlowCommand()
+            }
+        }
+    })
+    $.ajax({
+        url: "/customers",
+        success: initiateCustomerList,
+        complete: function(){
+            loadComplete.push("customers");
+            if(loadComplete.length == 3){
+                functionalityFlowCommand()
+            }
+        }
+    })
+    
 
-        populateProductList();
+        
         populateHistoryList();
         populateActiveList();
         populateFavouriteList();
-        populateCustomerPageInfo();
         
         populateChangesOrderList();
         populateGetFavouriteOrderList();
@@ -45,45 +77,37 @@ $(document).ready(function ()   {
         //favButtonClickIndicator();
 });
 
-function initiateLists(products){
+//Initiation Functions
+function initiateProductList(products){
     productList = products;
-    populateAddProductList();
+    
+    
 }
-
-//Populate Customer Page Info
-function populateCustomerPageInfo(){
-    $("#user_name").html(`${test_user_name}`)
-    $("#customer_name").html(`${test_customer_name}`)
-    $("#product_list_header").html(`<h2>${order_status}</h2><h2><button type="button" class="btn btn-sm btn-basic" style="font-weight:bold;font-size:70%;">${test_active_orders}</button> Order For Week #${date.getWeek()}</h2>`)
-    //If Only One Active Order
-    $("#customer_option_active_order_button").html(`Active Orders <span class="badge" style="font-size:30px;" >3</span>`);
-    $("#customer_option_changes_button").html(`Changes <span class="badge" style="font-size:30px;"> ${test_changes}</span>`);
-    //Ship-To
-    $("#ship_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#ship_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok"></span></h4></a></li>`)
-    //Invoice-To
-    $("#invoice_to_button").html(`<h4>${test_ship_to} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
-    $("#invoice_to_import").html(`<li><a href="#"><h4>${test_ship_to} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
-    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
+function initiateUserList(users){
+    userList = users;
+    
 }
+function initiateCustomerList(customers){
+    customerList = customers;
+    
+    
+    
+    
+}
+//Functionality Command
+function functionalityFlowCommand(){
 
-//Populate Add Product List
-function populateAddProductList(){
-    productList.forEach(function(p){
-        current_product = $("#add_product_list_item")
-        current_product.append(`<tr">
-                    <td><h3>${p.productName}</h3><h4>${p.description}</h4><h3>${p.unitSize}</h3></td>
-                    <td><button type="button" id="add_item_price" class="btn btn-defualt"><h2>$${p.aPrice}</h2></button></td>
-                    <td><button class="btn btn-info btn-lg fav_product" style=""><h3>Fav</h3></button></td>
-                    <td><button type="button" class="btn btn-success btn-lg add_product"><h3>Add</h3></button></td>
-                    </tr>`) 
-    })  
-    addButtonClickIndicator()
-    favButtonClickIndicator()                                          
+    activateCurrentUser()
+    activateCurrentCustomer()
+    populateCustomerPageInfo()
+    populateAddProductList()
+    //populateProductList();
 }
 
 //Populate Accordion List of Current Products --> Initial
 function populateProductList() {
+    
+    /*
     for(var i = 0; i < num_items; i++){
         var clone1 = $("#product_list_panel").children().first().clone()
         var clone2 = $("#product_list_panel").children().first().next().clone()
@@ -99,7 +123,69 @@ function populateProductList() {
         }
     }
     $("#total_cost").html(`<h2 style="font-weight:bold;">Total = $${total_cost}</h2>`)
+    */
+    
 }
+
+//Activate Current Customer
+function activateCurrentCustomer(){
+    var current_customer_id = sessionStorage.getItem("current_customer")
+    currentCustomer = customerList.filter(function(c){
+        return c.customerId === current_customer_id;
+    })
+    //console.log(currentCustomer);
+}
+//Activate Current AppUser
+function activateCurrentUser(){
+    var current_user_id = sessionStorage.getItem("current_user")
+    //console.log(userList);
+    //console.log(current_user_id);
+    currentUser = userList.filter(function(u){
+        return u.appUserId === current_user_id;
+    })
+    //console.log(currentUser);
+}
+
+//Populate Customer Page Info
+function populateCustomerPageInfo(){
+    //$("#user_name").html(`${currentUser[0].firstName} ${currentUser[0].lastName} `)
+    $("#customer_name").html(`${currentCustomer[0].shipCompany}`)
+    $("#product_list_header").html(`<h2>${order_status}</h2><h2><button type="button" class="btn btn-sm btn-basic">${test_active_orders}</button> Order For Week #${date.getWeek()}</h2>`)
+    //If Only One Active Order
+    $("#customer_option_active_order_button").html(`Active Orders <span class="badge" style="font-size:30px;" >3</span>`);
+    $("#customer_option_changes_button").html(`Changes <span class="badge" style="font-size:30px;"> ${test_changes}</span>`);
+    //Ship-To
+    $("#ship_to_button").html(`<h4>${currentCustomer[0].invAddress} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#ship_to_import").html(`<li><a href="#"><h4>${currentCustomer[0].invAddress} <span class="glyphicon glyphicon-ok"></span></h4></a></li>`)
+    //Invoice-To
+    $("#invoice_to_button").html(`<h4>${currentCustomer[0].shipAddress} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h4>`)
+    $("#invoice_to_import").html(`<li><a href="#"><h4>${currentCustomer[0].shipAddress} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4></a></li>`)
+    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
+}
+
+//Populate Add Product List
+function populateAddProductList(){
+    productList.sort(function(a, b){
+        var A = a.productName,
+            B = b.productName;
+        //
+        if(A<B) return -1;
+        if(A>B) return 1;
+        return 0;
+    })
+    productList.forEach(function(p){
+        current_product = $("#add_product_list_item")
+        current_product.append(`<tr">
+                    <td><h3>${p.productName}</h3><h4>${p.description}</h4><h3>${p.unitSize}</h3></td>
+                    <td><button type="button" id="add_item_price" class="btn btn-defualt"><h2>$${p.aPrice}</h2></button></td>
+                    <td><button class="btn btn-info btn-lg fav_product" style=""><h3>Fav</h3></button></td>
+                    <td><button type="button" class="btn btn-success btn-lg add_product"><h3>Add</h3></button></td>
+                    </tr>`) 
+    })  
+    addButtonClickIndicator()
+    favButtonClickIndicator()                                          
+}
+
 //Populate active Accordion
 function populateActiveList() {
     var test_units = "3";
@@ -232,6 +318,8 @@ function populateChangesOrderList(){
 
 //Populate Get Favourite Order List
 function populateGetFavouriteOrderList(){
+
+    /*
     for(var i = 0; i < test_order_num; i++){
         var fav_order_name = "My Order " + i;
         current_product = $("#get_favourite_order_list_item")
@@ -241,7 +329,8 @@ function populateGetFavouriteOrderList(){
             <td style="width:30%;padding-bottom:30px;"><h3><span class="badge">${num_items}</span> Items</h3></td>
             <td style="width:20%;padding-bottom:30px;"><button type="button" class="btn btn-success btn-sm" style="padding-bottom:15px;margin-right:50px;"><h3>Activate</h3></button></td>
             </tr>`)       
-    }                                               
+    }    
+    */                                           
 }
 
 

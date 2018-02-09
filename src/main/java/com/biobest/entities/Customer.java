@@ -14,6 +14,7 @@ public class Customer{
 	private String _id;
 
 	private String customerId;
+
 	private String invCompany;
 	private String invContact;
 	private String invAddress; 
@@ -30,7 +31,9 @@ public class Customer{
 	private String shipPhone; 
 	private String shipFax; 
 	private String shipEmail;
+
 	private Set<String> appUsers;
+	private Set<String> currentOrders;
 
 	public Customer(String invCompany, String invContact, String invAddress, String invCityState, String invZip,String invEmail, String invPhone, String invFax,
 						String shipCompany, String shipContact, String shipAddress, String shipCityState, String shipZip, String shipEmail, String shipPhone, String shipFax){
@@ -51,6 +54,7 @@ public class Customer{
 		this.shipPhone = shipPhone;   
 		this.shipFax = shipFax;   
 		this.appUsers = new HashSet<>();
+		this.currentOrders = new HashSet<>();
 		this.customerId = UUID.randomUUID().toString();
 	}
 
@@ -237,6 +241,22 @@ public class Customer{
 	 */
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+
+
+	/**
+	 * @return the currentOrders
+	 */
+	public Set<String> getCurrentOrders() {
+		return currentOrders;
+	}
+
+
+	/**
+	 * @param currentOrders the currentOrders to set
+	 */
+	public void setCurrentOrders(Set<String> currentOrders) {
+		this.currentOrders = currentOrders;
 	}
 
 

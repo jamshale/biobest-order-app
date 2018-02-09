@@ -27,7 +27,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             targetUrl = "management_customers";
         }
         if(isAppUser == true){
-            targetUrl = "user_current_order";
+            targetUrl = "user_select_order";
         }
         System.out.println(targetUrl);
         if (response.isCommitted()){

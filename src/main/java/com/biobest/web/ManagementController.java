@@ -25,10 +25,4 @@ public class ManagementController {
     public String management_prices(Model model) {
         return "management_prices";
     }
-
-    @RequestMapping("/user_current_order")
-    public String app_user_custommer(Model model) {
-        return "user_current_order";
-    }
-
 }

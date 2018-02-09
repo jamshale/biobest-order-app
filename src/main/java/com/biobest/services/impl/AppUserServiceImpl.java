@@ -78,7 +78,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
 	public AppUser getAppUserById(String id) {
 		return appUserRepository.findByAppUserId(id);
-	}
+    }
  
     @Transactional
     public AppUser updateAppUser(AppUser user){
@@ -97,6 +97,11 @@ public class AppUserServiceImpl implements AppUserService {
         Set<String> customerSet = appUser.getCustomers();
         customerSet.remove(customer.getCustomerId());
         return appUserRepository.save(appUser);
+	}
+
+	@Override
+	public AppUser getAppUserByEmail(String email) {
+		return appUserRepository.findByEmail(email);
 	}
 
     

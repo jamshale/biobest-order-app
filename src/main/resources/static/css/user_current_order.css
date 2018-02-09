@@ -1,3 +1,9 @@
+
+@-ms-viewport{
+  width: device-width;
+}
+
+
 #ship_to_button h4, #invoice_to_button h4, #ship_to_import h4, #invoice_to_import h4{
   font-size: 25px;
 }
@@ -58,6 +64,7 @@
   font-weight:bold;
 }
 #product_list_button{
+
   text-align:left; 
   padding-left:6px;
 }
@@ -110,6 +117,11 @@
   float:right;
   font-size: 40px;
 }
+#product_list_header button{
+  font-weight:bold;
+  font-size:70%;
+}
+
 #logout {
   margin: 7px;
   float: right;
@@ -140,7 +152,7 @@
 }
 /* ACCCORDION */
 .panel-group.main{
-  max-height: 700px;
+  /*max-height: 700px;*/
   overflow-y: scroll;
 }
 .panel-body{

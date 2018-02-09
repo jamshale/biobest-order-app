@@ -79,7 +79,6 @@ function addUserToList(list_item, user){
 //Info Click Event Listener
 $("#user_list").on('click', function(u){
     var app_user_id = $(u.target).parent().find("td:hidden").text();   
-    console.log($(app_user_id))
     clicked_user = userList.filter(function(user){
             return (user.appUserId === app_user_id);
     });
