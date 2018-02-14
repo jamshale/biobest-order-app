@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.biobest.dtos.CustomerDTO;
 import com.biobest.entities.AppUser;
 import com.biobest.entities.Customer;
+import com.biobest.entities.Order;
 import com.biobest.exceptions.ShipCompanyExistsException;
 import com.biobest.repositories.CustomerRepository;
 import com.biobest.services.CustomerService;
@@ -64,6 +65,20 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer removeAppUser(Customer customer, AppUser appUser) {
 		Set<String> appUserSet = customer.getAppUsers();
 		appUserSet.remove(appUser.getAppUserId());
+		return customerRepository.save(customer);
+	}
+
+	@Override
+	public Customer addOrder(Customer customer, Order order) {
+		Set<String> orderSet = customer.getCurrentOrders();
+		orderSet.add(order.getOrderId());
+		return customerRepository.save(customer);
+	}
+
+	@Override
+	public Customer removeOrder(Customer customer, Order order) {
+		Set<String> orderSet = customer.getCurrentOrders();
+		orderSet.remove(order.getOrderId());
 		return customerRepository.save(customer);
 	}
 	

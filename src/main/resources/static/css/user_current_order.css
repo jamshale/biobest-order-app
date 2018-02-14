@@ -49,14 +49,12 @@
 /* Product Accordion*/
 #product_list_button h3{
   font-weight:bold;
+  font-size: 30px;
 }
 #product_list_button h4{
-  font-size:170%;
+  font-size: 20px;
 }
-#product_list_button h5{
-  font-size:200%;
-  font-weight:bold;
-}
+
 #unit_amount h3{
   font-weight:bold;
 }
@@ -64,12 +62,24 @@
   font-weight:bold;
 }
 #product_list_button{
-
+  white-space: normal;
   text-align:left; 
-  padding-left:6px;
+  padding-left:3px;
 }
-#inc_product button:nth-child(2){
+#inc_product button:first-child{
   font-weight:bold;
+  width: 140px;
+}
+#inc_product button:first-child h3{
+  font-size: 30px;
+}
+#inc_product button:nth-child(2), #inc_product button:nth-child(4){
+  font-size:30px;
+  
+}
+#inc_product button:nth-child(3) h3{
+  font-size:30px;
+  
 }
 #add_product_modal.modal-dialog.modal-co
 /* ADD PRODUCT */
@@ -158,9 +168,7 @@
 .panel-body{
   background: rgba(233, 219, 181, 0.493);
 }
-#product_list_button{
-  width:400px;
-}
+
 /* TOP ACTION BUTTONS */
 
 #customer_option_button{
@@ -177,8 +185,8 @@
 }
 /* BOTTOM ACTION BUTTONS */
 #bottom_option_button{
-  margin-top:10px;
-  margin-bottom:10px;
+  margin: 20px 20px;
+  width: 90%;
 }
 /***********************/
 #user_name{
@@ -224,8 +232,8 @@
   margin-left:8%;
 }
 #item_price{
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 #add_product_list{
   margin-left: 10px;

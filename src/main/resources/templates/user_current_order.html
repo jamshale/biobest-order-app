@@ -86,7 +86,7 @@
         </div> 
     </div>
         <!-- Product List -->            
-        <div class="col-md-6" style="padding-bottom:20px;padding-right:30px;background-color:white; border-style:solid; border-width: thin;margin:20px 20px;">
+        <div class="col-md-6" style="padding:0px 0px;background-color:white; border-style:solid; border-width: thick;margin:10px 10px;">
             <div class="container-fluid">
                 <table id="product_list" class="table table-condensed">
                     <thead>
@@ -97,17 +97,18 @@
                     <tbody>
                         <td style="border-style:solid;border-width:thin;background-color: rgb(253, 251, 239); margin:0px 0px;">
                             <!-- Product List Accordion -->
-                            <h3 style="text-align: center;font-size:100px;">Empty</h3>
-                            <div class="panel-group main hidden" id="main_accordion" >
+                        <div style="text-align: center;font-size:100px;" id="empty_tag" class="visible">Empty</div>
+                        <div id="product_list_container">
+                            <div class="panel-group main" id="main_accordion" >
                                 <div class="panel panel-default" id="product_list_panel">
                                     <div class="panel-heading">
                                         <div class="panel-title pull-left">
                                             <a data-toggle="collapse" data-parent="#main_accordion" href="">
-                                                <button type="button" id="product_list_button" style="width:180%;" class="btn btn-basic btn-sm btn-block text-left"></button>
+                                                <button type="button" id="product_list_button" style="width:510px" class="btn btn-basic btn-sm btn-block text-left"></button>
                                             </a>
                                         </div>
                                         <div class="panel-title pull-right">
-                                            <div class="btn-group btn-group-lg" role="group" id="inc_product">
+                                            <div class="btn-group btn-group-md" role="group" id="inc_product">
                                                 <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button"></button>
                                                 <button type="button" class="btn btn-default inc_button">
                                                     <span class="glyphicon glyphicon-triangle-top" style="font-size:51px;"></span>
@@ -128,6 +129,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </td> 
                     </tbody>
                     <tfoot>
@@ -140,21 +142,21 @@
             <!-- Bottom Buttons -->
             <div class="row" style="text-align: center;">
                 <div class="col-sm-6">
-                    <button class="btn btn-success btn-sm btn-block" disabled="true" id="bottom_option_button"
+                    <button class="btn btn-success btn-sm " disabled="true" id="bottom_option_button"
                                 data-toggle="modal" data-target="#submit_order_modal"><h3 style="font-weight:bold;font-size:30px;">Submit <br /> Order</h3></button>
                 </div>
                 <div class="col-sm-6">
-                    <button class="btn btn-danger btn-sm btn-block" disabled="true" id="bottom_option_button" 
+                    <button class="btn btn-danger btn-sm " disabled="true" id="bottom_option_button" 
                         data-toggle="modal" data-target="#delete_order_modal"><h3 style="font-weight:bold;font-size:30px;">Delete <br /> Order</h3></button>
                 </div>  
 
 
                 <div class="col-sm-6">
-                    <button class="btn btn-custom-1 btn-block" id="bottom_option_button"
+                    <button class="btn btn-custom-1 " id="bottom_option_button"
                                 data-toggle="modal" data-target="#history_order_modal"><h3 style="font-weight:bold;font-size:30px;">Account<br />Settings</h3></button>
                 </div>
                 <div class="col-sm-6">
-                    <button class="btn btn-info btn-sm btn-block" disabled="true" id="bottom_option_button" 
+                    <button class="btn btn-info btn-sm " disabled="true" id="bottom_option_button" 
                                 data-toggle="modal" data-target="#add_favourite_order_modal"><h3 style="font-weight:bold;font-size:30px;">Add Order To<br />Favourites</h3></button>
                 </div>           
             </div>
@@ -209,7 +211,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-sm-10">
-                    <h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>
+                    <!--<h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>-->
                     </div>
                     <div class="col-sm-2">
                         <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
@@ -218,16 +220,15 @@
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    
                     <div class="col-md-12">
-                        <div id="active_order_list">
+                        <div hidden="true" id="active_order_list">
                         <!-- active List Accordion -->
-                        <div class="panel-group active" id="active_accordion">
+                        <div class="panel-group active" id="active_accordion" >
                             <div class="panel panel-default" id="active_list_panel">
                                 <div class="panel-heading">
                                     <div class="panel-title pull-left">
                                         <a data-toggle="collapse" data-parent="#active_accordion" href="">
-                                            <button type="button" id="active_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                            <button type="button" id="active_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px; height:100px"></button>
                                         </a>
                                     </div>
                                     <div class="panel-title pull-right">
