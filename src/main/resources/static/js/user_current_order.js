@@ -34,6 +34,7 @@ var currentCustomerOrders = [];
 var loadComplete = [];
 var sessionOrder = [];
 var sessionFav = [];
+var main_accordion_clone;
 
 $(document).ready(function ()   {
 
@@ -106,6 +107,7 @@ function functionalityFlowCommand(){
     activateCurrentUser()
     activateCurrentCustomer()
     initiateCurrentCustomerOrder()
+    initiateSessionOrder()
     populateCustomerPageInfo()
     populateAddProductList()
     populateActiveList()
@@ -126,19 +128,39 @@ function initiateCurrentCustomerOrder(){
         currentCustomerOrders.push(tempOrder)
     })
 }
+function initiateSessionOrder(){
+    
+    /*
+    var temp_order = orderList.filter(function(o){
+        return o.orderId === currentCustomer[0].currentOrders[0];
+    })
+    if(temp_order[0].finalOrder.length>0){
+        temp_order.finalOrder.forEach(function(p){
+            sessionOrder.push(p.itemCode)
+        })
+    }
+    */
+}
 //Add Product Modal Functionality
 $("#add_product_list_item").on('click', function(c){
     var clicked_item = $(c.target) 
     if(clicked_item.html()==='Add'){
         var add_item = clicked_item.parent().parent().find(":hidden").text()
-        if(sessionOrder.includes(add_item)){
-            var index = sessionOrder.indexOf(add_item);
-            if(index > -1){
-                sessionOrder.splice(index, 1);
+        var found = false;
+        var index = 0;
+        sessionOrder.forEach(function(p){
+            if(p[0] == add_item){
+                found = true;
             }
+            if(found!==true){
+                index++
+            }
+        })
+        if(found === false){
+            sessionOrder.push([add_item, '1'])
         } else {
-            sessionOrder.push(add_item);
-        }  
+            sessionOrder.splice(index, 1);
+        }
     }
     if(clicked_item.html()==='Fav'){
         var fav_item = clicked_item.parent().parent().find(":hidden").text()
@@ -151,99 +173,85 @@ $("#add_product_list_item").on('click', function(c){
             sessionFav.push(fav_item);
         }
     }
-    //console.log(sessionOrder)
-    //console.log(sessionFav)
 })
+//Modal Close Functionality
 $("#add_product_modal").on("hidden.bs.modal", function () {
-    //console.log(sessionOrder)
-    //console.log(sessionFav)
     populateProductList();
 });
-
-  //Populate Accordion List of Current Products --> Initial
-  function populateProductList() {
-      if(sessionOrder.length > 0 || sessionFav.length > 0){
+//Increment Button Functionality
+$("#inc_product").on('click', function(n){
+    var counter = $(n.target)
+})
+//Populate Accordion List of Current Products --> Initial
+function populateProductList() {
+    $("#main_accordion").html(main_accordion_clone.html());
+    if(sessionOrder.length > 0){
         $("#empty_tag").hide()
-        // $("#product_list_container").show()
-         //$("#main_accordian").css('hight', 'auto')
+        $("#main_accordion").removeClass('hide')
         var i = 0;
         sessionOrder.forEach(function(prod){
             var temp_product = productList.filter(function(p){
-                return p.itemCode === prod;
+                return p.itemCode === prod[0];
             })
-            
+            //console.log(temp_product)
             var clone1 = $("#product_list_panel").children().first().clone()
             var clone2 = $("#product_list_panel").children().first().next().clone()
             current_product = $("#product_list_panel")
                 current_product.find("a").first().attr('href', '#main_collapse_' + i)
-                console.log(temp_product)
-                current_product.find("#product_list_button").html(`<h3>${temp_product[0].productName}</h3><h4>${temp_product[0].description}</h4><h3>${temp_product[0].unitSize}</h3>`)
-                current_product.find("#unit_amount").html(`<h3>${test_num}</h3>`)
+                current_product.find("#product_list_button").html(`<div hidden>${temp_product[0].itemCode}</div><h3>${temp_product[0].productName}</h3><h4>${temp_product[0].description}</h4><h3>${temp_product[0].unitSize}</h3>`)
+                current_product.find("#unit_amount").html(`<h3>${prod[1]}</h3>`)
                 current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
-                current_product.find("#item_price").html(`<h3>$${test_price}</h3>`)
+                current_product.find("#item_price").html(`<h3>$${temp_product[0].aPrice}</h3>`)
+            
             if(i != sessionOrder.length-1 ){
                 clone2.prependTo($("#product_list_panel"))
                 clone1.prependTo($("#product_list_panel"))
             }
             i++;
         })
-        /*
-        for(var i = 0; i < num_items; i++){
-            var clone1 = $("#product_list_panel").children().first().clone()
-            var clone2 = $("#product_list_panel").children().first().next().clone()
-            current_product = $("#product_list_panel")
-                current_product.find("a").first().attr('href', '#main_collapse_' + i)
-                current_product.find("#product_list_button").html(`<h3>${test_product}</h3><h4>${test_desc}</h4><h5>${test_product_size}</h3>`)
-                current_product.find("#unit_amount").html(`<h3>${test_num}</h3>`)
-                current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
-                current_product.find("#item_price").html(`<h3>$${test_price}</h3>`)
-            if(i != num_items-1 ){
-                clone2.prependTo($("#product_list_panel"))
-                clone1.prependTo($("#product_list_panel"))
-            }
-        }
-        */
-      }
-    
-    
-    
+    }
     $("#total_cost").html(`<h2 style="font-weight:bold;">Total = $${total_cost}</h2>`)
-      /*
-    var i = 0;
-    $("#active_order_list").prop('hidden', false);
-    currentCustomerOrders[0].forEach(function(o){       
-        var temp_customer = customerList.filter(function(c){
-            return c.customerId === o.customerId;
-        })
-        //console.log(o)
-        var clone1 = $("#active_list_panel").children().first().clone()
-        var clone2 = $("#active_list_panel").children().first().next().clone()
-        current_product = $("#active_list_panel")
-            current_product.find("a").first().attr('href', '#active_collapse_' + i)
-            current_product.find(".panel-collapse").first().attr('id', 'active_collapse_' + i)
-            //console.log(o.finalOrder)
-            if(o.finalOrder.length === 0){
-                current_product.find("#active_list_button").html(`<tr>
-                        <td style="width:530px;"><h3 style="font-weight:bold;">${temp_customer[0].shipAddress}</h3></td>
-                        <td style="float:right"><h3 style="font-weight:bold;"><span class="badge" style="font-size:20px;">0</span> Items</h3></td></tr>`);
-            } else {
-                current_product.find("#active_list_button").html(`<tr>
-                        <td style="width:530px;"><h3 style="font-weight:bold;">${temp_customer[0].shipAddress}</h3></td>
-                        <td style="float:right"><h3 style="font-weight:bold;"><span class="badge" style="font-size:20px;">${num_items}</span> Items</h3></td></tr>`);
-                // Need to finalize and check after add product functionality
-                o.finalOrder.forEach(function(p){
-                    $("#active_product_list").append(`<tr>
-                            <td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
-                            <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
-                            <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
-                            <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
-                            </tr>`)
-                })
-            }         
-        i++;
+    incButtonClickIndicator()
+}
+
+//Add Product Modal Button Initialization
+function incButtonClickIndicator() {
+    $(".inc_button").each(function(){
+        $(this).on('click', function(p){
+            var product_item_code = $(p.target).parent().parent().parent().parent().find("div:hidden").html()
+            var temp_product = sessionOrder.filter(function(p){
+                return p[0] === product_item_code;
+            })
+            var inc_or_dec = $(p.target)
+            /*
+            var temp_price = $(p.target).parent()
+            console.log(temp_price)
+            */
+            var temp_items = sessionOrder.filter(function(p){
+                return product_item_code === p[0];
+            })
+            var calc_product = productList.filter(function(p){
+                return p.itemCode === temp_product[0][0];
+            })
+            if(inc_or_dec.hasClass('glyphicon-triangle-top')){
+                temp_items[0][1] = parseInt(temp_items[0][1]) + 1
+                inc_or_dec.parent().next().html(`<h3>${temp_items[0][1]}</h3>`)  
+                console.log(inc_or_dec.parent().prev().html(`<h3>$${calc_product[0].aPrice * temp_items[0][1]}</h3>`))
+                
+            }
+            if(inc_or_dec.hasClass('glyphicon-triangle-bottom')){
+                if(parseInt(temp_items[0][1]) > 1){
+                    temp_items[0][1] = parseInt(temp_items[0][1]) - 1
+                    inc_or_dec.parent().prev().html(`<h3>${temp_items[0][1]}</h3>`)
+                    inc_or_dec.parent().prev().prev().prev().html(`<h3>$${calc_product[0].aPrice * temp_items[0][1]}</h3>`)   
+                } 
+                
+            }
+            
+            
+        });  
         
-    })
-    */
+    });
 }
 
 
@@ -264,7 +272,6 @@ function activateCurrentUser(){
 
 //Populate Customer Page Info
 function populateCustomerPageInfo(){
-    //console.log(currentCustomer[0].shipCompany)
     $("#customer_name").html(`${currentCustomer[0].shipCompany}`)
     $("#product_list_header").html(`<h2>${order_status}</h2><h2><button type="button" class="btn btn-sm btn-basic">${currentCustomer[0].currentOrders.length}</button> Order For Week #${date.getWeek()}</h2>`)
     //If Only One Active Order
@@ -287,6 +294,7 @@ function populateCustomerPageInfo(){
 
 //Populate Add Product List
 function populateAddProductList(){
+    main_accordion_clone = $("#main_accordion").clone()
     productList.sort(function(a, b){
         var A = a.productName,
             B = b.productName;
@@ -318,13 +326,11 @@ function populateActiveList() {
         var temp_customer = customerList.filter(function(c){
             return c.customerId === o.customerId;
         })
-        //console.log(o)
         var clone1 = $("#active_list_panel").children().first().clone()
         var clone2 = $("#active_list_panel").children().first().next().clone()
         current_product = $("#active_list_panel")
             current_product.find("a").first().attr('href', '#active_collapse_' + i)
             current_product.find(".panel-collapse").first().attr('id', 'active_collapse_' + i)
-            //console.log(o.finalOrder)
             if(o.finalOrder.length === 0){
                 current_product.find("#active_list_button").html(`<tr>
                         <td style="width:530px;"><h3 style="font-weight:bold;">${temp_customer[0].shipAddress}</h3></td>
@@ -407,15 +413,16 @@ function addButtonClickIndicator() {
             var temp_this = $(this)
             var border_setting = temp_this.css('border-color')
             if(border_setting== 'rgb(57, 132, 57)'){
-                temp_this.css('border-width', '5px')
-                temp_this.css('border-color', 'red')
-                temp_this.css('padding', '20px 15px')
+                temp_this
+                    .css('border-width', '5px')
+                    .css('border-color', 'red')
+                    .css('padding', '20px 15px')
             } else {
-                temp_this.css('border-width', '1px')
-                temp_this.css('border-color', 'rgb(57, 132, 57)')
-                temp_this.css('padding', '25px 20px')
+                temp_this
+                    .css('border-width', '1px')
+                    .css('border-color', 'rgb(57, 132, 57)')
+                    .css('padding', '25px 20px')
             }
-            
         });     
     });
 }
@@ -427,13 +434,15 @@ function favButtonClickIndicator() {
             var temp_this = $(this)
             var border_setting = temp_this.css('border-color')
             if(border_setting== 'rgb(38, 154, 188)'){
-                temp_this.css('border-width', '5px')
-                temp_this.css('border-color', 'red')
-                temp_this.css('padding', '20px 15px')
+                temp_this
+                    .css('border-width', '5px')
+                    .css('border-color', 'red')
+                    .css('padding', '20px 15px')
             } else {
-                temp_this.css('border-width', '1px')
-                temp_this.css('border-color', 'rgb(38, 154, 188)')
-                temp_this.css('padding', '25px 20px')
+                temp_this
+                    .css('border-width', '1px')
+                    .css('border-color', 'rgb(38, 154, 188)')
+                .css('padding', '25px 20px')
             }
             
         });      

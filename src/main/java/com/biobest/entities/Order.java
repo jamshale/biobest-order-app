@@ -20,16 +20,18 @@ public class Order{
 	private String orderId;
 	private String customerId;
     private String startDate;
-    private String endDate;
+	private String endDate;
+	private String status;
 	private List<OrderTransactions<String, String, String, Integer>> orderTransactions;
 	private List<FinalOrder<String, Integer, Boolean>> finalOrder;
 	
     public Order(String customerId) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
+		Date date = new Date();
 		this.customerId = customerId;
+		this.orderId = UUID.randomUUID().toString();
 		this.startDate = dateFormat.format(date); 
-		this.orderId = UUID.randomUUID().toString();  
+		this.status = "Not Submitted";
 		this.orderTransactions = new ArrayList<OrderTransactions<String, String, String, Integer>>();
 		this.finalOrder = new ArrayList<FinalOrder<String, Integer, Boolean>>();
     }
@@ -87,6 +89,20 @@ public class Order{
 	 */
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 

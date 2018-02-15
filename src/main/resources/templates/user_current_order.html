@@ -4,6 +4,7 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <link href="css/user_current_order.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
@@ -31,7 +32,7 @@
             <div class="row">
                 <div class="col-sm-12" style="text-align: center;background-color:rgb(250, 247, 236);padding-top:15px;">
 
-                <h2 id="customer_name" style="margin: 0px 50px; background:rgb(214, 199, 114);font-size: 60px;color:rgb(58, 53, 23);font-family:Verdana, Times, serif;border-style:solid;border-width:thin;padding:10px;"></h2><br />
+                <h2 id="customer_name" ></h2><br />
                 </div>
             </div>
             <div class="row" style=" text-align:center;padding: 0px 20px 20px 20px;" >
@@ -86,20 +87,20 @@
         </div> 
     </div>
         <!-- Product List -->            
-        <div class="col-md-6" style="padding:0px 0px;background-color:white; border-style:solid; border-width: thick;margin:10px 10px;">
+        <div class="col-md-6" style="padding:0px 0px 20px 0px;background-color:white; border-style:solid; border-width: thick;margin:10px 10px;border-radius:20px;">
             <div class="container-fluid">
                 <table id="product_list" class="table table-condensed">
-                    <thead>
+                    <thead style="border-bottom: 3px solid black">
                         <tr>
                             <th id="product_list_header"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <td style="border-style:solid;border-width:thin;background-color: rgb(253, 251, 239); margin:0px 0px;">
+                        <td style="background-color: rgb(253, 251, 239); margin:0px 0px;">
                             <!-- Product List Accordion -->
-                        <div style="text-align: center;font-size:100px;" id="empty_tag" class="visible">Empty</div>
-                        <div id="product_list_container">
-                            <div class="panel-group main" id="main_accordion" >
+                        <div style="text-align: center;font-size:100px;" id="empty_tag" >Empty</div>
+                        
+                            <div class="panel-group main hide" id="main_accordion" >
                                 <div class="panel panel-default" id="product_list_panel">
                                     <div class="panel-heading">
                                         <div class="panel-title pull-left">
@@ -111,11 +112,11 @@
                                             <div class="btn-group btn-group-md" role="group" id="inc_product">
                                                 <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button"></button>
                                                 <button type="button" class="btn btn-default inc_button">
-                                                    <span class="glyphicon glyphicon-triangle-top" style="font-size:51px;"></span>
+                                                    <span class="glyphicon glyphicon-triangle-top" style="font-size:54px;"></span>
                                                 </button>
                                                 <button type="button"  class="btn btn-defualt" id="unit_amount" style="font-weight:bold;"></button>
                                                 <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
-                                                    <span class="glyphicon glyphicon-triangle-bottom" style="font-size:51px;"></span>
+                                                    <span class="glyphicon glyphicon-triangle-bottom" style="font-size:54px;"></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -129,7 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                         </td> 
                     </tbody>
                     <tfoot>

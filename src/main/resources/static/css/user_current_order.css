@@ -4,6 +4,11 @@
 }
 
 
+
+.hide{
+  visibility: hidden;
+}
+
 #ship_to_button h4, #invoice_to_button h4, #ship_to_import h4, #invoice_to_import h4{
   font-size: 25px;
 }
@@ -162,8 +167,7 @@
 }
 /* ACCCORDION */
 .panel-group.main{
-  /*max-height: 700px;*/
-  overflow-y: scroll;
+  margin: 0px;
 }
 .panel-body{
   background: rgba(233, 219, 181, 0.493);
@@ -196,6 +200,14 @@
 #customer_name{
  color:rgb(122, 90, 0);
   font-weight:bold; 
+  margin: 0px 50px; 
+  background:rgb(214, 199, 114);
+  font-size: 60px;color:rgb(58, 53, 23);
+  font-family:Verdana, Times, serif;
+  border-style:solid;
+  border-width:thin;
+  padding:10px;
+  border-radius:10px;
 }
 #product_list{
   margin: 0px;
