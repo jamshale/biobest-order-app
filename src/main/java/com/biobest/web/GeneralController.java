@@ -44,7 +44,6 @@ public class GeneralController {
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String email = user.getUsername(); //get logged in username
         AppUser currentAppUser = appUserService.getAppUserByEmail(email);
-        System.out.println(email);
         return currentAppUser;
     }
 

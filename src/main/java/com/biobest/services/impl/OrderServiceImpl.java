@@ -29,5 +29,10 @@ public class OrderServiceImpl implements OrderService{
 		return orderRepository.getOrders();
 	}
 
+	@Override
+	public Order updateOrder(Order order) {
+		return orderRepository.save(order);
+	}
+
 
 }

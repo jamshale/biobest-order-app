@@ -6,9 +6,9 @@ public class OrderTransactions<time, appUserId, productId, units>{
     private String time;
 	private String appUserId;
 	private String productId;
-	private Integer units;
+	private String units;
 
-    public void OrderChanges(String time, String appUserId, String productId, Integer units){
+    public OrderTransactions(String time, String appUserId, String productId, String units){
         this.time = time;
 		this.appUserId = appUserId;
 		this.productId = productId;
@@ -39,11 +39,16 @@ public class OrderTransactions<time, appUserId, productId, units>{
 		this.productId = productId;
 	}
 
-	public Integer getUnits() {
+	public String getUnits() {
 		return units;
 	}
 
-	public void setUnits(Integer units) {
+	public void setUnits(String units) {
 		this.units = units;
+	}
+
+	@Override
+	public String toString(){
+		return String.format(this.time + "  :  " + this.appUserId + "  :  " + this.productId + " : " + getUnits());
 	}
 }

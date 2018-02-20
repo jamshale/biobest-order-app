@@ -22,18 +22,18 @@ public class Order{
     private String startDate;
 	private String endDate;
 	private String status;
-	private List<OrderTransactions<String, String, String, Integer>> orderTransactions;
-	private List<FinalOrder<String, Integer, Boolean>> finalOrder;
+	private List<OrderTransactions<String, String, String, String>> orderTransactions;
+	private List<FinalOrder<String, String>> finalOrder;
 	
     public Order(String customerId) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy.dd.HH.mm.ss.SS");
 		Date date = new Date();
 		this.customerId = customerId;
 		this.orderId = UUID.randomUUID().toString();
 		this.startDate = dateFormat.format(date); 
 		this.status = "Not Submitted";
-		this.orderTransactions = new ArrayList<OrderTransactions<String, String, String, Integer>>();
-		this.finalOrder = new ArrayList<FinalOrder<String, Integer, Boolean>>();
+		this.orderTransactions = new ArrayList<OrderTransactions<String, String, String, String>>();
+		this.finalOrder = new ArrayList<FinalOrder<String, String>>();
     }
 
 	public String getStartDate() {
@@ -60,51 +60,41 @@ public class Order{
 		this.orderId = orderId;
 	}
 
-
-	public List<OrderTransactions<String, String, String, Integer>> getOrderTransactions() {
+	public List<OrderTransactions<String, String, String, String>> getOrderTransactions() {
 		return orderTransactions;
 	}
 
-	public void setOrderTransactions(List<OrderTransactions<String, String, String, Integer>> orderTransactions) {
+	public void setOrderTransactions(List<OrderTransactions<String, String, String, String>> orderTransactions) {
 		this.orderTransactions = orderTransactions;
 	}
 
-	public List<FinalOrder<String, Integer, Boolean>> getFinalOrder() {
+	public List<FinalOrder<String, String>> getFinalOrder() {
 		return finalOrder;
 	}
 
-	public void setFinalOrder(List<FinalOrder<String, Integer, Boolean>> finalOrder) {
+	public void setFinalOrder(List<FinalOrder<String, String>> finalOrder) {
 		this.finalOrder = finalOrder;
 	}
 
-	/**
-	 * @return the customerId
-	 */
 	public String getCustomerId() {
 		return customerId;
 	}
 
-	/**
-	 * @param customerId the customerId to set
-	 */
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
-	/**
-	 * @return the status
-	 */
 	public String getStatus() {
 		return status;
 	}
 
-	/**
-	 * @param status the status to set
-	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
+	@Override
+	public String toString(){
+		return String.format("[ " + this.orderId + " : " + this.customerId + " ] " );
+	}
     
 }

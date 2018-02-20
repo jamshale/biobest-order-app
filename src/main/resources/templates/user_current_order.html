@@ -4,7 +4,7 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=0.37, user-scalable=no"/>
     <link href="css/user_current_order.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
 </head>
-<body style="background-color: rgba(255, 242, 202, 0.288);">
+<body style="background-color: rgba(253, 217, 108, 0.288);">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <nav class="navbar navbar-default">
@@ -30,9 +30,9 @@
     <div class="row" >
         <div class="col-md-5" >
             <div class="row">
-                <div class="col-sm-12" style="text-align: center;background-color:rgb(250, 247, 236);padding-top:15px;">
+                <div class="col-sm-12" style="text-align: center;background-color:rgb(243, 227, 171);padding-top:15px;border-radius:5px;">
 
-                <h2 id="customer_name" ></h2><br />
+                <h2 id="customer_name"></h2><br />
                 </div>
             </div>
             <div class="row" style=" text-align:center;padding: 0px 20px 20px 20px;" >
@@ -42,7 +42,7 @@
                 <div class="dropdown">
                     <button class="btn btn-default btn-block dropdown-toggle" type="button" id="ship_to_button" 
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
+                        <span class="caret" ></span>
                     </button>
                     <ul class="dropdown-menu" id="ship_to_import">
                         <li><a href="#"></a></li>
@@ -86,10 +86,11 @@
             </div>
         </div> 
     </div>
-        <!-- Product List -->            
-        <div class="col-md-6" style="padding:0px 0px 20px 0px;background-color:white; border-style:solid; border-width: thick;margin:10px 10px;border-radius:20px;">
-            <div class="container-fluid">
-                <table id="product_list" class="table table-condensed">
+        <!-- Product List -->    
+         
+        <div class="col-md-6" style="padding:0px 0px 20px 0px;background-color:white; border-style:solid; border-width: thick;border-radius:20px;margin: 10px 15px; box-shadow: 10px 10px 10px grey;">
+            <div class="container-fluid" >
+                <table id="product_list" class="table table-condensed" >
                     <thead style="border-bottom: 3px solid black">
                         <tr>
                             <th id="product_list_header"></th>
@@ -98,7 +99,7 @@
                     <tbody>
                         <td style="background-color: rgb(253, 251, 239); margin:0px 0px;">
                             <!-- Product List Accordion -->
-                        <div style="text-align: center;font-size:100px;" id="empty_tag" >Empty</div>
+                        <div style="text-align: center;font-size:100px;background-color:lightgray" id="empty_tag" >Empty</div>
                         
                             <div class="panel-group main hide" id="main_accordion" >
                                 <div class="panel panel-default" id="product_list_panel">
@@ -111,12 +112,12 @@
                                         <div class="panel-title pull-right">
                                             <div class="btn-group btn-group-md" role="group" id="inc_product">
                                                 <button type="button" id="item_price" class="btn btn-defualt btn-disabled inc_button"></button>
-                                                <button type="button" class="btn btn-default inc_button">
-                                                    <span class="glyphicon glyphicon-triangle-top" style="font-size:54px;"></span>
+                                                <button type="button" class="btn btn-default inc_button" style="padding:0px;">
+                                                    <span class="glyphicon glyphicon-triangle-top" style="font-size:62px;padding: 2px 3px 2px 3px;"></span>
                                                 </button>
-                                                <button type="button"  class="btn btn-defualt" id="unit_amount" style="font-weight:bold;"></button>
-                                                <button type="button" class="btn btn-default inc_button" style="font-weight:bold;">
-                                                    <span class="glyphicon glyphicon-triangle-bottom" style="font-size:54px;"></span>
+                                                <button type="button"  class="btn btn-defualt" id="unit_amount" style="font-weight:bold;width:60px;"></button>
+                                                <button type="button" class="btn btn-default inc_button" style="padding:0px;">
+                                                    <span class="glyphicon glyphicon-triangle-bottom" style="font-size:62px;padding: 2px 3px 2px 3px;"></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -135,7 +136,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td ><h4 id="total_cost" style="text-align:right;text-decoration:underline;font-weight:bold;"></h4></td>
+                            <td  id="total_cost" style="text-align:right;font-weight:bold;font-size:40px;border-bottom: 2px solid black;border-top: 2px solid black"></td>
                         </tr>
                     </tfoot>  
                 </table>
@@ -179,7 +180,7 @@
                         </form>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
                     </div>
                 </div>
             </div>
@@ -215,7 +216,7 @@
                     <!--<h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>-->
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
                     </div>
                 </div>
             </div>
@@ -261,18 +262,19 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 style="font-weight:bold;">Changes To Order<br />Since Your Last Visit</h3>
+                        <h3 style="font-weight:bold;">Changes To Order</h3>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
                     <div class="col-md-12">
+                      
                         <div id="changes_order_list">
-                            <table>
+                            <table class="table">
                                 <tbody id="changes_order_list_item"></tbody>
                             </table>
                         </div>
@@ -351,12 +353,12 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="submit_modal_button">
-                        <button class="btn btn-lg btn-success "><h3 style="font-weight:bold">Submit And Keep <br />Currrent Order Active</h3></button>
+                        <button class="btn btn-lg btn-success" style="font-weight:bold;font-size:40px;" onclick="submitKeepActive()">Submit And Keep <br />Currrent Order <br />Active</button>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="submit_modal_button">
-                        <button class="btn btn-lg btn-info"><h3 style="font-weight:bold;">Submit And <br /> Start A New Order</h3></button>
+                        <button class="btn btn-lg btn-info" style="font-weight:bold;font-size:40px;" onclick="submitCreateNew()">Submit And <br /> Start A New Order</button>
                         </div>
                     </div>
                 </div>

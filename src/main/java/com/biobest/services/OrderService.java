@@ -15,4 +15,7 @@ public interface OrderService{
     @Transactional
     public Order createOrder(String customerId);
 
+    @Transactional
+    public Order updateOrder(Order order);
+
 }

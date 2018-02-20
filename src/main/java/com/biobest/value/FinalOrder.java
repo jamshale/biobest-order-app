@@ -1,16 +1,13 @@
 package com.biobest.value;
 
 
-public class FinalOrder<productId, units, submitted>{
+public class FinalOrder<productId, units>{
 
-    private String productId;
-	private Integer units;
-	private Boolean submitted;
+    private String productId, units;
     
-    public FinalOrder(String productId, Integer units, Boolean submitted){
+    public FinalOrder(String productId, String units){
         this.productId = productId;
 		this.units = units;
-		this.submitted = false;
     }
 
 	public String getProductId() {
@@ -21,20 +18,17 @@ public class FinalOrder<productId, units, submitted>{
 		this.productId = productId;
 	}
 
-	public Integer getUnits() {
+	public String getUnits() {
 		return units;
 	}
 
-	public void setUnits(Integer units) {
+	public void setUnits(String units) {
 		this.units = units;
 	}
 
-	public Boolean getSubmitted() {
-		return submitted;
-	}
-
-	public void setSubmitted(Boolean submitted) {
-		this.submitted = submitted;
+	@Override
+	public String toString() {
+		return String.format(this.productId + "  :  " + this.units);
 	}
 
 }

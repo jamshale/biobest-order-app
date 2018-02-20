@@ -63,14 +63,13 @@ function populateSelectList(){
             return c.customerId === cust;
         })
         $("#select_list").append(`<tr > <td hidden>${foundCustomer[0].customerId}</td>
-                                        <td><button class="btn btn-block btn-custom-1" style="margin: 10px 10px">${foundCustomer[0].shipCompany}</button></td></tr>`)
+                                        <td><button class="btn btn-block btn-custom-1">${foundCustomer[0].shipCompany}</button></td></tr>`)
     })
 }
 
 //Select And Load
 $("#select_list").on('click', function(c){
     var current_customer_id = $(c.target).parent().parent().find("td:hidden").html();
-    //console.log(current_customer_id)
     relayOrder(current_customer_id);
 })
 
@@ -78,7 +77,6 @@ $("#select_list").on('click', function(c){
 
 
 function relayOrder(current_customer_id){
-    //console.log(currentUser.appUserId)
     var current_user_id = currentUser.appUserId;
     sessionStorage.setItem("current_user", current_user_id)
     sessionStorage.setItem("current_customer", current_customer_id)

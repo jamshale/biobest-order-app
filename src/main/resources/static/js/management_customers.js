@@ -27,11 +27,8 @@ function activeCustomerCheck(){
         $("#customer_list td:hidden").each(function(c){
            
             if($(this).text()===clicked_customer[0].customerId){
-               
+       
                 updateSelectedBackgoundColor($(this))
-              
-                console.log($(this))
-                
             }
         })
         addInfoToFields(clicked_customer);
