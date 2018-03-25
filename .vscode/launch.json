@@ -5,10 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "type": "java",
+            "name": "Debug (Launch)",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/src\\main\\resources\\static\\js\\customer_home.js"
-        }
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "",
+            "args": ""
+        },
+        
     ]
 }

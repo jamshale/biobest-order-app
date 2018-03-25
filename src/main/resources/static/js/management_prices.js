@@ -2,7 +2,7 @@
 var productList = [];
 
 $(document).ready(function ()   {
-    $.ajax({
+    $.post({
         url: "/products",
         success: populatePriceList
     })

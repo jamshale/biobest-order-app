@@ -2,39 +2,23 @@ var customerList = [];
 var userList = [];
 var clicked_customer = "";
 
+
+
 $(document).ready(function ()   {
-    $.ajax({
+  
+    $.post({
         url: "/appUsers",
-        success: initUserList
+        success: initiateUserList
+    
     })
-    $.ajax({
+    $.post({
         url: "/customers",
         success: populateCustomerList
+        
     }) 
 });
-//
-//
-//
-//Check for active customer during session
-function activeCustomerCheck(){
-    var temp_customer_id = sessionStorage.getItem("active_customer");
-    if(temp_customer_id!=null){
-        clicked_customer = customerList.filter(function(cust){return temp_customer_id === cust.customerId;});
-        $("button").prop('disabled', false);
 
-        //TO DO
-        //highlight active customer on load
-        $("#customer_list td:hidden").each(function(c){
-           
-            if($(this).text()===clicked_customer[0].customerId){
-       
-                updateSelectedBackgoundColor($(this))
-            }
-        })
-        addInfoToFields(clicked_customer);
-        
-    }
-}
+
 //Link User and Customer
 $("#add_user_list").on('click', function(u){
     if($(u.target).html() == 'Add'){
@@ -102,7 +86,7 @@ function removeUser(){
     })
 }
 //Initiate User List
-function initUserList(appUsers){
+function initiateUserList(appUsers){
     userList = appUsers;
 }
 //Populate User List
@@ -141,54 +125,66 @@ function populateCustomerList(customers){
         customers.forEach( function(c){
             addCustomerToList(list_item, c)
     });
-    activeCustomerCheck();
+    clicked_customer = customerList.filter(function(cust){
+        return sessionStorage.getItem("active_customer") === cust.customerId;
+    });
+    addInfoToFields(clicked_customer);
 }
 //Add customer to list
 function addCustomerToList(list_item, customer){
-    list_item.append(`<tr><td hidden>${customer.customerId}</td>
+    var active_customer = sessionStorage.getItem("active_customer")
+    if(active_customer === customer.customerId){
+        list_item.append(`<tr style="background-color:rgb(255, 217, 0);"><td hidden>${customer.customerId}</td>
                             <td style="font-weight:bold;font-size:32px;padding:20px;">${customer.shipCompany}</td></tr>`);
+        $("button").prop('disabled', false);
+    } else {
+        list_item.append(`<tr><td hidden>${customer.customerId}</td>
+                            <td style="font-weight:bold;font-size:32px;padding:20px;">${customer.shipCompany}</td></tr>`);
+    }
+    
 }
 //Info Click Event Listener
 $("#customer_list").on('click', function(c){
+    $("#customer_list td").css("background-color", "white")
     var customer_id = $(c.target).parent().find("td:hidden").text();
     clicked_customer = customerList.filter(function(cust){
         return customer_id === cust.customerId;
     });
-    updateSelectedBackgoundColor($(c.target))
+    $(c.target).css("background-color", "rgb(255, 217, 0)")
+    sessionStorage.setItem("active_customer", clicked_customer[0].customerId)
     $("button").prop('disabled', false);
     addInfoToFields(clicked_customer);
 })
-//
-function updateSelectedBackgoundColor(clicked){
-    $("#customer_list td").removeClass("active-background")
-    clicked.addClass("active-background")
-}
+
 //Info Field Populator
 function addInfoToFields(customer){
-    $("#add_user_button").html(`Add User For:<br />${clicked_customer[0].shipCompany}`)
-    $("#remove_user_button").html(`Remove User For:<br />${clicked_customer[0].shipCompany}`)
+    $("#add_user_button").html(`Add User For:<br />${customer[0].invLocations[0].company}`)
+    $("#remove_user_button").html(`Remove User For:<br />${customer[0].shipLocations[0].contact}`)
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
     inv_info.append(`<tr><td>
-            <h3>Company:</h3><h4>${customer[0].invCompany}</h4>
-            <h3>Contact:</h3><h4>${customer[0].invContact}</h4>
-            <h3>Street #:</h3><h4>${customer[0].invAddress}</h4>
-            <h3>City, State:</h3><h4>${customer[0].invCityState}</h4>
-            <h3>Zip:</h3><h4>${customer[0].invZip}</h4>
-            <h3>Email:</h3><h4>${customer[0].invEmail}</h4>
-            <h3>Phone:</h3><h4>${customer[0].invPhone}</h4>
-            <h3>Fax:</h3><h4>${customer[0].invFax}</h4>
+            <h3>Company:</h3><h4>${customer[0].invLocations[0].company}</h4>
+            <h3>Contact:</h3><h4>${customer[0].invLocations[0].contact}</h4>
+            <h3>City, State:</h3><h4>${customer[0].invLocations[0].address}</h4>
+            <h3>Company:</h3><h4>${customer[0].invLocations[0].cityState}</h4>
+            <h3>Zip:</h3><h4>${customer[0].invLocations[0].zip}</h4>
+            <h3>Phone:</h3><h4>${customer[0].invLocations[0].phone}</h4>
+            <h3>Fax:</h3><h4>${customer[0].invLocations[0].fax}</h4>
+            <h3>Email:</h3><h4>${customer[0].invLocations[0].email}</h4>
+            
             </td></tr>`)
     ship_info.append(`<tr><td>
-            <h3>Company:</h3><h4>${customer[0].shipCompany}</h4>
-            <h3>Contact:</h3><h4>${customer[0].shipContact}</h4>
-            <h3>Street #:</h3><h4>${customer[0].shipAddress}</h4>
-            <h3>City, State:</h3><h4>${customer[0].shipCityState}</h4>
-            <h3>Zip:</h3><h4>${customer[0].shipZip}</h4>
-            <h3>Email:</h3><h4>${customer[0].shipEmail}</h4>
-            <h3>Phone:</h3><h4>${customer[0].shipPhone}</h4>
-            <h3>Fax:</h3><h4>${customer[0].shipFax}</h4>
+            <h3>Company:</h3><h4>${customer[0].shipLocations[0].company}</h4>
+            <h3>Contact:</h3><h4>${customer[0].shipLocations[0].contact}</h4>
+            <h3>City, State:</h3><h4>${customer[0].shipLocations[0].address}</h4>
+            <h3>Company:</h3><h4>${customer[0].shipLocations[0].cityState}</h4>
+            <h3>Zip:</h3><h4>${customer[0].shipLocations[0].zip}</h4>
+            <h3>Phone:</h3><h4>${customer[0].shipLocations[0].phone}</h4>
+            <h3>Fax:</h3><h4>${customer[0].shipLocations[0].fax}</h4>
+            <h3>Email:</h3><h4>${customer[0].shipLocations[0].email}</h4>
             </td></tr>`)
+    var i = 1;
+    
     populateUserList();
     infoHighlight();
 }

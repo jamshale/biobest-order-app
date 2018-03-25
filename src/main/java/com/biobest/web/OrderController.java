@@ -50,7 +50,7 @@ public class OrderController {
     }
 
     
-    @RequestMapping(value="/orders", method=RequestMethod.GET, produces="application/json")
+    @RequestMapping(value="/orders", method=RequestMethod.POST, produces="application/json")
     @ResponseBody
     public List<Order> getOrders(Model model){
         return this.orderService.getOrders();
@@ -61,7 +61,7 @@ public class OrderController {
     public String submitOrder(@RequestParam("orderId") String orderId, @RequestParam("appUserId") String appUserId,
                                     @RequestParam("sessionOrder_0[]") String[] sessionOrder_0, @RequestParam("sessionOrder_1[]") String[] sessionOrder_1) {
         
-        DateFormat dateFormat = new SimpleDateFormat("yyyy.dd.HH.mm.ss.SS");
+        DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, h:mm a");
         Date date = new Date();
         Order localOrder = orderService.getOrderById(orderId);
         List<FinalOrder<String, String>> localFinalOrderList = new ArrayList<FinalOrder<String, String>>();
@@ -76,8 +76,6 @@ public class OrderController {
             FinalOrder<String, String> localFinalOrder = new FinalOrder<String, String>(tempProduct, tempUnits);
             localFinalOrderList.add(localFinalOrder);
         }
-        System.out.println(localFinalOrderList);
-        System.out.println(cloneFinalOrderList);
         //Compare database order to web order        
         for(FinalOrder<String, String> productLocal: localFinalOrderList){
             for(FinalOrder<String, String> productClone: cloneFinalOrderList){
@@ -120,6 +118,7 @@ public class OrderController {
         } else {
             localOrder.setFinalOrder(localFinalOrderList); 
         }
+        //localOrder.setStatus("Submitted");
         localOrder.setOrderTransactions(transactions);
         orderService.updateOrder(localOrder);
         return "success";

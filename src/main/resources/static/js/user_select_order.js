@@ -5,7 +5,7 @@ var current_customer = "";
 var loadComplete = [];
 
 $(document).ready(function ()   {
-    $.ajax({
+    $.post({
         url: "/customers",
         success: populateCustomerList,
         complete: function(){
@@ -15,7 +15,7 @@ $(document).ready(function ()   {
             }
         }
     })
-    $.ajax({
+    $.post({
         url: "/appUsers",
         success: populateUserList,
         complete: function(){
@@ -58,13 +58,28 @@ function initiateActiveUser(activeUser){
 }
 //Populate valid list for user selection
 function populateSelectList(){
+    var localProductList = [];
     currentUser.customers.forEach(function(cust){
         var foundCustomer = customerList.filter(function(c){
             return c.customerId === cust;
         })
-        $("#select_list").append(`<tr > <td hidden>${foundCustomer[0].customerId}</td>
-                                        <td><button class="btn btn-block btn-custom-1">${foundCustomer[0].shipCompany}</button></td></tr>`)
+        var tempCustomer = [foundCustomer[0].customerId, foundCustomer[0].shipCompany, foundCustomer[0].currentOrders.length]
+        localProductList.push(tempCustomer)
     })
+    localProductList.sort(function(a, b){
+        var A = a[1],
+            B = b[1];
+        //
+        if(A<B) return -1;
+        if(A>B) return 1;
+        return 0;
+    })
+    console.log(localProductList)
+    localProductList.forEach(function(c){
+        $("#select_list").prepend(`<tr><td hidden>${c[0]}</td>
+                                        <td><button class="btn btn-block btn-custom-1">${c[1]}<span class="badge" style="float:right;font-size:50px;padding:20px;margin-right:50px;">${c[2]}</span></button></td></tr>`)
+    })
+  
 }
 
 //Select And Load

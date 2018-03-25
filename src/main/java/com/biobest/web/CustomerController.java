@@ -1,15 +1,18 @@
 package com.biobest.web;
 
 import org.slf4j.LoggerFactory;
+
 import com.biobest.dtos.CustomerDTO;
 import com.biobest.entities.AppUser;
 import com.biobest.entities.Customer;
 import com.biobest.exceptions.ShipCompanyExistsException;
 import com.biobest.services.AppUserService;
 import com.biobest.services.CustomerService;
-
+import com.biobest.value.FavOrder;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -35,9 +38,6 @@ public class CustomerController {
     @Autowired
     private AppUserService appUserService;
 
-
-
-
     public CustomerController() {
         logger.debug("Employee controller initialized");
     }
@@ -49,7 +49,7 @@ public class CustomerController {
         return "management_customers";
     }
 
-    @RequestMapping(value="/customers", method=RequestMethod.GET, produces="application/json")
+    @RequestMapping(value="/customers", method=RequestMethod.POST, produces="application/json")
     @ResponseBody
     public List<Customer> getCustomers(Model model){
         return this.customerService.getCustomers();
@@ -57,6 +57,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/management_customers", method = RequestMethod.POST)
     public ModelAndView createCustomer(@ModelAttribute("customerDto") @Valid CustomerDTO customerDto, BindingResult result ){
+        
         if(result.hasErrors()){
             return new ModelAndView("management_customers", "customerDto", customerDto);
         }
@@ -69,9 +70,8 @@ public class CustomerController {
             return new ModelAndView("management_customers", "customerDto", customerDto);
         }
         return new ModelAndView("management_customers", "customerDto", new CustomerDTO());
+        
     }
-
-
 
     @RequestMapping("/customerLinkUC")
     @ResponseBody
@@ -89,6 +89,43 @@ public class CustomerController {
         AppUser appUser = this.appUserService.getAppUserById(appUserId);
         appUserService.removeCustomer(appUser, customer);
         customerService.removeAppUser(customer, appUser);
+        return "success";
+    }
+
+    @RequestMapping("/submitFav")
+    @ResponseBody
+    public String submitFav(@RequestParam("customerId") String customerId,  @RequestParam("sessionFav[]") String[] sessionFav){
+        
+        
+        Customer customer = this.customerService.getCustomer(customerId);
+        Set<String> localFavProducts = new HashSet<>();
+        if(sessionFav[0].equals("empty")){
+            customer.setFavProducts(localFavProducts);
+        } else {
+            localFavProducts = customer.getFavProducts();
+            for(int i = 0; i < sessionFav.length; i++){
+                localFavProducts.add(sessionFav[i]);
+            }
+            customer.setFavProducts(localFavProducts);
+
+        } 
+        customerService.updateCustomer(customer);
+        
+        return "success";
+    }
+
+    @RequestMapping("/submitFavOrder")
+    @ResponseBody
+    public String submitFavOrder(@RequestParam("customerId") String customerId, @RequestParam("orderName") String orderName, @RequestParam("orderId") String orderId){
+
+        Customer customer = customerService.getCustomer(customerId);
+        List<FavOrder<String, String>> favOrders = new ArrayList<FavOrder<String, String>>(customer.getFavOrders());
+        FavOrder<String, String> newFavOrder = new FavOrder<>(orderId, orderName);
+    
+        favOrders.add(newFavOrder);
+        customer.setFavOrders(favOrders);
+        customerService.updateCustomer(customer);
+    
         return "success";
     }
 

@@ -38,7 +38,7 @@ public class AppUserController {
         return "management_users";
     }
 
-    @RequestMapping(value="/appUsers", method=RequestMethod.GET, produces="application/json")
+    @RequestMapping(value="/appUsers", method=RequestMethod.POST, produces="application/json")
     @ResponseBody
     public List<AppUser> getAppUsers(Model model){
         return this.appUserService.getAppUsers();

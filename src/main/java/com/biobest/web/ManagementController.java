@@ -16,11 +16,6 @@ public class ManagementController {
         logger.debug("Management controller initialized");
     }
 
-    @RequestMapping("/management_home")
-    public String management_home(Model model) {
-        return "management_home";
-    }
-
     @RequestMapping("/management_prices")
     public String management_prices(Model model) {
         return "management_prices";

@@ -3,11 +3,11 @@ var customerList = [];
 var clicked_user = "";
 
 $(document).ready(function ()   {
-    $.ajax({
+    $.post({
         url: "/customers",
         success: initCustomerList
     })
-    $.ajax({
+    $.post({
         url: "/appUsers",
         success: populateUserList
     })
@@ -62,28 +62,41 @@ function initCustomerList(customers){
 }
 //Populate User List
 function populateUserList(users){
+
     userList = users;
     var list_item = $("#user_list");
-    users.forEach(function(u){
+    userList.forEach(function(u){
         if(u.type!=="Manager"){
             addUserToList(list_item, u)
         }
     })
-    activeUserCheck();
+    clicked_user= userList.filter(function(u){
+        return sessionStorage.getItem("active_user") === u.appUserId;
+    });
+    addInfoToFields(clicked_user);
 }
 //Add user to list
 function addUserToList(list_item, user){
-    list_item.append(`<tr>
-    <td hidden>${user.appUserId}</td><td style="margin-left:10px;font-size:30px;font-weight:bold;">${user.firstName} <br />${user.lastName}</td></tr>`)
+    var active_user = sessionStorage.getItem("active_user")
+    console.log(clicked_user)
+    if(active_user === user.appUserId){
+        list_item.append(`<tr style="background-color:rgb(255, 217, 0);"><td hidden>${user.appUserId}</td><td style="margin-left:10px;font-size:30px;font-weight:bold;">${user.firstName} <br />${user.lastName}</td></tr>`)
+        $("button").prop('disabled', false);
+    } else {
+        list_item.append(`<tr ><td hidden>${user.appUserId}</td><td style="margin-left:10px;font-size:30px;font-weight:bold;">${user.firstName} <br />${user.lastName}</td></tr>`)
+    }
+
 }
 //Info Click Event Listener
 $("#user_list").on('click', function(u){
+    $("#user_list td").css("background-color", "white")
     var app_user_id = $(u.target).parent().find("td:hidden").text();   
+    sessionStorage.setItem("active_user", app_user_id);
     clicked_user = userList.filter(function(user){
             return (user.appUserId === app_user_id);
     });
-    
-    updateSelectedBackgoundColor($(u.target));
+    $(u.target).css("background-color", "rgb(255, 217, 0)")
+    sessionStorage.setItem("active_user", clicked_user[0].appUserId);
     $("button").prop('disabled', false);
     addInfoToFields(clicked_user);
     

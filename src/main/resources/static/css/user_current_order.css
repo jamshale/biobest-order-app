@@ -3,6 +3,44 @@
   width: device-width;
 }
 
+/*Active Order*/
+#active_product_list, favourite_product_list tr{
+  border-bottom: 1px solid gray;
+  
+}
+#active_product_list td:first-child, #favourite_product_list td:first-child{
+  width:50%;
+}
+#active_product_list h3, #favourite_product_list h3{
+  font-weight:35px;
+  font-weight:bold;
+}
+
+#active_list_button, #favourite_list_button{
+  text-align:left; 
+  padding-left:6px; 
+  height:100px;
+}
+#active_list_button h3, #favourite_list_button h3{
+  font-weight: bold;
+}
+#active_list_button span, #favourite_list_button span{
+  font-size:20px;
+}
+#active_list_button td:nth-child(2), #favourite_list_button td:nth-child(2){
+  width: 500px;
+}
+#active_list_button td:last-child, #favourite_list_button td:last-child{
+  float: right;
+  width:100px;
+}
+#active_list_panel button.btn-success, #favourite_list_panel button.btn-success{
+  padding: 20px 10px 20px 10px;
+  margin: 5px 0px;
+  font-weight:bold;
+  font-size: 35px;
+}
+/**/
 #customer_option_changes_button span, #customer_option_active_order_button span{
   font-size: 30px;
 }
@@ -62,15 +100,10 @@
 
 
 /* Product Accordion*/
-#product_list_button h3{
-  font-weight:bold;
-  font-size: 30px;
-}
-#product_list_button h4{
-  font-size: 20px;
-}
+
 
 #unit_amount h3{
+  font-size: 34px;
   font-weight:bold;
 }
 #item_price h3{
@@ -80,10 +113,18 @@
   white-space: normal;
   text-align:left; 
   padding-left:3px;
+
+}
+#product_list_button h3{
+  font-weight:bold;
+  font-size: 34px;
+}
+#product_list_button h4{
+  font-size: 27px;
 }
 #inc_product button:first-child{
   font-weight:bold;
-  width: 140px;
+  width: 160px;
 }
 #inc_product button:first-child h3{
   font-size: 30px;
@@ -96,10 +137,12 @@
   font-size:30px;
   
 }
-#add_product_modal.modal-dialog.modal-co
 /* ADD PRODUCT */
-#add_product_list_item tr{
-  height:100px;
+#add_product_list_item h3{
+  font-size: 32px;
+}
+#add_product_list_item h4{
+  font-size: 27px;
 }
 #add_product_list_item td:first-child{
   width:550px;
@@ -112,39 +155,50 @@
 }
 
 #add_product_list_item td:nth-child(2){
-  
-  width:120px;
+  width:150px;
 }
 #add_product_list_item td:nth-child(2) button{
-  margin-top:10px;
+  margin-top:25%;
   padding:20px;
-  width:120px;
+  width:150px;
+  font-weight:bold;
+  font-size:30px;
 }
-#add_product_list_item td:nth-child(3) button{
-  margin-top:20px;
-  padding:15px;
+
+#add_product_list_item td:nth-child(3) button, #add_product_list_item td:nth-child(4) button{
+  margin-top:20%;
+ height:130px;
+ width: 130px;
+  font-size:45px;
+  font-weight:bold;
+  padding:25px 20px;
 }
-#add_product_list_item td:nth-child(4) button{
-  margin-top:20px;
-  padding:15px;
+
+#add_product_list_item td{
+  height: 200px;
 }
 
 /* ADD PRODUCT */
 
 #history_list_button h4{font-weight:bold;}
 #history_list_button td{width:25%;}
-#product_list_header h2:last-child{
-  font-weight:bold;
-  color:black;}
+
 #product_list_header h2:first-child{
   font-weight:bold;
-  color:darkgreen;
+  font-family:Verdana, Times, serif;
   float:right;
   font-size: 40px;
 }
+#product_list_header h2:last-child{
+  font-weight:bold;
+  font-family:Verdana, Times, serif;
+  
+  font-size: 50px;
+}
 #product_list_header button{
   font-weight:bold;
-  font-size:70%;
+  font-size:40px;
+  width: 60px;
 }
 
 #logout {
@@ -203,7 +257,9 @@
   margin: 20px 20px;
   width: 90%;
 }
-/***********************/
+
+
+/**********************/
 #user_name{
  color:rgb(122, 90, 0);
   font-weight:bold;  
@@ -213,7 +269,7 @@
   font-weight:bold; 
   margin: 0px 50px; 
   background:rgb(250, 250, 249);
-  font-size: 60px;color:rgb(58, 53, 23);
+  font-size: 50px;color:rgb(58, 53, 23);
   font-family:Verdana, Times, serif;
   border-style:solid;
   border-width:thin;

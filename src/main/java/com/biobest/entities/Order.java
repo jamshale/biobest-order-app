@@ -22,6 +22,8 @@ public class Order{
     private String startDate;
 	private String endDate;
 	private String status;
+	private Integer invAddressIndex;
+	private Integer shipAddressIndex;
 	private List<OrderTransactions<String, String, String, String>> orderTransactions;
 	private List<FinalOrder<String, String>> finalOrder;
 	
@@ -95,6 +97,22 @@ public class Order{
 	@Override
 	public String toString(){
 		return String.format("[ " + this.orderId + " : " + this.customerId + " ] " );
+	}
+
+	public Integer getInvAddressIndex() {
+		return invAddressIndex;
+	}
+
+	public void setInvAddressIndex(Integer invAddressIndex) {
+		this.invAddressIndex = invAddressIndex;
+	}
+
+	public Integer getShipAddressIndex() {
+		return shipAddressIndex;
+	}
+
+	public void setShipAddressIndex(Integer shipAddressIndex) {
+		this.shipAddressIndex = shipAddressIndex;
 	}
     
 }

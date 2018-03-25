@@ -25,7 +25,7 @@ public class ProductController {
     private ProductService productService;
  
 
-    @RequestMapping(value="/products", method=RequestMethod.GET, produces="application/json")
+    @RequestMapping(value="/products", method=RequestMethod.POST, produces="application/json")
     @ResponseBody
     public List<Product> getProducts(Model model){
         return this.productService.getProducts();
