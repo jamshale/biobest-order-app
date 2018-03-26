@@ -5,6 +5,7 @@ import com.biobest.entities.Order;
 import com.biobest.services.CustomerService;
 import com.biobest.services.OrderService;
 import com.biobest.value.FinalOrder;
+import com.biobest.value.Location;
 import com.biobest.value.OrderTransactions;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,7 +60,7 @@ public class OrderController {
     @RequestMapping("/submitOrder")
     @ResponseBody
     public String submitOrder(@RequestParam("orderId") String orderId, @RequestParam("appUserId") String appUserId,
-                                    @RequestParam("sessionOrder_0[]") String[] sessionOrder_0, @RequestParam("sessionOrder_1[]") String[] sessionOrder_1) {
+                                    @RequestParam("sessionOrder_0[]") String[] sessionOrder_0, @RequestParam("sessionOrder_1[]") String[] sessionOrder_1, @RequestParam("invLocation") String invLocation, @RequestParam("shipLocation") String shipLocation) {
         
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, h:mm a");
         Date date = new Date();
@@ -118,7 +119,24 @@ public class OrderController {
         } else {
             localOrder.setFinalOrder(localFinalOrderList); 
         }
-        //localOrder.setStatus("Submitted");
+
+        String[] invLocationString = invLocation.split("[|]");
+        String[] shipLocationString = shipLocation.split("[|]");
+
+        for(int i = 0; i < invLocationString.length; i++){
+            System.out.println(invLocationString[i]);
+        }
+        for(int i = 0; i < shipLocationString.length; i++){
+            System.out.println(shipLocationString[i]);
+        }
+        Location<String, String, String, String, String, String, String, String> localInvLocation = new Location<>(invLocationString[0], invLocationString[1], invLocationString[2], invLocationString[3], invLocationString[4], invLocationString[7], invLocationString[5], invLocationString[6]);
+        Location<String, String, String, String, String, String, String, String> localShipLocation = new Location<>(shipLocationString[0], shipLocationString[1], shipLocationString[2],  shipLocationString[3], shipLocationString[4], shipLocationString[7], shipLocationString[5], shipLocationString[6]);
+       
+
+        localOrder.setInvLocation(localInvLocation);
+        localOrder.setShipLocation(localShipLocation);
+
+        localOrder.setStatus("Submitted");
         localOrder.setOrderTransactions(transactions);
         orderService.updateOrder(localOrder);
         return "success";

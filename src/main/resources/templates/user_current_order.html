@@ -42,14 +42,14 @@
             <!-- Invoice to Address -->
             <div class="col-sm-6" >
                 <h3 style="font-weight: bold; font-size:30px;">Invoice Details:</h3>
-                    <button class="btn btn-default btn-block" type="button" id="invoice_to_button" style="font-size:25px;" ></button>    
+                    <button class="btn btn-default btn-block" type="button" id="invoice_to_button" style="font-size:25px;"  onclick="invLocationModal()"></button>    
                
             </div>
             <!-- Ship to Address -->
             <div class="col-sm-6" >
                 <h3 style="font-weight: bold;font-size:30px;">Shipping Details:</h3>
              
-                    <button class="btn btn-default btn-block" type="button" id="ship_to_button" style="font-size:25px;" ></button>
+                    <button class="btn btn-default btn-block" type="button" id="ship_to_button" style="font-size:25px;" onclick="shipLocationModal()"></button>
     
            
             </div>
@@ -479,6 +479,54 @@
         </div>
     </div>
 </div>
+
+<!-- Change Location Modal -->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="inv_location_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                       
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+               
+                   
+            </div>
+            <div class="modal-footer">              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Change Location Modal -->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="ship_location_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-10">
+                           
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                   
+                       
+                </div>
+                <div class="modal-footer">              
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script src="js/user_current_order.js"></script>
 </body>

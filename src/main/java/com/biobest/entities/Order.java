@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.biobest.value.FinalOrder;
+import com.biobest.value.Location;
 import com.biobest.value.OrderTransactions;
 
 import org.springframework.data.annotation.Id;
@@ -22,8 +23,9 @@ public class Order{
     private String startDate;
 	private String endDate;
 	private String status;
-	private Integer invAddressIndex;
-	private Integer shipAddressIndex;
+	private Location<String, String, String, String, String, String, String, String> invLocation;
+	private Location<String, String, String, String, String, String, String, String> shipLocation;
+	
 	private List<OrderTransactions<String, String, String, String>> orderTransactions;
 	private List<FinalOrder<String, String>> finalOrder;
 	
@@ -99,20 +101,34 @@ public class Order{
 		return String.format("[ " + this.orderId + " : " + this.customerId + " ] " );
 	}
 
-	public Integer getInvAddressIndex() {
-		return invAddressIndex;
+
+
+	/**
+	 * @return the invLocation
+	 */
+	public Location<String, String, String, String, String, String, String, String> getInvLocation() {
+		return invLocation;
 	}
 
-	public void setInvAddressIndex(Integer invAddressIndex) {
-		this.invAddressIndex = invAddressIndex;
+	/**
+	 * @param invLocation the invLocation to set
+	 */
+	public void setInvLocation(Location<String, String, String, String, String, String, String, String> invLocation) {
+		this.invLocation = invLocation;
 	}
 
-	public Integer getShipAddressIndex() {
-		return shipAddressIndex;
+	/**
+	 * @return the shipLocation
+	 */
+	public Location<String, String, String, String, String, String, String, String> getShipLocation() {
+		return shipLocation;
 	}
 
-	public void setShipAddressIndex(Integer shipAddressIndex) {
-		this.shipAddressIndex = shipAddressIndex;
+	/**
+	 * @param shipLocation the shipLocation to set
+	 */
+	public void setShipLocation(Location<String, String, String, String, String, String, String, String> shipLocation) {
+		this.shipLocation = shipLocation;
 	}
     
 }

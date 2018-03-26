@@ -9,6 +9,8 @@ import com.biobest.exceptions.ShipCompanyExistsException;
 import com.biobest.services.AppUserService;
 import com.biobest.services.CustomerService;
 import com.biobest.value.FavOrder;
+import com.biobest.value.Location;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -72,6 +74,34 @@ public class CustomerController {
         return new ModelAndView("management_customers", "customerDto", new CustomerDTO());
         
     }
+
+    @RequestMapping("/createLocation")
+    @ResponseBody
+    public String createLoaction(@RequestParam("customerId") String customerId, @RequestParam("locationInfo[]") String[] locationInfo){
+
+        Customer customer = customerService.getCustomer(customerId);
+
+        Location<String, String, String, String, String, String, String, String> localLocation = new Location<>(locationInfo[2], locationInfo[0], locationInfo[1], locationInfo[3], locationInfo[4], locationInfo[7], locationInfo[5], locationInfo[6]);
+
+
+        if(locationInfo[8].equals("Invoice")){
+            List<Location<String, String, String, String, String, String, String, String>> listLocations = customer.getInvLocations();
+            listLocations.add(localLocation);
+        } else {
+            List<Location<String, String, String, String, String, String, String, String>> listLocations = customer.getShipLocations();
+            listLocations.add(localLocation);
+        }
+        
+        customerService.updateCustomer(customer);
+
+
+
+
+        return "success";
+    }
+
+
+
 
     @RequestMapping("/customerLinkUC")
     @ResponseBody

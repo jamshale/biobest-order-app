@@ -2,7 +2,8 @@ var customerList = [];
 var userList = [];
 var clicked_customer = "";
 
-
+var inv_location_index = 0;
+var ship_location_index = 0;
 
 $(document).ready(function ()   {
   
@@ -162,26 +163,28 @@ function addInfoToFields(customer){
     $("#remove_user_button").html(`Remove User For:<br />${customer[0].shipLocations[0].contact}`)
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
+    $("#inv_index").text(inv_location_index + 1)
+    $("#ship_index").text(ship_location_index + 1)
     inv_info.append(`<tr><td>
-            <h3>Company:</h3><h4>${customer[0].invLocations[0].company}</h4>
-            <h3>Contact:</h3><h4>${customer[0].invLocations[0].contact}</h4>
-            <h3>City, State:</h3><h4>${customer[0].invLocations[0].address}</h4>
-            <h3>Company:</h3><h4>${customer[0].invLocations[0].cityState}</h4>
-            <h3>Zip:</h3><h4>${customer[0].invLocations[0].zip}</h4>
-            <h3>Phone:</h3><h4>${customer[0].invLocations[0].phone}</h4>
-            <h3>Fax:</h3><h4>${customer[0].invLocations[0].fax}</h4>
-            <h3>Email:</h3><h4>${customer[0].invLocations[0].email}</h4>
+            <h3>Company:</h3><h4>${customer[0].invLocations[inv_location_index].company}</h4>
+            <h3>Contact:</h3><h4>${customer[0].invLocations[inv_location_index].contact}</h4>
+            <h3>City, State:</h3><h4>${customer[0].invLocations[inv_location_index].address}</h4>
+            <h3>Company:</h3><h4>${customer[0].invLocations[inv_location_index].cityState}</h4>
+            <h3>Zip:</h3><h4>${customer[0].invLocations[inv_location_index].zip}</h4>
+            <h3>Phone:</h3><h4>${customer[0].invLocations[inv_location_index].phone}</h4>
+            <h3>Fax:</h3><h4>${customer[0].invLocations[inv_location_index].fax}</h4>
+            <h3>Email:</h3><h4>${customer[0].invLocations[inv_location_index].email}</h4>
             
             </td></tr>`)
     ship_info.append(`<tr><td>
-            <h3>Company:</h3><h4>${customer[0].shipLocations[0].company}</h4>
-            <h3>Contact:</h3><h4>${customer[0].shipLocations[0].contact}</h4>
-            <h3>City, State:</h3><h4>${customer[0].shipLocations[0].address}</h4>
-            <h3>Company:</h3><h4>${customer[0].shipLocations[0].cityState}</h4>
-            <h3>Zip:</h3><h4>${customer[0].shipLocations[0].zip}</h4>
-            <h3>Phone:</h3><h4>${customer[0].shipLocations[0].phone}</h4>
-            <h3>Fax:</h3><h4>${customer[0].shipLocations[0].fax}</h4>
-            <h3>Email:</h3><h4>${customer[0].shipLocations[0].email}</h4>
+            <h3>Company:</h3><h4>${customer[0].shipLocations[ship_location_index].company}</h4>
+            <h3>Contact:</h3><h4>${customer[0].shipLocations[ship_location_index].contact}</h4>
+            <h3>City, State:</h3><h4>${customer[0].shipLocations[ship_location_index].address}</h4>
+            <h3>Company:</h3><h4>${customer[0].shipLocations[ship_location_index].cityState}</h4>
+            <h3>Zip:</h3><h4>${customer[0].shipLocations[ship_location_index].zip}</h4>
+            <h3>Phone:</h3><h4>${customer[0].shipLocations[ship_location_index].phone}</h4>
+            <h3>Fax:</h3><h4>${customer[0].shipLocations[ship_location_index].fax}</h4>
+            <h3>Email:</h3><h4>${customer[0].shipLocations[ship_location_index].email}</h4>
             </td></tr>`)
     var i = 1;
     
@@ -194,4 +197,73 @@ function infoHighlight(){
         $(".info").removeClass('border-class')
     }, 200);
     $(".info").addClass('border-class')
+}
+
+
+$("#add_location_modal").on('change', function(){
+
+    if($("#loc_type").val() == "Shipping"){
+        $("#loc_company").val(clicked_customer[0].shipLocations[0].company)
+        $("#loc_company").prop('disabled', true)
+    } else {
+      
+        $("#loc_company").prop('disabled', false)
+    }
+
+})
+
+function createLocation(){
+
+    var locationInfo = [];
+    locationInfo.push($("#loc_company").val())
+    locationInfo.push($("#loc_contact").val())
+    locationInfo.push($("#loc_address").val())
+    locationInfo.push($("#loc_city_state").val())
+    locationInfo.push($("#loc_zip").val())
+    locationInfo.push($("#loc_email").val())
+    locationInfo.push($("#loc_phone").val())
+    locationInfo.push($("#loc_fax").val())
+    locationInfo.push($("#loc_type").val())
+
+    console.log(locationInfo)
+
+    if($("#loc_company").val() == "" || $("#loc_contact").val() == "" || $("#loc_address").val()=="" || $("#loc_city_state").val() == "" || $("#loc_zip").val() == "" || $("#loc_email").val() == "" || $("#loc_phone").val() == "" || $("#loc_fax").val() == ""){
+        alert("You must fill in all fields. If intented to be blank enter '--'");
+    } else {
+
+        $.post("/createLocation", {
+            customerId: clicked_customer[0].customerId,
+            locationInfo: locationInfo
+        })
+
+    }
+
+    console.log($(this))
+    $("#add_location_modal").modal("toggle");
+    
+}
+
+function incInvIndex(){
+    if(inv_location_index < clicked_customer[0].invLocations.length - 1){
+        inv_location_index++;
+        addInfoToFields(clicked_customer);
+    }
+}
+function decInvIndex(){
+    if(inv_location_index > 0){
+        inv_location_index--;
+        addInfoToFields(clicked_customer);
+    }
+}
+function incShipIndex(){
+    if(ship_location_index < clicked_customer[0].shipLocations.length - 1){
+        ship_location_index++;
+        addInfoToFields(clicked_customer);
+    }
+}
+function decShipIndex(){
+    if(ship_location_index > 0){
+        ship_location_index--;
+        addInfoToFields(clicked_customer);
+    }
 }

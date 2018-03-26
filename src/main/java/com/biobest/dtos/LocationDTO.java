@@ -1,34 +1,31 @@
 package com.biobest.dtos;
 
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class LocationDTO{
 
 	@NotEmpty
-	@NotNull
+	private String customerId;
+
+	@NotEmpty
+	private String type;
+
+
+	@NotEmpty
     private String company;
 	@NotEmpty
-	@NotNull
     private String contact;
 	@NotEmpty
-	@NotNull
     private String address; 
 	@NotEmpty
-	@NotNull
     private String cityState;
 	@NotEmpty
-	@NotNull
     private String zip; 
 	@NotEmpty
-	@NotNull
     private String phone; 
 	@NotEmpty
-	@NotNull
     private String fax; 
 	@NotEmpty
-	@NotNull
 	private String email;
 	
 	public String getCompany() {
@@ -92,6 +89,22 @@ public class LocationDTO{
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+	
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 	
    

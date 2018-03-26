@@ -39,6 +39,8 @@ var currentOrderIndex = 0;
 var main_accordion_clone = $("#main_accordion").clone()
 var active_accordion_clone = $("#active_accordion").clone()
 var oldSessionOrder = [];
+var invLocationOrderIndex = 0;
+var shipLocationOrderIndex = 0;
 
 $(document).ready(function ()   {
 
@@ -143,11 +145,16 @@ function submitOrder(){
     }
     
 
+    console.log($("#ship_to_button").text())
+    console.log($("#invoice_to_button").text())
+    
     $.post("/submitOrder", {
         orderId : currentCustomer[0].currentOrders[currentOrderIndex],
         appUserId : app_user_id,
         sessionOrder_0 : submit_session_product_id,
-        sessionOrder_1 : submit_session_units
+        sessionOrder_1 : submit_session_units,
+        invLocation: $("#invoice_to_button").text(),
+        shipLocation: $("#ship_to_button").text()
     });
     
 
@@ -164,6 +171,7 @@ function functionalityFlowCommand(){
     populateActiveList()
     populateChangesOrderList()
     populateFavouriteList();
+    
 }
 
 //
@@ -179,6 +187,22 @@ function submitCreateNew(){
         location.reload();
     });  
 }
+//Shallow compare
+function areEqualShallow(a, b) {
+    for(var key in a) {
+        if(!(key in b) || a[key] !== b[key]) {
+            return false;
+        }
+    }
+    for(var key in b) {
+        if(!(key in a) || a[key] !== b[key]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 function getCurrentOrder(){
     var local_order = orderList.filter(function(o){
         return o.orderId === currentCustomer[0].currentOrders[currentOrderIndex];
@@ -189,9 +213,33 @@ function getCurrentOrder(){
 function initiateSessionOrder(){
     var checkOrderIndex = sessionStorage.getItem("currentOrderIndex");
     var checkOrderId = sessionStorage.getItem("sessionOrderId");
+    var local_order = getCurrentOrder();
     if(checkOrderIndex != 0 &&  currentCustomer[0].currentOrders.includes(checkOrderId)){
         currentOrderIndex = sessionStorage.getItem("currentOrderIndex");
     }
+
+
+    //Initiate correct location
+
+    for(var i = 0; i < currentCustomer[0].invLocations.length; i++){
+        if(areEqualShallow(currentCustomer[0].invLocations[i], local_order[0].invLocation)){
+            break;
+        } else {
+            invLocationOrderIndex++;
+        }
+    }
+    
+    for(var i = 0; i < currentCustomer[0].shipLocations.length; i++){
+        if(areEqualShallow(currentCustomer[0].shipLocations[i], local_order[0].shipLocation)){
+            break;
+        } else {
+            shipLocationOrderIndex++;
+        }
+    }
+ 
+
+
+
     var local_order = getCurrentOrder();
     if(local_order.length==0){
         $.post("/createOrder",{
@@ -257,7 +305,7 @@ function populateProductList(oldSessionOrder) {
             local_product_list.push([temp_product, prod[1]]);
 
         })
-        //Fix Sort
+
         local_product_list.sort(function(a, b){
             var A = a[0][0].productName,
                 B = b[0][0].productName;
@@ -325,13 +373,13 @@ function populateActiveList() {
                 current_product.find("#active_list_button").html(`<tr>
                         <td hidden>${local_order[0].orderId}</td>
                
-                        <td>${currentCustomer[0].shipAddress}</td>
+                        <td><h3>${local_order[0].shipLocation.contact}<br />${local_order[0].shipLocation.address}</h3></td>
                         <td style="float:right"><h3><span class="badge">0</span> Items</h3></td></tr>`);
             } else {
                 current_product.find("#active_list_button").html(`<tr>
                         <td hidden>${local_order[0].orderId}</td>
                     
-                        <td><h3>${currentCustomer[0].shipAddress}</h3></td>
+                        <td><h3>${local_order[0].shipLocation.contact}<br />${local_order[0].shipLocation.address}</h3></td>
                         <td style="float:right"><h3><span class="badge">${local_order[0].finalOrder.length}</span> Items</h3></td></tr>`);
                 var local_total_cost = 0;
                 local_order[0].finalOrder.forEach(function(p){
@@ -370,9 +418,7 @@ $("#active_order_modal, #get_favourite_order_modal").on('click', function(o){
         
         sessionStorage.setItem("sessionOrderId", clicked_element)
         sessionStorage.setItem("currentOrderIndex", activated_index)
-        var empty_list = [];
-        populateProductList(empty_list)
-        $(this).modal("toggle")
+        location.reload()
     }
 })
 
@@ -422,6 +468,15 @@ function activateCurrentUser(){
         return u.appUserId === current_user_id;
     })
 }
+function populateShipLocationButton(index){
+    shipLocationOrderIndex = index;
+    $("#ship_to_button").html(`</div>${currentCustomer[0].shipLocations[index].contact}<div hidden>|</div><br />${currentCustomer[0].shipLocations[index].address}<div hidden>|${currentCustomer[0].shipLocations[index].company}|${currentCustomer[0].shipLocations[index].cityState}|${currentCustomer[0].shipLocations[index].zip}|${currentCustomer[0].shipLocations[index].phone}|${currentCustomer[0].shipLocations[index].fax}|${currentCustomer[0].shipLocations[index].email}`)
+}
+function populateInvLocationButton(index){
+   invLocationOrderIndex = index;
+    
+    $("#invoice_to_button").html(`</div>${currentCustomer[0].invLocations[index].contact}<div hidden>|</div><br />${currentCustomer[0].invLocations[index].address}<div hidden>|${currentCustomer[0].invLocations[index].company}|${currentCustomer[0].invLocations[index].cityState}|${currentCustomer[0].invLocations[index].zip}|${currentCustomer[0].invLocations[index].phone}|${currentCustomer[0].invLocations[index].fax}|${currentCustomer[0].invLocations[index].email}`)
+}
 //Populate Customer Page Info
 function populateCustomerPageInfo(){
     var local_order = getCurrentOrder();
@@ -445,9 +500,8 @@ function populateCustomerPageInfo(){
         $("#customer_option_changes_button").html(`Changes <span class="badge">${local_order[0].orderTransactions.length}</span>`);
     }
     //Invoice-To
-    $("#ship_to_button").html(`${currentCustomer[0].shipLocations[0].contact}<br />${currentCustomer[0].shipLocations[0].address} `)
-    $("#invoice_to_button").html(`${currentCustomer[0].invLocations[0].contact}<br />${currentCustomer[0].invLocations[0].address}`)
-    
+    populateShipLocationButton(shipLocationOrderIndex)
+    populateInvLocationButton(invLocationOrderIndex)
     $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
 }
 //Populate Add Product List
@@ -793,3 +847,34 @@ function findBugscan(){
     populateAddProductList(localProductList);
 
 }
+
+function invLocationModal(){
+    $("#inv_location_modal").modal("toggle")
+    $("#inv_location_modal .modal-body").html(``);
+    var i = 0;
+    currentCustomer[0].invLocations.forEach(function(loc){
+
+        $("#inv_location_modal .modal-body").append(`<button class="btn btn-block btn-custom-1" style="font-size:30px;font-weight:bold;" onclick="populateInvLocationButton(${i})" data-toggle="modal" data-target="#inv_location_modal">${loc.company}<br />${loc.contact}<br />${loc.address}<br />${loc.cityState}<br />${loc.zip}<br />${loc.email}<br />${loc.phone}<br />${loc.fax}</btn>`)
+        i++
+    })
+    
+
+}
+
+function shipLocationModal(){
+    $("#ship_location_modal").modal("toggle")
+    $("#ship_location_modal .modal-body").html(``);
+
+    var i = 0;
+    currentCustomer[0].shipLocations.forEach(function(loc){
+        $("#ship_location_modal .modal-body").append(`<button class="btn btn-block btn-custom-1" style="font-size:30px;font-weight:bold;" onclick="populateShipLocationButton(${i})" data-toggle="modal" data-target="#ship_location_modal">${loc.contact}<br />${loc.address}<br />${loc.cityState}<br />${loc.zip}<br />${loc.email}<br />${loc.phone}<br />${loc.fax}</btn>`)
+        i++
+    })
+
+    
+    
+   
+}
+    
+
+

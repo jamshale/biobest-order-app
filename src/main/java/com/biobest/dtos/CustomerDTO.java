@@ -1,58 +1,40 @@
 package com.biobest.dtos;
 
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class CustomerDTO{
 
 	@NotEmpty
-	@NotNull
     private String invCompany;
 	@NotEmpty
-	@NotNull
     private String invContact;
 	@NotEmpty
-	@NotNull
     private String invAddress; 
 	@NotEmpty
-	@NotNull
     private String invCityState;
 	@NotEmpty
-	@NotNull
     private String invZip; 
 	@NotEmpty
-	@NotNull
     private String invPhone; 
 	@NotEmpty
-	@NotNull
     private String invFax; 
 	@NotEmpty
-	@NotNull
     private String invEmail;
 	@NotEmpty
-	@NotNull
     private String shipCompany;
 	@NotEmpty
-	@NotNull
     private String shipContact;
 	@NotEmpty
-	@NotNull
     private String shipAddress; 
 	@NotEmpty
-	@NotNull
     private String shipCityState; 
 	@NotEmpty
-	@NotNull
 	private String shipZip; 
 	@NotEmpty
-	@NotNull
     private String shipEmail;
 	@NotEmpty
-	@NotNull
     private String shipPhone; 
 	@NotEmpty
-	@NotNull
     private String shipFax; 
 
     
@@ -185,7 +167,3 @@ public void setShipEmail(String shipEmail){
 
 
 }
-
-    
-
-

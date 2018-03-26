@@ -56,9 +56,9 @@
                      
                         <table class="table info">
                             <thead><tr><th style="font-size:25px;">
-                                <button type="button" class="btn btn-default inc_button" style="float:left;margin-right:5px;font-size:40px;"><span class="glyphicon glyphicon-triangle-left"></span></button>
-                                <button class="btn btn-custom-2" style="font-size:20px;margin-right:10px;margin:10px 0px;">1</button>Invoice Details:<button class="btn btn-custom-0" style="font-size:20px;margin:10px 5px;">Edit</button>
-                                <button type="button" class="btn btn-default inc_button" style="float:right;margin-left:20px;font-size:40px;"><span class="glyphicon glyphicon-triangle-right"></span></button>
+                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-left" onclick="decInvIndex()"></span>
+                                <button class="btn btn-custom-2" style="font-size:20px;margin-right:10px;margin:10px 10px;" id="inv_index"></button>Invoice Details:<button class="btn btn-custom-0" style="font-size:20px;margin:10px 5px;">Edit</button>
+                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-right" onclick="incInvIndex()"></span>
                             
                             </th></tr></thead>
                                 
@@ -80,9 +80,9 @@
 					<div class="col-sm-4" style="width:49%;">
 						<table class="table info">
                                 <thead><tr><th style="font-size:25px;">
-                                <button type="button" class="btn btn-default inc_button" style="float:left;margin-right:5px;font-size:40px;"><span class="glyphicon glyphicon-triangle-left"></span></button>
-                                <button class="btn btn-custom-2" style="font-size:20px;margin-right:10px;margin:10px 0px;">1</button>Shipping Details:<button class="btn btn-custom-0" style="font-size:20px;margin:10px 5px;">Edit</button>
-                                <button type="button" class="btn btn-default inc_button" style="float:right;margin-left:20px;font-size:40px;"><span class="glyphicon glyphicon-triangle-right"></span></button>
+                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-left" onclick="decShipIndex()"></span>
+                                <button class="btn btn-custom-2" style="font-size:20px;margin-right:10px;margin:10px 0px;" id="ship_index"></button>Shipping Details:<button class="btn btn-custom-0" style="font-size:20px;margin:10px 5px;">Edit</button>
+                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-right" onclick="incShipIndex()"></span>
                             
                             </th></tr></thead>
 							<tbody id="ship_to_info">
@@ -103,8 +103,8 @@
                 </div>
 
                 <div style="text-align: center;">
-                    <button type="button" disabled="true" class="btn btn-lg btn-custom-0 management_customer_button" style="font-size:30px;font-weight:bold;">Add Shipping/Invoice Location</button>
-                    <button type="button" disabled="true" class="btn btn-lg btn-custom-0 management_customer_button" style="font-size:30px;font-weight:bold;">Order History</button>
+                    <button type="button" disabled="true" data-toggle="modal" data-target="#add_location_modal" class="btn btn-lg btn-custom-0 management_customer_button" style="font-size:30px;font-weight:bold;width:45%">Add Location</button>
+                    <button type="button" disabled="true" class="btn btn-lg btn-custom-0 management_customer_button" style="font-size:30px;font-weight:bold;width:45%">Order History</button>
          
                 </div>
             </div>
@@ -143,7 +143,7 @@
             
             <form action="/management_customers" th:object="${customerDto}" method="POST" enctype="utf8">
                 <lable><h3 class="header-label">Create Customer:</h3></lable>
-                <h4>Create customer by entering primary locations/information. Add additional locations/information after.</h4>
+                <h4 style="font-size:25px;">Create customer by entering primary locations/information. Add additional locations/information after.</h4>
                 <div class="col-sm-6">
                 <label><h3 style="font-weight:bold;">Invoice Location:</h3></label>
                 <div class="form-group">
@@ -168,10 +168,7 @@
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Zip" th:field="*{invZip}"></input>
                     <div th:each="error : ${#fields.errors('invZip')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
-                <div class="form-group">
-                    <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{invEmail}"></input>
-                    <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
-                </div>
+                
                 <div class="form-group">
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Phone" th:field="*{invPhone}"></input>
                     <div th:each="error : ${#fields.errors('invPhone')}" class="alert alert-danger" th:text="${error}"></div>
@@ -179,6 +176,10 @@
                 <div class="form-group">
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Fax" th:field="*{invFax}"></input>
                     <div th:each="error : ${#fields.errors('invFax')}" class="alert alert-danger" th:text="${error}"></div>
+                </div>
+                <div class="form-group">
+                    <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{invEmail}"></input>
+                    <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
                 </div>
                 <div class="col-sm-6">
@@ -205,10 +206,7 @@
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Zip" th:field="*{shipZip}"></input>
                             <div th:each="error : ${#fields.errors('shipZip')}" class="alert alert-danger" th:text="${error}"></div>
                         </div>
-                        <div class="form-group">
-                            <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{shipEmail}"></input>
-                            <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
-                        </div>
+                        
                         <div class="form-group">
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Phone" th:field="*{shipPhone}"></input>
                             <div th:each="error : ${#fields.errors('shipPhone')}" class="alert alert-danger" th:text="${error}"></div>
@@ -216,6 +214,10 @@
                         <div class="form-group">
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Fax" th:field="*{shipFax}"></input>
                             <div th:each="error : ${#fields.errors('shipFax')}" class="alert alert-danger" th:text="${error}"></div>
+                        </div>
+                        <div class="form-group">
+                            <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{shipEmail}"></input>
+                            <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
                         </div>
                         </div>
             
@@ -286,6 +288,65 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add User to Customer Modal -->
+    <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_location_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h3 style="font-weight:bold;">Enter location information</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                               
+                            <table>
+                                <select id="loc_type">
+                                    <option value="" class="disabled selected hidden">Type</option>
+                                    <option value="Invoice">Invoice</option>
+                                    <option value="Shipping">Shipping</option>
+                                </select>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Company" id="loc_company"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Contact" id="loc_contact"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Address" id="loc_address"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="City/State" id="loc_city_state"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Zip" id="loc_zip"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Email" id="loc_email"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Phone" id="loc_phone"></input></tr>
+                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Fax" id="loc_fax"></input></tr>
+                                
+
+                            </table>
+
+                                   
+                            <button type="submit" class="btn btn-success" onclick="createLocation()">
+                                    Create Location
+                                </button>
+
+                                          
+                           
+                                
+
+
+
+
+                        </div>
+                        <div class="col-sm-2"></div>
                     </div>
                 </div>
                 <div class="modal-footer"> 
