@@ -5,6 +5,7 @@ var current_customer = "";
 var loadComplete = [];
 
 $(document).ready(function ()   {
+    
     $.post({
         url: "/customers",
         success: populateCustomerList,
@@ -29,6 +30,8 @@ $(document).ready(function ()   {
     
     
 });
+
+
 
 
 
@@ -76,7 +79,7 @@ function populateSelectList(){
     })
     console.log(localProductList)
     localProductList.forEach(function(c){
-        $("#select_list").prepend(`<tr><td hidden>${c[0]}</td>
+        $("#select_list").append(`<tr><td hidden>${c[0]}</td>
                                         <td><button class="btn btn-block btn-custom-1">${c[1]}<span class="badge" style="float:right;font-size:50px;padding:20px;margin-right:50px;">${c[2]}</span></button></td></tr>`)
     })
   
@@ -97,3 +100,6 @@ function relayOrder(current_customer_id){
     sessionStorage.setItem("current_customer", current_customer_id)
     $(location).attr('href', 'user_current_order')
 }
+
+
+

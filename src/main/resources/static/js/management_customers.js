@@ -235,11 +235,9 @@ function createLocation(){
             customerId: clicked_customer[0].customerId,
             locationInfo: locationInfo
         })
+        location.reload()
 
     }
-
-    console.log($(this))
-    $("#add_location_modal").modal("toggle");
     
 }
 

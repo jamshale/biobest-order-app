@@ -7,22 +7,6 @@ var test = {
     weekday: "long", 
     hour: "2-digit", minute: "2-digit"  
 };  
-//Global Test Variables
-var total_cost = "1080.89"
-var test_product = "Atheta-System-500"
-var test_desc = "Atheta coriaria in 1-L tube"
-var test_product_size = "500"
-var test_num = "1"
-var test_price = "99.90"
-var num_items = 15;
-var test_po_num = "10112"
-var test_order_num = "3"
-var test_active_orders = "1"
-var test_changes = "0"
-var test_customer_name = "Windset - Phase 3"
-var test_user_name = "Jamie Hale"
-var test_ship_to = "1636 Island Hwy East"
-var order_status = "Submitted"
 
 var productList = [];
 var customerList = [];
@@ -30,7 +14,6 @@ var userList = [];
 var orderList = [];
 var currentCustomer;
 var currentUser;
-//var currentCustomerOrders = [];
 var loadComplete = [];
 var sessionOrder = [];
 var sessionFav = [];
@@ -84,18 +67,28 @@ $(document).ready(function ()   {
             }
         }
     })
-    
-        populateHistoryList();
-        
-        
+  
 });
+
+//Functionality Command
+function functionalityFlowCommand(){
+    activateCurrentUser()
+    activateCurrentCustomer()
+    initiateSessionOrder()
+    populateCustomerPageInfo()
+    populateAddProductList(productList)
+    populateActiveList()
+    populateChangesOrderList()
+    populateFavouriteList();
+    
+}
 
 //
 function submitKeepActive(){
-
+    submitOrder();
+    $("#submit_order_modal").modal("toggle")
+    location.reload()
 }
-
-
 
 //Initiation Functions
 function initiateProductList(products){
@@ -116,16 +109,6 @@ $(window).unload(function(){
 
   });
 
-$('#customer_name').on('click', function(){
-   submitOrder();
-    
-})
-
-//
-
-//
-
-
 function submitOrder(){
     var submit_session_product_id = [];
     var submit_session_units = [];
@@ -135,19 +118,12 @@ function submitOrder(){
         submit_session_product_id.push(p[0])
         submit_session_units.push(p[1])
     })
-    
-    
     if(submit_session_product_id.length == 0){
         submit_session_product_id.push("empty");
     }
     if(submit_session_units.length == 0){
         submit_session_units.push("empty");
     }
-    
-
-    console.log($("#ship_to_button").text())
-    console.log($("#invoice_to_button").text())
-    
     $.post("/submitOrder", {
         orderId : currentCustomer[0].currentOrders[currentOrderIndex],
         appUserId : app_user_id,
@@ -156,22 +132,6 @@ function submitOrder(){
         invLocation: $("#invoice_to_button").text(),
         shipLocation: $("#ship_to_button").text()
     });
-    
-
-}
-
-
-//Functionality Command
-function functionalityFlowCommand(){
-    activateCurrentUser()
-    activateCurrentCustomer()
-    initiateSessionOrder()
-    populateCustomerPageInfo()
-    populateAddProductList(productList)
-    populateActiveList()
-    populateChangesOrderList()
-    populateFavouriteList();
-    
 }
 
 //
@@ -213,33 +173,9 @@ function getCurrentOrder(){
 function initiateSessionOrder(){
     var checkOrderIndex = sessionStorage.getItem("currentOrderIndex");
     var checkOrderId = sessionStorage.getItem("sessionOrderId");
-    var local_order = getCurrentOrder();
     if(checkOrderIndex != 0 &&  currentCustomer[0].currentOrders.includes(checkOrderId)){
         currentOrderIndex = sessionStorage.getItem("currentOrderIndex");
     }
-
-
-    //Initiate correct location
-
-    for(var i = 0; i < currentCustomer[0].invLocations.length; i++){
-        if(areEqualShallow(currentCustomer[0].invLocations[i], local_order[0].invLocation)){
-            break;
-        } else {
-            invLocationOrderIndex++;
-        }
-    }
-    
-    for(var i = 0; i < currentCustomer[0].shipLocations.length; i++){
-        if(areEqualShallow(currentCustomer[0].shipLocations[i], local_order[0].shipLocation)){
-            break;
-        } else {
-            shipLocationOrderIndex++;
-        }
-    }
- 
-
-
-
     var local_order = getCurrentOrder();
     if(local_order.length==0){
         $.post("/createOrder",{
@@ -255,16 +191,34 @@ function initiateSessionOrder(){
                 sessionOrder.push([p.productId, p.units])
             })
         }
+        
+    }
+    //Initiate correct location   
+    if(local_order[0].shipLocation != null){
+        for(var i = 0; i < currentCustomer[0].invLocations.length; i++){
+            if(areEqualShallow(currentCustomer[0].invLocations[i], local_order[0].invLocation)){
+                break;
+            } else {
+                invLocationOrderIndex++;
+            }
+        }
+        
+        for(var i = 0; i < currentCustomer[0].shipLocations.length; i++){
+            if(areEqualShallow(currentCustomer[0].shipLocations[i], local_order[0].shipLocation)){
+                break;
+            } else {
+                shipLocationOrderIndex++;
+            }
+        }
     }
     currentCustomer[0].favProducts.forEach(function(p){
         sessionFav.push(p)
-    })
+    })      
     populateProductList(sessionOrder);
 }
 
 //Add Product Modal Close Functionality
 $("#add_product_modal").on("show.bs.modal", function () {
-    console.log("fire")
     oldSessionOrder = sessionOrder.slice(0);
 });
 //Add Product Modal Close Functionality
@@ -288,34 +242,26 @@ $("#inc_product").on('click', function(n){
 })
 //Populate Accordion List of Current Products --> Initial
 function populateProductList(oldSessionOrder) {
-
     var local_product_list = [];
-
     $("#main_accordion").html(main_accordion_clone.html());
     if(sessionOrder.length > 0){
         $("#empty_tag").hide()
-        $("button").prop('disabled', false);
         $("#main_accordion").removeClass('hide')
-        
+        $("button").prop('disabled', false);
         sessionOrder.forEach(function(prod){
             var temp_product = productList.filter(function(p){
                 return p.itemCode === prod[0];
             })
-
             local_product_list.push([temp_product, prod[1]]);
-
         })
-
         local_product_list.sort(function(a, b){
             var A = a[0][0].productName,
                 B = b[0][0].productName;
             //
-          
             if(A>B) return -1;
             if(A<B) return 1;
             return 0;
         })
-        console.log(local_product_list)
         var i = 0;
         local_product_list.forEach(function(p){
             var found = false;
@@ -341,15 +287,16 @@ function populateProductList(oldSessionOrder) {
                 current_product.find(".panel-collapse").first().attr('id', 'main_collapse_' + i)
                 current_product.find("#item_price").html(`<h3>$${(p[0][0].aPrice * p[1]).toFixed(2)}</h3>`)
 
-            }
-                    
+            }    
             if(i != sessionOrder.length-1 ){
                 clone2.prependTo($("#product_list_panel"))
                 clone1.prependTo($("#product_list_panel"))
             }
             i++;
-
         })
+    } else {
+        $("#empty_tag").show()
+        $("#main_accordion").addClass('hide')
     }
     var total_cost = calculateTotalCost()
     $("#total_cost").html(`$${total_cost}`)
@@ -363,7 +310,8 @@ function populateActiveList() {
         var local_order = orderList.filter(function(o){
             return o.orderId === order;
         })
-        $("#active_order_list").prop('hidden', false);
+        if(local_order[0].shipLocation!= null){
+            $("#active_order_list").prop('hidden', false);
         var clone1 = $("#active_list_panel").children().first().clone()
         var clone2 = $("#active_list_panel").children().first().next().clone()
         current_product = $("#active_list_panel")
@@ -399,6 +347,11 @@ function populateActiveList() {
                 clone1.prependTo($("#active_list_panel"))
             }
             i++;     
+
+
+
+        }
+        
     })
 }
 //Activate Order Fuctionality
@@ -500,9 +453,11 @@ function populateCustomerPageInfo(){
         $("#customer_option_changes_button").html(`Changes <span class="badge">${local_order[0].orderTransactions.length}</span>`);
     }
     //Invoice-To
+    console.log(shipLocationOrderIndex)
+    console.log(invLocationOrderIndex)
     populateShipLocationButton(shipLocationOrderIndex)
     populateInvLocationButton(invLocationOrderIndex)
-    $("#add_header").html(`Product Name <br />Description <br />Unit Size`)  
+  
 }
 //Populate Add Product List
 function populateAddProductList(localProductList){  
@@ -576,64 +531,51 @@ function populateAddProductList(localProductList){
 function populateFavouriteList() {
     current_product = $("#favourite_list_panel")
     var local_order = getCurrentOrder()
-    var i = 0;
-    currentCustomer[0].favOrders.forEach(function(fav){
-        orderList.forEach(function(o){
-            if(fav.orderId == o.orderId){
-                var clone1 = $("#favourite_list_panel").children().first().clone()
-                var clone2 = $("#favourite_list_panel").children().first().next().clone()
-                current_product.find("a").first().attr('href', '#favourite_collapse_' + i)
-                current_product.find(".panel-collapse").first().attr('id', 'favourite_collapse_' + i)
-                current_product.find("#favourite_list_button").html(`<tr>
-                        <td style="width:400px;font-size:30px;"><h3>${fav.name}</h3></td>
-                        <td style="width:200px;"><h3><span class="badge">${o.finalOrder.length}</span> Items</h3></td></tr>`);
-                o.finalOrder.forEach(function(orderDetails){
-                    var local_product = productList.filter(function(prod){
-                        return orderDetails.productId === prod.itemCode;
+    console.log(currentCustomer[0].favOrders.length)
+    if(currentCustomer[0].favOrders.length>0){
+        $("#empty_tag_1").hide()
+        $("#favourite_accordion").removeClass('hide')
+        var i = 0;
+        currentCustomer[0].favOrders.forEach(function(fav){
+            orderList.forEach(function(o){
+                if(fav.orderId == o.orderId){
+                    var clone1 = $("#favourite_list_panel").children().first().clone()
+                    var clone2 = $("#favourite_list_panel").children().first().next().clone()
+                    current_product.find("a").first().attr('href', '#favourite_collapse_' + i)
+                    current_product.find(".panel-collapse").first().attr('id', 'favourite_collapse_' + i)
+                    current_product.find("#favourite_list_button").html(`<tr>
+                            <td style="width:400px;font-size:30px;"><h3>${fav.name}</h3></td>
+                            <td style="width:200px;"><h3><span class="badge">${o.finalOrder.length}</span> Items</h3></td></tr>`);
+                    o.finalOrder.forEach(function(orderDetails){
+                        var local_product = productList.filter(function(prod){
+                            return orderDetails.productId === prod.itemCode;
+                        })
+                        $("#favourite_product_list").append(`<tr>
+                            <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
+                            <td><h4>Unit Price:</h4><h3>$${local_product[0].aPrice}</h3></td>
+                            <td><h4>Units:</h4><span class="badge" style="font-size:30px;">${orderDetails.units}</span></td>
+                            <td><h4>Product Cost:</h4><h3>$${(parseFloat(local_product[0].aPrice) * orderDetails.units).toFixed(2) }</h3></td>
+                            </tr>`)
                     })
-                    $("#favourite_product_list").append(`<tr>
-                        <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
-                        <td><h4>Unit Price:</h4><h3>$${local_product[0].aPrice}</h3></td>
-                        <td><h4>Units:</h4><span class="badge" style="font-size:30px;">${orderDetails.units}</span></td>
-                        <td><h4>Product Cost:</h4><h3>$${(parseFloat(local_product[0].aPrice) * orderDetails.units).toFixed(2) }</h3></td>
-                        </tr>`)
-                })
-            }     
-        })
-        if(i != currentCustomer[0].favOrders.length-1 ){
-            clone2.prependTo($("#favourite_list_panel"))
-            clone1.prependTo($("#favourite_list_panel"))
-        }
-        i++;
-    })
-}
-//Populate History Accordion
-function populateHistoryList() {
-    var test_units = "10";
-    for(var i = 0; i < num_items; i++){
-        var clone1 = $("#history_list_panel").children().first().clone()
-        var clone2 = $("#history_list_panel").children().first().next().clone()
-        current_product = $("#history_list_panel")
-            current_product.find("a").first().attr('href', '#history_collapse_' + i)
-            current_product.find(".panel-collapse").first().attr('id', 'history_collapse_' + i)
-            current_product.find("#history_list_button").html(` <td><h4>PO:</h4><h3>${test_po_num}</h3>
-                                                                <td><h4>Week:</h4><h3>${date.getWeek()}</h3></td>
-                                                                <td><h3><span class="badge">${num_items}</span> Items</h3></td>
-                                                                <td><h3 style="font-weight:bold;width:auto;float:right;">Total Cost: </h3><h3 style="float:right;"> $${total_cost}</h3></td>`)
-            for(var j = 0; j < 5; j++){
-                $("#history_product_list").append(`<tr>
-                        <td style="width:50%;"><h3>${test_product}<br />${test_desc}<br />${test_product_size}</h3></td>
-                        <td style="width:15%;"><h4 style="font-weight:bold;">Unit Price:</h4><h3>${test_price}</h3></td>
-                        <td style="width:15%;"><h4 style="font-weight:bold;">Units:</h4><h3>${test_units}</h3></td>
-                        <td style="width:15%;"><h4 style="font-weight:bold;text-align:right;">Product Cost:</h4><h3 style="text-align:right;">$${test_price * 10}</h3></td>
-                        </tr>`)
+                }     
+            })
+            if(i != currentCustomer[0].favOrders.length-1 ){
+                clone2.prependTo($("#favourite_list_panel"))
+                clone1.prependTo($("#favourite_list_panel"))
             }
-        if(i != num_items-1 ){
-            clone2.prependTo($("#history_list_panel"))
-            clone1.prependTo($("#history_list_panel"))
-        }
+            i++;
+        })
+
+
+    } else {
+
+        
+        $("#favourite_accordion").addClass('hide')
+        $("#empty_tag_1").show()
     }
+    
 }
+
 //Add Product Modal Button Initialization
 function addButton(localProductId, btn) {
         button = $(btn)
@@ -712,15 +654,15 @@ function populateChangesOrderList(){
         current_product = $("#changes_order_list_item")
             if(parseInt(t.units)>0){
                 current_product.prepend(`<tr style="background: rgba(58, 204, 44, 0.411);">
-                    <td><h4>${t.time}</h4></td>
-                    <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h5>${local_product[0].unitSize}</h5></td>
+                    <td><h4 style="font-size:30px;margin:20px 5px;">${t.time}</h4></td>
+                    <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
                     <td><span class="badge" style="font-size:30px;margin:50% 0%"> ${t.units} </span><span class="glyphicon glyphicon-ok"></span></td>
                     <td><h3>${local_user[0].firstName} ${local_user[0].lastName}</h3></td>
                     </tr>`)  
             } else {
                 current_product.prepend(`<tr style="background: rgba(211, 26, 1, 0.699);">
-                    <td><h4>${t.time}</h4></td>
-                    <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h5>${local_product[0].unitSize}</h5></td>
+                    <td><h4 style="font-size:30px;margin:20px 5px;">${t.time}</h4></td>
+                    <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
                     <td><span class="badge" style="font-size:30px;margin:50% 0%"> ${parseInt(t.units) * -1 } </span><span class="glyphicon glyphicon-remove"></span></td>
                     <td><h3>${local_user[0].firstName} ${local_user[0].lastName}</h3></td>
                     </tr>`)  
@@ -854,11 +796,18 @@ function invLocationModal(){
     var i = 0;
     currentCustomer[0].invLocations.forEach(function(loc){
 
-        $("#inv_location_modal .modal-body").append(`<button class="btn btn-block btn-custom-1" style="font-size:30px;font-weight:bold;" onclick="populateInvLocationButton(${i})" data-toggle="modal" data-target="#inv_location_modal">${loc.company}<br />${loc.contact}<br />${loc.address}<br />${loc.cityState}<br />${loc.zip}<br />${loc.email}<br />${loc.phone}<br />${loc.fax}</btn>`)
+        $("#inv_location_modal .modal-body").append(`<button class="btn btn-block btn-custom-0" onclick="populateInvLocationButton(${i})" data-toggle="modal" data-target="#inv_location_modal">
+                                                        <table>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Company:</h4></td><td><h3 style="font-size:30px;">${loc.company}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Contact:</h4></td><td><h3 style="font-size:30px;">${loc.contact}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Address:</h4></td><td><h3 style="font-size:30px;">${loc.address}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">City/State:</h4></td><td><h3 style="font-size:30px;">${loc.cityState}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Zip:</h4></td><td><h3 style="font-size:30px;">${loc.zip}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Email:</h4></td><td><h3 style="font-size:30px;">${loc.email}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Phone:</h4></td><td><h3 style="font-size:30px;">${loc.phone}</h3></td></tr>
+                                                                <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Fax:</h4></td><td><h3 style="font-size:30px;">${loc.fax}</h3></td></tr></table></btn>`)
         i++
     })
-    
-
 }
 
 function shipLocationModal(){
@@ -867,13 +816,31 @@ function shipLocationModal(){
 
     var i = 0;
     currentCustomer[0].shipLocations.forEach(function(loc){
-        $("#ship_location_modal .modal-body").append(`<button class="btn btn-block btn-custom-1" style="font-size:30px;font-weight:bold;" onclick="populateShipLocationButton(${i})" data-toggle="modal" data-target="#ship_location_modal">${loc.contact}<br />${loc.address}<br />${loc.cityState}<br />${loc.zip}<br />${loc.email}<br />${loc.phone}<br />${loc.fax}</btn>`)
+        $("#ship_location_modal .modal-body").append(`<button class="btn btn-block btn-custom-0" onclick="populateShipLocationButton(${i})" data-toggle="modal" data-target="#ship_location_modal">
+                                                    <table>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Company:</h4></td><td><h3 style="font-size:30px;">${loc.company}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Contact:</h4></td><td><h3 style="font-size:30px;">${loc.contact}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Address:</h4></td><td><h3 style="font-size:30px;">${loc.address}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">City/State:</h4></td><td><h3 style="font-size:30px;">${loc.cityState}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Zip:</h4></td><td><h3 style="font-size:30px;">${loc.zip}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Email:</h4></td><td><h3 style="font-size:30px;">${loc.email}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Phone:</h4></td><td><h3 style="font-size:30px;">${loc.phone}</h3></td></tr>
+                                                            <tr><td><h4 style="font-weight:bold;font-size:25px;float:left;text-decoration:underline;padding-right:200px;">Fax:</h4></td><td><h3 style="font-size:30px;">${loc.fax}</h3></td></tr></table></btn>`)
         i++
     })
+}
 
-    
-    
-   
+
+function addProductSearch(val){
+    console.log(val)
+
+    var localProductList = [];
+    productList.forEach(function(p){
+        if (p.productName.toLowerCase().indexOf(val) != -1 || p.description.toLowerCase().indexOf(val) != -1){
+            localProductList.push(p);
+        }
+    })
+    populateAddProductList(localProductList);
 }
     
 

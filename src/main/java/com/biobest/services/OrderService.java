@@ -18,4 +18,9 @@ public interface OrderService{
     @Transactional
     public Order updateOrder(Order order);
 
+    
+    @Transactional
+    public List<Order> getCustomerSpecificOrders(String customer);
+
+
 }

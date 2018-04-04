@@ -46,8 +46,8 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		List<Location<String, String, String, String, String, String, String, String>> invLocationList = new ArrayList<Location<String, String, String, String, String, String, String, String>>();
 		List<Location<String, String, String, String, String, String, String, String>> shipLocationList = new ArrayList<Location<String, String, String, String, String, String, String, String>>();
-		Location<String, String, String, String, String, String, String, String> initInvLocation = new Location<String, String, String, String, String, String, String, String>(customerDto.getInvCompany(), customerDto.getInvContact(), customerDto.getInvAddress(), customerDto.getInvCityState(), customerDto.getInvZip(), customerDto.getInvPhone(), customerDto.getInvFax(), customerDto.getInvEmail());
-		Location<String, String, String, String, String, String, String, String> initShipLocation = new Location<String, String, String, String, String, String, String, String>(customerDto.getShipCompany(), customerDto.getShipContact(), customerDto.getShipAddress(), customerDto.getShipCityState(), customerDto.getShipZip(), customerDto.getShipPhone(), customerDto.getShipFax(), customerDto.getShipEmail());
+		Location<String, String, String, String, String, String, String, String> initInvLocation = new Location<String, String, String, String, String, String, String, String>(customerDto.getInvCompany(), customerDto.getInvContact(), customerDto.getInvAddress(), customerDto.getInvCityState(), customerDto.getInvZip(), customerDto.getInvEmail(), customerDto.getInvPhone(), customerDto.getInvFax() );
+		Location<String, String, String, String, String, String, String, String> initShipLocation = new Location<String, String, String, String, String, String, String, String>(customerDto.getShipCompany(), customerDto.getShipContact(), customerDto.getShipAddress(), customerDto.getShipCityState(), customerDto.getShipZip(),customerDto.getShipEmail(), customerDto.getShipPhone(), customerDto.getShipFax());
 		invLocationList.add(initInvLocation);
 		shipLocationList.add(initShipLocation);
 		Customer newCustomer = new Customer(customerDto.getShipCompany());
@@ -90,6 +90,6 @@ public class CustomerServiceImpl implements CustomerService {
 		orderSet.remove(order.getOrderId());
 		return customerRepository.save(customer);
 	}
-	
+
 }
 

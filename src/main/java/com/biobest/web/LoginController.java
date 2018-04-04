@@ -24,14 +24,11 @@ public class LoginController {
     
 
 
-    @RequestMapping(value="/login", method = RequestMethod.GET)
+    @RequestMapping(value={"/login", "/", ""}, method = RequestMethod.GET)
     public String login(Model model) {
         return "login";
         
     }
-    
-
-    
     
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
@@ -41,8 +38,4 @@ public class LoginController {
         }        
         return "redirect:/login?logout";
     }
-    
-
-    
-
 }

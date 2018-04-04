@@ -168,6 +168,10 @@
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Zip" th:field="*{invZip}"></input>
                     <div th:each="error : ${#fields.errors('invZip')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
+                <div class="form-group">
+                    <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{invEmail}"></input>
+                    <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
+                </div>
                 
                 <div class="form-group">
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Phone" th:field="*{invPhone}"></input>
@@ -177,10 +181,7 @@
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Fax" th:field="*{invFax}"></input>
                     <div th:each="error : ${#fields.errors('invFax')}" class="alert alert-danger" th:text="${error}"></div>
                 </div>
-                <div class="form-group">
-                    <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{invEmail}"></input>
-                    <div th:each="error : ${#fields.errors('invEmail')}" class="alert alert-danger" th:text="${error}"></div>
-                </div>
+                
                 </div>
                 <div class="col-sm-6">
                         <label><h3 style="font-weight:bold;">Shipping Location:</h3></label>
@@ -206,7 +207,10 @@
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Zip" th:field="*{shipZip}"></input>
                             <div th:each="error : ${#fields.errors('shipZip')}" class="alert alert-danger" th:text="${error}"></div>
                         </div>
-                        
+                        <div class="form-group">
+                            <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{shipEmail}"></input>
+                            <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
+                        </div>
                         <div class="form-group">
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Phone" th:field="*{shipPhone}"></input>
                             <div th:each="error : ${#fields.errors('shipPhone')}" class="alert alert-danger" th:text="${error}"></div>
@@ -215,10 +219,7 @@
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Fax" th:field="*{shipFax}"></input>
                             <div th:each="error : ${#fields.errors('shipFax')}" class="alert alert-danger" th:text="${error}"></div>
                         </div>
-                        <div class="form-group">
-                            <input typr="text" autocomplete="on" class="form-control" placeholder="Email" th:field="*{shipEmail}"></input>
-                            <div th:each="error : ${#fields.errors('shipEmail')}" class="alert alert-danger" th:text="${error}"></div>
-                        </div>
+                        
                         </div>
             
                 <button type="submit" class="btn btn-success">

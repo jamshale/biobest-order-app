@@ -57,6 +57,13 @@ public class OrderController {
         return this.orderService.getOrders();
     }
 
+    @RequestMapping(value="/customerSpecificOrders", method=RequestMethod.POST, produces="application/json")
+    @ResponseBody
+    public List<Order> getCustomerSpecificOrders( @RequestParam("customerId") String customerId, Model model){
+        return this.orderService.getCustomerSpecificOrders(customerId);
+        
+    }
+
     @RequestMapping("/submitOrder")
     @ResponseBody
     public String submitOrder(@RequestParam("orderId") String orderId, @RequestParam("appUserId") String appUserId,
@@ -129,8 +136,8 @@ public class OrderController {
         for(int i = 0; i < shipLocationString.length; i++){
             System.out.println(shipLocationString[i]);
         }
-        Location<String, String, String, String, String, String, String, String> localInvLocation = new Location<>(invLocationString[0], invLocationString[1], invLocationString[2], invLocationString[3], invLocationString[4], invLocationString[7], invLocationString[5], invLocationString[6]);
-        Location<String, String, String, String, String, String, String, String> localShipLocation = new Location<>(shipLocationString[0], shipLocationString[1], shipLocationString[2],  shipLocationString[3], shipLocationString[4], shipLocationString[7], shipLocationString[5], shipLocationString[6]);
+        Location<String, String, String, String, String, String, String, String> localInvLocation = new Location<>( invLocationString[2], invLocationString[0], invLocationString[1], invLocationString[3], invLocationString[4], invLocationString[7], invLocationString[5], invLocationString[6]);
+        Location<String, String, String, String, String, String, String, String> localShipLocation = new Location<>(shipLocationString[2], shipLocationString[0], shipLocationString[1],   shipLocationString[3], shipLocationString[4], shipLocationString[7], shipLocationString[5], shipLocationString[6]);
        
 
         localOrder.setInvLocation(localInvLocation);

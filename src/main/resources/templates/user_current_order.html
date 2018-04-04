@@ -4,7 +4,7 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=.37, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=.37, maximum-scale=1, user-scalable=yes"/>
     <link href="css/user_current_order.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
@@ -20,16 +20,16 @@
             <nav class="navbar navbar-default" >
                
                     
-                    <a href="/user_select_order.html" class="btn btn-custom-1" style="font-size:60px;width:410px;margin:6px;" role="button">Back to Select</a>
-                    <a id="logout" class="btn btn-custom-2" href="/logout" role="button">Log out</a>
+                    <a href="/user_select_order.html" class="btn btn-custom-1" style="font-weight:bold;font-size:50px;width:410px;margin:6px;font-family:Verdana, Times, serif;" role="button">Select</a>
+                    <a id="logout" class="btn btn-custom-2" href="/logout" role="button"  style="font-weight:bold;font-size:50px;width:410px;margin:6px;font-family:Verdana, Times, serif;">Log out</a>
                
             </nav>
         </div>
    
     <div class="container-fluid">
     <div class="row" >
-        <div class="col-md-5" >
-            <div class="col-md-12" >
+        <div class="col-lg-5" >
+            <div class="col-lg-12" >
                 <div class="row">
                     <div class="col-sm-12" style="text-align: center;background-color:rgb(243, 227, 171);padding-top:15px;border-radius:5px;margin: 10px 0px;">
 
@@ -41,15 +41,17 @@
             
             <!-- Invoice to Address -->
             <div class="col-sm-6" >
-                <h3 style="font-weight: bold; font-size:30px;">Invoice Details:</h3>
-                    <button class="btn btn-default btn-block" type="button" id="invoice_to_button" style="font-size:25px;"  onclick="invLocationModal()"></button>    
+                <div>
+                <h3 style="font-weight: bold; font-size:35px;font-family:Verdana, Times, serif;">Invoice Details</h3></div>
+                    <button class="btn btn-default btn-block" type="button" id="invoice_to_button" style="font-size:26px;"  onclick="invLocationModal()"></button>    
                
             </div>
             <!-- Ship to Address -->
             <div class="col-sm-6" >
-                <h3 style="font-weight: bold;font-size:30px;">Shipping Details:</h3>
-             
-                    <button class="btn btn-default btn-block" type="button" id="ship_to_button" style="font-size:25px;" onclick="shipLocationModal()"></button>
+                <div>
+                <h3 style="font-weight: bold;font-size:35px;font-family:Verdana, Times, serif;">Shipping Details</h3>
+                    </div>
+                    <button class="btn btn-default btn-block" type="button" id="ship_to_button" style="font-size:26px;" onclick="shipLocationModal()"></button>
     
            
             </div>
@@ -59,28 +61,28 @@
         <div class="row">  
             <div class="col-sm-6 text-center" >
                 <button type="button" class="btn btn-basic btn-sm " id="customer_option_active_order_button" 
-                            data-toggle="modal" data-target="#active_order_modal" style="margin: 10px 0px;font-size:30px;font-weight:bold;height:90px;width:80%;"></button>
+                            data-toggle="modal" data-target="#active_order_modal" style="margin: 10px 0px;font-size:40px;font-weight:bold;height:90px;width:80%;"></button>
             </div>
             <div class="col-sm-6 text-center" >
                 <button type="button" class="btn btn-basic btn-sm " id="customer_option_changes_button" 
-                            data-toggle="modal" data-target="#changes_order_modal" style="margin: 10px 0px;font-size:30px;font-weight:bold;height:90px;width:80%;"></button>
+                            data-toggle="modal" data-target="#changes_order_modal" style="margin: 10px 0px;font-size:40px;font-weight:bold;height:90px;width:80%;"></button>
             </div>
         </div>  
         <!--Top Buttons Bottom -->    
         <div class="row" style="margin-bottom:20px;">  
             <div class="col-sm-6 text-center" >
-                <button type="button" class="btn btn-custom-1 btn-sm" id="customer_option_button" style="width:90%;font-weight:bold;font-size:30px;"
-                                        data-toggle="modal" data-target="#add_product_modal" onclick="findAll();"><h3 style="font-weight:bold;font-size:30px;">Add<br />Product</h3></button>
+                <button type="button" class="btn btn-custom-1 btn-sm" id="customer_option_button" style="width:90%;"
+                                        data-toggle="modal" data-target="#add_product_modal" onclick="findAll();"><h3 style="font-weight:bold;font-size:38px;">Add<br />Product</h3></button>
             </div>
             <div class="col-sm-6 text-center" >
                 <button type="button" class="btn btn-custom-2 btn-sm" id="customer_option_button" style="width:90%;"
-                            data-toggle="modal" data-target="#get_favourite_order_modal"><h3 style="font-weight:bold;font-size:30px;">Get Favourite<br /> Order</h3></button>
+                            data-toggle="modal" data-target="#get_favourite_order_modal"><h3 style="font-weight:bold;font-size:38px;">Get Favourite<br /> Order</h3></button>
             </div>
         </div> 
     </div>
         <!-- Product List -->    
-        <div class="col-md-7">   
-        <div class="col-md-12" style="padding:0px 10px 20px 10px;background-color:rgba(230, 222, 222, 0.712); border-style:solid; border-width: 4px;border-radius:20px;margin: 10px 0px; box-shadow: 10px 10px 10px grey;padding:0px 10px;">
+        <div class="col-lg-7">   
+        <div class="col-lg-12" style="padding:0px 10px 20px 10px;background-color:rgba(230, 222, 222, 0.712); border-style:solid; border-width: 4px;border-radius:20px;margin: 10px 0px; box-shadow: 10px 10px 10px grey;padding:0px 10px;">
             
                     <table id="product_list" class="table table-condensed" >
                         <thead style="border-bottom: 3px solid black">
@@ -150,7 +152,7 @@
 
                     <div class="col-sm-6">
                         <button class="btn btn-default " id="bottom_option_button"
-                                    data-toggle="modal" data-target="#history_order_modal"><h3 style="font-weight:bold;font-size:30px;">Account<br />Settings</h3></button>
+                        ><h3 style="font-weight:bold;font-size:30px;">Account<br />Settings</h3></button>
                     </div>
                     <div class="col-sm-6">
                         <button class="btn btn-custom-2 btn-sm " disabled="true" id="bottom_option_button" 
@@ -165,15 +167,15 @@
 <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_product_modal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="margin:5px;">
                 <div class="row">
                     <div class="col-sm-4">
-                        <h3 style="font-weight:bold;" id="add_header"></h3>
+                        <h3 style="font-weight:bold;font-size:32px;">Product Name</h3><h4 style="font-size:27px;">Description</h4><h3 style="font-weight:bold;font-size:32px;">Unit Size</h3>
                     </div>
                     <div class="col-sm-6">
-                        <form class="form-inline">
-                            <input type="text" class="form-control" placeholder="Search" style="font-size:24pt;height:20%;width:70%;margin-top:20px;"/>
-                        </form>
+         
+                            <input type="text" name="product_search" oninput="addProductSearch(this.value);" class="form-control" placeholder="Search" style="font-size:24pt;height:20%;width:70%;margin-top:20px;"/>
+               
                     </div>
                     <div class="col-sm-2">
                         <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
@@ -195,12 +197,12 @@
             </div>
             <div class="modal-footer">   
                 <div class="row" style="text-align: center;" >
-                    <button class="btn btn-sm btn-custom-1" style="padding:10px;width:200px;margin:5px 20px;font-size:30px;font-weight:bold;" onclick="findAll()">All</button>
-                    <button class="btn btn-sm btn-custom-1" style="padding:10px;width:200px;margin:5px 20px;font-size:30px;font-weight:bold;" onclick="findFavourites()">Favourites</button>
-                    <button class="btn btn-sm btn-custom-1" style="padding:10px;width:200px;margin:5px 20px;font-size:30px;font-weight:bold;" onclick="findBees()">Bees</button>
-                    <button class="btn btn-sm btn-custom-1" style="padding:10px;width:200px;margin:5px 20px;font-size:30px;font-weight:bold;" onclick="findLures()">Lures</button>
-                    <button class="btn btn-sm btn-custom-1" style="padding:10px;width:200px;margin:5px 20px;font-size:30px;font-weight:bold;" onclick="findNematodes()">Nematodes</button>
-                    <button class="btn btn-sm btn-custom-1" style="padding:10px;width:200px;margin:5px 20px;font-size:30px;font-weight:bold;" onclick="findBugscan()">Bugscan</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findAll()">All</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findFavourites()">Favourites</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findBees()">Bees</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findLures()">Lures</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findNematodes()">Nematodes</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findBugscan()">Bugscan</button>
                 </div>           
             </div>
         </div>
@@ -264,7 +266,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 style="font-weight:bold;">Changes To Order</h3>
+                        <h3 style="font-weight:bold;font-size:45px;">Changes To Order</h3>
                     </div>
                     <div class="col-sm-2">
                         <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
@@ -295,7 +297,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 style="font-weight:bold;">Favourite Orders</h3>
+                        <h3 style="font-weight:bold;font-size:45px;">Favourite Orders</h3>
                     </div>
                     <div class="col-sm-2">
                         <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
@@ -307,8 +309,10 @@
                     <div class="col-md-12">
                         <div id="get_favourite_order_list">
                             <!-- favourite List Accordion -->
-                            <div class="panel-group favourite" id="favourite_accordion">
+                            <div style="text-align: center;font-size:100px;background-color:lightgray" id="empty_tag_1" >Empty</div>
+                            <div class="panel-group favourite hide" id="favourite_accordion">
                                 <div class="panel panel-default" id="favourite_list_panel">
+                                    
                                     <div class="panel-heading">
                                         
                                         <div class="panel-title pull-left">
@@ -343,7 +347,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 style="font-weight:bold;">Submit Order</h3>
+                        <h3 style="font-weight:bold;font-size:45px;">Submit Order</h3>
                     </div>
                     <div class="col-sm-2">
                         <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
@@ -369,50 +373,7 @@
         </div>
     </div>
 </div>
-<!-- History Order Modal -->
-<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="history_order_modal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h3 style="font-weight:bold;">Order History</h3>
-                    </div>
-                    <div class="col-sm-6">
-                        <form class="form-inline">
-                            <input type="text" class="form-control" placeholder="Search" style="font-size:18pt;height:20%;width:70%;margin-top:20px;"/>
-                            <button class="btn btn-default" style="font-size:18pt;height:20%;width:20%;margin-top:20px;">Go!</button>
-                        </form>
-                    </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-body">   
-                <div class="row">
-                    <!-- History List Accordion -->
-                    <div class="panel-group history" id="history_accordion">
-                        <div class="panel panel-default" id="history_list_panel">
-                            <div class="panel-heading">
-                                <a data-toggle="collapse" data-parent="#history_accordion" href="">
-                                    <button type="button" id="history_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
-                                </a>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="panel-collapse collapse" id="">
-                                <div class="panel-body" id="history_product_list">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">              
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Add Favourite Order Modal -->
 <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_favourite_order_modal">
     <div class="modal-dialog modal-lg">

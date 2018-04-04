@@ -35,4 +35,10 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 
+	@Override
+	public List<Order> getCustomerSpecificOrders(String customerId) {
+		return orderRepository.findOrdersWithCustomer(customerId);
+	}
+
+
 }

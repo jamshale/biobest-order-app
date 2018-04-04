@@ -22,6 +22,7 @@
                 <form th:action="@{/login}" method="POST" style="width: 60%; margin: auto;" enctype="utf8">
                     <div th:if="${param.error}" class="alert alert-danger" style="margin-top: 1%; font-size:25px;height:70px;">Invalid email and password!</div>
                     <div th:if="${param.logout}" class="alert alert-success" style="margin-top: 1%; font-size:25px;height:70px;">You have been logged out.</div>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input id="username" name="username" type="email" class="form-control" placeholder="Email" style="margin-top: 1%; font-size:30px;height:70px;"/>
                     <input id="password" name="password" type="password" class="form-control" placeholder="Password" style="margin-top: 1%; font-size:30px;height:70px;"/>
                     <div class="form-actions">
