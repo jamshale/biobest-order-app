@@ -4,7 +4,7 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=.37, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5, minimum-scale=.5 user-scalable=no"/>
     
     <!-- Bootstrap -->
     <!-- Bootstrap -->
@@ -15,18 +15,18 @@
     <link rel="icon" type="image/jpg" href="images/bee_icon.jpg" />
 </head>
 <body style="background-color: rgba(253, 217, 108, 0.288);">
-        <div class="jumbotron">
-            <img th:src="@{images/biobest_logo.jpg}" class="rounded " style=" display: block;margin-left: auto;margin-right: auto;width: 900px;" />
+        <div class="jumbotron" style="background-color:white;">
+            <img th:src="@{images/biobest_logo.jpg}" class="rounded " style="display: block;margin:auto;width: 700px;height:400px" />
             <div class="container">
                 
                 <form th:action="@{/login}" method="POST" style="width: 60%; margin: auto;" enctype="utf8">
-                    <div th:if="${param.error}" class="alert alert-danger" style="margin-top: 1%; font-size:25px;height:70px;">Invalid email and password!</div>
-                    <div th:if="${param.logout}" class="alert alert-success" style="margin-top: 1%; font-size:25px;height:70px;">You have been logged out.</div>
+                    <div th:if="${param.error}" class="alert alert-danger" style="margin-top: 2%; font-size:22px;height:60px;">Invalid email and password!</div>
+                    <div th:if="${param.logout}" class="alert alert-success" style="margin-top: 2%; font-size:22px;height:60px;">You have been logged out.</div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <input id="username" name="username" type="email" class="form-control" placeholder="Email" style="margin-top: 1%; font-size:30px;height:70px;"/>
-                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" style="margin-top: 1%; font-size:30px;height:70px;"/>
+                    <input id="username" name="username" type="email" class="form-control" placeholder="Email" style="margin-top: 1%; font-size:25px;height:60px;background-color:rgba(182, 182, 182, 0.281);"/>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" style="margin-top: 1%; font-size:25px;height:60px;background-color:rgba(182, 182, 182, 0.281);"/>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-custom-2 btn-lg" style="width: 80%; margin: 5% 10%; font-size:50px;">Log in</button>
+                        <button type="submit" class="btn btn-custom-2 btn-lg" style="width: 80%; margin: 5% 10%; font-size:40px;">Log in</button>
                     </div>   
                 </form>
             

@@ -1,17 +1,82 @@
-var userList = [];
 var customerList = [];
-var clicked_user = "";
+var orderList = [];
+var userList = [];
+var productList = [];
+var clicked_customer = "";
+var loadComplete = [];
+var new_pass = true;
+
+var inv_location_index = 0;
+var ship_location_index = 0;
 
 $(document).ready(function ()   {
+
+    //Load Data
     $.post({
-        url: "/customers",
-        success: initCustomerList
+        url: "/products",
+        success: initiateProductList,
+        complete: function(){
+            loadComplete.push("products");
+            if(loadComplete.length == 4){
+                functionalityFlowCommand()
+            }
+        }
     })
     $.post({
         url: "/appUsers",
-        success: populateUserList
+        success: initiateUserList,
+        complete: function(){
+            loadComplete.push("users");
+            if(loadComplete.length == 4){
+                functionalityFlowCommand()
+            }
+        }
+    })
+    $.post({
+        url: "/customers",
+        success: initiateCustomerList,
+        complete: function(){
+            loadComplete.push("customers");
+            if(loadComplete.length == 4){
+                functionalityFlowCommand()
+            }
+        }
+    })
+    $.post({
+        url: "/orders",
+        success: initiateOrderList,
+        complete: function(){
+            loadComplete.push("orders");
+            if(loadComplete.length == 4){
+                functionalityFlowCommand()
+            }
+        }
     })
 });
+
+function functionalityFlowCommand(){
+    
+    populateUserList()
+
+    createErrorCheck()
+
+}
+
+function createErrorCheck(){
+    console.log($(".form-group div").text())
+    var error_message = $(".form-group div").text()
+    if(error_message != ""){
+        if(error_message != "User name already exists!User name already exists!"){
+            $("#create_section").toggle()
+        }
+            
+    }
+}
+
+
+
+
+
 //Check for active user during session
 function activeUserCheck(){
     var temp_user_id = sessionStorage.getItem("active_user");
@@ -56,14 +121,24 @@ $("#remove_customer_list").on('click', function(u){
         sessionStorage.setItem("active_user", clicked_user[0].appUserId);
     }
 })
-//Initiate Customer List
-function initCustomerList(customers){
+//Initiate Lists
+function initiateUserList(appUsers){
+    userList = appUsers;
+}
+function initiateCustomerList(customers){
     customerList = customers;
 }
-//Populate User List
-function populateUserList(users){
+function initiateOrderList(orders){
+    orderList = orders;
+}
+function initiateProductList(products){
+    productList = products;
+}
 
-    userList = users;
+//Populate User List
+function populateUserList(){
+
+  
     var list_item = $("#user_list");
     userList.forEach(function(u){
         if(u.type!=="Manager"){
@@ -71,19 +146,18 @@ function populateUserList(users){
         }
     })
     clicked_user= userList.filter(function(u){
-        return sessionStorage.getItem("active_user") === u.appUserId;
+        return sessionStorage.getItem("active_user") == u.appUserId;
     });
     addInfoToFields(clicked_user);
 }
 //Add user to list
 function addUserToList(list_item, user){
     var active_user = sessionStorage.getItem("active_user")
-    console.log(clicked_user)
     if(active_user === user.appUserId){
-        list_item.append(`<tr style="background-color:rgb(255, 217, 0);"><td hidden>${user.appUserId}</td><td style="margin-left:10px;font-size:30px;font-weight:bold;">${user.firstName} <br />${user.lastName}</td></tr>`)
+        list_item.append(`<tr style="background-color:rgb(255, 217, 0);"><td hidden>${user.appUserId}</td><td>${user.firstName} <br />${user.lastName}</td></tr>`)
         $("button").prop('disabled', false);
     } else {
-        list_item.append(`<tr ><td hidden>${user.appUserId}</td><td style="margin-left:10px;font-size:30px;font-weight:bold;">${user.firstName} <br />${user.lastName}</td></tr>`)
+        list_item.append(`<tr ><td hidden>${user.appUserId}</td><td>${user.firstName} <br />${user.lastName}</td></tr>`)
     }
 
 }
@@ -108,15 +182,13 @@ function updateSelectedBackgoundColor(clicked){
 }
 //Info Field Populator
 function addInfoToFields(user){
-    
-    $("#add_customer_button").html(`Add Customer For:<br />${clicked_user[0].firstName} ${clicked_user[0].lastName}`)
-    $("#remove_customer_button").html(`Remove Customer For:<br />${clicked_user[0].firstName} ${clicked_user[0].lastName}`)
-    $("#user_info_0").html(`<td style="width:200px;"><h3>First Name:</h3></td><td><h3>${user[0].firstName}</h3></td>`)
-    $("#user_info_1").html(`<td><h3>Last Name:</h3></td><td><h3>${user[0].lastName}</h3></td>`)
-    $("#user_info_2").html(`<td><h3>Email:</h3></td><td><h3>${user[0].email}</h3></td>`)
-    $("#user_info_3").html(`<td><h3>Password:</h3></td><td><h3>${user[0].password}</h3></td>`)
-    $("#user_info_4").html(`<td><h3>Password:</h3></td><td><h3>${user[0].type}</h3></td>`)
-    $("#user_info_5").html(`<td><h3>Active Status:</h3></td><td><h3>${user[0].activeStatus}</h3></td>`)
+    console.log(user)
+    $("#user_info").html(`<tr><td style="width:200px;"><h3>First Name:</h3></td><td><h3>${user[0].firstName}</h3></td></tr>
+                                                <tr><td><h3>Last Name:</h3></td><td><h3>${user[0].lastName}</h3></td></tr>
+                                                <tr><td><h3>Email:</h3></td><td><h3>${user[0].email}</h3></td></tr>
+                                                <tr><td><h3>Type:</h3></td><td><h3>${user[0].type}</h3></td></tr>`)
+
+
     populateCustomerList();
     infoHighlight();
 }
@@ -129,7 +201,7 @@ function populateCustomerList(){
             matched_customer = customerList.filter(function(customer){
                 return customer.customerId === c;
             })
-            $("#customer_list").append(`<tr><td style="padding:20px;font-size:30px;font-weight:bold;">${matched_customer[0].shipCompany}</h3></td></tr>`)
+            $("#customer_list").append(`<tr><td style="font-size:30px;font-weight:bold;">${matched_customer[0].shipCompany}</h3></td></tr>`)
         })
     }
 }
@@ -182,4 +254,22 @@ function checkCustomerExists(customer){
     }
     return false;
 }
+
+function showInfo(){
+    $("#details_section").toggle()
+}
+
+function showCreate(){
+    $("#create_section").toggle()
+
+    if(new_pass){
+        var local_pass = passwordGenerator()
+        console.log(local_pass)
+        $("#pass_field").val(`${local_pass}`)
+        new_pass = false;
+    }
+    
+}
+
+
 

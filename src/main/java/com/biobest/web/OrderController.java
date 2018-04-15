@@ -50,6 +50,17 @@ public class OrderController {
 
     }
 
+    @RequestMapping("/deleteOrder")
+    @ResponseBody
+    public String deleteOrder(@RequestParam("orderId") String orderId, @RequestParam("customerId") String customerId){
+        Customer customer = this.customerService.getCustomer(customerId);
+        Order order = this.orderService.getOrderById(orderId);
+        customerService.removeOrder(customer, order);
+        orderService.deleteOrder(order);
+        return "success";
+
+    }
+
     
     @RequestMapping(value="/orders", method=RequestMethod.POST, produces="application/json")
     @ResponseBody
@@ -63,11 +74,32 @@ public class OrderController {
         return this.orderService.getCustomerSpecificOrders(customerId);
         
     }
+    @RequestMapping(value="/getLastSubmit", method=RequestMethod.GET, produces="application/json")
+    @ResponseBody
+    public String getLastSubmit(@RequestParam("orderId") String orderId ){
+        Order order = orderService.getOrderById(orderId);
+
+        return order.getLastSubmit();
+    }
+
+    @RequestMapping(value="/getOrder", method=RequestMethod.GET, produces="application/json")
+    @ResponseBody
+    public List<FinalOrder<String,String>> getOrder(@RequestParam("orderId") String orderId ){
+        Order order = orderService.getOrderById(orderId);
+
+        return order.getFinalOrder();
+    }
+
+
+
+
+
 
     @RequestMapping("/submitOrder")
     @ResponseBody
     public String submitOrder(@RequestParam("orderId") String orderId, @RequestParam("appUserId") String appUserId,
-                                    @RequestParam("sessionOrder_0[]") String[] sessionOrder_0, @RequestParam("sessionOrder_1[]") String[] sessionOrder_1, @RequestParam("invLocation") String invLocation, @RequestParam("shipLocation") String shipLocation) {
+                                    @RequestParam("sessionOrder_0[]") String[] sessionOrder_0, @RequestParam("sessionOrder_1[]") String[] sessionOrder_1, 
+                                    @RequestParam("invLocation") String invLocation, @RequestParam("shipLocation") String shipLocation, @RequestParam("submitTime") String submitTime) {
         
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, h:mm a");
         Date date = new Date();
@@ -130,15 +162,18 @@ public class OrderController {
         String[] invLocationString = invLocation.split("[|]");
         String[] shipLocationString = shipLocation.split("[|]");
 
+        /*
         for(int i = 0; i < invLocationString.length; i++){
             System.out.println(invLocationString[i]);
         }
         for(int i = 0; i < shipLocationString.length; i++){
             System.out.println(shipLocationString[i]);
         }
+        */
         Location<String, String, String, String, String, String, String, String> localInvLocation = new Location<>( invLocationString[2], invLocationString[0], invLocationString[1], invLocationString[3], invLocationString[4], invLocationString[7], invLocationString[5], invLocationString[6]);
         Location<String, String, String, String, String, String, String, String> localShipLocation = new Location<>(shipLocationString[2], shipLocationString[0], shipLocationString[1],   shipLocationString[3], shipLocationString[4], shipLocationString[7], shipLocationString[5], shipLocationString[6]);
        
+        localOrder.setLastSubmit(submitTime);
 
         localOrder.setInvLocation(localInvLocation);
         localOrder.setShipLocation(localShipLocation);

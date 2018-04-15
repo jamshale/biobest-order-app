@@ -20,41 +20,28 @@ public class Order{
 
 	private String orderId;
 	private String customerId;
-    private String startDate;
-	private String endDate;
+    private String yearWeek;
 	private String status;
 	private Location<String, String, String, String, String, String, String, String> invLocation;
 	private Location<String, String, String, String, String, String, String, String> shipLocation;
+	private String lastSubmit;
 	
 	private List<OrderTransactions<String, String, String, String>> orderTransactions;
 	private List<FinalOrder<String, String>> finalOrder;
 	
     public Order(String customerId) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy.dd.HH.mm.ss.SS");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy ww");
 		Date date = new Date();
 		this.customerId = customerId;
 		this.orderId = UUID.randomUUID().toString();
-		this.startDate = dateFormat.format(date); 
+		this.yearWeek = dateFormat.format(date); 
 		this.status = "Not Submitted";
 		this.orderTransactions = new ArrayList<OrderTransactions<String, String, String, String>>();
 		this.finalOrder = new ArrayList<FinalOrder<String, String>>();
     }
 
-	public String getStartDate() {
-		return startDate;
-    }
-    
-    public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
 
-	public String getEndDate() {
-		return endDate;
-	}
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
 
 	public String getOrderId() {
 		return orderId;
@@ -129,6 +116,44 @@ public class Order{
 	 */
 	public void setShipLocation(Location<String, String, String, String, String, String, String, String> shipLocation) {
 		this.shipLocation = shipLocation;
+	}
+
+	/**
+	 * @return the lastSubmit
+	 */
+	public String getLastSubmit() {
+		return lastSubmit;
+	}
+
+	/**
+	 * @param lastSubmit the lastSubmit to set
+	 */
+	public void setLastSubmit(String lastSubmit) {
+		this.lastSubmit = lastSubmit;
+	}
+
+	public String getOrder_Id(){
+		return _id;
+	}
+
+
+
+
+	/**
+	 * @return the yearWeek
+	 */
+	public String getYearWeek() {
+		return yearWeek;
+	}
+
+
+
+
+	/**
+	 * @param yearWeek the yearWeek to set
+	 */
+	public void setYearWeek(String yearWeek) {
+		this.yearWeek = yearWeek;
 	}
     
 }

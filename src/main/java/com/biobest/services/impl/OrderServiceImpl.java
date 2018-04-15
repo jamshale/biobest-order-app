@@ -40,5 +40,10 @@ public class OrderServiceImpl implements OrderService{
 		return orderRepository.findOrdersWithCustomer(customerId);
 	}
 
+	@Override
+	public void deleteOrder(Order order) {
+		orderRepository.delete(order);
+	}
+
 
 }

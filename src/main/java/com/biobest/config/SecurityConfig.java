@@ -49,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         Manager testManager = new Manager("Jamie", "Hale", "jamiehalebc@gmail.com");
             testManager.setPassword("123456");
-            testManager.setActiveStatus("Active");
             testManager.setType("Manager");
             testManager.setRoles(Arrays.asList("ROLE_ADMIN"));
         try {
@@ -67,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             web.ignoring().antMatchers("/css/**");
             web.ignoring().antMatchers("/js/**");
             web.ignoring().antMatchers("/images/**");
+            web.ignoring().antMatchers("/info/**");
         
        
     }

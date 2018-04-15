@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="css/user_select_order.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5, minimum-scale=.5 user-scalable=no"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -13,28 +14,29 @@
 </head>
 <body style="background-color: rgba(255, 242, 202, 0.288);">
    
-        <div class="container-fluid">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-left"></a>
-                    </div>
-                    <a id="logout" class="btn btn-custom-2" href="/logout" role="button">Log out</a>
-                </div>
-            </nav>
-        </div>
+       
+        <div class="container-fluid" style="padding:0px; margin: 0px;">
+                <nav class="navbar navbar-default"  style="box-shadow: 2px 2px 2px grey;background-color:rgba(83, 83, 83, 0.096)">
+                   
+                        
+                        
+                        <a id="logout" class="btn btn-custom-2" href="/logout" role="button"  style="font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;">Log out</a>
+                   
+                </nav>
+            </div>
   
     <div class="container-fluid">
         <div class="row">
-                <div class="col-lg-1" ></div>
-            <div class="col-lg-10" >
+            <div class="col-lg-11" ></div>
+            <div class="col-lg-12" >
                 <table style="width:100%;" >
                     <tbody id="select_list">
                        
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-1" ></div>
+            <div class="col-lg-11" ></div>
+        
         </div>
     </div>
 

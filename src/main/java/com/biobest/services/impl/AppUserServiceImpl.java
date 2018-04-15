@@ -49,7 +49,7 @@ public class AppUserServiceImpl implements AppUserService {
         if(check != null){
             throw new EmailExistsException("A user with that email already exists!");
         }
-        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus());
+        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType());
         newGeneral.setRoles(Arrays.asList("ROLE_USER"));
         return appUserRepository.save(newGeneral);
     }
@@ -65,7 +65,7 @@ public class AppUserServiceImpl implements AppUserService {
         if(check != null){
             throw new EmailExistsException("A user with that email already exists!");
         }
-        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType(), appUserDto.getActiveStatus() );
+        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType());
         newConsultant.setRoles(Arrays.asList("ROLE_USER"));
         return appUserRepository.save(newConsultant);
     }

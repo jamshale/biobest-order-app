@@ -125,14 +125,11 @@ public class CustomerController {
     @RequestMapping("/submitFav")
     @ResponseBody
     public String submitFav(@RequestParam("customerId") String customerId,  @RequestParam("sessionFav[]") String[] sessionFav){
-        
-        
-        Customer customer = this.customerService.getCustomer(customerId);
+        Customer customer = customerService.getCustomer(customerId);
         Set<String> localFavProducts = new HashSet<>();
         if(sessionFav[0].equals("empty")){
             customer.setFavProducts(localFavProducts);
         } else {
-            localFavProducts = customer.getFavProducts();
             for(int i = 0; i < sessionFav.length; i++){
                 localFavProducts.add(sessionFav[i]);
             }

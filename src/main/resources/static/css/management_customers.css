@@ -1,10 +1,4 @@
-#create_customer_section button{
-  width:90%;
-  margin: 20px;
-  font-weight:bold;
-  font-size:30px;
-  height:80px;
-}
+
 #create_customer_section .form-group input{
   font-size:16pt;
   height:40px;
@@ -44,20 +38,19 @@
   font-weight:bold;margin:5px;
 }
 #user_section button{
-  width:350px;margin:5px;font-weight:bold;font-size:28px;padding:10px;
+  width:45%;margin:5px;font-weight:bold;font-size:25px;padding:10px;
 }
 
 #customer_section input.form-control{
-  font-size:20pt;
+  font-size:30px;
   font-weight:bold;
-  height:50px;width:95%;
-  margin-bottom:10px;
+  height:50px;
   text-align:center;
 }
 #customer_section table, #user_section table{
   margin-bottom:0px;
 }
-#customer_section tr, #user_list_table tr{
+#user_list_table tr{
   background-color:rgb(224, 224, 224);
   border-style:solid;
   border-width:medium;
@@ -96,7 +89,7 @@
 }
 
 
-.table.all-user-table, tr{
+.table.all-user-table tr{
   border-width: 0px;
   border-style: none;
   background-color: white;
@@ -122,12 +115,12 @@
 }
 
 #ship_to_info tr td h3, #invoice_to_info tr td h3{
+  font-size:20px;
   margin:0px;
   text-decoration: underline;
 }
 
 #ship_to_info tr td h4, #invoice_to_info tr td h4{
-  margin:5px;
   font-size: 22px;
 }
 
@@ -135,3 +128,32 @@ form .form-group{
   margin: 3px;
 }
 
+/*Modal Settings*/
+#history_modal .modal-dialog, #add_location .modal-dialog   {width:95%;}
+@media screen 
+  and (min-width: 768px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+#history_modal .modal-dialog, #add_location .modal-dialog  {width:900px;}}
+@media screen 
+    and (min-width: 768px) {
+  #history_modal .modal-dialog, #add_location .modal-dialog  {width:900px;}}
+
+  /*Active Order*/
+#history_list {
+  border-bottom: 1px solid gray;
+  
+}
+#history_list tr{
+  border-bottom-style: solid; 
+  border-bottom-width: thin; 
+}
+#history_list td:first-child{
+  width:50%;
+}
+#history_list h3{
+  font-size:25px;
+  font-weight:bold;
+}
+#history_list h4{
+  font-size:20px;
+}

@@ -17,7 +17,6 @@ public abstract class AppUser {
     private String lastName;
     private String email;
     private String password;
-	private String activeStatus;
 	private String type;
 	private Set<String> customers;
 	private List<String> roles;
@@ -32,13 +31,12 @@ public abstract class AppUser {
 		this.customers = new HashSet<>();
 		this.appUserId = UUID.randomUUID().toString();
 	}
-	protected AppUser(String firstName, String lastName,  String email, String password, String type,  String activeStatus){
+	protected AppUser(String firstName, String lastName,  String email, String password, String type){
         this.firstName = firstName;
         this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.type = type;
-		this.activeStatus = activeStatus;
 		this.customers = new HashSet<>();
 		this.appUserId = UUID.randomUUID().toString();
 	}
@@ -62,14 +60,6 @@ public abstract class AppUser {
     
 	public void setPassword(String password) {
 		this.password = password;
-    }
-
-	public String getActiveStatus() {
-		return activeStatus;
-	}
-
-	public void setActiveStatus(String activeStatus) {
-		this.activeStatus = activeStatus;
     }
 
 	public Set<String> getCustomers() {
@@ -104,7 +94,6 @@ public abstract class AppUser {
 				Objects.equals(lastName, appUser.lastName) &&
 				Objects.equals(email, appUser.email) &&
 				Objects.equals(password, appUser.password) &&
-				Objects.equals(activeStatus, appUser.activeStatus) &&
 				Objects.equals(type, appUser.type) &&
 				Objects.equals(customers, appUser.customers) &&
 				Objects.equals(roles, appUser.roles);
@@ -112,7 +101,7 @@ public abstract class AppUser {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, password, activeStatus, type, customers, roles);
+        return Objects.hash(firstName, lastName, email, password, type, customers, roles);
     }
 	/**
 	 * @return the appUserId

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="css/management_customers.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5, minimum-scale=.5 user-scalable=no"/>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -13,139 +14,139 @@
     <link rel="icon" type="image/jpg" href="images/bee_icon.jpg" />
 </head>
 <body style="background-color: rgba(255, 242, 202, 0.288);padding-bottom:0px;">
-    <!-- Navbar -->
-    <nav class="navbar navbar-default" style="margin-bottom:0px;">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="management_customers.html"><h3>Customers</h3></a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li >
-                    <a href="management_users.html"><h3>Users</h3></a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li >
-                    <a href="management_prices.html"><h3>Prices</h3></a>
-                </li>
-            </ul>
-            <a id="logout" class="btn btn-custom-2" href="/logout" role="button">Log out</a>
-        </div>
-    </nav>
-    <div class="container-fluid"  >
-        <div class="row" >
-            <div class="col-lg-12">
-            <div class="col-lg-5" id="customer_section" >
-                <h3 class="header-label">Customer List:</h3>
-                <input type="text" class="form-control" placeholder="Search"/>
-                <!-- table header -->
-                <table class="table"><tbody><tr><td><h3>Customer Name</h3></td></tr></tbody></table>
-                <div id="customer_list_table">
-                    <!-- customer table -->
-                    <table class="table table-hover"><tbody id="customer_list"></tbody></table>
-                </div>    
-            </div>
-      
-            <div class="col-lg-7" id="information_section">
-                <div class="row">
-                    <h3 class="header-label">Customer Information:</h3>
-                    
-                    <div class="col-sm-4" style="width:49%;">  
-                     
-                        <table class="table info">
-                            <thead><tr><th style="font-size:25px;">
-                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-left" onclick="decInvIndex()"></span>
-                                <button class="btn btn-custom-2" style="font-size:20px;margin-right:10px;margin:10px 10px;" id="inv_index"></button>Invoice Details:<button class="btn btn-custom-0" style="font-size:20px;margin:10px 5px;">Edit</button>
-                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-right" onclick="incInvIndex()"></span>
+    <div class="container-fluid" style="padding:0px; margin: 0px;">
+        <nav class="navbar navbar-default"  style="box-shadow: 2px 2px 2px grey;background-color:rgba(83, 83, 83, 0.096)">
+            <a href="/management_customers.html" class="btn btn-default" style="text-shadow: 1px 1px 1px grey;font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;" role="button">Customers</a>
+            <a href="/management_users.html" class="btn btn-custom-1" style="text-shadow: 1px 1px 1px grey;font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;" role="button">Users</a>
+            <a id="logout" class="btn btn-custom-2" href="/logout" role="button"  style="text-shadow: 1px 1px 1px grey;font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;">Log out</a>
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-xs-6">
+                    <div class="col-xs-12" id="customer_section" style="background-color: hsla(48, 97%, 41%, 0.384) ;border-style:solid;border-width:thick;padding:10px;border-radius:10px;box-shadow: 3px 3px 3px grey;margin: 0px 10px; " >
+                        <h3 class="header-label" style="text-shadow:1px 1px 1px black;font-size:30px;text-align:center;margin-top:0px;font-weight:bold">Customer List</h3>
+                        <input type="text" class="form-control" placeholder="Search" style="width:80%;margin: 1% 10%;"/>
+                        
+                        <table class="table"><tbody><tr style="background-color:rgb(224, 224, 224);border-style:solid;border-width:medium;"><td><h3>Customer Name</h3></td></tr></tbody></table>
+                        <div id="customer_list_table">
                             
-                            </th></tr></thead>
-                                
-                             <tbody id="invoice_to_info">
-                                <tr><td>
-                                    <h3>Company:</h3><h4>----------</h4>
-                                    <h3>Contact:</h3><h4>----------</h4>
-                                    <h3 >Address:</h3><h4>----------</h4>
-                                    <h3>City, State:</h3><h4>----------</h4>
-                                    <h3>Zip:</h3><h4>----------</h4>
-                                    <h3>Email:</h3><h4>----------</h4>
-                                    <h3>Phone:</h3><h4>----------</h4>
-                                    <h3>Fax:</h3><h4>----------</h4>
-                                </td></tr>
-                            </tbody>
-                        </table> 
-                    </div>  
-                   
-					<div class="col-sm-4" style="width:49%;">
-						<table class="table info">
-                                <thead><tr><th style="font-size:25px;">
-                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-left" onclick="decShipIndex()"></span>
-                                <button class="btn btn-custom-2" style="font-size:20px;margin-right:10px;margin:10px 0px;" id="ship_index"></button>Shipping Details:<button class="btn btn-custom-0" style="font-size:20px;margin:10px 5px;">Edit</button>
-                                <span style="font-size:40px;" class="glyphicon glyphicon-triangle-right" onclick="incShipIndex()"></span>
-                            
-                            </th></tr></thead>
-							<tbody id="ship_to_info">
-								<tr><td>
-									<h3 >Company:</h3><h4>----------</h4>
-									<h3 >Contact:</h3><h4>----------</h4>
-									<h3 >Address:</h3><h4>----------</h4>
-									<h3 >City, State:</h3><h4>----------</h4>
-                                    <h3 >Zip:</h3><h4>----------</h4>
-                                    <h3 >Email:</h3><h4>----------</h4>
-									<h3 >Phone:</h3><h4>----------</h4>
-									<h3 >Fax:</h3><h4>----------</h4>
-								</td></tr>
-							</tbody>
-						</table>
-                  
-                </div>
-                </div>
-
-                <div style="text-align: center;">
-                    <button type="button" disabled="true" data-toggle="modal" data-target="#add_location_modal" class="btn btn-lg btn-custom-0 management_customer_button" style="font-size:30px;font-weight:bold;width:45%">Add Location</button>
-                    <button type="button" disabled="true" class="btn btn-lg btn-custom-0 management_customer_button" style="font-size:30px;font-weight:bold;width:45%">Order History</button>
-         
-                </div>
-            </div>
-        </div>  
-    </div>  
-    <div class="clo-lg-12">
-        <div class="col-lg-5" id="user_section">
-        <h3 class="header-label">Linked Users:</h3>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                            <td><h3>User Name</h3></td>
-                            <td><h3>Type</h3></td>
-                            <td><h3>Status</h3></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div id="user_list_table" >
-                        <table class="table table-hover">
-                            <tbody id="user_list">
-                            </tbody>
-                        </table>
+                            <table class="table table-hover" style="text-shadow:1px 1px 1px black;"><tbody id="customer_list"></tbody></table>
+                        </div>
                     </div>
-                <div style="text-align:center;">
-                    <button type="button" disabled="true" class="btn btn-success" id="add_user_button" onclick="addUser()">
-                        Add User For: <br />-----------
-                    </button>
-                    <button type="button" disabled="true" class="btn btn-danger" id="remove_user_button" onclick="removeUser()">
-                        Remove User For: <br /> -----------
-                    </button>  
                 </div>
-
+                <div class="col-xs-6">   
+                    <div class="col-xs-12" id="user_section" style="background-color: hsla(48, 50%, 34%, 0.384) ;border-style:solid;border-width:thick;padding:10px;border-radius:10px;box-shadow: 3px 3px 3px grey;margin:0px -10px">
+                        <h3 class="header-label" style="text-shadow:1px 1px 1px black;font-size:30px;text-align:center;margin-top:0px;font-weight:bold">Linked Users</h3>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                    <td><h3>User Name</h3></td>
+                                    <td><h3>Type</h3></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id="user_list_table" >
+                                <table class="table table-hover">
+                                    <tbody id="user_list" style="text-shadow:1px 1px 1px grey;">
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div style="text-align:center;">
+                            <button type="button" disabled="true" class="btn btn-success" id="add_user_button" onclick="addUser()">
+                                Add
+                            </button>
+                            <button type="button" disabled="true" class="btn btn-danger" id="remove_user_button" onclick="removeUser()">
+                                Remove
+                            </button>  
+                        </div>
+                    </div>
+                </div>  
+        <div class="row">
+            <div class="col-xs-12" style="text-align:center;">
+                <button type="button" onclick="showInfo();" disabled="true" class="btn btn-lg btn-custom-0" style="font-size:30px;font-weight:bold;width:80%;margin-top:40px;box-shadow: 3px 3px 3px grey;text-shadow:1px 1px 1px black;">
+                    Shipping and Invoice Information
+                </button>
             </div>
-        <div class="col-lg-7" id="create_customer_section" style="border-style: solid; border-width:thick;background-color:rgb(255, 239, 148);margin:20px 0px;border-radius:20px;box-shadow: 10px 10px 10px grey;" >
+            <div class="col-xs-12">
+            <div hidden="true" class="col-xs-12" id="information_section" style="border-style: solid; border-width:thick;background-color:rgb(255, 239, 148);border-radius:20px;box-shadow: 10px 10px 10px grey;width:98%;margin:10px 5px; padding:10px;">
+                    <div class="row">
+                        <div class="col-xs-4" style="width:49%;margin-left:10px">  
+                                <button class="btn btn-default" style="font-size:30px;float:right;font-weight:bold;margin-bottom:10px;">Edit</button>
+                            <table class="table info" style="margin-bottom:0px;">
+                                
+                                <thead><tr><th style="font-size:25px;text-shadow:1px 1px 1px black;">
+                                    
+                                            <span style="font-size:40px;width:30px;float:left;margin:15px 5px;" class="glyphicon glyphicon-triangle-left" onclick="decInvIndex()"></span>
+                                            <button class="btn btn-custom-2" style="font-size:30px;margin-right:10px;margin:10px 10px;width:70px" id="inv_index"></button>
+                                            
+                                            Invoice:
+                                            <span style="font-size:40px;width:20px;float:right;margin:15px;" class="glyphicon glyphicon-triangle-right" onclick="incInvIndex()"></span>
+                                       
+                                    </th></tr>
+                                </thead>
+                            </table>
+                            <table class="table info" style="margin-top:0px">       
+                                 <tbody id="invoice_to_info" style="text-shadow:1px 1px 1px grey;">
+                                    <tr><td>
+                                    </td></tr>
+                                </tbody>
+                            </table> 
+                        </div>  
+                       
+                        <div class="col-xs-4" style="width:49%;">
+                            <button class="btn btn-default" style="font-size:30px;float:right;font-weight:bold;margin-bottom:10px;">Edit</button>
+                            <table class="table info" style="margin-bottom: 0px;">
+                                
+                                <thead><tr><th style="font-size:25px;text-shadow:1px 1px 1px black;">
+                                    
+                                            <span style="font-size:40px;width:30px;float:left;margin:15px  5px;" class="glyphicon glyphicon-triangle-left" onclick="decShipIndex()"></span>
+                                            <button class="btn btn-custom-2" style="font-size:30px;margin-right:10px;margin:10px 10px;width:70px" id="ship_index"></button>
+                                           
+                                            Shipping:
+                                         
+                                            <span style="font-size:40px;width:20px;float:right;margin:15px;" class="glyphicon glyphicon-triangle-right" onclick="incShipIndex()"></span>
+                                        
+                                    </th></tr>
+                                </thead>
+                            </table>
+                            <table class="table info" style="margin-top: 0px;">
+                                <tbody id="ship_to_info" style="text-shadow:1px 1px 1px grey;">
+    
+                                </tbody>
+                            </table>
+                      
+                    </div>
+                    </div>
+    
+                    <div style="text-align: center;">
+                        <button type="button" disabled="true" data-toggle="modal" data-target="#add_location_modal" class="btn btn-lg btn-success management_customer_button" style="font-size:30px;font-weight:bold;width:60%">Add Location</button>
+             
+                    </div>
+                </div>
+            </div>  
+        </div>
+        </div>
+    </div>
+    <div class="col-xs-12" style="text-align:center;">
+        <button type="button" data-toggle="modal" data-target="#history_modal" disabled="true" class="btn btn-lg btn-custom-0" style="font-size:30px;font-weight:bold;width:80%;margin-top:20px;box-shadow: 3px 3px 3px grey;text-shadow:1px 1px 1px black;">
+            Order History
+        </button>
+    </div>
+    <div class="col-xs-12" style="text-align:center;">
+        <button type="button" onclick="showCreate()" class="btn btn-lg btn-success" style="font-size:30px;font-weight:bold;width:80%;margin-top:20px;box-shadow: 3px 3px 3px grey;text-shadow:1px 1px 1px black;">
+            Create Customer
+        </button>
+    </div>
+    <div class="col-xs-12">
+    <div class="col-xs-12" hidden="true" id="create_customer_section" style="border-style: solid; border-width:thick;background-color:rgb(255, 239, 148);margin:20px 0px;border-radius:20px;box-shadow: 10px 10px 10px grey;" >
             
             
             <form action="/management_customers" th:object="${customerDto}" method="POST" enctype="utf8">
-                <lable><h3 class="header-label">Create Customer:</h3></lable>
+                <lable><h3 class="header-label" style="font-size:30px;font-weight:bold;width:80%;margin-top:20px;text-shadow:1px 1px 1px black;">Create Customer:</h3></lable>
                 <h4 style="font-size:25px;">Create customer by entering primary locations/information. Add additional locations/information after.</h4>
-                <div class="col-sm-6">
-                <label><h3 style="font-weight:bold;">Invoice Location:</h3></label>
+                <div class="col-xs-6">
+                <label><h3 style="font-weight:bold;">Invoice</h3></label>
                 <div class="form-group">
                     <input typr="text" autocomplete="on" class="form-control" placeholder="Company" th:field="*{invCompany}"></input>
                     <div th:each="error : ${#fields.errors('invCompany')}" class="alert alert-danger" th:text="${error}"></div>
@@ -183,8 +184,8 @@
                 </div>
                 
                 </div>
-                <div class="col-sm-6">
-                        <label><h3 style="font-weight:bold;">Shipping Location:</h3></label>
+                <div class="col-xs-6">
+                        <label><h3 style="font-weight:bold;">Shipping</h3></label>
                         <div class="form-group">
                             <input typr="text" autocomplete="on" class="form-control" placeholder="Company" th:field="*{shipCompany}"></input>
                             <div th:each="error : ${#fields.errors('shipCompany')}" class="alert alert-danger" th:text="${error}"></div>
@@ -222,16 +223,62 @@
                         
                         </div>
             
-                <button type="submit" class="btn btn-success">
-                       Create Customer
+                <button type="submit" class="btn btn-success" style="width:50%;margin: 10px 25%;font-weight:bold;font-size:30px;height:80px;">
+                       Create
                 </button>
             
                 
             </form>
         </div>
     </div>
-
-
+    <!-- History Modal -->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="history_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:40px;">History</h3>
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">   
+                    <div class="row">
+                        <div class="col-xs-12">
+                            
+                                <!-- history List Accordion -->
+                                <div class="panel-group" id="history">
+                                    <div class="panel panel-default" id="history_panel">
+                                        <div class="panel-heading">
+                                            <div class="panel-title pull-left" style="width:100%;">
+                                                <a data-toggle="collapse" data-parent="#history_accordion" href="">
+                                                    <button type="button" id="history_button" class="btn btn-basic btn-xs btn-block" style="text-align:left; padding-left:6px"></button>
+                                                </a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="">
+                                            <div class="panel-body">
+                                                  
+                                                            <table id="history_list">
+                    
+                                                            </table>
+                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">              
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Add User to Customer Modal -->
     <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="remove_user_modal">
@@ -239,11 +286,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Users Linked To Customer</h3>
+                        <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:30px;">Users Linked With Customer</h3>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        <div class="col-xs-2">
+                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                         </div>
                     </div>
                 </div>
@@ -271,11 +318,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Users Registered In System</h3>
+                        <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:30px;">Users Linked With Customer</h3>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" data-dismiss="modal" style="float:right;"><h3>Close</h3></button>
+                        <div class="col-xs-2">
+                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                         </div>
                     </div>
                 </div>
@@ -303,12 +350,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
-                        <div class="col-sm-10">
-                            <h3 style="font-weight:bold;">Enter location information</h3>
+                        <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:30px;">Enter location information</h3>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
-                        </div>
+                        <div class="col-xs-2">
+                                <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
+                            </div>
                     </div>
                 </div>
                 <div class="modal-body">   
@@ -316,26 +363,26 @@
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8">
                                
-                            <table>
-                                <select id="loc_type">
+                            <table >
+                                <select id="loc_type" style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold;width:100%">
                                     <option value="" class="disabled selected hidden">Type</option>
                                     <option value="Invoice">Invoice</option>
                                     <option value="Shipping">Shipping</option>
                                 </select>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Company" id="loc_company"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Contact" id="loc_contact"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Address" id="loc_address"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="City/State" id="loc_city_state"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Zip" id="loc_zip"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Email" id="loc_email"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Phone" id="loc_phone"></input></tr>
-                                <tr><input type="text" autocomplete="on" class="form-control" placeholder="Fax" id="loc_fax"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Company" id="loc_company"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Contact" id="loc_contact"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Address" id="loc_address"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="City/State" id="loc_city_state"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Zip" id="loc_zip"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Email" id="loc_email"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Phone" id="loc_phone"></input></tr>
+                                <tr><input style="font-size:25px;margin:10px 0px;height:40px;font-weight:bold" type="text" autocomplete="on" class="form-control" placeholder="Fax" id="loc_fax"></input></tr>
                                 
 
                             </table>
 
                                    
-                            <button type="submit" class="btn btn-success" onclick="createLocation()">
+                            <button type="submit" class="btn btn-success" style="font-size:30px;height:50px;font-weight:bold; width:80%; margin:10px 10%" onclick="createLocation()">
                                     Create Location
                                 </button>
 

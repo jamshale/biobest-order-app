@@ -77,10 +77,9 @@ function populateSelectList(){
         if(A>B) return 1;
         return 0;
     })
-    console.log(localProductList)
     localProductList.forEach(function(c){
         $("#select_list").append(`<tr><td hidden>${c[0]}</td>
-                                        <td><button class="btn btn-block btn-custom-1">${c[1]}<span class="badge" style="float:right;font-size:50px;padding:20px;margin-right:50px;">${c[2]}</span></button></td></tr>`)
+                                        <td><button class="btn btn-block btn-custom-1">${c[1]}<span class="badge">${c[2]}</span></button></td></tr>`)
     })
   
 }
@@ -90,9 +89,6 @@ $("#select_list").on('click', function(c){
     var current_customer_id = $(c.target).parent().parent().find("td:hidden").html();
     relayOrder(current_customer_id);
 })
-
-
-
 
 function relayOrder(current_customer_id){
     var current_user_id = currentUser.appUserId;

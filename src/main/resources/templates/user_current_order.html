@@ -4,54 +4,55 @@
     <title>Biobest App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=.37, maximum-scale=1, user-scalable=yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5, minimum-scale=.5 user-scalable=no"/>
     <link href="css/user_current_order.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
 
     <link rel="icon" type="image/jpg" href="images/bee_icon.jpg" />
 </head>
-<body style="background-color: rgba(253, 241, 204, 0.288);">
+<body style="background-color: rgba(253, 241, 204, 0.288); font-family:Arial, Helvetica, sans-serif;">
     
         <div class="container-fluid" style="padding:0px; margin: 0px;">
-            <nav class="navbar navbar-default" >
+            <nav class="navbar navbar-default"  style="box-shadow: 2px 2px 2px grey;background-color:rgba(83, 83, 83, 0.096)">
                
                     
-                    <a href="/user_select_order.html" class="btn btn-custom-1" style="font-weight:bold;font-size:50px;width:410px;margin:6px;font-family:Verdana, Times, serif;" role="button">Select</a>
-                    <a id="logout" class="btn btn-custom-2" href="/logout" role="button"  style="font-weight:bold;font-size:50px;width:410px;margin:6px;font-family:Verdana, Times, serif;">Log out</a>
+                    <a href="/user_select_order.html" class="btn btn-custom-1" style="text-shadow: 1px 1px 1px grey;font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;" role="button">Select</a>
+                    <button data-toggle="modal" data-target="#settings_modal" class="btn btn-default" style="text-shadow: 1px 1px 1px grey;font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;" role="button">Settings</button>
+                    <a id="logout" class="btn btn-custom-2" href="/logout" role="button"  style="text-shadow: 1px 1px 1px grey;font-weight:bold;font-size:30px;width:200px;margin:6px;font-family:Verdana, Times, serif;">Log out</a>
                
             </nav>
         </div>
    
     <div class="container-fluid">
     <div class="row" >
-        <div class="col-lg-5" >
-            <div class="col-lg-12" >
+        <div class="col-md-5" >
+            <div class="col-sm-12" >
                 <div class="row">
-                    <div class="col-sm-12" style="text-align: center;background-color:rgb(243, 227, 171);padding-top:15px;border-radius:5px;margin: 10px 0px;">
+                    <div class="col-xs-12" style="text-shadow: 1px 1px 1px black;height:100px;text-align: center;background-color:rgb(243, 227, 171);padding-top:15px;border-radius:5px;margin: 10px 0px 0px 0px;">
 
-                    <h2 id="customer_name"></h2><br />
+                    <h4 id="customer_name"></h4>
                     </div>
                 </div>
-                <div class="row" style=" text-align:center;padding: 0px 20px 20px 20px;" >
+                <div class="row" style=" text-align:center;padding: 0px 20px;margin:0px;" >
                 
             
             <!-- Invoice to Address -->
-            <div class="col-sm-6" >
-                <div>
-                <h3 style="font-weight: bold; font-size:35px;font-family:Verdana, Times, serif;">Invoice Details</h3></div>
-                    <button class="btn btn-default btn-block" type="button" id="invoice_to_button" style="font-size:26px;"  onclick="invLocationModal()"></button>    
+            <div class="col-xs-6" >
+       
+                <h3 style="text-shadow: 1px 1px 1px grey;font-weight: bold;margin:5px; font-size:25px;font-family:Verdana, Times, serif;">Invoice Details</h3>
+                    <button class="btn btn-default btn-block" type="button" id="invoice_to_button" style="font-size:22px;"  onclick="invLocationModal()"></button>    
                
             </div>
             <!-- Ship to Address -->
-            <div class="col-sm-6" >
-                <div>
-                <h3 style="font-weight: bold;font-size:35px;font-family:Verdana, Times, serif;">Shipping Details</h3>
-                    </div>
-                    <button class="btn btn-default btn-block" type="button" id="ship_to_button" style="font-size:26px;" onclick="shipLocationModal()"></button>
+            <div class="col-xs-6" >
+              
+                <h3 style="text-shadow: 1px 1px 1px grey;font-weight: bold;margin:5px; font-size:25px;font-family:Verdana, Times, serif;">Shipping Details</h3>
+                 
+                    <button class="btn btn-default btn-block" type="button" id="ship_to_button" style="font-size:22px;" onclick="shipLocationModal()"></button>
     
            
             </div>
@@ -59,30 +60,30 @@
         </div>
         <!--Top Buttons Top -->    
         <div class="row">  
-            <div class="col-sm-6 text-center" >
+            <div class="col-xs-6 text-center" >
                 <button type="button" class="btn btn-basic btn-sm " id="customer_option_active_order_button" 
-                            data-toggle="modal" data-target="#active_order_modal" style="margin: 10px 0px;font-size:40px;font-weight:bold;height:90px;width:80%;"></button>
+                            data-toggle="modal" data-target="#active_order_modal" style="font-family:Verdana, Times, serif;text-shadow: 1px 1px 2px grey;margin: 20px 0px;font-size:28px;font-weight:bold;height:70px;width:90%;">Orders <span class="badge" style="font-size:20px;" ></span></button>
             </div>
-            <div class="col-sm-6 text-center" >
+            <div class="col-xs-6 text-center" >
                 <button type="button" class="btn btn-basic btn-sm " id="customer_option_changes_button" 
-                            data-toggle="modal" data-target="#changes_order_modal" style="margin: 10px 0px;font-size:40px;font-weight:bold;height:90px;width:80%;"></button>
+                            data-toggle="modal" data-target="#changes_order_modal" style="font-family:Verdana, Times, serif;text-shadow: 1px 1px 2px grey;margin: 20px 0px;font-size:28px;font-weight:bold;height:70px;width:90%;">Changes <span class="badge" style="font-size:20px;"></span></button>
             </div>
         </div>  
         <!--Top Buttons Bottom -->    
         <div class="row" style="margin-bottom:20px;">  
-            <div class="col-sm-6 text-center" >
-                <button type="button" class="btn btn-custom-1 btn-sm" id="customer_option_button" style="width:90%;"
-                                        data-toggle="modal" data-target="#add_product_modal" onclick="findAll();"><h3 style="font-weight:bold;font-size:38px;">Add<br />Product</h3></button>
+            <div class="col-xs-6 text-center" >
+                <button type="button" class="btn btn-custom-1 btn-sm" id="customer_option_button" style="width:90%;height:50%;margin:0px;"
+                                        data-toggle="modal" data-target="#add_product_modal" onclick="findAll();"><h3 style="font-weight:bold;font-size:30px;text-shadow: 1px 1px 2px #000000;">Add<br />Product</h3></button>
             </div>
-            <div class="col-sm-6 text-center" >
-                <button type="button" class="btn btn-custom-2 btn-sm" id="customer_option_button" style="width:90%;"
-                            data-toggle="modal" data-target="#get_favourite_order_modal"><h3 style="font-weight:bold;font-size:38px;">Get Favourite<br /> Order</h3></button>
+            <div class="col-xs-6 text-center" >
+                <button type="button" class="btn btn-custom-2 btn-sm" id="customer_option_button" style="width:90%;height:50%;margin:0px;"
+                            data-toggle="modal" data-target="#get_favourite_order_modal"><h3 style="font-weight:bold;font-size:30px;text-shadow: 1px 1px 2px #000000;">Get Favourite<br /> Order</h3></button>
             </div>
         </div> 
     </div>
         <!-- Product List -->    
-        <div class="col-lg-7">   
-        <div class="col-lg-12" style="padding:0px 10px 20px 10px;background-color:rgba(230, 222, 222, 0.712); border-style:solid; border-width: 4px;border-radius:20px;margin: 10px 0px; box-shadow: 10px 10px 10px grey;padding:0px 10px;">
+        <div class="col-md-7">   
+        <div class="col-md-12" style="padding:0px 10px 20px 10px;background-color:rgba(107, 103, 101, 0.288); border-style:solid; border-width: 4px;border-radius:20px;margin: 10px 0px; box-shadow: 3px 3px 3px grey;padding:0px 10px;">
             
                     <table id="product_list" class="table table-condensed" >
                         <thead style="border-bottom: 3px solid black">
@@ -91,29 +92,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td style="background-color: rgb(253, 251, 239); margin:0px 0px;">
+                            <td style="background-color: rgba(168, 165, 149, 0.438); margin:0px 0px;">
                             <!-- Product List Accordion -->
-                            <div style="text-align: center;font-size:100px;background-color:lightgray" id="empty_tag" >Empty</div>
+                            <div style="margin:0px; padding: 0px;text-align: center;font-size:100px;background-color:lightgray" id="empty_tag" >Empty</div>
                             
                                 <div class="panel-group main hide" id="main_accordion" >
                                     <div class="panel panel-default" id="product_list_panel">
                                         <div class="panel-heading">
                                             
 
-                                                <div class="panel-title pull-left" style="width:490px;">
+                                                <div class="panel-title pull-left" style="width:54%;box-shadow: 3px 2px 3px grey;">
                                                     <a data-toggle="collapse" data-parent="#main_accordion" href="">
-                                                        <button type="button" id="product_list_button"  class="btn btn-basic btn-sm btn-block text-left" style="width:490px;min-height:200px;" ></button>
+                                                        <button type="button" id="product_list_button"  class="btn btn-basic btn-sm btn-block text-left" style="width:100%;min-height:170px;" ></button>
                                                     </a>
                                                 </div>
-                                                <div class="panel-title pull-right">
-                                                    <div class="btn-group btn-group-md" role="group" id="inc_product" style="margin:50px 5px;" >
-                                                        <button type="button" id="item_price" class="btn btn-custom-0 btn-disabled inc_button"></button>
-                                                        <button type="button" class="btn btn-default inc_button" style="padding:0px;">
-                                                            <span class="glyphicon glyphicon-triangle-top" style="font-size:62px;padding: 2px 3px"></span>
+                                                <div class="panel-title pull-right" style="width:45%;">
+                                                    <div class="btn-group btn-group-md" role="group" id="inc_product" style="width:100%;height:60px;padding:0px;margin:50px 2px;" >
+                                                        <button type="button" id="item_price" class="btn btn-custom-0 btn-disabled inc_button" style="text-shadow: .5px .5px .5px black;width:45%;font-size:25px;font-weight:bold;height:80px;"></button>
+                                                        <button type="button" class="btn btn-default inc_button" style="padding:0px;height:80px;width:18%" onclick="incProduct(this)">
+                                                            <span class="glyphicon glyphicon-triangle-top" style="text-shadow: 1px 1px 2px black;font-size:40px;padding: 2px 3px"></span>
                                                         </button>
-                                                        <button type="button"  class="btn btn-custom-0" id="unit_amount" style="font-weight:bold;width:60px;"></button>
-                                                        <button type="button" class="btn btn-default inc_button" style="padding:0px;">
-                                                            <span class="glyphicon glyphicon-triangle-bottom" style="font-size:62px;padding: 2px 3px;"></span>
+                                                        <button type="button"  class="btn btn-custom-0" id="unit_amount" style="text-shadow: 1px 1px 1px black;font-size:30px;font-weight:bold;width:19%;height:80px;"></button>
+                                                        <button type="button" class="btn btn-default inc_button" style="padding:0px;height:80px;width:18%" onclick="decProduct(this)">
+                                                            <span class="glyphicon glyphicon-triangle-bottom" style="text-shadow: 1px 1px 2px black;font-size:40px;padding: 2px 3px;"></span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -122,8 +123,8 @@
                                         </div>
                                         <div class="panel-collapse collapse" id="">
                                             <div class="panel-body">
-                                                <button type="button" id="product_option_button" class="btn btn-success col-sm-4"><h3>Info</h3></button>
-                                                <button type="button" id="product_option_button" class="btn btn-danger col-sm-4"><h3>Remove</h3></button>
+                                                <button type="button" id="product_option_button" class="btn btn-success col-xs-4" onclick="displayInfo(this)">Info</button>
+                                                <button type="button" id="product_option_button" class="btn btn-danger col-xs-4" onclick="removeProduct(this)">Remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -133,30 +134,32 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                
                                 <td  id="total_cost" style="text-align:right;font-weight:bold;font-size:40px;border-bottom: 2px solid black;border-top: 2px solid black"></td>
+
                             </tr>
                         </tfoot>  
                     </table>
             
                 <!-- Bottom Buttons -->
                 <div class="row" style="text-align: center;">
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <button class="btn btn-custom-1 btn-sm " disabled="true" id="bottom_option_button"
-                                    data-toggle="modal" data-target="#submit_order_modal"><h3 style="font-weight:bold;font-size:30px;">Submit <br /> Order</h3></button>
+                                    data-toggle="modal" data-target="#submit_order_modal"><h3 style="text-shadow: 1px 1px 1px #000000;font-weight:bold;font-size:30px;">Submit <br /> Order</h3></button>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <button class="btn btn-danger btn-sm " disabled="true" id="bottom_option_button" 
-                            data-toggle="modal" data-target="#delete_order_modal"><h3 style="font-weight:bold;font-size:30px;">Delete <br /> Order</h3></button>
+                            data-toggle="modal" data-target="#delete_order_modal"><h3 style="text-shadow: 1px 1px 1px #000000;font-weight:bold;font-size:30px;">Delete <br /> Order</h3></button>
                     </div>  
 
 
-                    <div class="col-sm-6">
-                        <button class="btn btn-default " id="bottom_option_button"
-                        ><h3 style="font-weight:bold;font-size:30px;">Account<br />Settings</h3></button>
+                    <div class="col-xs-6">
+                        <button class="btn btn-default btn-sm" id="bottom_option_button"
+                            data-toggle="modal" data-target="#history_modal"><h3 style="text-shadow: 1px 1px 1px #000000;font-weight:bold;font-size:30px;" >Order<br />History</h3></button>
                     </div>
-                    <div class="col-sm-6">
-                        <button class="btn btn-custom-2 btn-sm " disabled="true" id="bottom_option_button" 
-                                    data-toggle="modal" data-target="#add_favourite_order_modal"><h3 style="font-weight:bold;font-size:30px;">Add Order To<br />Favourites</h3></button>
+                    <div class="col-xs-6">
+                        <button class="btn btn-custom-2 btn-sm " disabled="true" id="bottom_option_button"
+                                    data-toggle="modal" data-target="#add_favourite_order_modal"><h3 style="text-shadow: 1px 1px 1px #000000;font-weight:bold;font-size:30px;">Add Order To<br />Favourites</h3></button>
                     </div>           
                 </div>
             </div>  
@@ -164,28 +167,28 @@
     </div>  
 </div>
 <!--Add Product Modal-->
-<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="add_product_modal">
-    <div class="modal-dialog modal-lg">
+<div class="modal bs-modal-xs" tabindex="-1" role="dialog" id="add_product_modal" >
+    <div class="modal-dialog modal-xs">
         <div class="modal-content">
-            <div class="modal-header" style="margin:5px;">
+            <div class="modal-header" style="height: 115px;">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <h3 style="font-weight:bold;font-size:32px;">Product Name</h3><h4 style="font-size:27px;">Description</h4><h3 style="font-weight:bold;font-size:32px;">Unit Size</h3>
+                    <div class="col-xs-4">
+                        <h3 style="font-weight:bold;font-size:22px;margin:0px;">Product Name</h3><h4 style="font-size:20px;">Description</h4><h3 style="font-weight:bold;font-size:22px;">Unit Size</h3>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
          
-                            <input type="text" name="product_search" oninput="addProductSearch(this.value);" class="form-control" placeholder="Search" style="font-size:24pt;height:20%;width:70%;margin-top:20px;"/>
+                            <input type="text" name="product_search" onkeypress="addProductSearch(this.value);" class="form-control" placeholder="Search" style="font-size:24pt;height:20%;width:70%;margin-top:20px;"/>
                
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    <div class="col-md-12">
-                        <div id="add_product_list">
+                    <div class="col-xs-12">
+                        <div id="add_product_list" style="margin:0px;padding:0px;margin: 0px 0px;max-height: calc(100vh - 320px);overflow-y: auto;">
                             <table class="table table-striped">
                                 <tbody id="add_product_list_item">
                                 
@@ -195,14 +198,14 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">   
+            <div class="modal-footer" style="height: 150px;">   
                 <div class="row" style="text-align: center;" >
-                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findAll()">All</button>
-                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findFavourites()">Favourites</button>
-                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findBees()">Bees</button>
-                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findLures()">Lures</button>
-                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findNematodes()">Nematodes</button>
-                    <button class="btn btn-sm btn-custom-0" style="padding:10px;width:230px;margin:5px 20px;font-size:40px;font-weight:bold;" onclick="findBugscan()">Bugscan</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:2px;width:25%;margin:3px 10px;font-size:30px;font-weight:bold;" onclick="findAll()">All</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:2px;width:25%;margin:3px 10px;font-size:30px;font-weight:bold;" onclick="findFavourites()">Favourites</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:2px;width:25%;margin:3px 10px;font-size:30px;font-weight:bold;" onclick="findBees()">Bees</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:2px;width:25%;margin:3px 10px;font-size:30px;font-weight:bold;" onclick="findLures()">Lures</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:2px;width:25%;margin:3px 10px;font-size:30px;font-weight:bold;" onclick="findNematodes()">Nematodes</button>
+                    <button class="btn btn-sm btn-custom-0" style="padding:2px;width:25%;margin:3px 10px;font-size:30px;font-weight:bold;" onclick="findBugscan()">Bugscan</button>
                 </div>           
             </div>
         </div>
@@ -214,29 +217,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-10">
-                    <!--<h3 style="font-weight:bold;">Active Order(s)<br />For Week #1</h3>-->
+                    <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:40px;">Active Orders</h3>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <div hidden="true" id="active_order_list">
                         <!-- active List Accordion -->
                         <div class="panel-group active" id="active_accordion" >
                             <div class="panel panel-default" id="active_list_panel">
-                                <div class="panel-heading">
-                                    <div class="panel-title pull-left">
+                                <div class="panel-heading" >
+                                    <div class="panel-title pull-left" style="width:70%">
                                         <a data-toggle="collapse" data-parent="#active_accordion" href="">
                                             <button type="button" id="active_list_button" class="btn btn-basic btn-sm btn-block"></button>
                                         </a>
                                     </div>
                                     <div class="panel-title pull-right">
-                                        <button type="button" class="btn btn-md btn-success">Activate</button>
+                                        <button type="button" class="btn btn-md btn-success" style="width:100%">Activate</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -265,17 +268,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-10">
-                        <h3 style="font-weight:bold;font-size:45px;">Changes To Order</h3>
+                    <div class="col-xs-10">
+                        <h3 style="font-weight:bold;font-size:40px;">Changes To Order</h3>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                       
                         <div id="changes_order_list">
                             <table class="table">
@@ -296,17 +299,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-10">
-                        <h3 style="font-weight:bold;font-size:45px;">Favourite Orders</h3>
+                    <div class="col-xs-10">
+                        <h3 style="font-weight:bold;font-size:40px;">Favourite Orders</h3>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <div id="get_favourite_order_list">
                             <!-- favourite List Accordion -->
                             <div style="text-align: center;font-size:100px;background-color:lightgray" id="empty_tag_1" >Empty</div>
@@ -315,13 +318,13 @@
                                     
                                     <div class="panel-heading">
                                         
-                                        <div class="panel-title pull-left">
+                                        <div class="panel-title pull-left" style="width:70%;">
                                             <a data-toggle="collapse" data-parent="#favourite_accordion" href="">
-                                                <button type="button" id="favourite_list_button" class="btn btn-basic btn-sm btn-block" style="text-align:left; padding-left:6px"></button>
+                                                <button type="button" id="favourite_list_button" class="btn btn-basic btn-xs btn-block" style="text-align:left; padding-left:6px"></button>
                                             </a>
                                         </div>
                                         <div class="panel-title pull-right">
-                                                <button type="button" class="btn btn-md btn-success">Activate</button>
+                                                <button type="button" class="btn btn-xs btn-success">Activate</button>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -346,24 +349,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-10">
-                        <h3 style="font-weight:bold;font-size:45px;">Submit Order</h3>
+                    <div class="col-xs-10">
+                        <h3 style="font-weight:bold;font-size:40px;">Submit Order</h3>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="submit_modal_button">
-                        <button class="btn btn-lg btn-success" style="font-weight:bold;font-size:40px;" onclick="submitKeepActive()">Submit And Keep <br />Currrent Order <br />Active</button>
+                        <button class="btn btn-xs btn-success" style="font-weight:bold;font-size:30px;width: 300px;height: 250px;" onclick="submitKeepActive()">Submit And Keep <br />Currrent Order <br />Active</button>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="submit_modal_button">
-                        <button class="btn btn-lg btn-info" style="font-weight:bold;font-size:40px;" onclick="submitCreateNew()">Submit And <br /> Start A New Order</button>
+                        <button class="btn btn-xs btn-info" style="font-weight:bold;font-size:30px;width: 300px;height: 250px;" onclick="submitCreateNew()">Submit And <br /> Start A New Order</button>
                         </div>
                     </div>
                 </div>
@@ -380,11 +383,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-10">
+                    <div class="col-xs-10">
                         <h3 style="font-weight:bold;font-size:40px;">Favourite Order</h3><h4 style="font-size:30px;">Please Give Your Order A Name</h4>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
@@ -414,23 +417,24 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 style="font-weight:bold;">Are You Sure?</h3><h4>The Order Will Be Lost Forever</h4>
+                        <h3 style="font-weight:bold;font-size:40px;">Are You Sure?</h3>
+                        <h4 style="font-weight:bold;font-size:30px;">The Order Will Be Lost Forever</h4>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="submit_modal_button">
-                        <button class="btn btn-lg btn-danger"><h3 style="font-weight:bold">Delete</h3></button>
+                        <button class="btn btn-xs btn-danger" style="font-weight:bold;font-size:30px;width: 300px;height: 250px;" onclick="deleteOrder();">Delete</button>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="submit_modal_button">
-                        <button class="btn btn-lg btn-basic"><h3 style="font-weight:bold;">Cancel</h3></button>
+                        <button class="btn btn-xs btn-basic" data-dismiss="modal" style="font-weight:bold;font-size:30px;width: 300px;height: 250px;">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -447,16 +451,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-10">
-                       
+                    <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:30px;">Invoice Location Information</h3>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                     </div>
                 </div>
             </div>
             <div class="modal-body">   
-               
+                
                    
             </div>
             <div class="modal-footer">              
@@ -467,21 +471,155 @@
 
 <!-- Change Location Modal -->
 <div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="ship_location_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:30px;">Shipping Location Information</h3>
+                        
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">   
+                
+                    
+            </div>
+            <div class="modal-footer">              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Info Modal -->
+<div class="modal bs-modal-xs" tabindex="-1" role="dialog" id="product_info_modal">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 style="font-weight:bold;font-size:40px;">Product Info Sheet</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-custom-2 btn-xs" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body"> 
+                
+                    <embed src="info/Product_sheet_Adalia_bipunctata-1.jpg" width="100%" height="100%" />
+                    <embed src="info/Product_sheet_Adalia_bipunctata-2.jpg" width="100%" height="100%" />
+                    <embed src="info/Product_sheet_Adalia_bipunctata-3.jpg" width="100%" height="100%" />
+                
+                    
+            </div>
+            <div class="modal-footer">              
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Submit Conflict Modal -->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="submit_conflict_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <h3 style="font-weight:bold;font-size:35px;">The order has been changed since you visited</h3>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="modal-body"> 
+                <h3 style="font-weight: bold;font-size:40px;text-decoration:underline;">Actual Current Order:</h3>
+                <table id="conflict_alert_table">
+                    
+                </table>
+                <h3 style="font-weight: bold;font-size:40px;text-decoration:underline;">Your Changes:</h3>
+                <table id="conflict_changes_table" style="margin-left:auto;margin-right:auto">
+                    
+                </table>
+       
+            </div>
+            <div class="modal-footer">    
+                
+                <button class="btn btn-block btn-success" style="width:200px;height:100px;font-size:40px;font-weight:bold;float:left;margin: 5% 10%;" onclick="submitOrder()">Accept</button>      
+                <button class="btn btn-block btn-danger" style="width:200px;height:100px;font-size:40px;font-weight:bold;float:right;margin: 5% 10%;" onclick="location.reload()">Cancel</button> 
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Seetings Modal -->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="settings_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <h3 style="font-weight:bold;font-size:35px;"></h3>
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body"> 
+               
+       
+            </div>
+            <div class="modal-footer">              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- History Modal -->
+<div class="modal bs-modal-lg" tabindex="-1" role="dialog" id="history_modal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
-                        <div class="col-sm-10">
-                           
+                        <div class="col-xs-10">
+                            <h3 style="font-weight:bold;font-size:40px;">History</h3>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;">Close</button>
+                        <div class="col-xs-2">
+                            <button class="btn btn-custom-2 btn-lg" data-dismiss="modal" style="float:right;font-size:40px;font-weight:bold;">Close</button>
                         </div>
                     </div>
                 </div>
                 <div class="modal-body">   
-                   
-                       
+                    <div class="row">
+                        <div class="col-xs-12">
+                            
+                                <!-- history List Accordion -->
+                                <div class="panel-group" id="history">
+                                    <div class="panel panel-default" id="history_panel">
+                                        <div class="panel-heading">
+                                            <div class="panel-title pull-left" style="width:100%;">
+                                                <a data-toggle="collapse" data-parent="#history_accordion" href="">
+                                                    <button type="button" id="history_button" class="btn btn-basic btn-xs btn-block" style="text-align:left; padding-left:6px"></button>
+                                                </a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="">
+                                            <div class="panel-body">
+                                                  
+                                                            <table id="history_list">
+                    
+                                                            </table>
+                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">              
                 </div>
@@ -490,5 +628,6 @@
     </div>
 
 <script src="js/user_current_order.js"></script>
+<script src="js/functions.js"></script>
 </body>
 </html>

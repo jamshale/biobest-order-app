@@ -11,6 +11,7 @@ import com.biobest.entities.Order;
 import com.biobest.exceptions.ShipCompanyExistsException;
 import com.biobest.repositories.CustomerRepository;
 import com.biobest.services.CustomerService;
+import com.biobest.value.FavOrder;
 import com.biobest.value.Location;
 
 import java.util.ArrayList;
@@ -87,8 +88,25 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer removeOrder(Customer customer, Order order) {
 		Set<String> orderSet = customer.getCurrentOrders();
+		List<FavOrder<String, String>> favOrders = new ArrayList<FavOrder<String, String>>(customer.getFavOrders());
+		
+		for(int i = 0; i < favOrders.size(); i++ ){
+			System.out.println(order.getOrderId());
+			System.out.println(favOrders.get(i).getOrderId());			
+			if(order.getOrderId().equals(favOrders.get(i).getOrderId())){
+				favOrders.remove(i);
+			}
+		}
+	
+		System.out.println(orderSet);
+		customer.setFavOrders(favOrders);
 		orderSet.remove(order.getOrderId());
-		return customerRepository.save(customer);
+		System.out.println(orderSet);
+		System.out.println("fire");
+
+		customer.setCurrentOrders(orderSet);
+		System.out.println(customer.getCurrentOrders());
+		return updateCustomer(customer);
 	}
 
 }
