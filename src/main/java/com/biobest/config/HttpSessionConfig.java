@@ -11,7 +11,6 @@ import org.springframework.session.data.mongo.config.annotation.web.http.EnableM
 public class HttpSessionConfig {
 
     @Bean
-
     public JdkMongoSessionConverter jdkMongoSessionConverter() {
         return new JdkMongoSessionConverter();
     }

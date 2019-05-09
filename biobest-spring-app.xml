@@ -7,3 +7,5 @@
     <arguments>-jar "biobest-spring-app-0.1.0.jar"</arguments>
     <logmode>rotate</logmode>
 </service>
+
+

@@ -67,7 +67,7 @@ function createErrorCheck(){
     var error_message = $(".form-group div").text()
     if(error_message != ""){
         if(error_message != "User name already exists!User name already exists!"){
-            $("#create_section").toggle()
+            $("#create_user_section").toggle()
         }
             
     }
@@ -124,6 +124,14 @@ $("#remove_customer_list").on('click', function(u){
 //Initiate Lists
 function initiateUserList(appUsers){
     userList = appUsers;
+    userList.sort(function(a, b){
+        var A = a.lastName
+            B = b.lastName
+
+        if(A<B) return -1;
+        if(A>B) return 1;
+        return 0;
+    })
 }
 function initiateCustomerList(customers){
     customerList = customers;
@@ -137,8 +145,6 @@ function initiateProductList(products){
 
 //Populate User List
 function populateUserList(){
-
-  
     var list_item = $("#user_list");
     userList.forEach(function(u){
         if(u.type!=="Manager"){
@@ -153,8 +159,10 @@ function populateUserList(){
 //Add user to list
 function addUserToList(list_item, user){
     var active_user = sessionStorage.getItem("active_user")
+
+    
     if(active_user === user.appUserId){
-        list_item.append(`<tr style="background-color:rgb(255, 217, 0);"><td hidden>${user.appUserId}</td><td>${user.firstName} <br />${user.lastName}</td></tr>`)
+        list_item.append(`<tr><td hidden>${user.appUserId}</td><td style="background-color:rgb(255, 217, 0);">${user.firstName} <br />${user.lastName}</td></tr>`)
         $("button").prop('disabled', false);
     } else {
         list_item.append(`<tr ><td hidden>${user.appUserId}</td><td>${user.firstName} <br />${user.lastName}</td></tr>`)
@@ -164,8 +172,10 @@ function addUserToList(list_item, user){
 //Info Click Event Listener
 $("#user_list").on('click', function(u){
     $("#user_list td").css("background-color", "white")
-    var app_user_id = $(u.target).parent().find("td:hidden").text();   
-    sessionStorage.setItem("active_user", app_user_id);
+    console.log('target = ' + $(u.target).parent().find("td:hidden").text())
+    var app_user_id = $(u.target).parent().find("td:hidden").text(); 
+    
+    //sessionStorage.setItem("active_user", app_user_id);
     clicked_user = userList.filter(function(user){
             return (user.appUserId === app_user_id);
     });
@@ -175,6 +185,7 @@ $("#user_list").on('click', function(u){
     addInfoToFields(clicked_user);
     
 })
+
 //
 function updateSelectedBackgoundColor(clicked){
     $("#user_list td").removeClass("active-background")
@@ -182,11 +193,10 @@ function updateSelectedBackgoundColor(clicked){
 }
 //Info Field Populator
 function addInfoToFields(user){
-    console.log(user)
-    $("#user_info").html(`<tr><td style="width:200px;"><h3>First Name:</h3></td><td><h3>${user[0].firstName}</h3></td></tr>
-                                                <tr><td><h3>Last Name:</h3></td><td><h3>${user[0].lastName}</h3></td></tr>
-                                                <tr><td><h3>Email:</h3></td><td><h3>${user[0].email}</h3></td></tr>
-                                                <tr><td><h3>Type:</h3></td><td><h3>${user[0].type}</h3></td></tr>`)
+    $("#user_info").html(`<tr><td><h3>First Name:</h3></td><td><h4>${user[0].firstName}</h4></td></tr>
+                                                <tr><td><h3>Last Name:</h3></td><td><h4>${user[0].lastName}</h4></td></tr>
+                                                <tr><td><h3>Email:</h3></td><td><h4>${user[0].email}</h4></td></tr>
+                                                <tr><td><h3>Type:</h3></td><td><h4>${user[0].type}</h4></td></tr>`)
 
 
     populateCustomerList();
@@ -196,14 +206,29 @@ function addInfoToFields(user){
 function populateCustomerList(){
     var matched_customer;
     $("#customer_list").html("");
+    var local_customers = []
     if(clicked_user[0].customers[0] != null){
         clicked_user[0].customers.forEach(function(c){
             matched_customer = customerList.filter(function(customer){
                 return customer.customerId === c;
             })
-            $("#customer_list").append(`<tr><td style="font-size:30px;font-weight:bold;">${matched_customer[0].shipCompany}</h3></td></tr>`)
+            local_customers.push(matched_customer)
+    
+        })
+        local_customers.sort(function(a, b){
+            var A = a[0].shipCompany
+                B = b[0].shipCompany
+            
+            if(A<B) return -1;
+            if(A>B) return 1;
+            return 0;
+
+        })
+        local_customers.forEach(function(cust){
+            $("#customer_list").append(`<tr><td><h3>${cust[0].shipCompany}</h3></td></tr>`)
         })
     }
+
 }
 //Update highlighter
 function infoHighlight(){
@@ -220,8 +245,8 @@ function addCustomer(){
         if(checkCustomerExists(customer)===false){
             $("#add_customer_list").append(`<tr>
             <td hidden>${customer.customerId}</td>
-            <td style="width:700px;"><h3 style="margin-left:10px;font-size:30px;font-weight:bold;">${customer.shipCompany}</h3></td>
-            <td ><button type="button" class="btn btn-lg btn-success" style="margin:10px;font-weight:bold;font-size:40px;width:200px;">Add</button></td>
+            <td><h3>${customer.shipCompany}</h3></td>
+            <td ><button type="button" class="btn btn-lg btn-success">Add</button></td>
             </tr>`);
         }
     })   
@@ -234,8 +259,8 @@ function removeCustomer(){
         if(checkCustomerExists(customer)===true){
             $("#remove_customer_list").append(`<tr>
             <td hidden>${customer.customerId}</td>
-            <td style="width:700px;"><h3 style="margin-left:10px;font-size:30px;font-weight:bold;">${customer.shipCompany}</h3></td>
-            <td ><button type="button" class="btn btn-lg btn-danger" style="margin:10px;font-weight:bold;font-size:40px;width:200px;">Remove</button></td>
+            <td><h3>${customer.shipCompany}</h3></td>
+            <td ><button type="button" class="btn btn-lg btn-danger">Remove</button></td>
             </tr>`);
         }
     })   
@@ -244,12 +269,11 @@ function removeCustomer(){
 function checkCustomerExists(customer){
     if(clicked_user[0].customers[0]==null){
         return false;
-        exit();
     }
     for(var i = 0; i < clicked_user[0].customers.length; i++){
         if(clicked_user[0].customers[i]===customer.customerId){
             return true; 
-            exit();
+
         }
     }
     return false;
@@ -260,7 +284,7 @@ function showInfo(){
 }
 
 function showCreate(){
-    $("#create_section").toggle()
+    $("#create_user_section").toggle()
 
     if(new_pass){
         var local_pass = passwordGenerator()

@@ -158,9 +158,14 @@ public class OrderController {
         } else {
             localOrder.setFinalOrder(localFinalOrderList); 
         }
+        
+        //replace commas with character '~' never used for filling order forms
+        invLocation = invLocation.replace(',' , '~');
+        shipLocation = shipLocation.replace(',' , '~');
 
         String[] invLocationString = invLocation.split("[|]");
         String[] shipLocationString = shipLocation.split("[|]");
+
 
         /*
         for(int i = 0; i < invLocationString.length; i++){

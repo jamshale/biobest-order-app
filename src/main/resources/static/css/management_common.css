@@ -1,0 +1,325 @@
+body
+{
+  background-color: rgba(255, 242, 202, 0.288);
+  padding-bottom:0px;
+}
+/*
+// Navbar
+*/
+.container-fluid:first
+{
+  padding:0px; 
+  margin: 0px;
+}
+.navbar
+{
+  box-shadow: 2px 2px 2px grey;
+  background-color:
+  rgba(83, 83, 83, 0.096)
+}
+.navbar .btn
+{
+  text-shadow: 1px 1px 1px grey;
+  font-weight:bold;
+  font-size:30px;
+  width:200px;
+  margin:6px;
+  font-family:Verdana, Times, serif;
+}
+.navbar .btn:last-child
+{
+  float: right;
+}
+/*
+// All Sections
+*/
+.header-label 
+{
+  text-shadow:1px 1px 1px black;
+  font-size:30px;
+  text-align:center;
+  margin-top:0px;
+  font-weight:bold;
+}
+#customer_section
+{
+  background-color: hsla(48, 97%, 41%, 0.384) ;
+  border-style:solid;
+  border-width:thick;
+  padding:10px;
+  border-radius:10px;
+  box-shadow: 3px 3px 3px grey;
+  margin: 0px 10px; 
+}
+
+
+#customer_list
+{
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 25px;
+  padding: 0px;
+}
+#customer_list td
+{
+  margin-left: 10px;
+}
+/*
+// Customer Section
+*/
+#customer_section input, #user_section input
+{
+  width:80%;
+  margin: 1% 10%;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold
+}
+
+.list-header
+{
+  margin: 0px;
+  border-width: 3px;
+  border-style: solid;
+  background-color: rgba(240, 239, 239, 0.89);
+}
+
+.list-header h3
+{
+  font-weight: bold;
+  padding: 10px;
+  margin:0px;
+}
+
+
+/*
+// User Section
+*/
+
+#user_section{
+  background-color: hsla(48, 50%, 34%, 0.384) ;
+  border-style:solid;
+  border-width:thick;
+  padding:10px;
+  border-radius:10px;
+  box-shadow: 3px 3px 3px grey;
+  margin:0px -10px
+}
+
+#user_list
+{
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 25px;
+  padding: 0px;
+}
+
+#user_list td:first-child
+{
+  margin-left: 10px;
+  width: 60%;
+}
+#user_list h3{
+  margin:0px;
+}
+
+#add_user_button, #remove_user_button, #add_customer_button, #remove_customer_button
+{
+  font-size: 30px;
+  width:200px;
+  font-weight: bold;
+  margin:10px;
+
+}
+
+/*
+// Add/Remove User List
+*/
+
+#add_user_div table, #remove_user_div table, #add_customer_div table, #remove_customer_div table
+{
+  border-style:solid;
+  border-width:thin;
+}
+#add_user_list h3, #remove_user_list h3, #add_customer_list h3, #remove_customer_list h3
+{
+  font-size:25px;
+  font-weight: bold;
+}
+#add_user_list td:nth-child(2), #remove_user_list td:nth-child(2), #add_customer_list td:nth-child(2), #remove_customer_list td:nth-child(2)
+{
+  width:50%;
+}
+#add_user_list button, #remove_user_list button, #add_customer_list button, #remove_customer_list button
+{
+  font-size:25px;
+  font-weight: bold;
+  width:150px;
+  margin: 10px 5px;
+  float: right;
+}
+
+/*
+// Function Buttons
+*/
+.btn-function
+{
+  width: 90%;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+/*
+// Information Section
+*/
+#information_section, #details_section
+{
+  width: 90%;
+  border-style: solid;
+  border-width:3px;
+  background-color:rgb(255, 239, 148);
+  margin: 0 5%;
+  box-shadow: 10px 10px 10px grey;
+}
+#information_section .btn-default  
+{
+  font-size: 20px;
+  margin: 5px;
+}
+#details_section .btn-default{
+  float: right;
+  font-size: 20px;
+  margin: 5px;
+}
+.glyphicon-triangle-left, .glyphicon-triangle-right
+{
+  font-size: 40px;
+}
+#inv_index, #ship_index
+{
+  font-size: 25px;
+}
+#invoice_to_info, #ship_to_info, #user_info
+{
+  background-color: white;
+}
+#invoice_to_info td:first-child, #ship_to_info td:first-child{
+  width: 15%;
+}
+#invoice_to_info td:nth-child(2), #ship_to_info td:nth-child(2){
+  width: 85%;
+}
+#invoice_to_info h3, #ship_to_info h3
+{
+  font-weight: bold;
+  font-size: 18px;
+}
+#invoice_to_info h4, #ship_to_info h4
+{
+  font-size: 16px;
+  margin: 15px 5px;
+}
+#information_section .btn-success{
+  width: 50%;
+  font-weight:bold;
+  font-size: 30px;
+  margin: 10px;
+}
+#user_info td:first-child{
+  width: 20%;
+}
+#user_info td:nth-child(2){
+  width: 80%;
+}
+#user_info h3{
+  font-weight: bold;
+  font-size: 15px;
+}
+#user_info h4{
+  font-size: 15px;
+}
+#details_section .btn-custom-0, #details_section .btn-danger{
+  width: 25%;
+  margin: 10px auto;
+  
+}
+
+/*
+// Create Customer Section
+*/
+#create_customer_section, #create_user_section
+{
+  width: 90%;
+  border-style: solid;
+  border-width:3px;
+  background-color:rgb(255, 239, 148);
+  margin: 0 5%;
+  padding-top: 10px;
+  box-shadow: 10px 10px 10px grey;
+}
+#create_customer_section h4, #create_user_section h4{
+  font-size:25px;
+}
+#create_customer_section h3, #create_user_section h3{
+  font-weight: bold;
+}
+#create_customer_section .form-group, #create_user_section .form-group
+{
+  font-size: 30px;
+  font-weight: bold;
+}
+#create_customer_section .btn-success, #create_user_section .btn-success
+{
+  width: 50%;
+  font-weight:bold;
+  font-size: 30px;
+  margin: 10px auto;
+}
+
+/*
+// Add Location
+*/
+#loc_type
+{
+  font-size:25px;
+  margin:10px 0px;
+  height:40px;
+  font-weight:bold;
+  width:100%
+}
+#add_location_modal input
+{
+  font-size:25px;
+  margin:10px 0px;
+  height:40px;
+  font-weight:bold
+}
+#add_location_modal .btn-success
+{
+  font-size:30px;
+  height:50px;
+  font-weight:bold; 
+  width:80%; 
+  margin:10px 10%
+}
+/*
+// Modal Size Settings
+*/
+#add_user_modal .modal-dialog  {width:95%;}
+#remove_user_modal .modal-dialog  {width:95%;}
+
+@media screen 
+  and (min-width: 1000px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    #add_user_modal .modal-dialog  {width:50%;}
+    #remove_user_modal .modal-dialog  {width:50%;}
+  }
+
+@media screen 
+  and (min-width: 1000px) { 
+    #add_user_modal .modal-dialog  {width:50%;}
+    #remove_user_modal .modal-dialog  {width:50%;}
+  }

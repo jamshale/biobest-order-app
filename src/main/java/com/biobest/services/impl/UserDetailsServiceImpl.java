@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.biobest.entities.AppUser;
 import com.biobest.repositories.AppUserRepository;
+import com.biobest.validation.PasswordHash;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         if(appUser == null) {
             throw new UsernameNotFoundException("No user found: " + email);
         }
-        return new User(appUser.getEmail(), appUser.getPassword(), true, true, true, true, getAuthorities(appUser.getRoles()));    
+        PasswordHash passwordHash = new PasswordHash();
+        String hashPass = passwordHash.generateHash(appUser.getPassword());
+        System.out.println(hashPass);
+        return new User(appUser.getEmail(), hashPass , true, true, true, true, getAuthorities(appUser.getRoles()));    
     }
 
     private static List<GrantedAuthority> getAuthorities(List<String> roles){

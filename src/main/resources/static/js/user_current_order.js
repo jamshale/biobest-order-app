@@ -27,7 +27,9 @@ $(document).ready(function ()   {
     var local_date = new Date();
     start_time = date.getFullYear() + "" + ("0" + (local_date.getWeek())).slice(-2) + "" + ("0" + (local_date.getDay() + 1)).slice(-2) + "" + ("0" + (local_date.getHours())).slice(-2) + "" + ("0" + (local_date.getMinutes())).slice(-2) + "" +("0" + (local_date.getSeconds())).slice(-2)
 
+    //
     //Load Data
+    //
     $.post({
         url: "/products",
         success: initiateProductList,
@@ -71,7 +73,9 @@ $(document).ready(function ()   {
   
 });
 
+//
 //Functionality Command
+//
 function functionalityFlowCommand(){
     activateCurrentUser()
     activateCurrentCustomer()
@@ -84,8 +88,8 @@ function functionalityFlowCommand(){
     populateHistory();
 }
 
-
-
+//
+// submit order and keep the current order active
 //
 function submitKeepActive(){
 
@@ -106,8 +110,9 @@ function submitKeepActive(){
     $("#submit_order_modal").modal("toggle")
     
 }
-
-// New Order Submit
+// 
+// submit order and create new order --> new order is now active
+//
 function submitCreateNew(){
     var local_order = getCurrentOrder()
     local_date = new Date();
@@ -123,11 +128,11 @@ function submitCreateNew(){
             submitOrder();
         }
     })
-    $("#submit_order_modal").modal("toggle")
-     
+    $("#submit_order_modal").modal("toggle") 
 }
-
-//Initiation Functions
+//
+// data intitization functions
+//
 function initiateProductList(products){
     productList = products;   
 }
@@ -140,12 +145,9 @@ function initiateCustomerList(customers){
 function initiateOrderList(orders){
     orderList = orders;
 }
-
-//WINDOW UNLOAD
-$(window).unload(function(){
-
-  });
-//Regular Submit Order
+//
+// submits order
+//
 function submitOrder(create){
     var submit_session_product_id = [];
     var submit_session_units = [];
@@ -186,13 +188,11 @@ function submitOrder(create){
         } else {
             location.reload();
         }
-        
     });
-  
 }
-
-
-//Shallow compare
+//
+// shallow compare
+//
 function areEqualShallow(a, b) {
     for(var key in a) {
         if(!(key in b) || a[key] !== b[key]) {
@@ -206,8 +206,9 @@ function areEqualShallow(a, b) {
     }
     return true;
 }
-
-
+//
+// gets the current order
+//
 function getCurrentOrder(){
     var local_order = orderList.filter(function(o){
         return o.orderId === currentCustomer[0].currentOrders[currentOrderIndex];
@@ -215,8 +216,9 @@ function getCurrentOrder(){
     return local_order;
 }
 //
+// intiatiates the order currently in session
+//
 function initiateSessionOrder(){
-    
     var checkOrderIndex = sessionStorage.getItem("currentOrderIndex");
     var checkOrderId = sessionStorage.getItem("sessionOrderId");
     if(checkOrderIndex != 0 &&  currentCustomer[0].currentOrders.includes(checkOrderId)){
@@ -248,7 +250,6 @@ function initiateSessionOrder(){
                 invLocationOrderIndex++;
             }
         }
-        
         for(var i = 0; i < currentCustomer[0].shipLocations.length; i++){
             if(areEqualShallow(currentCustomer[0].shipLocations[i], local_order[0].shipLocation)){
                 break;
@@ -265,13 +266,16 @@ function initiateSessionOrder(){
     populateProductList(sessionOrder);
 }
 
-//Add Product Modal Close Functionality
+//
+// 
+//
 $("#add_product_modal").on("show.bs.modal", function () {
     oldSessionOrder = sessionOrder.slice(0);
 });
+//
 //Add Product Modal Close Functionality
+//
 $("#add_product_modal").on("hidden.bs.modal", function () {
-    
     var submit_fav_product = [];
     
     sessionFav.forEach(function(p){
@@ -285,7 +289,9 @@ $("#add_product_modal").on("hidden.bs.modal", function () {
     }
     populateProductList(oldSessionOrder);
 });
+//
 //Increment Button Functionality
+//
 $("#inc_product").on('click', function(n){
     var counter = $(n.target)
 })
@@ -350,12 +356,30 @@ function populateProductList(oldSessionOrder) {
     
     populateTotalCost()
 }
-//Total Cost
+//
+// input total cost
+//
 function populateTotalCost(){
     var total_cost = calculateTotalCost()
     $("#total_cost").html(`<h3 style="float:left;font-size:35px;">Total:</h3>$${total_cost}`)
 }
 
+
+
+
+//
+// Move these to another location
+//
+
+
+
+
+
+
+
+//
+//
+//
 function populateHistory(){
     $("#history_accordion").html(history_accordion_clone.html())
     var i = 1;
@@ -401,63 +425,11 @@ function populateHistory(){
 
 }
 
-//Populate active Accordion
-function populateActiveList() {
-    $("#active_accordion").html(active_accordion_clone.html())
-    var i = 0;
-    currentCustomer[0].currentOrders.forEach(function(order){
-        var local_order = orderList.filter(function(o){
-            return o.orderId === order;
-        })
-        if(local_order[0].shipLocation!= null){
-            $("#active_order_list").prop('hidden', false);
-            var clone1 = $("#active_list_panel").children().first().clone()
-            var clone2 = $("#active_list_panel").children().first().next().clone()
-            current_product = $("#active_list_panel")
-            current_product.find("a").first().attr('href', '#active_collapse_' + i)
-            current_product.find(".panel-collapse").first().attr('id', 'active_collapse_' + i)
-            if(local_order[0].finalOrder.length === 0){
-                current_product.find("#active_list_button").html(`<tr>
-                        <td hidden>${local_order[0].orderId}</td>
-                        <td><h3>${local_order[0].shipLocation.contact}<br />${local_order[0].shipLocation.address}</h3></td>
-                        <td style="float:right"><h3><span class="badge">0</span> Items</h3></td></tr>`);
-            } else {
-                current_product.find("#active_list_button").html(`<tr>
-                        <td hidden>${local_order[0].orderId}</td>
-                    
-                        <td><h3>${local_order[0].shipLocation.contact}<br />${local_order[0].shipLocation.address}</h3></td>
-                        <td style="float:right"><h3><span class="badge">${local_order[0].finalOrder.length}</span> Items</h3></td></tr>`);
-                var local_total_cost = 0;
-                local_order[0].finalOrder.forEach(function(p){
-                    var local_product = productList.filter(function(prod){
-                        return p.productId === prod.itemCode;
-                    })
-                    $("#active_product_list").append(`<tr>
-                            <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
-                            <td><h4>Unit Price:</h4><h3>$${local_product[0].aPrice.toFixed(2)}</h3></td>
-                            <td><h4>Units:</h4><span class="badge" style="font-size:30px;">${p.units}</span></td>
-                            <td><h4>Product Cost:</h4><h3>$${(parseFloat(local_product[0].aPrice) * p.units).toFixed(2) }</h3></td>
-                            </tr>`)
-                })
-            }    
-            if(i != currentCustomer[0].currentOrders.length-1 ){
-                clone2.prependTo($("#active_list_panel"))
-                clone1.prependTo($("#active_list_panel"))
-            }
-            i++;     
 
-
-
-        }
-        
-    })
-}
 //Activate Order Fuctionality
 $("#active_order_modal, #get_favourite_order_modal").on('click', function(o){
-    
     var clicked_element = $(o.target).parent().prev().find("td:hidden").html();
     var check_activate = $(o.target).html()
-
     if(check_activate == "Activate"){
         var activated_index;
         for( var i = 0; currentCustomer[0].currentOrders.length; i++){
@@ -466,7 +438,6 @@ $("#active_order_modal, #get_favourite_order_modal").on('click', function(o){
                 break;
             } 
         }
-        
         sessionStorage.setItem("sessionOrderId", clicked_element)
         sessionStorage.setItem("currentOrderIndex", activated_index)
         location.reload()
@@ -489,22 +460,34 @@ function activateCurrentUser(){
     })
 }
 function populateShipLocationButton(index){
+    if(shipLocationOrderIndex!=index){
+        sessionSubmitStatus = "Not Submitted"
+        populateProductListHeader();
+    }
     shipLocationOrderIndex = index;
-    $("#ship_to_button").html(`</div>${currentCustomer[0].shipLocations[index].contact}<div hidden>|</div><br />${currentCustomer[0].shipLocations[index].address}<div hidden>|${currentCustomer[0].shipLocations[index].company}|${currentCustomer[0].shipLocations[index].cityState}|${currentCustomer[0].shipLocations[index].zip}|${currentCustomer[0].shipLocations[index].phone}|${currentCustomer[0].shipLocations[index].fax}|${currentCustomer[0].shipLocations[index].email}`)
+    console.log(index)
+    
+
+    $("#ship_to_button").html(`</div>${currentCustomer[0].shipLocations[index-1].contact}<div hidden>|</div><br />${currentCustomer[0].shipLocations[index-1].address}<div hidden>|${currentCustomer[0].shipLocations[index-1].company}|${currentCustomer[0].shipLocations[index-1].cityState}|${currentCustomer[0].shipLocations[index-1].zip}|${currentCustomer[0].shipLocations[index-1].phone}|${currentCustomer[0].shipLocations[index-1].fax}|${currentCustomer[0].shipLocations[index-1].email}`)
 }
 function populateInvLocationButton(index){
-   invLocationOrderIndex = index;
-    
-    $("#invoice_to_button").html(`</div>${currentCustomer[0].invLocations[index].contact}<div hidden>|</div><br />${currentCustomer[0].invLocations[index].address}<div hidden>|${currentCustomer[0].invLocations[index].company}|${currentCustomer[0].invLocations[index].cityState}|${currentCustomer[0].invLocations[index].zip}|${currentCustomer[0].invLocations[index].phone}|${currentCustomer[0].invLocations[index].fax}|${currentCustomer[0].invLocations[index].email}`)
+    if(invLocationOrderIndex!=index){
+        sessionSubmitStatus = "Not Submitted"
+        populateProductListHeader();
+    }
+    invLocationOrderIndex = index;
+    $("#invoice_to_button").html(`</div>${currentCustomer[0].invLocations[index-1].contact}<div hidden>|</div><br />${currentCustomer[0].invLocations[index-1].address}<div hidden>|${currentCustomer[0].invLocations[index-1].company}|${currentCustomer[0].invLocations[index-1].cityState}|${currentCustomer[0].invLocations[index-1].zip}|${currentCustomer[0].invLocations[index-1].phone}|${currentCustomer[0].invLocations[index-1].fax}|${currentCustomer[0].invLocations[index-1].email}`)
 }
 //
 function populateProductListHeader(){
     $("#product_list_header").html(`<h2>${sessionSubmitStatus}</h2><h2><button type="button" class="btn btn-sm btn-custom-2">${parseInt(currentOrderIndex) + 1}</button> Order For Week #${date.getWeek()}</h2>`)
     if($("#product_list_header h2:first-child").text() == "Not Submitted"){
         $("#product_list_header h2:first-child").css('color', 'red')
+        $("#product_list").parent().parent().css('background-color', '#ffe6e6')
     }
     if($("#product_list_header h2:first-child").text() == "Submitted"){
         $("#product_list_header h2:first-child").css('color', 'green')
+        $("#product_list").parent().parent().css('background-color', '#e6ffe6')
     }
 }
 //Populate Customer Page Info
@@ -551,7 +534,7 @@ function populateAddProductList(localProductList){
                     <td><h3>${p.productName}</h3><h4>${p.description}</h4><h3>${p.unitSize}</h3></td>
                     <td><button type="button" id="add_item_price" class="btn btn-defualt">$${p.aPrice.toFixed(2)}</button></td>
                     <td><button type="button" class="btn btn-info btn-lg fav_product" onclick="favButton(${p.itemCode}, this)">Fav</button></td>
-                    <td><button type="button" class="btn btn-success btn-lg add_product" onclick="addButton(${p.itemCode}, this);">Add</button></td>
+                    <td><button type="button" class="btn btn-success btn-lg add_product" onclick="addButton(${p.itemCode}, this);">Add </button></td>
                     <td hidden>${p.itemCode}</td>
                     </tr>`)
         var product_item_clone = $(product_item).clone()
@@ -592,7 +575,7 @@ function populateAddProductList(localProductList){
                     <td><h3>${prod[0].productName}</h3><h4>${prod[0].description}</h4><h3>${prod[0].unitSize}</h3></td>
                     <td><button type="button" id="add_item_price" class="btn btn-defualt">$${prod[0].aPrice.toFixed(2)}</button></td>
                     <td><button class="btn btn-info btn-lg fav_product" onclick="favButton(${prod[0].itemCode}, this)">Fav</button></td>
-                    <td><button type="button" class="btn btn-success btn-lg add_product" onclick="addButton(${prod[0].itemCode}, this);">Add</button></td>
+                    <td><button type="button" class="btn btn-success btn-lg add_product" onclick="addButton(${prod[0].itemCode}, this);">Add </button></td>
                     <td hidden>${prod[0].itemCode}</td>
                     </tr>`)
         var product_item_clone = $(product_item).clone()
@@ -617,6 +600,54 @@ function populateAddProductList(localProductList){
     })
             
 }
+
+//Populate active Accordion
+function populateActiveList() {
+    $("#active_accordion").html(active_accordion_clone.html())
+    var i = 0;
+    currentCustomer[0].currentOrders.forEach(function(order){
+        var local_order = orderList.filter(function(o){
+            return o.orderId === order;
+        })
+        if(local_order[0].shipLocation!= null){
+            $("#active_order_list").prop('hidden', false);
+            var clone1 = $("#active_list_panel").children().first().clone()
+            var clone2 = $("#active_list_panel").children().first().next().clone()
+            current_product = $("#active_list_panel")
+            current_product.find("a").first().attr('href', '#active_collapse_' + i)
+            current_product.find(".panel-collapse").first().attr('id', 'active_collapse_' + i)
+            if(local_order[0].finalOrder.length === 0){
+                current_product.find("#active_list_button").html(`<tr>
+                        <td hidden>${local_order[0].orderId}</td>
+                        <td><h3>${local_order[0].shipLocation.contact}<br />${local_order[0].shipLocation.address}</h3></td>
+                        <td><span class="badge">0</span><h3>Items</h3></td></tr>`);
+            } else {
+                current_product.find("#active_list_button").html(`<tr>
+                        <td hidden>${local_order[0].orderId}</td>
+                        <td><h3>${local_order[0].shipLocation.contact}<br />${local_order[0].shipLocation.address}</h3></td>
+                        <td><span class="badge">${local_order[0].finalOrder.length}</span><h3>Items</h3></td></tr>`);
+                var local_total_cost = 0;
+                local_order[0].finalOrder.forEach(function(p){
+                    var local_product = productList.filter(function(prod){
+                        return p.productId === prod.itemCode;
+                    })
+                    $("#active_product_list").append(`<tr>
+                            <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
+                            <td><h4>Unit Price:</h4><h3>$${local_product[0].aPrice.toFixed(2)}</h3></td>
+                            <td><h4>Units:</h4><span class="badge">${p.units}</span></td>
+                            <td><h4>Product Cost:</h4><h3>$${(parseFloat(local_product[0].aPrice) * p.units).toFixed(2) }</h3></td>
+                            </tr>`)
+                })
+            }    
+            if(i != currentCustomer[0].currentOrders.length-1 ){
+                clone2.prependTo($("#active_list_panel"))
+                clone1.prependTo($("#active_list_panel"))
+            }
+            i++;     
+        }  
+    })
+}
+
 //Populate favourite Accordion
 function populateFavouriteList() {
     current_product = $("#favourite_list_panel")
@@ -632,17 +663,17 @@ function populateFavouriteList() {
                     var clone2 = $("#favourite_list_panel").children().first().next().clone()
                     current_product.find("a").first().attr('href', '#favourite_collapse_' + i)
                     current_product.find(".panel-collapse").first().attr('id', 'favourite_collapse_' + i)
-                    current_product.find("#favourite_list_button").html(`<tr style="border-style:solid;border-width:thin;">
-                            <td style="width:70%;font-size:30px;"><h3>${fav.name}</h3></td>
-                            <td style="width:30%;"><h3><span class="badge">${o.finalOrder.length}</span> Items</h3></td></tr>`);
+                    current_product.find("#favourite_list_button").html(`<tr>
+                            <td><h3>${fav.name}</h3></td>
+                            <td><span class="badge">${o.finalOrder.length}</span><h3>Items</h3></td></tr>`);
                     o.finalOrder.forEach(function(orderDetails){
                         var local_product = productList.filter(function(prod){
                             return orderDetails.productId === prod.itemCode;
                         })
-                        $("#favourite_product_list").append(`<tr style="border-style:solid;border-width:thin;">
+                        $("#favourite_product_list").append(`<tr>
                             <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
                             <td><h4>Unit Price:</h4><h3>$${local_product[0].aPrice}</h3></td>
-                            <td><h4>Units:</h4><span class="badge" style="font-size:30px;">${orderDetails.units}</span></td>
+                            <td><h4>Units:</h4><span class="badge">${orderDetails.units}</span></td>
                             <td><h4>Product Cost:</h4><h3>$${(parseFloat(local_product[0].aPrice) * orderDetails.units).toFixed(2) }</h3></td>
                             </tr>`)
                     })
@@ -654,11 +685,7 @@ function populateFavouriteList() {
             }
             i++;
         })
-
-
     } else {
-
-        
         $("#favourite_accordion").addClass('hide')
         $("#empty_tag_1").show()
     }
@@ -678,16 +705,16 @@ function populateChangesOrderList(){
         current_product = $("#changes_order_list_item")
             if(parseInt(t.units)>0){
                 current_product.prepend(`<tr style="background: rgba(58, 204, 44, 0.411);">
-                    <td><h4 style="margin:20px 5px;">${t.time}</h4></td>
+                    <td><h4>${t.time}</h4></td>
                     <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
-                    <td><span class="badge" style="font-size:30px;margin:50% 0%"> ${t.units} </span><span class="glyphicon glyphicon-ok"></span></td>
+                    <td><span class="badge"> ${t.units} </span><span class="glyphicon glyphicon-ok"></span></td>
                     <td><h3>${local_user[0].firstName} ${local_user[0].lastName}</h3></td>
                     </tr>`)  
             } else {
                 current_product.prepend(`<tr style="background: rgba(211, 26, 1, 0.699);">
-                    <td><h4 style="margin:20px 5px;">${t.time}</h4></td>
+                    <td><h4>${t.time}</h4></td>
                     <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
-                    <td><span class="badge" style="font-size:30px;margin:50% 0%"> ${parseInt(t.units) * -1 } </span><span class="glyphicon glyphicon-remove"></span></td>
+                    <td><span class="badge"> ${parseInt(t.units) * -1 } </span><span class="glyphicon glyphicon-remove"></span></td>
                     <td><h3>${local_user[0].firstName} ${local_user[0].lastName}</h3></td>
                     </tr>`)  
             }
@@ -830,8 +857,7 @@ function addProductSearch(val){
     
 
 function removeProduct(val){
-    var productId = $(val).parent().parent().prev().find("div:hidden").html()
-    var index = -1;
+    var productId = $(val).parent().parent().parent().prev().find("div:hidden").html()
     var newSession = sessionOrder.filter(function(item){
         return item[0]!=productId
     })

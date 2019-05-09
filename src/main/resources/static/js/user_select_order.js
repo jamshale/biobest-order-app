@@ -5,7 +5,6 @@ var current_customer = "";
 var loadComplete = [];
 
 $(document).ready(function ()   {
-    
     $.post({
         url: "/customers",
         success: populateCustomerList,
@@ -26,23 +25,19 @@ $(document).ready(function ()   {
             }
         }
     }) 
-
-    
-    
 });
-
-
-
 
 
 //User List
 function populateUserList(users){
     userList = users;
 }
+
 //Customer List
 function populateCustomerList(customers){
     customerList = customers;  
 }
+
 //Functionallity Flow Command
 function functionalityFlowCommand(){
     $.get("/activeUser",{
@@ -50,15 +45,14 @@ function functionalityFlowCommand(){
     }, function(data){
         initiateActiveUser(data)
     })
-    
-    
-    
 }
+
 //Get and Set Active User
 function initiateActiveUser(activeUser){
     currentUser = activeUser;  
     populateSelectList();
 }
+
 //Populate valid list for user selection
 function populateSelectList(){
     var localProductList = [];
@@ -79,11 +73,10 @@ function populateSelectList(){
     })
     localProductList.forEach(function(c){
         $("#select_list").append(`<tr><td hidden>${c[0]}</td>
-                                        <td><button class="btn btn-block btn-custom-1">${c[1]}<span class="badge">${c[2]}</span></button></td></tr>`)
+                                        <td><button class="btn btn-block btn-custom-0">${c[1]}<span class="badge">${c[2]}</span></button></td></tr>`)
     })
   
 }
-
 //Select And Load
 $("#select_list").on('click', function(c){
     var current_customer_id = $(c.target).parent().parent().find("td:hidden").html();

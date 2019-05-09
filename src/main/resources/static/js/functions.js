@@ -62,20 +62,20 @@ function addButton(localProductId, btn) {
 
 function invLocationModal(){
     $("#inv_location_modal").modal("toggle")
-    $("#inv_location_modal .modal-body").html(``);
+    $("#inv_location_modal .modal-body").html("");
     var i = 0;
     currentCustomer[0].invLocations.forEach(function(loc){
-        $("#inv_location_modal .modal-body").append(`<button class="btn btn-block btn-basic" style="width:90%; margin: 10px auto" onclick="populateInvLocationButton(${i})" data-toggle="modal" data-target="#inv_location_modal">
-                                                        <span style="font-size:50px;float:left;margin:10px;" class="badge">${i+1}</span>
+        $("#inv_location_modal .modal-body").append(`<button class="btn btn-block btn-basic" onclick="populateInvLocationButton(${i})" data-toggle="modal" data-target="#inv_location_modal">
+                                                        <span class="badge">${i+1}</span>
                                                         <table>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Company:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.company}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Contact:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.contact}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Address:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.address}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">City/State:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.cityState}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Zip:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.zip}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Email:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.email}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Phone:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.phone}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Fax:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.fax}</h3></td></tr></table></btn>`)
+                                                            <tr><td><h4>Company:</h4></td><td><h3>${loc.company}</h3></td></tr>
+                                                            <tr><td><h4>Contact:</h4></td><td><h3>${loc.contact}</h3></td></tr>
+                                                            <tr><td><h4>Address:</h4></td><td><h3>${loc.address}</h3></td></tr>
+                                                            <tr><td><h4>City/State:</h4></td><td><h3>${loc.cityState}</h3></td></tr>
+                                                            <tr><td><h4>Zip:</h4></td><td><h3>${loc.zip}</h3></td></tr>
+                                                            <tr><td><h4>Email:</h4></td><td><h3>${loc.email}</h3></td></tr>
+                                                            <tr><td><h4>Phone:</h4></td><td><h3>${loc.phone}</h3></td></tr>
+                                                            <tr><td><h4>Fax:</h4></td><td><h3>${loc.fax}</h3></td></tr></table></btn>`)
         i++
     })
 }
@@ -86,17 +86,17 @@ function shipLocationModal(){
 
     var i = 0;
     currentCustomer[0].shipLocations.forEach(function(loc){
-        $("#ship_location_modal .modal-body").append(`<button class="btn btn-block btn-basic" style="width:90%; margin: 10px auto" onclick="populateShipLocationButton(${i})" data-toggle="modal" data-target="#ship_location_modal">
-                                                        <span style="font-size:50px;float:left;margin:10px;" class="badge">${i+1}</span>
+        $("#ship_location_modal .modal-body").append(`<button class="btn btn-block btn-basic" onclick="populateShipLocationButton(${i})" data-toggle="modal" data-target="#ship_location_modal">
+                                                        <span class="badge">${i+1}</span>
                                                         <table>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Company:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.company}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Contact:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.contact}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Address:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.address}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">City/State:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.cityState}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Zip:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.zip}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Email:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.email}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Phone:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.phone}</h3></td></tr>
-                                                            <tr style="margin:0px;"><td><h4 style="font-weight:bold;font-size:22px;float:left;text-decoration:underline;padding-right:60px;">Fax:</h4></td><td><h3 style="font-size:25px;text-align:left">${loc.fax}</h3></td></tr></table></btn>`)
+                                                            <tr><td><h4>Company:</h4></td><td><h3>${loc.company}</h3></td></tr>
+                                                            <tr><td><h4>Contact:</h4></td><td><h3>${loc.contact}</h3></td></tr>
+                                                            <tr><td><h4>Address:</h4></td><td><h3>${loc.address}</h3></td></tr>
+                                                            <tr><td><h4>City/State:</h4></td><td><h3>${loc.cityState}</h3></td></tr>
+                                                            <tr><td><h4>Zip:</h4></td><td><h3>${loc.zip}</h3></td></tr>
+                                                            <tr><td><h4>Email:</h4></td><td><h3>${loc.email}</h3></td></tr>
+                                                            <tr><td><h4>Phone:</h4></td><td><h3>${loc.phone}</h3></td></tr>
+                                                            <tr><td><h4>Fax:</h4></td><td><h3>${loc.fax}</h3></td></tr></table></btn>`)
         i++
     })
 }
@@ -188,3 +188,4 @@ function submitConflictAlert(){
     })
 
 }
+

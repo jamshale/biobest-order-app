@@ -81,7 +81,8 @@ public class CustomerController {
 
         Customer customer = customerService.getCustomer(customerId);
 
-        Location<String, String, String, String, String, String, String, String> localLocation = new Location<>(locationInfo[2], locationInfo[0], locationInfo[1], locationInfo[3], locationInfo[4], locationInfo[7], locationInfo[5], locationInfo[6]);
+        System.out.println(locationInfo[0] + locationInfo[1] + locationInfo[2] + locationInfo[3] + locationInfo[4] + locationInfo[5] + locationInfo[6] + locationInfo[7]);
+        Location<String, String, String, String, String, String, String, String> localLocation = new Location<>(locationInfo[0] , locationInfo[1] , locationInfo[2] , locationInfo[3] , locationInfo[4] , locationInfo[5] , locationInfo[6] , locationInfo[7]);
 
 
         if(locationInfo[8].equals("Invoice")){

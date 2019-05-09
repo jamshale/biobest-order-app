@@ -7,9 +7,10 @@ public class Location<company,  contact, address,  cityState,  zip, email,  phon
         private String address;
         private String cityState; 
         private String zip; 
+        private String email;
         private String phone; 
         private String fax; 
-        private String email;
+       
 
         public Location(String company, String contact, String address, String cityState, String zip, String email, String phone,  String fax){
                 this.company = company;

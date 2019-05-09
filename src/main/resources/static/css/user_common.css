@@ -1,0 +1,21 @@
+/*
+// NavBar
+*/
+navbar navbar-default{
+    box-shadow: 2px 2px 2px grey;
+    background-color:rgba(83, 83, 83, 0.096)
+}
+
+
+#logout{
+    font-weight:bold;
+    font-size:30px;
+    width:200px;
+    margin:6px;
+    font-family:Verdana, Times, serif;
+    float: right;
+}
+
+/*
+// End
+*/

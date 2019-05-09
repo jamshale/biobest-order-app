@@ -1,0 +1,25 @@
+image:first-child{
+    
+    width: 700px;
+    height:400px
+}
+form{
+    width: 60%; margin: auto;
+}
+div .alert{
+    margin-top: 2%;
+    font-size:22px;
+    height:60px;
+}
+#username, #password{
+    margin-top: 1%; 
+    font-size:25px;
+    height:60px;
+    background-color:rgba(182, 182, 182, 0.281);
+}
+
+.btn{
+    width: 80%;
+    margin: 5% 10%;
+    font-size:40px;
+}

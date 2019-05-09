@@ -1,26 +1,13 @@
-
+/*
+// Make default button have shadow
+*/
 button{
-    box-shadow: 2px 2px 3px;
+    box-shadow: 1px 1px 1px;
 }
 
-
-
-.navbar-nav li a h3{
-    font-size:250%;
-}
-#logout {
-    font-size:60px;
-    width:410px;
-}
-.navbar-left {
-    background: url(biobest_logo.jpg);
-    background-repeat: no-repeat;
-    font-size: 200%;
-    width:220px;
-    height:100px;
-    background-size: 100% 100%;
-}
-
+/*
+// Custom Buttons
+*/
 .btn-custom-0 {
     background-color: hsl(49, 66%, 47%) !important;
     background-repeat: repeat-x;
@@ -70,52 +57,18 @@ button{
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.36);
     -webkit-font-smoothing: antialiased;
 }
-
-#logout {
-    margin: 7px;
-    float: right;
-}
-
+/*
+// Move to management common
+*/
 .border-class{
     border-width: 5px;
     border-style: solid;
     border-color: red;
     padding:5px;
 }
-
-#ship_to_info tr td h4, #invoice_to_info tr td h4{
-    
-    color:black;
-}
-#invoice_to_info tr, #ship_to_info tr, #user_list tr, #customer_list tr, #user_info{
-    border-width: 2px;
-    border-style: solid;
-    background-color: white;
-}
-
-/*Modal Settings */
-.modal {
-  text-align: center;
-  padding: 0!important;
-}
-
-.modal:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
-#add_user_modal .modal-dialog  {width:80%;}
-#remove_user_modal .modal-dialog  {width:80%;}
-
-/* Mobile Screens */
+/*
+// Mobile Screen settings --> Move to management common
+*/
 @media screen 
   and (min-width: 768px)
   and (-webkit-min-device-pixel-ratio: 1) {
@@ -135,3 +88,65 @@ button{
     background-color: rgb(255, 217, 0);
   }
 
+
+/*
+//
+*/
+/*
+// NavBar
+*/
+navbar navbar-default{
+    box-shadow: 2px 2px 2px grey;
+    background-color:rgba(83, 83, 83, 0.096)
+}
+
+
+#logout{
+    font-weight:bold;
+    font-size:30px;
+    width:200px;
+    margin:6px;
+    font-family:Verdana, Times, serif;
+    float: right;
+}
+
+/*
+// End
+*/
+
+
+/*
+// General Modal Settings
+*/
+.modal-header .btn-custom-2{
+    float:right;
+    font-size:40px;
+    font-weight:bold;
+    width: 150px;
+   
+  }
+  
+  .modal-header .col-xs-10 h3{
+    font-weight:bold;
+    font-size:40px;
+    margin: 0px;
+  }
+
+.modal {
+    text-align: center;
+    padding: 0!important;
+  }
+  
+  .modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+  }
+  
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }

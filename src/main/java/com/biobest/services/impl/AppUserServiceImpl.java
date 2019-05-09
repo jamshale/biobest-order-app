@@ -10,6 +10,8 @@ import com.biobest.exceptions.EmailExistsException;
 import com.biobest.exceptions.UserNameExistsException;
 import com.biobest.repositories.AppUserRepository;
 import com.biobest.services.AppUserService;
+import com.biobest.validation.PasswordHash;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -49,7 +51,9 @@ public class AppUserServiceImpl implements AppUserService {
         if(check != null){
             throw new EmailExistsException("A user with that email already exists!");
         }
-        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType());
+        PasswordHash passwordHash = new PasswordHash();
+        String hashPassword = passwordHash.generateHash(appUserDto.getPassword());
+        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), hashPassword, appUserDto.getType());
         newGeneral.setRoles(Arrays.asList("ROLE_USER"));
         return appUserRepository.save(newGeneral);
     }
@@ -65,7 +69,9 @@ public class AppUserServiceImpl implements AppUserService {
         if(check != null){
             throw new EmailExistsException("A user with that email already exists!");
         }
-        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType());
+        PasswordHash passwordHash = new PasswordHash();
+        String hashPassword = passwordHash.generateHash(appUserDto.getPassword());
+        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), hashPassword, appUserDto.getType());
         newConsultant.setRoles(Arrays.asList("ROLE_USER"));
         return appUserRepository.save(newConsultant);
     }

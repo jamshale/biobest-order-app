@@ -26,8 +26,8 @@ public class LoginController {
 
     @RequestMapping(value={"/login", "/", ""}, method = RequestMethod.GET)
     public String login(Model model) {
+        System.out.println(model.toString());
         return "login";
-        
     }
     
     @RequestMapping(value="/logout", method = RequestMethod.GET)

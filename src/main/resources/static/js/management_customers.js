@@ -54,13 +54,16 @@ $(document).ready(function ()   {
     })
 });
 
+//
+// When data loaded flow
+//
 function functionalityFlowCommand(){
-
     populateCustomerList()
-
 }
 
+//
 //Initiate User List
+//
 function initiateUserList(appUsers){
     userList = appUsers;
 }
@@ -100,7 +103,10 @@ $("#add_user_list").on('click', function(u){
         sessionStorage.setItem("active_customer", clicked_customer[0].customerId);
     }
 })
-//UnLink User and CustomerS
+
+//
+//UnLink User and Customers
+//
 $("#remove_user_list").on('click', function(u){
     if($(u.target).html() == 'Remove'){
         var user_id = $(u.target).parent().parent().find("td:first-child").text();
@@ -117,7 +123,10 @@ $("#remove_user_list").on('click', function(u){
         sessionStorage.setItem("active_customer", clicked_customer[0].customerId);
     }
 })
+
+//
 //Populate list of users to possibly link to customer
+//
 function addUser(){
     $("#add_user_modal").modal('toggle');
     $("#add_user_list").html('')
@@ -126,30 +135,35 @@ function addUser(){
         if(user.type!="Manager" && checkUserExists(user)===false){
             $("#add_user_list").append(`<tr>
             <td hidden>${user.appUserId}</td>
-            <td style="width:60%;"><h3 style="font-size:30px;font-weight:bold;">${user.firstName} <br /> ${user.lastName}</h3></td>
-            <td style="width:20%;"><h3 style="font-size:25px;">${user.type}</h3></td>
-            <td style="width:20%;"><button type="button" class="btn btn-lg btn-success" style="margin:10px;font-weight:bold;font-size:40px;width:200px;">Add</button></td>
+            <td><h3>${user.firstName} <br /> ${user.lastName}</h3></td>
+            <td><h3>${user.type}</h3></td>
+            <td><button type="button" class="btn btn-lg btn-success">Add</button></td>
             </tr>`);
         }
     })   
 }
-//Populate list of users to link to customer
+
+//
+//Populate list of users to remove from customer
+//
 function removeUser(){
     $("#remove_user_modal").modal('toggle');
     $("#remove_user_list").html('')
     userList.forEach(function(user){
         if(user.type!="Manager" && checkUserExists(user)===true){
             $("#remove_user_list").append(`<tr>
-            <td hidden>${user.appUserId}<td>
-            <td style="width:60%;"><h3 style="font-size:30px;font-weight:bold;">${user.firstName} <br /> ${user.lastName}</h3></td>
-            <td style="width:20%;"><h3 style="font-size:25px;">${user.type}</h3></td>
-            <td style="width:20%;"><button type="button" class="btn btn-lg btn-danger" style="margin:10px;font-weight:bold;font-size:40px;width:200px;">Remove</button></td>
+            <td hidden>${user.appUserId}</td>
+            <td><h3>${user.firstName} <br /> ${user.lastName}</h3></td>
+            <td><h3>${user.type}</h3></td>
+            <td><button type="button" class="btn btn-lg btn-danger">Remove</button></td>
             </tr>`);
         }
     })
 }
 
+//
 //Populate User List
+//
 function populateUserList(){
     var matched_user;
     $("#user_list").html("");
@@ -172,7 +186,7 @@ function populateUserList(){
         return 0;
     })
     local_user_list.forEach(function(u){
-        $("#user_list").append(`<tr><td style><h3>${u[0].firstName}<br />${u[0].lastName}</h3></td>
+        $("#user_list").append(`<tr><td><h3>${u[0].firstName}<br />${u[0].lastName}</h3></td>
                                         <td><h4>${u[0].type}</h4></td></tr>`)  
 
     })
@@ -192,36 +206,38 @@ function checkUserExists(user){
     return false;
 }
 
+//
 //Populate List Of Customers Using Order App
+//
 function populateCustomerList(){
-   
     var list_item = $("#customer_list");
-
-    
-        customerList.forEach( function(c){
-            addCustomerToList(list_item, c)
+    customerList.forEach( function(c){
+        addCustomerToList(list_item, c)
     });
-
     clicked_customer = customerList.filter(function(cust){
         return sessionStorage.getItem("active_customer") === cust.customerId;
     });
     addInfoToFields(clicked_customer);
+
 }
 //Add customer to list
 function addCustomerToList(list_item, customer){
     var active_customer = sessionStorage.getItem("active_customer")
     if(active_customer === customer.customerId){
-        list_item.append(`<tr style="background-color:rgb(255, 217, 0);"><td hidden>${customer.customerId}</td>
-                            <td style="font-weight:bold;font-size:27px;padding:20px;">${customer.shipCompany}</td></tr>`);
+        list_item.append(`<tr><td hidden>${customer.customerId}</td>
+                            <td style="background-color: rgb(255, 217, 0)">${customer.shipCompany}</td></tr>`);
         $("button").prop('disabled', false);
     } else {
         list_item.append(`<tr><td hidden>${customer.customerId}</td>
-                            <td style="font-weight:bold;font-size:27px;padding:20px;">${customer.shipCompany}</td></tr>`);
+                            <td>${customer.shipCompany}</td></tr>`);
     }
     
 }
-//Info Click Event Listener
-$("#customer_list").on('click', function(c){
+
+//
+// Customer Click Functionality
+//
+$("#customer_list").on('click',function(c){
     $("#customer_list td").css("background-color", "white")
     var customer_id = $(c.target).parent().find("td:hidden").text();
     clicked_customer = customerList.filter(function(cust){
@@ -234,16 +250,17 @@ $("#customer_list").on('click', function(c){
     ship_location_index = 0
     addInfoToFields(clicked_customer);
     populateHistory()
-    
 })
 
-//Info Field Populator
+//
+// Info Field Populator
+//
 function addInfoToFields(customer){
 
     var inv_info = $("#invoice_to_info").html('');
     var ship_info = $("#ship_to_info").html('');
-    $("#inv_index").text(`${inv_location_index + 1}/${clicked_customer[0].invLocations.length}`)
-    $("#ship_index").text(`${ship_location_index + 1}/${clicked_customer[0].shipLocations.length}`)
+    $("#inv_index").text(`(${inv_location_index + 1}/${clicked_customer[0].invLocations.length}) Invoice`)
+    $("#ship_index").text(`(${ship_location_index + 1}/${clicked_customer[0].shipLocations.length}) Shipping `)
     inv_info.append(`
    
             <tr><td><h3>Company:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].company}</h4></td></tr>
@@ -251,9 +268,10 @@ function addInfoToFields(customer){
             <tr><td><h3>City, State:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].address}</h4></td></tr>
             <tr><td><h3>Company:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].cityState}</h4></td></tr>
             <tr><td><h3>Zip:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].zip}</h4></td></tr>
+            <tr><td><h3>Email:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].email}</h4></td></tr>
             <tr><td><h3>Phone:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].phone}</h4></td></tr>
             <tr><td><h3>Fax:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].fax}</h4></td></tr>
-            <tr><td><h3>Email:</h3></td><td><h4>${customer[0].invLocations[inv_location_index].email}</h4></td></tr>
+            
             
             `)
     ship_info.append(`
@@ -262,24 +280,30 @@ function addInfoToFields(customer){
             <tr><td><h3>City, State:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].address}</h4></td></tr>
             <tr><td><h3>Company:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].cityState}</h4></td></tr>
             <tr><td><h3>Zip:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].zip}</h4></td></tr>
+            <tr><td><h3>Email:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].email}</h4></td></tr>
             <tr><td><h3>Phone:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].phone}</h4></td></tr>
             <tr><td><h3>Fax:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].fax}</h4></td></tr>
-            <tr><td><h3>Email:</h3></td><td><h4>${customer[0].shipLocations[ship_location_index].email}</h4></td></tr>
+            
             `)
     var i = 1;
     
     populateUserList();
     infoHighlight();
 }
+
+//
 //Update highlighter
+//
 function infoHighlight(){
     setTimeout(function (){
-        $(".info").removeClass('border-class')
+        $("#invoice_to_info, #ship_to_info").removeClass('border-class')
     }, 200);
-    $(".info").addClass('border-class')
+    $("#invoice_to_info, #ship_to_info").addClass('border-class')
 }
 
-
+//
+// If location change is shipping then disable company
+//
 $("#add_location_modal").on('change', function(){
 
     if($("#loc_type").val() == "Shipping"){
@@ -292,8 +316,14 @@ $("#add_location_modal").on('change', function(){
 
 })
 
+//
+// Create New Location
+//
 function createLocation(){
-
+    if($("#loc_type").val() == "Type"){
+        alert("Please Select a Type.....")
+        return;
+    } 
     var locationInfo = [];
     locationInfo.push($("#loc_company").val())
     locationInfo.push($("#loc_contact").val())
@@ -318,6 +348,9 @@ function createLocation(){
     
 }
 
+//
+//Change Location Index
+//
 function incInvIndex(){
     if(inv_location_index < clicked_customer[0].invLocations.length - 1){
         inv_location_index++;
@@ -343,6 +376,9 @@ function decShipIndex(){
     }
 }
 
+//
+// On click show functions
+//
 function showInfo(){
     $("#information_section").toggle()
 }
@@ -350,12 +386,14 @@ function showCreate(){
     $("#create_customer_section").toggle()
 }
 
+//
+// History <-- TO DO
+//
 function populateHistory(){
     $("#history_accordion").html("")
     $("#history_accordion").html(history_accordion_clone.html())
     var i = 0;
     var j = 1;
-    console.log(clicked_customer[0].customerId)
     orderList.forEach(function(o){
         if(o.customerId == clicked_customer[0].customerId){
             var year_week = o.yearWeek.split(" ")
@@ -366,33 +404,24 @@ function populateHistory(){
             current_product.find(".panel-collapse").first().attr('id', 'history_collapse_' + i)
             current_product.find("#history_button").html(`<tr><td><h3>PO Number: <br />${year_week[0]} Week # ${year_week[1]}</h3></td></tr>`);
             o.finalOrder.forEach(function(prod){
-                console.log(prod)
-                
-
-                
                 var local_product = productList.filter(function(p){
                     return p.itemCode == prod.productId
                 })
                 $("#history_list").append(`<tr>
                             <td><h3>${local_product[0].productName}</h3><h4>${local_product[0].description}</h4><h3>${local_product[0].unitSize}</h3></td>
                             <td><h4>Unit Price:</h4><h3>$${local_product[0].aPrice.toFixed(2)}</h3></td>
-                            <td><h4>Units:</h4><span class="badge" style="font-size:25px;">${prod.units}</span></td>
+                            <td><h4>Units:</h4><span class="badge">${prod.units}</span></td>
                             <td><h4>Product Cost:</h4><h3>$${(parseFloat(local_product[0].aPrice) * prod.units).toFixed(2) }</h3></td>
                             </tr>`)
                 
             })
-            console.log(j)
-            console.log(orderList.length - 1)
             if(j != orderList.length - 2 ){
-                console.log("fire")
                 clone2.prependTo($("#history_panel"))
                 clone1.prependTo($("#history_panel"))
             }
             i++; 
         }
         j++;
-        
-
     })
 
 

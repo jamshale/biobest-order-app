@@ -15,8 +15,8 @@ import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 //import org.passay.QwertySequenceRule;
 import org.passay.RuleResult;
-import org.passay.SpecialCharacterRule;
-import org.passay.UppercaseCharacterRule;
+//import org.passay.SpecialCharacterRule;
+//import org.passay.UppercaseCharacterRule;
 import org.passay.WhitespaceRule;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
@@ -28,10 +28,10 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
     @Override
     public boolean isValid(String password, ConstraintValidatorContext context) {
         PasswordValidator validator = new PasswordValidator(Arrays.asList(
-           new LengthRule(6, 30), 
-           new UppercaseCharacterRule(1), 
-           new DigitCharacterRule(1), 
-           new SpecialCharacterRule(1), 
+           new LengthRule(4, 6), 
+           //new UppercaseCharacterRule(1), 
+           new DigitCharacterRule(4), 
+           //new SpecialCharacterRule(1), 
            //new NumericalSequenceRule(3,false), 
            //new AlphabeticalSequenceRule(3,false), 
            //new QwertySequenceRule(3,false),
