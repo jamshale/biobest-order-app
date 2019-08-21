@@ -1,5 +1,13 @@
 package com.biobest.config;
 
+import java.util.Arrays;
+
+import com.biobest.entities.impl.Manager;
+import com.biobest.exceptions.EmailExistsException;
+import com.biobest.handlers.CustomAuthenticationSuccessHandler;
+import com.biobest.services.AppUserService;
+import com.biobest.services.impl.UserDetailsServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,15 +18,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.biobest.entities.impl.Manager;
-import com.biobest.exceptions.EmailExistsException;
-import com.biobest.handlers.CustomAuthenticationSuccessHandler;
-import com.biobest.services.AppUserService;
-import com.biobest.services.impl.UserDetailsServiceImpl;
-import com.biobest.validation.PasswordHash;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -57,8 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         Manager testManager = new Manager("Jamie", "Hale", "jamiehalebc@gmail.com");
-            PasswordHash passwordHash = new PasswordHash();
-            testManager.setPassword(passwordHash.generateHash("123456"));
+            // PasswordHash passwordHash = new PasswordHash();
+            // testManager.setPassword(passwordHash.generateHash("123456"));
+            testManager.setPassword("123456");
             testManager.setType("Manager");
             testManager.setRoles(Arrays.asList("ROLE_ADMIN"));
         try {
