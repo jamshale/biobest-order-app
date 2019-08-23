@@ -1,7 +1,7 @@
 function Session() {}
 
 Session.prototype.init = function() {
-  console.log('inside Session.init()');
+//   console.log('inside Session.init()');
 
   //capturing all click, touch and keypress events
 	window.addEventListener('touchstart',Timeout,false);

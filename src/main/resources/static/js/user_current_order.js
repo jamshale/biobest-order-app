@@ -77,8 +77,11 @@ $(document).ready(function ()   {
 //Functionality Command
 //
 function functionalityFlowCommand(){
+    //good
     activateCurrentUser()
+    //good
     activateCurrentCustomer()
+    //
     initiateSessionOrder()
     populateCustomerPageInfo()
     populateAddProductList(productList)
@@ -219,6 +222,7 @@ function getCurrentOrder(){
 // intiatiates the order currently in session
 //
 function initiateSessionOrder(){
+    console.log('fire')
     var checkOrderIndex = sessionStorage.getItem("currentOrderIndex");
     var checkOrderId = sessionStorage.getItem("sessionOrderId");
     if(checkOrderIndex != 0 &&  currentCustomer[0].currentOrders.includes(checkOrderId)){
@@ -297,18 +301,29 @@ $("#inc_product").on('click', function(n){
 })
 //Populate Accordion List of Current Products --> Initial
 function populateProductList(oldSessionOrder) {
+    console.log('fire0')
     var local_product_list = [];
     $("#main_accordion").html(main_accordion_clone.html());
+    console.log(sessionOrder)
+    console.log(sessionOrder.length)
     if(sessionOrder.length > 0){
         $("#empty_tag").hide()
         $("#main_accordion").removeClass('hide')
         $("button").prop('disabled', false);
+        
+        
         sessionOrder.forEach(function(prod){
             var temp_product = productList.filter(function(p){
-                return p.itemCode === prod[0];
+                console.log(p.itemCode)
+                console.log(prod[0])
+                return p.itemCode == prod[0];
             })
+            console.log(temp_product)
             local_product_list.push([temp_product, prod[1]]);
         })
+
+
+        console.log(local_product_list)
         local_product_list.sort(function(a, b){
             var A = a[0][0].productName,
                 B = b[0][0].productName;
@@ -325,6 +340,7 @@ function populateProductList(oldSessionOrder) {
                     found = true;
                 }
             })
+            
             var clone1 = $("#product_list_panel").children().first().clone()
             var clone2 = $("#product_list_panel").children().first().next().clone()
             current_product = $("#product_list_panel") 
@@ -408,10 +424,8 @@ function populateHistory(){
                             </tr>`)
                 
             })
-            console.log(i)
-            console.log(orderList.length - 1)
             if(i != orderList.length - 1 ){
-                console.log("fire")
+        
                 clone2.prependTo($("#history_panel"))
                 clone1.prependTo($("#history_panel"))
             }
@@ -459,16 +473,16 @@ function activateCurrentUser(){
         return u.appUserId === current_user_id;
     })
 }
+
 function populateShipLocationButton(index){
     if(shipLocationOrderIndex!=index){
         sessionSubmitStatus = "Not Submitted"
         populateProductListHeader();
     }
     shipLocationOrderIndex = index;
-    console.log(index)
     
 
-    $("#ship_to_button").html(`</div>${currentCustomer[0].shipLocations[index-1].contact}<div hidden>|</div><br />${currentCustomer[0].shipLocations[index-1].address}<div hidden>|${currentCustomer[0].shipLocations[index-1].company}|${currentCustomer[0].shipLocations[index-1].cityState}|${currentCustomer[0].shipLocations[index-1].zip}|${currentCustomer[0].shipLocations[index-1].phone}|${currentCustomer[0].shipLocations[index-1].fax}|${currentCustomer[0].shipLocations[index-1].email}`)
+    $("#ship_to_button").html(`</div>${currentCustomer[0].shipLocations[index - 1].contact}<div hidden>|</div><br />${currentCustomer[0].shipLocations[index - 1].address}<div hidden>|${currentCustomer[0].shipLocations[index - 1].company}|${currentCustomer[0].shipLocations[index - 1].cityState}|${currentCustomer[0].shipLocations[index - 1].zip}|${currentCustomer[0].shipLocations[index - 1].phone}|${currentCustomer[0].shipLocations[index - 1].fax}|${currentCustomer[0].shipLocations[index - 1].email}`)
 }
 function populateInvLocationButton(index){
     if(invLocationOrderIndex!=index){
@@ -476,7 +490,7 @@ function populateInvLocationButton(index){
         populateProductListHeader();
     }
     invLocationOrderIndex = index;
-    $("#invoice_to_button").html(`</div>${currentCustomer[0].invLocations[index-1].contact}<div hidden>|</div><br />${currentCustomer[0].invLocations[index-1].address}<div hidden>|${currentCustomer[0].invLocations[index-1].company}|${currentCustomer[0].invLocations[index-1].cityState}|${currentCustomer[0].invLocations[index-1].zip}|${currentCustomer[0].invLocations[index-1].phone}|${currentCustomer[0].invLocations[index-1].fax}|${currentCustomer[0].invLocations[index-1].email}`)
+    $("#invoice_to_button").html(`</div>${currentCustomer[0].invLocations[index - 1].contact}<div hidden>|</div><br />${currentCustomer[0].invLocations[index - 1].address}<div hidden>|${currentCustomer[0].invLocations[index - 1].company}|${currentCustomer[0].invLocations[index - 1].cityState}|${currentCustomer[0].invLocations[index - 1].zip}|${currentCustomer[0].invLocations[index - 1].phone}|${currentCustomer[0].invLocations[index - 1].fax}|${currentCustomer[0].invLocations[index - 1].email}`)
 }
 //
 function populateProductListHeader(){
