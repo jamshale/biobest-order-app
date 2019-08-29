@@ -1,7 +1,5 @@
 package com.biobest.config;
 
-import java.util.Arrays;
-
 import com.biobest.entities.impl.Manager;
 import com.biobest.exceptions.EmailExistsException;
 import com.biobest.handlers.CustomAuthenticationSuccessHandler;
@@ -11,6 +9,7 @@ import com.biobest.services.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -53,14 +52,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         
     }
 
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authProvider());
         Manager testManager = new Manager("Jamie", "Hale", "jamiehalebc@gmail.com");
             // PasswordHash passwordHash = new PasswordHash();
             // testManager.setPassword(passwordHash.generateHash("123456"));
             testManager.setPassword("123456");
             testManager.setType("Manager");
-            testManager.setRoles(Arrays.asList("ROLE_ADMIN"));
+            testManager.setRoles("ROLE_ADMIN");
         try {
             this.userService.registerManager(testManager);
         } catch (EmailExistsException e){

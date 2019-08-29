@@ -1,11 +1,11 @@
 package com.biobest.entities;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 //import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+
 import org.springframework.data.annotation.Id;
 
 public abstract class AppUser {
@@ -19,7 +19,7 @@ public abstract class AppUser {
     private String password;
 	private String type;
 	private Set<String> customers;
-	private List<String> roles;
+	private String[] roles;
 	private String appUserId;
 
 
@@ -66,11 +66,11 @@ public abstract class AppUser {
 		return customers;
     }
     
-	public List<String> getRoles() {
+	public String[] getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(String... roles) {
 		this.roles = roles;
 	}
 

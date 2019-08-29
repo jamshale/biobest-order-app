@@ -1,6 +1,5 @@
 package com.biobest.services.impl;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -16,6 +15,7 @@ import com.biobest.repositories.AppUserRepository;
 import com.biobest.services.AppUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +24,9 @@ public class AppUserServiceImpl implements AppUserService {
     
     @Autowired
     private AppUserRepository appUserRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<AppUser> getAppUsers(){
         return appUserRepository.findAll();
@@ -36,6 +39,7 @@ public class AppUserServiceImpl implements AppUserService {
         if(check != null){
             throw new EmailExistsException("The email " + manager.getEmail() + " is already registered");
         } 
+        manager.setPassword(passwordEncoder.encode(manager.getPassword()));
         return appUserRepository.save(manager);
     }
 
@@ -53,8 +57,8 @@ public class AppUserServiceImpl implements AppUserService {
         }
         // PasswordHash passwordHash = new PasswordHash();
         // String hashPassword = passwordHash.generateHash(appUserDto.getPassword());
-        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType());
-        newGeneral.setRoles(Arrays.asList("ROLE_USER"));
+        General newGeneral = new General(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), passwordEncoder.encode(appUserDto.getPassword()), appUserDto.getType());
+        newGeneral.setRoles("ROLE_USER");
         return appUserRepository.save(newGeneral);
     }
 
@@ -71,8 +75,8 @@ public class AppUserServiceImpl implements AppUserService {
         }
         // PasswordHash passwordHash = new PasswordHash();
         // String hashPassword = passwordHash.generateHash(appUserDto.getPassword());
-        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), appUserDto.getPassword(), appUserDto.getType());
-        newConsultant.setRoles(Arrays.asList("ROLE_USER"));
+        Consultant newConsultant = new Consultant(appUserDto.getFirstName(), appUserDto.getLastName(), appUserDto.getEmail(), passwordEncoder.encode(appUserDto.getPassword()), appUserDto.getType());
+        newConsultant.setRoles("ROLE_USER");
         return appUserRepository.save(newConsultant);
     }
 
