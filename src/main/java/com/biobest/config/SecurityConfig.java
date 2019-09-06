@@ -1,5 +1,6 @@
 package com.biobest.config;
 
+import com.biobest.dtos.AppUserDTO;
 import com.biobest.entities.impl.Manager;
 import com.biobest.exceptions.EmailExistsException;
 import com.biobest.handlers.CustomAuthenticationSuccessHandler;
@@ -73,6 +74,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             this.userService.registerManager(testManager);
         } catch (EmailExistsException e){
         }
+
+        AppUserDTO appUserDto = new AppUserDTO();
+        appUserDto.setEmail("sample@email.com");
+        appUserDto.setFirstName("Sample");
+        appUserDto.setLastName("User");
+        appUserDto.setPassword("1234");
+        appUserDto.setType("consultant");
+        try {
+            this.userService.createConsultantAppUser(appUserDto);
+        } catch (EmailExistsException e2){
+            
+        }
+
+
         auth.userDetailsService(this.userDetailsService);
 
     }
